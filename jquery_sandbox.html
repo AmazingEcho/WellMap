@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>JQuery Sandbox</title>
+</head>
+
+<link rel="stylesheet" href="jquery-ui.css">
+<script src="external/jquery/jquery.js"></script>
+<script src="jquery-ui.js"></script>
+
+<script>
+  $(function() {
+    $( "button:first" ).button({
+      icons: {
+        primary: "ui-icon-locked"
+      },
+      text: false
+    }).next().button({
+      icons: {
+        primary: "ui-icon-locked"
+      }
+    }).next().button({
+      icons: {
+        primary: "ui-icon-gear",
+        secondary: "ui-icon-triangle-1-s"
+      }
+    }).next().button({
+      icons: {
+        primary: "ui-icon-gear",
+        secondary: "ui-icon-triangle-1-s"
+      },
+      text: false
+    });
+	
+	$( "#check" ).button();
+    $( "#format" ).buttonset();
+	
+  });
+  </script>
+
+<body>
+<input type="checkbox" id="check"><label for="check">Toggle</label>
+ 
+<button>Button with icon only</button>
+<button>Button with icon on the left</button>
+<button>Button with two icons</button>
+<button>Button with two icons and no text</button>
+
+<div id="format">
+  <input type="checkbox" id="check1"><label for="check1">B</label>
+  <input type="checkbox" id="check2"><label for="check2">I</label>
+  <input type="checkbox" id="check3"><label for="check3">U</label>
+</div>
+
+</body>
+</html>
