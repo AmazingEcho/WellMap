@@ -5,11 +5,20 @@ WellMap
 Browser-based Oil Well maping software for 4th year Engineering Group Project
 
 Current Phase(s):
-Planning
-Research/Learning
-Experimenting
+
+	-Planning
+	
+	-Research/Learning
+	
+	-Experimenting
+	
 
 Languages:
--JavaScript w/ JQuery
--DB management with php and MySQL
--Ruby
+
+	-Probably JavaScript w/ JQuery for the bulk of it
+	
+	-DB management with php and MySQL
+	
+	-Ruby(?)
+	
+		--Should look into it.  I'm not even completely sure at this point what Ruby is or what's so special about it...
