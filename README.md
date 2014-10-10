@@ -17,5 +17,4 @@ Languages:
 * Probably JavaScript w/ JQuery for the bulk of it
 * DB management with php and MySQL
 * Ruby(?)
-	
-		--Should look into it.  I'm not even completely sure at this point what Ruby is or what's so special about it...
+	* Should look into it.  I'm not even completely sure at this point what Ruby is or what's so special about it...
