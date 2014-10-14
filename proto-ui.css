@@ -1,0 +1,51 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{
+	margin: 0px;
+}
+
+.toolbar{
+	height: 100px;
+	width: 100%;
+}
+
+.toolbarTOP{
+	padding: 3px;
+	height: 44px;
+	width: 100%;
+	background-color: #0FF;
+}
+
+.toolbarBOT{
+	padding: 3px;
+	height: 44px;
+	width: 100%;
+	background-color:#09C;
+}
+
+.workArea{
+	background-color:#999;
+	width: 100%;
+	height: 600px;
+}
+
+.sidebar{
+	padding: 3px;
+	width: 294px;
+	height: 100%;
+	background-color:#CC0;
+	float:left;
+}
+
+.mapArea{
+	background-color:#090;
+	float: right
+	width: auto;
+	height: 100%;
+}
+
+#googleMap{
+	height:inherit;
+	width: auto;
+}

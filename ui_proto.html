@@ -2,18 +2,41 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link type="text/css" rel="stylesheet" href="ui.css" />
+<link type="text/css" rel="stylesheet" href="proto-ui.css" />
 <title>UI Prototype</title>
-</head>
+<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBvwCMuLz31gLXoawbDBntieQjGPMrf5vA&sensor=false">
+</script>
+<script>
+function initialize()
+{
+var mapProp = {
+  center:new google.maps.LatLng(55.00,-115.00),
+  zoom:5,
+  mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+var map=new google.maps.Map(document.getElementById("googleMap")
+  ,mapProp);
+}
 
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+</head>
 <body>
 	<div class="toolbar">
     	<div class="toolbarTOP">This is the top toolbar!</div>
         <div class="toolbarBOT">This is the bottom toolbar!</div>
 	</div>
     <div class="workArea">
-    	<div class="sidebar">This is a sidebar</div>
-        <div class="mapArea">This is the map area</div>
+    	<div class="sidebar">
+        	<p>This is a sidebar!<br />
+            There could be a tab system to switch between Well Lists and Well Info and whatever.<br />
+            Perhaps figure out a way to have this expand and unexpand...
+        	</p>
+        	
+        </div>
+        <div class="mapArea">
+        	<div id="googleMap"></div>
+		</div>
     </div>
 </body>
 </html>
