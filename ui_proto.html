@@ -4,6 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link type="text/css" rel="stylesheet" href="proto-ui.css" />
 <title>UI Prototype</title>
+<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js?ver=1.4.2'></script>
 <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBvwCMuLz31gLXoawbDBntieQjGPMrf5vA&sensor=false">
 </script>
 <script>
@@ -19,25 +20,33 @@ var map=new google.maps.Map(document.getElementById("googleMap")
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
+
+var sidebar = false;
+console.log("Sidebar is " + sidebar);
+
+$('button').click(function() {
+	console.log("SIDEBAR TOGGLE!");
+	$('#googleMap').toggleClass('slide-away');
+});
+
+console.log("Sidebar is " + sidebar);
 </script>
 </head>
 <body>
 <div id="wrapper">
 	<div class="toolbar">
     	<div class="toolbarTOP">This is the top toolbar!</div>
-        <div class="toolbarBOT">This is the bottom toolbar!</div>
+        <div class="toolbarBOT">This is the bottom toolbar! <button>Sidebar</button></div>
 	</div>
     <div class="workArea">
-    	<div class="sidebar">
+    	<div id="sidebar">
         	<p>This is a sidebar!<br />
             There could be a tab system to switch between Well Lists and Well Info and whatever.<br />
             Perhaps figure out a way to have this expand and unexpand...
         	</p>
         	
         </div>
-        <div class="mapArea">
-        	<div id="googleMap"></div>
-		</div>
+        <div id="googleMap"></div>
     </div>
 </div>
 </body>
