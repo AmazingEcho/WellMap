@@ -38,73 +38,24 @@ body{
 	background-color:#999;
 	width: 100%;
 	height: 100%;
-	
-	position:absolute;
-	top: 100px;
-	left: 0px;
-	transition: width 0.3s ease;
-	-webkit-transition: width 0.3s ease;
-	-moz-transition: width 0.3s ease;
-	-ms-transition: width 0.3s ease;
-	-o-transition: width 0.3s ease;
 }
 
-#sidebar{
+.sidebar{
 	padding: 3px;
 	width: 294px;
-	min-height: 100%;
+	height: 100%;
 	background-color:#CC0;
-	
-	position:absolute;
-	top: 0px;
-	left: 0px;
-	transition: width 0.3s ease;
-	-webkit-transition: width 0.3s ease;
-	-moz-transition: width 0.3s ease;
-	-ms-transition: width 0.3s ease;
-	-o-transition: width 0.3s ease;
-	
-	overflow:auto;
-	
-	z-index: 1;
-	
+	float:left;
+}
+
+.mapArea{
+	background-color:#090;
+	float: right
+	width: auto;
+	height: 100%;
 }
 
 #googleMap{
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	min-height: 100%;
-	transition: all 0.3s ease;
-	-webkit-transition: all 0.3s ease;
-	-moz-transition: all 0.3s ease;
-	-ms-transition: all 0.3s ease;
-	-o-transition: all 0.3s ease;
-	overflow: auto;
-	background: #343434;
-	z-index: 3;
-}
-
-<!-- For the sliding tab -->
-.slide-away{
-	transform: translate(300px, 0);
-	-webkit-transform: translate(300px, 0);
-	-moz-transform: translate(300px, 0);
-	-ms-transform: translate(300px, 0);
-	-o-transform: translate(300px, 0);
-}
-
-button{
-	color: #eee;
-	background: #343434;
-	padding: 20px;
-	border: none;
-	z-index: 10;
-}
-
-button:hover{
-	color: #bbb;
-	background: #565656;
-	
+	height:inherit;
+	width: auto;
 }
