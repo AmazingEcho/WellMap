@@ -1,0 +1,70 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{
+	margin: 0px;
+}
+
+.wrapper{
+	position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: rgba(51,51,51,0.7);
+    z-index: 10;
+}
+
+.toolbar{
+	height: 100px;
+	width: 100%;
+}
+
+.toolbarTOP{
+	padding: 3px;
+	height: 44px;
+	width: 100%;
+	background-color: #0FF;
+}
+
+.toolbarBOT{
+	padding: 3px;
+	height: 44px;
+	width: 100%;
+	background-color:#09C;
+}
+
+.workArea{
+	background-color:#999;
+	width: 100%;
+	height: 100%;
+}
+
+.panel{
+	padding: 3px;
+	width: 294px;
+	height: 100%;
+	background-color:#CC0;
+	float:left;
+}
+
+.panel-HIDE{
+	width: 5px;
+	padding: 3px;
+	width: 294px;
+	height: 100%;
+	background-color:#603;
+	float:left;
+}
+
+.mapArea{
+	background-color:#090;
+	float: right
+	width: auto;
+	height: 100%;
+}
+
+#googleMap{
+	height:inherit;
+	width: auto;
+}
