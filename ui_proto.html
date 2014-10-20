@@ -22,10 +22,6 @@ var map=new google.maps.Map(document.getElementById("googleMap"), mapProp);
 
 google.maps.event.addDomListener(window, 'load', initialize);
 
-$(function(){
-	$( "#slider" ).slider();
-	});
-
 </script>
 
 </head>
@@ -42,18 +38,17 @@ $(function(){
             Perhaps figure out a way to have this expand and unexpand...
         	</p>
         </div>
-        <section class="mapArea">
         	<div id="googleMap"></div>
-		</section>
     </section>
 </div>
 
 <script>
-$('#sidebar-toggle').click(function(){
+
+$('#sidebar-toggle').click(function() {
+	$('#googleMap').toggleClass('slide-away');
 	console.log("I hear you!");
-	$(".panel").switchClass("panel", "panel-HIDE");
-	$(".panel-HIDE").switchClass("panel-HIDE", "panel");
 });
+
 </script>
 
 </body>
