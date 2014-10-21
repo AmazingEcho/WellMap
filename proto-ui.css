@@ -42,8 +42,6 @@ body{
 	position: absolute;
 	top: 100px;
 	z-index: 5;
-	/*
-	
 	
 	left: 0;
 	transition: all 0.3s ease;
@@ -53,7 +51,6 @@ body{
 	-o-transition: all 0.3s ease;
 	overflow: auto;
 
-	*/
 }
 
 .panel{
@@ -66,13 +63,13 @@ body{
 	position: absolute;
 	top: 0;
 	left: 0;
-	/*
+
 	transition: width 0.3s ease;
 	-webkit-transition: width 0.3s ease;
 	-moz-transition: width 0.3s ease;
 	-ms-transition: width 0.3s ease;
 	-o-transition: width 0.3s ease;
-	*/
+
 	overflow: auto;
 
 	z-index: 1;
@@ -92,13 +89,13 @@ body{
 	left: 0;
 	width: 100%;
 	min-height: 100%;
-	/*
+
 	transition: all 0.3s ease;
 	-webkit-transition: all 0.3s ease;
 	-moz-transition: all 0.3s ease;
 	-ms-transition: all 0.3s ease;
 	-o-transition: all 0.3s ease;
-	*/
+
 	overflow: auto;
 	background: #343434;
 	z-index: 3;
@@ -110,7 +107,7 @@ body{
 	position:absolute;
 	left: 0px;
 	float:left;
-	/*
+
 	transition: all 0.3s ease;
 	-webkit-transition: all 0.3s ease;
 	-moz-transition: all 0.3s ease;
@@ -119,7 +116,7 @@ body{
 	overflow: auto;
 	background: #343434;
 	z-index: 3;
-	*/
+
 }
 /*
 #googleMap{
