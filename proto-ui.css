@@ -80,11 +80,10 @@ body{
 
 .slide-away {
 	transform: translate(300px, 0);
-	/*-webkit-transform: translate(300px, 0);
+	webkit-transform: translate(300px, 0);
 	-moz-transform: translate(300px, 0);
 	-ms-transform: translate(300px, 0);
 	-o-transform: translate(300px, 0);
-	*/
 }
 
 #mapArea{
