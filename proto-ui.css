@@ -66,8 +66,8 @@ body{
 	position: absolute;
 	top: 0;
 	left: 0;
-	transition: width 0.3s ease;
 	/*
+	transition: width 0.3s ease;
 	-webkit-transition: width 0.3s ease;
 	-moz-transition: width 0.3s ease;
 	-ms-transition: width 0.3s ease;
