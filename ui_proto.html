@@ -2,28 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link type="text/css" rel="stylesheet" href="proto-ui.css" />
-<link href="jquery-ui.css" rel="stylesheet">
+<link type="text/css" rel="stylesheet" href="ui_proto.css" />
+<link href="jquery-ui.min.css" rel="stylesheet" />
 <title>UI Prototype</title>
 <script src="external/jquery/jquery.js"></script>
 <script src="jquery-ui.js"></script>
-<script src="proto_ui.js"></script>
+<script src="ui_proto.js"></script>
 <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBvwCMuLz31gLXoawbDBntieQjGPMrf5vA&sensor=false"></script>
-<script>
-/*
-function initialize()
-{
-var mapProp = {
-  center:new google.maps.LatLng(55.00,-115.00),
-  zoom:5,
-  mapTypeId:google.maps.MapTypeId.ROADMAP
-  };
-var map=new google.maps.Map(document.getElementById("googleMap"), mapProp);
-	}
-
-google.maps.event.addDomListener(window, 'load', initialize);
-*/
-</script>
 
 </head>
 <body>
@@ -34,24 +19,27 @@ google.maps.event.addDomListener(window, 'load', initialize);
 	</div>
     <div class="workArea">
     		<div id="sidebar" class="panel">
-        		<p>This is a sidebar!<br />
-        	    There could be a tab system to switch between Well Lists and Well Info and whatever.<br />
-        	    Perhaps figure out a way to have this expand and unexpand...
-        		</p>
+        		<p>This is a sidebar!</p>
+                <div id="tabs">
+					<ul>
+						<li><a href="#tabs-1">1</a></li>
+						<li><a href="#tabs-2">2</a></li>
+						<li><a href="#tabs-3">3</a></li>
+					</ul>
+					<div id="tabs-1">
+					<p>Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus.</p>
+					</div>
+					<div id="tabs-2">
+					<p>Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id nunc.</p>
+					</div>
+					<div id="tabs-3">
+					<p>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti.</p>
+					</div>
+					</div>
 			</div>
 			<div id="mapArea"><div id="googleMap"></div></div>
     </div>
 </div>
-
-<script>
-/*
-$('#sidebar-toggle').click(function() {
-	$('#mapArea').toggleClass('slide-away');
-	$('#googleMap').toggleClass('slide-away');
-	console.log("I hear you!");
-});
-*/
-</script>
 
 </body>
 </html>
