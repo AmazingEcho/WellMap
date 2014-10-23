@@ -18,6 +18,18 @@ $(function(){
 	$( "#slider" ).slider();
 });
 
+$(function() {
+    var tabs = $( "#tabs" ).tabs({
+		collapsible: true
+	});
+	tabs.find( ".ui-tabs-nav" ).sortable({
+      axis: "x",
+      stop: function() {
+        tabs.tabs( "refresh" );
+      }
+    });
+  });
+
 $('#sidebar-toggle').click(function() {
 	$('#mapArea').toggleClass('slide-away');
 	$('#googleMap').toggleClass('slide-away');
