@@ -31,8 +31,10 @@ $(function() {
   });
 
 $('#sidebar-toggle').click(function() {
-	$('#mapArea').toggleClass('slide-away');
-	//$('#googleMap').toggleClass('slide-away');
+	//$('#mapArea').toggleClass('slide-away');
+	$('.ui.sidebar')
+		.sidebar({overlay: true})
+		.sidebar('toggle');
 	console.log("I hear you!");
 });
 
