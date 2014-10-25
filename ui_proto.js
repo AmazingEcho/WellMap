@@ -32,7 +32,7 @@ $(function() {
 
 $('#sidebar-toggle').click(function() {
 	$('#mapArea').toggleClass('slide-away');
-	$('#googleMap').toggleClass('slide-away');
+	//$('#googleMap').toggleClass('slide-away');
 	console.log("I hear you!");
 });
 
