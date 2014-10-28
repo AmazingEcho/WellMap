@@ -18,7 +18,25 @@
 <div class="wrapper">
 	<div class="toolbar">
     	<div class="toolbarTOP">This is the top toolbar!  <div id="slider" style="width:300px; float:right;"></div></div>
-        <div class="toolbarBOT">This is the bottom toolbar! <div id="sidebar-toggle">SIDEBAR!</div></div>
+        <div class="toolbarBOT">
+        	<div id="sidebar-toggle" style="display:inline">SIDEBAR!</div>
+            <div id="toolbar" class="ui-widget-header ui-corner-all">
+            	<button id="beginning">go to beginning</button>
+				<button id="rewind">rewind</button>
+				<button id="play">play</button>
+				<button id="stop">stop</button>
+				<button id="forward">fast forward</button>
+				<button id="end">go to end</button>
+ 
+				<input type="checkbox" id="shuffle"><label for="shuffle">Shuffle</label>
+
+				<span id="repeat">
+				<input type="radio" id="repeat0" name="repeat" checked="checked"><label for="repeat0">No Repeat</label>
+				<input type="radio" id="repeat1" name="repeat"><label for="repeat1">Once</label>
+				<input type="radio" id="repeatall" name="repeat"><label for="repeatall">All</label>
+				</span>
+			</div>
+		</div>
 	</div>
     <div class="workArea">
     		<!--<div id="sidebar" class="panel">-->

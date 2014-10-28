@@ -111,3 +111,12 @@ body{
 	background: #343434;
 	z-index: 3;
 }
+
+#toolbar{
+	padding: 4px;
+	display: inline-block;
+	}/* support: IE7 */
+	
+*+html #toolbar{
+	display: inline;
+	}
