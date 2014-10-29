@@ -41,6 +41,8 @@ $('#sidebar-toggle').click(function() {
 	console.log("I hear you!");
 });
 
+$('.ui.dropdown').dropdown();
+
 var path = [[55.000,-115.000],[55.000,-113.000],[52.000,-113.000],[52.000,-115.000]];
 
 polygon = map.drawPolygon({
