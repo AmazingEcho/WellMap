@@ -2,25 +2,12 @@
 // ui_proto.js
 // Author: Thomas 'Toss' Condon
 
-// Small collection javascript to power current UI Prototype
+// Small collection of javascript to power current UI Prototype
 
 
 var map;
 $('document').ready(function(){
-/*    
-function initialize()
-{
-var mapProp = {
-  center:new google.maps.LatLng(55.00,-115.00),
-  zoom:5,
-  mapTypeId:google.maps.MapTypeId.TERRAIN,
-  disableDefaultUI:true
-  };
-var map=new google.maps.Map(document.getElementById("googleMap"), mapProp);
-	}
 
-google.maps.event.addDomListener(window, 'load', initialize);
-*/
 map = new GMaps({
 	div: '#googleMap',
 	lat: 55.00,
@@ -54,6 +41,8 @@ $('#sidebar-toggle').click(function() {
 	console.log("I hear you!");
 });
 
+$('.ui.dropdown').dropdown();
+
 var path = [[55.000,-115.000],[55.000,-113.000],[52.000,-113.000],[52.000,-115.000]];
 
 polygon = map.drawPolygon({
@@ -64,5 +53,73 @@ polygon = map.drawPolygon({
   fillColor: '#BBD8E9',
   fillOpacity: 0.6
 });
+
+$(function() {
+    $( "#beginning" ).button({
+      text: false,
+      icons: {
+        primary: "ui-icon-seek-start"
+      }
+    });
+    $( "#rewind" ).button({
+      text: false,
+      icons: {
+        primary: "ui-icon-seek-prev"
+      }
+    });
+    $( "#play" ).button({
+      text: false,
+      icons: {
+        primary: "ui-icon-play"
+      }
+    })
+    .click(function() {
+      var options;
+      if ( $( this ).text() === "play" ) {
+        options = {
+          label: "pause",
+          icons: {
+            primary: "ui-icon-pause"
+          }
+        };
+      } else {
+        options = {
+          label: "play",
+          icons: {
+            primary: "ui-icon-play"
+          }
+        };
+      }
+      $( this ).button( "option", options );
+    });
+    $( "#stop" ).button({
+      text: false,
+      icons: {
+        primary: "ui-icon-stop"
+      }
+    })
+    .click(function() {
+      $( "#play" ).button( "option", {
+        label: "play",
+        icons: {
+          primary: "ui-icon-play"
+        }
+      });
+    });
+    $( "#forward" ).button({
+      text: false,
+      icons: {
+        primary: "ui-icon-seek-next"
+      }
+    });
+    $( "#end" ).button({
+      text: false,
+      icons: {
+        primary: "ui-icon-seek-end"
+      }
+    });
+    $( "#shuffle" ).button();
+    $( "#repeat" ).buttonset();
+  });
 
 });	// End of $('document').ready(function());
