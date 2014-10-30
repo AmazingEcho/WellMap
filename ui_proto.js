@@ -6,6 +6,53 @@
 
 
 var map;
+
+$(document).on('submit', '.edit_marker', function(e) {
+  e.preventDefault();
+
+  var $index = $(this).data('marker-index');
+
+  $lat = $('#marker_' + $index + '_lat').val();
+  $lng = $('#marker_' + $index + '_lng').val();
+
+  var template = $('#edit_marker_template').text();
+
+  // Update form values
+  var content = template.replace(/{{index}}/g, $index).replace(/{{lat}}/g, $lat).replace(/{{lng}}/g, $lng);
+
+  map.markers[$index].setPosition(new google.maps.LatLng($lat, $lng));
+  map.markers[$index].infoWindow.setContent(content);
+
+  $marker = $('#markers-with-coordinates').find('li').eq(0).find('a');
+  $marker.data('marker-lat', $lat);
+  $marker.data('marker-lng', $lng);
+});
+
+// Update center
+$(document).on('click', '.pan-to-marker', function(e) {
+  e.preventDefault();
+
+  var lat, lng;
+
+  var $index = $(this).data('marker-index');
+  var $lat = $(this).data('marker-lat');
+  var $lng = $(this).data('marker-lng');
+
+  if ($index != undefined) {
+    // using indices
+    var position = map.markers[$index].getPosition();
+    lat = position.lat();
+    lng = position.lng();
+  }
+  else {
+    // using coordinates
+    lat = $lat;
+    lng = $lng;
+  }
+
+  map.setCenter(lat, lng);
+});
+
 $('document').ready(function(){
 
 map = new GMaps({
@@ -16,6 +63,31 @@ map = new GMaps({
 	mapTypeId:google.maps.MapTypeId.TERRAIN,
 	disableDefaultUI:true
 	});
+	
+GMaps.on('marker_added', map, function(marker) {
+    $('#markers-with-index').append('<li><a href="#" class="pan-to-marker" data-marker-index="' + map.markers.indexOf(marker) + '">' + marker.title + '</a></li>');
+
+    $('#markers-with-coordinates').append('<li><a href="#" class="pan-to-marker" data-marker-lat="' + marker.getPosition().lat() + '" data-marker-lng="' + marker.getPosition().lng() + '">' + marker.title + '</a></li>');
+  });
+
+  GMaps.on('click', map.map, function(event) {
+    var index = map.markers.length;
+    var lat = event.latLng.lat();
+    var lng = event.latLng.lng();
+
+    var template = $('#edit_marker_template').text();
+
+    var content = template.replace(/{{index}}/g, index).replace(/{{lat}}/g, lat).replace(/{{lng}}/g, lng);
+
+    map.addMarker({
+      lat: lat,
+      lng: lng,
+      title: 'Marker #' + index,
+      infoWindow: {
+        content : content
+      }
+    });
+  });
 
 $(function(){
 	$( "#slider" ).slider();
@@ -121,5 +193,7 @@ $(function() {
     $( "#shuffle" ).button();
     $( "#repeat" ).buttonset();
   });
+  
+  
 
 });	// End of $('document').ready(function());
