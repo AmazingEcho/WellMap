@@ -126,6 +126,11 @@ polygon = map.drawPolygon({
   fillOpacity: 0.6
 });
 
+$('#modal-button').click(function(){
+	console.log("modal time");
+	$('.basic.modal').modal('show');
+});
+
 $(function() {
     $( "#beginning" ).button({
       text: false,
@@ -193,7 +198,5 @@ $(function() {
     $( "#shuffle" ).button();
     $( "#repeat" ).buttonset();
   });
-  
-  
 
 });	// End of $('document').ready(function());
