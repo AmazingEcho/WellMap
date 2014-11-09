@@ -20,9 +20,9 @@
     	<div class="toolbarTOP">
         	<div class="ui compact tiered black inverted menu">
 				<div class="menu">
-					<a class="active item">
-						<i class="icon exchange"></i><div id="sidebar-toggle" style="display:inline">Sidebar</div>
-					</a>
+					<div id="sidebar-toggle" style="display:inline"><a class="active item">
+						<i class="icon exchange"></i>Sidebar
+					</a></div>
 					<a class="ui dropdown item">
 						<i class="level down icon"></i>Find<i class="dropdown icon"></i>
 						<div class="menu">
@@ -47,8 +47,8 @@
   <div class="ui teal dropdown icon button">
     <i class="dropdown icon"></i>
     <div class="menu">
-		<div class="item"><a href="https://github.com/Team-Avengineers/WellMap" target="_blank"><i class="github alternate icon"></i>Visit Us On GitHub</a></div>
-      <div class="item"><i class="edit icon"></i>From Public Databse</div>
+      <div class="item"><a href="https://github.com/Team-Avengineers/WellMap" target="_blank"><i class="github alternate icon"></i>Visit Us On GitHub</a></div>
+      <div class="item" id="modal-button"><i class="edit icon"></i>From Public Databse</div>
       <div class="item"><i class="edit icon"></i>From Private Databse</div>
       <div class="item"><i class="youtube icon big"></i>Videos of Kittens</div>
     </div>
@@ -58,28 +58,18 @@
 		<div id="slider" style="width:300px; display:inline; float:right;"></div>
 	</div>
     <div class="toolbarBOT">
-            <div id="toolbar" class="ui-widget-header ui-corner-all">
-            	<button id="beginning">go to beginning</button>
-				<button id="rewind">rewind</button>
-				<button id="play">play</button>
-				<button id="stop">stop</button>
-				<button id="forward">fast forward</button>
-				<button id="end">go to end</button>
- 
-				<input type="checkbox" id="shuffle"><label for="shuffle">Shuffle</label>
-
-				<span id="repeat">
-				<input type="radio" id="repeat0" name="repeat" checked="checked"><label for="repeat0">No Repeat</label>
-				<input type="radio" id="repeat1" name="repeat"><label for="repeat1">Once</label>
-				<input type="radio" id="repeatall" name="repeat"><label for="repeatall">All</label>
-				</span>
-			</div>
-		</div>
+		<div class="ui tabular menu">
+  <a class="active item">
+    <i class="home icon"></i> Home
+  </a>
+  <a class="item">
+    <i class="map icon"></i> Map
+  </a>
+</div>
+	</div>
 	</div>
     <div class="workArea">
-    		<!--<div id="sidebar" class="panel">-->
             <div class="ui sidebar">
-        		<p>This is a sidebar!</p>
                 <div id="tabs">
 					<ul>
 						<li><a href="#tabs-1">1</a></li>
@@ -95,7 +85,6 @@
 					<div id="tabs-3">
 					<p>
                     	<ul id="markers-with-index">
-                        	
                         </ul>
                     </p>
 					</div>
@@ -119,6 +108,31 @@
   <input type="submit" value="Update position" />
 </form>
 </script>
+
+<div class="basic modal" style="background-color:#CCC; color:#000">
+  <i class="close icon"></i>
+  <div class="header">
+    Import Public Wells
+  </div>
+  <div class="content">
+    <div class="left">
+      Please specify the wells you would like to access:
+    </div>
+    <div class="right">
+      PUT STUFF HERE
+    </div>
+  </div>
+  <div class="actions">
+    <div class="ui button">
+      Cancel
+    </div>
+    <div class="ui button">
+      Okay
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="https://panzi.github.io/Browser-Ponies/basecfg.js" id="browser-ponies-config"></script><script type="text/javascript" src="https://panzi.github.io/Browser-Ponies/browserponies.js" id="browser-ponies-script"></script><script type="text/javascript">/* <![CDATA[ */ (function (cfg) {BrowserPonies.setBaseUrl(cfg.baseurl);BrowserPonies.loadConfig(BrowserPoniesBaseConfig);BrowserPonies.loadConfig(cfg);})({"baseurl":"https://panzi.github.io/Browser-Ponies/","fadeDuration":500,"volume":1,"fps":25,"speed":3,"audioEnabled":false,"showFps":false,"showLoadProgress":true,"speakProbability":0.1,"spawn":{"applejack":1,"fluttershy":1,"pinkie pie":1,"rainbow dash":1,"rarity":1,"twilight sparkle":1},"autostart":true}); /* ]]> */</script>
 
 </body>
 </html>
