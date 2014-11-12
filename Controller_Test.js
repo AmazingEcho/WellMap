@@ -17,6 +17,12 @@ console.log("Running Controller_Test.js!");
 function Controller(){
 	console.log("Initializing Controller");
 	this.mapList = new MapList();
+	
+	this.createMap = function(name){
+		this.mapList.createMap(name);
+	}
+	this.switchMap - function(){
+	}
 }
 
 // MapList uses a linked list of maps
@@ -29,12 +35,18 @@ function MapList(){
 	
 	this.createMap = function(name){
 		var newMap = new Map(name);
-		this.mapsLL.push(newMap)
+		this.mapsLL.push(newMap);
+		// A newly created map should be the active map
+		
 		this.size++;
 		}
+	
+	this.switchMap = function(index){
+		this.active = mapLL.at(index);
+		}
+		
 	//Write these later
 	this.deleteMap = function(index){}
-	this.switchMap = function(index){}
 }
 
 // Map will contain one instance of MetaData, and then however many instances of layers
@@ -50,11 +62,11 @@ function MapMetadata(name){
 console.log("Initializing");
 var The_Controller = new Controller();
 
-The_Controller.mapList.createMap("TestMap01");
-The_Controller.mapList.createMap("TestMap02");
+The_Controller.createMap("TestMap00");
+The_Controller.createMap("TestMap01");
 
-console.log("Map list size is " + The_Controller.mapList.size)
-console.log("This should be 2");
+console.log("Map list size is " + The_Controller.mapList.size + ".  This should be 2");
+console.log("Active Map is " + The_Controller.mapList.active);
 
 console.log("Initialization complete!");
 
