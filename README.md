@@ -30,3 +30,4 @@ Libraries:
 	* [Semantic UI](https://github.com/Semantic-Org/Semantic-UI)
 * Map
 	* [gmaps.js](https://github.com/hpneo/gmaps)
+	* [jsclass](https://github.com/jcoglan/jsclass) - This one is iffy, might just be better off writing our own data structures as needed, or using a different library...
