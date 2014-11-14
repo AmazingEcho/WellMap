@@ -11,4 +11,7 @@ This is the branch for the live web version of WellMap.  Anything uploaded here 
 
 ### <style color="##ff0000">DO NOT</style>
 
-Do not, under any circumstances, touch any of the jquery or jquery-ui files.  That includes external/jquery.
+* Do not, under any circumstances, touch any of the jquery or jquery-ui files.  That includes external/jquery.
+  * The same goes for Semantics-UI
+  * And gmaps.js stuff
+  * I mean...  Look, but don't touch...
