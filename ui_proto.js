@@ -123,7 +123,7 @@ polygon = map.drawPolygon({
   strokeOpacity: 1,
   strokeWeight: 3,
   fillColor: '#BBD8E9',
-  fillOpacity: 0.6
+  fillOpacity: 0.3
 });
 
 $('#modal-button').click(function(){
