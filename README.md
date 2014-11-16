@@ -1,9 +1,9 @@
 WellMap - Live Webpage Branch
 =======
 
-[Home Page](tconx.github.io/WellMap/)
+[Home Page](http://team-avengineers.github.io/WellMap/)
 
-[Early UI Prototype](http://tconx.github.io/WellMap/ui_proto.html)
+[Early UI Prototype](http://team-avengineers.github.io/WellMap/ui_proto.html)
 
 This is the branch for the live web version of WellMap.  Anything uploaded here can be viewed online as an actual web document.
 
