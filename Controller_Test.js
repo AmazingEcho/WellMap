@@ -57,6 +57,7 @@ function MapMetadata(name){
 	this.mapName = name;
 }
 
+var testRun = function(){
 console.log("Initializing");
 var The_Controller = new Controller();
 
@@ -72,5 +73,8 @@ The_Controller.mapList.switchMap(0);
 console.log("Active Map is " + The_Controller.mapList.mapsLL.at(The_Controller.mapList.active).metadata.mapName + ".  This should be 0");
 
 console.log("Initialization complete!");
+}
+
+testRun();
 
 });
