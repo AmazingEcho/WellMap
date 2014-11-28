@@ -35,7 +35,7 @@ test("Basic Data Structure Creation Tests", function(){
 	ok(the_controller.the_map.layerCount() == 3, "Additional Layers Created!");
 });
 
-test("Point Layer Creation"){
+test("Point Layer Creation",function(){
 	var the_controller = new controller();
 	the_controller.newPointLayer("Test Point Layer")
 	var testPoint = new Point(55.0, -115.0);
