@@ -1,8 +1,25 @@
 /*
 WellMap
 QUnit Test Suite
+Author: Thomas Condon
+
+QUnit is a Unit Testing Framework for Javascript.  If you want to add new tests, just follow the example in the Dummy Test below!
+
+This carousel - takes us round and round!
+This crazy maze of life,
+You can't tell up from down...
+Having so much fun...
+We forgot to ask where this magic's taking us,
+But hey, here we come
+
+This carousel - spins you round and out!
+You really don't know why,
+But it makes you wanna shout:
+"We've only just begun...
+Let's enjoy this wild Maze of life!"
 */
 
+/*
 module('Dummy Tests', {
     setup: function () {
     },
@@ -10,9 +27,10 @@ module('Dummy Tests', {
     }
 });
 
-test( "Dummy Test", function( assert ) {
-  assert.ok( 1 == "1", "Passed!" );
+test( "Dummy Test", function() {
+  ok( 1 == "1", "Passed!" );
 });
+*/
 
 module('Data Structure Tests', {
     setup: function () {
@@ -38,12 +56,12 @@ test("Basic Data Structure Creation Tests", function(){
 test("Point Layer Creation",function(){
 	var the_controller = new controller();
 	the_controller.newPointLayer("Test Point Layer")
-	var testPoint = new Point(55.0, -115.0);
+	var testPoint = new GMapPoint(55.0, -115.0);
 	the_controller.the_map.layers[0].addPoint("Test Point", "Well", testPoint);
 	
 	ok(
 	the_controller.the_map.layers[0].getLat(0) === 55.0 &&
-	the_controller.the_map.layers[0].getLong(0) === -115.0, "Point created");
+	the_controller.the_map.layers[0].getLong(0) === -115.0, "Point created - Lat: " + the_controller.the_map.layers[0].getLat(0) + " Long: " + the_controller.the_map.layers[0].getLong(0));
 });
 
 test("Path Layer Creation",function(){
