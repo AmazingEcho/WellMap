@@ -68,10 +68,10 @@ test("Path Layer Creation",function(){
 	var the_controller = new controller();
 	the_controller.newPathLayer("Test Path Layer");
 	var testPath = new Array();
-	testPath[0] = new Point(55.0, -115.0);
-	testPath[1] = new Point(54.0, -114.0);
-	testPoint[2] = new Point(55.0, -113.0);
-	testPoint[3] = new Point(56.0, -112.0);
+	testPath[0] = new GMapPoint(55.0, -115.0);
+	testPath[1] = new GMapPoint(54.0, -114.0);
+	testPath[2] = new GMapPoint(55.0, -113.0);
+	testPath[3] = new GMapPoint(56.0, -112.0);
 	the_controller.the_map.layers[0].addPath("Test Path", "Road", testPath);
 	
 	ok(
@@ -83,5 +83,23 @@ test("Path Layer Creation",function(){
 	the_controller.the_map.layers[0].paths[0].points[2].long === -113.0 &&
 	the_controller.the_map.layers[0].paths[0].points[3].lat === 56.0 &&
 	the_controller.the_map.layers[0].paths[0].points[3].long === -112.0
-	, "Point created");
+	, "Path created");
+});
+
+test("Poly Layer Creation", function(){
+	var the_controller = new controller();
+	the_controller.newPolyLayer("Test Poly Layer");
+	var testPoly = new Array();
+	testPath[0] = new Point(55.0, -115.0);
+	testPath[1] = new Point(54.0, -114.0);
+	testPoint[2] = new Point(55.0, -113.0);
+	the_controller.the_map.layers[0].addPath("Test Path", "Road", testPath);
+	
+	ok(false, "Test not finished");
+});
+
+test("Poly Size Restriction", function(){
+	// Polygons need to be have at least 3 points in them
+	// A Polygon with 0, 1 or 2 shouldn't be created...
+	ok(false, "Test not finished");
 });
