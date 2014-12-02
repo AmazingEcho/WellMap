@@ -55,7 +55,7 @@ test("Basic Data Structure Creation Tests", function(){
 
 test("Point Layer Creation",function(){
 	var the_controller = new controller();
-	the_controller.newPointLayer("Test Point Layer")
+	the_controller.newPointLayer("Test Point Layer");
 	var testPoint = new GMapPoint(55.0, -115.0);
 	the_controller.the_map.layers[0].addPoint("Test Point", "Well", testPoint);
 	
@@ -102,4 +102,45 @@ test("Poly Size Restriction", function(){
 	// Polygons need to be have at least 3 points in them
 	// A Polygon with 0, 1 or 2 shouldn't be created...
 	ok(false, "Test not finished");
+});
+
+module("Layer Settings Tests", {
+	setup: function(){
+		
+	},
+	teardown: function(){
+		
+	}
+});
+
+test("Visibility On/Off", function(){
+	var the_controller = new controller();
+	the_controller.newPointLayer("Test Point Layer");
+	ok(the_controller.the_map.layers[0].visible == true, "Layer is visible on creation!");
+	the_controller.the_map.switchVis(0);
+	ok(the_controller.the_map.layers[0].visible == false, "Layer is switched to non-visible");
+	the_controller.the_map.switchVis(0);
+	ok(the_controller.the_map.layers[0].visible == true, "Layer is visible again");
+	
+	the_controller.newPointLayer("Test Point Layer 2");
+	ok(the_controller.the_map.layers[1].visible == true && the_controller.the_map.layers[0].visible == true, 
+	"Second layer is visible on creation!");
+	the_controller.the_map.switchVis(1);
+	ok(the_controller.the_map.layers[1].visible == false && the_controller.the_map.layers[0].visible == true, 
+	"Second layer is switched to non-visible, but first is visible");
+	the_controller.the_map.switchVis(1);
+	ok(the_controller.the_map.layers[1].visible == true, "Layer is visible again");
+});
+
+test("Visibility All On/Off", function(){
+	// Make a bunch of layers, switch them on and off randomly,
+	// and then use the all on/off functions to turn them all on/off at once.
+	
+	var the_controller = new controller();
+	the_controller.newPointLayer("Test Point Layer 1");
+	the_controller.newPointLayer("Test Point Layer 2");
+	the_controller.newPointLayer("Test Point Layer 3");
+	the_controller.newPointLayer("Test Point Layer 4");
+	
+	ok(false, "Write this test later...");
 });
