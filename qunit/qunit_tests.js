@@ -5,6 +5,8 @@ Author: Thomas Condon
 
 QUnit is a Unit Testing Framework for Javascript.  If you want to add new tests, just follow the example in the Dummy Test below!
 
+If you're feeling really brave, you can try making your own set of tests!  Just make a copy of index.html, and make sure it points to the right .js files.
+
 This carousel - takes us round and round!
 This crazy maze of life,
 You can't tell up from down...
@@ -122,6 +124,15 @@ test("Visibility On/Off", function(){
 	the_controller.the_map.switchVis(0);
 	ok(the_controller.the_map.layers[0].visible == true, "Layer is visible again");
 	
+	the_controller.the_map.VisOff(0);
+	ok(the_controller.the_map.layers[0].visible == false, "Layer is off");
+	the_controller.the_map.VisOff(0);
+	ok(the_controller.the_map.layers[0].visible == false, "Layer is still off");
+	the_controller.the_map.VisOn(0);
+	ok(the_controller.the_map.layers[0].visible == true, "Layer is visible again");
+	the_controller.the_map.VisOn(0);
+	ok(the_controller.the_map.layers[0].visible == true, "Layer is still visible");
+	
 	the_controller.newPointLayer("Test Point Layer 2");
 	ok(the_controller.the_map.layers[1].visible == true && the_controller.the_map.layers[0].visible == true, 
 	"Second layer is visible on creation!");
@@ -142,5 +153,9 @@ test("Visibility All On/Off", function(){
 	the_controller.newPointLayer("Test Point Layer 3");
 	the_controller.newPointLayer("Test Point Layer 4");
 	
+	the_controller.switchVisAllOff();
+	ok(false, "Write this test later...");
+	
+	the_controller.switchVisAllOn();
 	ok(false, "Write this test later...");
 });
