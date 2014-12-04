@@ -92,10 +92,10 @@ test("Poly Layer Creation", function(){
 	var the_controller = new controller();
 	the_controller.newPolyLayer("Test Poly Layer");
 	var testPoly = new Array();
-	testPath[0] = new Point(55.0, -115.0);
-	testPath[1] = new Point(54.0, -114.0);
-	testPoint[2] = new Point(55.0, -113.0);
-	the_controller.the_map.layers[0].addPath("Test Path", "Road", testPath);
+	testPoly[0] = new Point(55.0, -115.0);
+	testPoly[1] = new Point(54.0, -114.0);
+	testPoly[2] = new Point(55.0, -113.0);
+	the_controller.the_map.layers[0].addPoly("Test Poly", "Bigfoot Habitat", testPoly);
 	
 	ok(false, "Test not finished");
 });
@@ -103,6 +103,15 @@ test("Poly Layer Creation", function(){
 test("Poly Size Restriction", function(){
 	// Polygons need to be have at least 3 points in them
 	// A Polygon with 0, 1 or 2 shouldn't be created...
+	
+	var the_controller = new controller();
+	the_controller.newPolyLayer("Test Poly Layer");
+	var testPoly = new Array();
+	testPoly[0] = new Point(55.0, -115.0);
+	testPoly[1] = new Point(54.0, -114.0);
+	
+	the_controller.the_map.layers[0].addPoly("Bad Poly", "Bigfoot Habitat", testPoly);
+	
 	ok(false, "Test not finished");
 });
 
