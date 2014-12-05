@@ -167,4 +167,7 @@ test("Visibility All On/Off", function(){
 	
 	the_controller.switchVisAllOn();
 	ok(false, "Write this test later...");
+	
+	the_controller.switchVisAllOff();
+	ok(false, "Write this test later...");
 });
