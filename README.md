@@ -1,14 +1,6 @@
 WellMap - Live Webpage Branch
 =======
 
-### <style color="##ff0000">DO NOT</style>
-
-* Do not, under any circumstances, touch any of the jquery or jquery-ui files.  That includes external/jquery.
-  * The same goes for Semantics-UI
-  * And gmaps.js stuff
-  * I mean...  Look, but don't touch...
-
-
 Browser-based Oil Well maping software for 4th year Engineering Group Project.
 
 Website: [team-avengineers.github.io/WellMap/](http://team-avengineers.github.io/WellMap/)
@@ -40,3 +32,10 @@ Libraries:
 * Map
 	* [gmaps.js](https://github.com/hpneo/gmaps)
 	* [jsclass](https://github.com/jcoglan/jsclass) - This one is iffy, might just be better off writing our own data structures as needed, or using a different library...
+
+### <style color="#ff0000">DO NOT</style>
+
+* Do not, under any circumstances, touch any of the jquery or jquery-ui files.  That includes external/jquery.
+  * The same goes for Semantics-UI
+  * And gmaps.js stuff
+  * I mean...  Look, but don't touch...
