@@ -58,12 +58,16 @@ test("Basic Data Structure Creation Tests", function(){
 test("Point Layer Creation",function(){
 	var the_controller = new controller();
 	the_controller.newPointLayer("Test Point Layer");
+	
+	ok(the_controller.the_map.layers[0].name === "Test Point Layer", "Layer name is: " + the_controller.the_map.layers[0].name);
+	
 	var testPoint = new GMapPoint(55.0, -115.0);
 	the_controller.the_map.layers[0].addPoint("Test Point", "Well", testPoint);
 	
 	ok(
 	the_controller.the_map.layers[0].getLat(0) === 55.0 &&
-	the_controller.the_map.layers[0].getLong(0) === -115.0, "Point created - Lat: " + the_controller.the_map.layers[0].getLat(0) + " Long: " + the_controller.the_map.layers[0].getLong(0));
+	the_controller.the_map.layers[0].getLong(0) === -115.0,
+	"Point created - Lat: " + the_controller.the_map.layers[0].getLat(0) + " Long: " + the_controller.the_map.layers[0].getLong(0));
 });
 
 test("Path Layer Creation",function(){

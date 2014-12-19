@@ -51,22 +51,38 @@ function map(){
 	this.layerCount = function(){
 		return this.layers.length;
 	}
-}
-
-var Layer = Class.extend({
-	constuct: function(nameA){
-		this.name = nameA;
-		this.visible = true;
-	},
 	
-	getName: function(){
-		return this.name;
-	},
-	
-	getVis: function(){
-		return this.visible;
+	this.switchVis = function(index){
+		if(index < 0){
+			return;
+		}
+		else if(index >= this.layers.length){
+			return;
+		}
+		else{
+			this.layers[index].switchVis();
+		}
 	}
-});
+	
+	this.VisOn = function(index){
+		if(index < 0){
+			return;
+		}
+		else if(index >= this.layers.length){
+			return;
+		}
+		this.layers[index].visible = true;
+	}
+	this.VisOff = function(index){
+		if(index < 0){
+			return;
+		}
+		else if(index >= this.layers.length){
+			return;
+		}
+		this.layers[index].visible = false;
+	}
+}
 
 function GMapPoint(lat, long){
 	this.lat = lat;
@@ -79,17 +95,49 @@ function Point(name, type, gmpoint){
 	this.point = gmpoint;
 }
 
-var pointLayer = Layer.extend({
+function Layer(name){
+	this.name = name;
+	//New Layers are always visible on creation.
+	this.visible = true;
 	
-	addPoint: function(name, type, gmpoint){
+	this.switchVis = function(){
+		if(this.visible == true){
+			this.visible = false;
+		}
+		else{
+			this.visible = true;
+		}
+	}
+	this.VisOn = function(){
+		this.visible = true;
+	}
+	this.VisOff = function(){
+		this.visible = false;
+	}
+}
+
+/*
+So it turns out that inheritance in JS works a lot differently than it does in Java/C++.  JS is Object Oriented, but it doesn't have classes, so trying to create a "class" that inherits properties from another "class" is somewhat unusual.
+
+Regardless, after some creative Googling, I found out how to make "constructors" that will pass on params to superclasses...
+http://www.2ality.com/2011/06/prototypes-as-classes.html
+*/
+
+function pointLayer(name){
+	
+	Layer.call(this, name);
+	
+	this.points = [];
+	
+	this.addPoint = function(name, type, gmpoint){
 		this.points.push(new Point(name, type, gmpoint));
-	},
+	};
 	
-	getLat: function(index){
+	this.getLat = function(index){
 		return this.points[index].point.lat;
-	},
+	}
 	
-	getLong: function(index){
+	this.getLong = function(index){
 		return this.points[index].point.long;
 	}
-});
+}
