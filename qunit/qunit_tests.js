@@ -71,37 +71,52 @@ test("Point Layer Creation",function(){
 });
 
 test("Path Layer Creation",function(){
+	
+	// Create the controller and add a Path Layer
 	var the_controller = new controller();
 	the_controller.newPathLayer("Test Path Layer");
-	var testPath = new Array();
-	testPath[0] = new GMapPoint(55.0, -115.0);
-	testPath[1] = new GMapPoint(54.0, -114.0);
-	testPath[2] = new GMapPoint(55.0, -113.0);
-	testPath[3] = new GMapPoint(56.0, -112.0);
-	the_controller.the_map.layers[0].addPath("Test Path", "Road", testPath);
+	
+	// Create a path, and add some points to it
+	var testPath = new Path("Test Path", "Road");
+	testPath.addPoint(55.0, -115.0);
+	testPath.addPoint(54.0, -114.0);
+	testPath.addPoint(55.0, -113.0);
+	testPath.addPoint(56.0, -112.0);
+	
+	// Add the path to the path layer
+	
+	the_controller.the_map.layers[0].addPath(testPath);
 	
 	ok(
-	the_controller.the_map.layers[0].paths[0].points[0].lat === 55.0 &&
-	the_controller.the_map.layers[0].paths[0].points[0].long === -115.0 &&
-	the_controller.the_map.layers[0].paths[0].points[1].lat === 54.0 &&
-	the_controller.the_map.layers[0].paths[0].points[1].long === -114.0 &&
-	the_controller.the_map.layers[0].paths[0].points[2].lat === 55.0 &&
-	the_controller.the_map.layers[0].paths[0].points[2].long === -113.0 &&
-	the_controller.the_map.layers[0].paths[0].points[3].lat === 56.0 &&
-	the_controller.the_map.layers[0].paths[0].points[3].long === -112.0
+	the_controller.the_map.layers[0].paths[0].pathPoints[0].lat === 55.0 &&
+	the_controller.the_map.layers[0].paths[0].pathPoints[0].long === -115.0 &&
+	the_controller.the_map.layers[0].paths[0].pathPoints[1].lat === 54.0 &&
+	the_controller.the_map.layers[0].paths[0].pathPoints[1].long === -114.0 &&
+	the_controller.the_map.layers[0].paths[0].pathPoints[2].lat === 55.0 &&
+	the_controller.the_map.layers[0].paths[0].pathPoints[2].long === -113.0 &&
+	the_controller.the_map.layers[0].paths[0].pathPoints[3].lat === 56.0 &&
+	the_controller.the_map.layers[0].paths[0].pathPoints[3].long === -112.0
 	, "Path created");
 });
 
 test("Poly Layer Creation", function(){
 	var the_controller = new controller();
 	the_controller.newPolyLayer("Test Poly Layer");
-	var testPoly = new Array();
-	testPoly[0] = new Point(55.0, -115.0);
-	testPoly[1] = new Point(54.0, -114.0);
-	testPoly[2] = new Point(55.0, -113.0);
-	the_controller.the_map.layers[0].addPoly("Test Poly", "Bigfoot Habitat", testPoly);
 	
-	ok(false, "Test not finished");
+	var testPoly = new Poly("Test Poly", "Bigfoot Habitat");
+	testPoly.addPoint(55.0, -115.0);
+	testPoly.addPoint(54.0, -114.0);
+	testPoly.addPoint(55.0, -113.0);
+	
+	the_controller.the_map.layers[0].addPoly(testPoly);
+	
+	ok(the_controller.the_map.layers[0].polys[0].polyPoints[0].lat === 55.0 &&
+	the_controller.the_map.layers[0].polys[0].polyPoints[0].long === -115.0 &&
+	the_controller.the_map.layers[0].polys[0].polyPoints[1].lat === 54.0 &&
+	the_controller.the_map.layers[0].polys[0].polyPoints[1].long === -114.0 &&
+	the_controller.the_map.layers[0].polys[0].polyPoints[2].lat === 55.0 &&
+	the_controller.the_map.layers[0].polys[0].polyPoints[2].long === -113.0
+	, "Poly layer created");
 });
 
 test("Poly Size Restriction", function(){
@@ -110,13 +125,64 @@ test("Poly Size Restriction", function(){
 	
 	var the_controller = new controller();
 	the_controller.newPolyLayer("Test Poly Layer");
-	var testPoly = new Array();
-	testPoly[0] = new Point(55.0, -115.0);
-	testPoly[1] = new Point(54.0, -114.0);
 	
-	the_controller.the_map.layers[0].addPoly("Bad Poly", "Bigfoot Habitat", testPoly);
+	var testPoly = new Poly("Test Poly", "Bigfoot Habitat");
+	testPoly.addPoint(55.0, -115.0);
+	testPoly.addPoint(54.0, -114.0);
 	
-	ok(false, "Test not finished");
+	the_controller.the_map.layers[0].addPoly(testPoly);
+	
+	ok(the_controller.the_map.layers[0].polys[0] == null, "Test not finished");
+});
+
+module("Layer Delation Tests", {
+	setup: function(){
+		
+	},
+	teardown: function(){
+		
+	}
+});
+
+test("Layer Delete", function(){
+	
+	var the_controller = new controller();
+	the_controller.newPointLayer("Test Point Layer");
+	the_controller.newPathLayer("Test Path Layer");
+	the_controller.newPathLayer("Test Poly Layer");
+	
+	ok(the_controller.the_map.layerCount() == 3, "Layers created");
+	
+	// Delete the Path layer
+	the_controller.deleteLayer(1);
+	
+	ok(the_controller.the_map.layers[0].name == "Test Point Layer" &&
+		the_controller.the_map.layers[1].name == "Test Poly Layer"
+		, "Path Layer deleted");
+	
+});
+
+test("Point Delete", function(){
+	var the_controller = new controller();
+	the_controller.newPointLayer("Test Point Layer");
+	
+	ok(false, "Write later");
+});
+
+test("Path Delete", function(){
+	var the_controller = new controller();
+	the_controller.newPathLayer("Test Path Layer");
+	
+	ok(false, "Write later");
+	
+});
+
+test("Poly Delete", function(){
+	var the_controller = new controller();
+	the_controller.newPolyLayer("Test Poly Layer");
+	
+	ok(false, "Write later");
+	
 });
 
 module("Layer Settings Tests", {
@@ -166,12 +232,36 @@ test("Visibility All On/Off", function(){
 	the_controller.newPointLayer("Test Point Layer 3");
 	the_controller.newPointLayer("Test Point Layer 4");
 	
-	the_controller.switchVisAllOff();
-	ok(false, "Write this test later...");
+	the_controller.the_map.switchVisAllOff();
 	
-	the_controller.switchVisAllOn();
-	ok(false, "Write this test later...");
+	var allOff = false;
+	allOff = (the_controller.the_map.layers[0].visible == false &&
+				the_controller.the_map.layers[1].visible == false &&
+				the_controller.the_map.layers[2].visible == false &&
+				the_controller.the_map.layers[3].visible == false
+				);
 	
-	the_controller.switchVisAllOff();
-	ok(false, "Write this test later...");
+	ok(allOff, "All layers set to non-visible.");
+	
+	the_controller.the_map.switchVisAllOn();
+	
+	var allOn = false;
+	allOn = (the_controller.the_map.layers[0].visible == true &&
+				the_controller.the_map.layers[1].visible == true &&
+				the_controller.the_map.layers[2].visible == true &&
+				the_controller.the_map.layers[3].visible == true
+				);
+	
+	ok(allOn, "All layers set to visible.");
+	
+	the_controller.the_map.switchVisAllOff();
+	
+	allOff = false;
+	allOff = (the_controller.the_map.layers[0].visible == false &&
+				the_controller.the_map.layers[1].visible == false &&
+				the_controller.the_map.layers[2].visible == false &&
+				the_controller.the_map.layers[3].visible == false
+				);
+	
+	ok(allOff, "All layers set to non-visible again.");
 });

@@ -32,12 +32,34 @@ function controller(){
 	this.newPointLayer = function(name){
 		this.the_map.newPointLayer(name);
 	}
+	
+	this.newPathLayer = function(name){
+		this.the_map.newPathLayer(name);
+	}
+	
+	this.newPolyLayer = function(name){
+		this.the_map.newPolyLayer(name);
+	}
+	
+	this.deleteLayer = function(index){
+		this.the_map.deleteLayer(index);
+	}
 }
 
+/*
+
+map
+The map object is what will hold the layer objects.
+
+*/
 function map(){
 	// Arrays in Javascript aren't like Arrays in C/C++
 	// You don't have to specify how big the array is or what it's storing
-	this.layers = new Array();
+	
+	// this.layers = new Array();
+	// Arrays can also be made like this:
+	this.layers = [];
+	// I've been told this is better...
 	
 	this.newLayer = function(name){
 		// You can put new objects (or anything) into an Array with the .push() method
@@ -48,10 +70,27 @@ function map(){
 		this.layers.push(new pointLayer(name));
 	};
 	
+	this.newPathLayer = function(name){
+		this.layers.push(new pathLayer(name));
+	};
+	
+	this.newPolyLayer = function(name){
+		this.layers.push(new polyLayer(name));
+	};
+	
 	this.layerCount = function(){
 		return this.layers.length;
 	}
 	
+	this.deleteLayer = function(index){
+		if(index >= this.layers.length){
+			console.log("Layer " + index + " does not exist");
+			return;
+		}
+		this.layers.splice(index, 1);
+	}
+	
+	// Methods to control layer visibility
 	this.switchVis = function(index){
 		if(index < 0){
 			return;
@@ -82,17 +121,57 @@ function map(){
 		}
 		this.layers[index].visible = false;
 	}
+	
+	this.switchVisAllOff = function(){
+		for(var i = 0; i < this.layers.length; i++){
+			this.layers[i].visible = false;
+		}
+	}
+	
+	this.switchVisAllOn = function(){
+		for(var i = 0; i < this.layers.length; i++){
+			this.layers[i].visible = true;
+		}
+	}
 }
 
+/*
+GMapPoint
+Just a point in GMap with a lat and a long
+Points will have just one, while paths and polys will have more than one
+*/
 function GMapPoint(lat, long){
 	this.lat = lat;
 	this.long = long;
 }
 
+
 function Point(name, type, gmpoint){
 	this.name = name;
 	this.type = type;
 	this.point = gmpoint;
+}
+
+function Path(name, type){
+	this.name = name;
+	this.type = type;
+	
+	this.pathPoints = [];
+	
+	this.addPoint = function(lat, long){
+		this.pathPoints.push(new GMapPoint(lat, long));
+	}
+}
+
+function Poly(name, type){
+	this.name = name;
+	this.type = type;
+	
+	this.polyPoints = [];
+	
+	this.addPoint = function(lat, long){
+		this.polyPoints.push(new GMapPoint(lat, long));
+	}
 }
 
 function Layer(name){
@@ -139,5 +218,43 @@ function pointLayer(name){
 	
 	this.getLong = function(index){
 		return this.points[index].point.long;
+	}
+	
+	this.deletePoint = function(index){
+		this.points.splice(index,1);
+	}
+}
+
+function pathLayer(name){
+	
+	Layer.call(this, name);
+	
+	this.paths = [];
+	
+	this.addPath = function(pathObj){
+		this.paths.push(pathObj);
+	};
+	
+	this.deletePath = function(index){
+		this.paths.splice(index,1);
+	}
+}
+
+function polyLayer(name){
+	
+	Layer.call(this, name);
+	
+	this.polys = [];
+	
+	this.addPoly = function(polyObj){
+		if(polyObj.polyPoints.length < 3){
+			console.log("polyObj '" + polyObj.name + "' has fewer than 3 points");
+			return;
+		}
+		this.polys.push(polyObj);
+	};
+	
+	this.deletePoly = function(index){
+		this.polys.splice(index,1);
 	}
 }
