@@ -46,6 +46,16 @@ function controller(){
 	}
 }
 
+function mapMetadata(name){
+	this.mapName = name;
+	// description is empty on creation
+	this.description = "";
+	
+	this.changeDescription = function(newDesc){
+		this.description = newDesc;
+	}
+}
+
 /*
 
 map
@@ -57,9 +67,14 @@ function map(){
 	// You don't have to specify how big the array is or what it's storing
 	
 	// this.layers = new Array();
-	// Arrays can also be made like this:
+	// Arrays can also be made like this, which I've been told is better:
 	this.layers = [];
-	// I've been told this is better...
+	
+	this.metadata = new mapMetadata("Untitled Map");
+	
+	this.changeDescription = function(newDesc){
+		this.metadata.changeDescription(newDesc);
+	}
 	
 	this.newLayer = function(name){
 		// You can put new objects (or anything) into an Array with the .push() method
@@ -172,6 +187,18 @@ function Poly(name, type){
 	this.addPoint = function(lat, long){
 		this.polyPoints.push(new GMapPoint(lat, long));
 	}
+	
+	// In order to make gsmaps.js draw a polygon, you have to give it an array in a specific format; a 2D array with dimentions of 2*n
+	this.generatePointArray = function(){
+		var returnArray = [];
+		for(var i = 0; i < this.polyPoints.length; i++){
+			returnArray[i] = [];
+			returnArray[i][0] = this.polyPoints[i].lat;
+			returnArray[i][1] = this.polyPoints[i].long;
+		}
+		
+		return returnArray;
+	}
 }
 
 function Layer(name){
@@ -257,4 +284,5 @@ function polyLayer(name){
 	this.deletePoly = function(index){
 		this.polys.splice(index,1);
 	}
+	
 }

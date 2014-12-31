@@ -34,6 +34,23 @@ test( "Dummy Test", function() {
 });
 */
 
+module('Map Metadata Tests', {
+    setup: function () {
+    },
+    teardown: function () {
+    }
+});
+
+test("Metadata: Name", function(){
+	var the_controller = new controller();
+	ok(the_controller.the_map.metadata.mapName == "Untitled Map", "Map name is: " + the_controller.the_map.metadata.mapName);
+});
+
+test("Metadata: Description", function(){
+	var the_controller = new controller();
+	ok(the_controller.the_map.metadata.description == "", "Description is: " + the_controller.the_map.metadata.description);
+});
+
 module('Data Structure Tests', {
     setup: function () {
     },
@@ -117,6 +134,22 @@ test("Poly Layer Creation", function(){
 	the_controller.the_map.layers[0].polys[0].polyPoints[2].lat === 55.0 &&
 	the_controller.the_map.layers[0].polys[0].polyPoints[2].long === -113.0
 	, "Poly layer created");
+	
+	var testPoly2 = new Poly("Test Poly", "Manbearpig Habitat");
+	testPoly2.addPoint(52.0, -110.0);
+	testPoly2.addPoint(52.0, -112.0);
+	testPoly2.addPoint(53.0, -111.0);
+	
+	the_controller.the_map.layers[0].addPoly(testPoly2);
+	
+	ok(the_controller.the_map.layers[0].polys[1].polyPoints[0].lat === 52.0 &&
+	the_controller.the_map.layers[0].polys[1].polyPoints[0].long === -110.0 &&
+	the_controller.the_map.layers[0].polys[1].polyPoints[1].lat === 52.0 &&
+	the_controller.the_map.layers[0].polys[1].polyPoints[1].long === -112.0 &&
+	the_controller.the_map.layers[0].polys[1].polyPoints[2].lat === 53.0 &&
+	the_controller.the_map.layers[0].polys[1].polyPoints[2].long === -111.0
+	, "Second Polygon added to layer");
+	
 });
 
 test("Poly Size Restriction", function(){
@@ -133,6 +166,26 @@ test("Poly Size Restriction", function(){
 	the_controller.the_map.layers[0].addPoly(testPoly);
 	
 	ok(the_controller.the_map.layers[0].polys[0] == null, "Test not finished");
+});
+
+test("Poly gmaps.js array generator",function(){
+	
+	var the_controller = new controller();
+	the_controller.newPolyLayer("Test Poly Layer");
+	
+	var testPoly = new Poly("Test Poly", "Bigfoot Habitat");
+	testPoly.addPoint(55.0, -115.0);
+	testPoly.addPoint(54.0, -114.0);
+	testPoly.addPoint(55.0, -113.0);
+	
+	the_controller.the_map.layers[0].addPoly(testPoly);
+	
+	var testArray = the_controller.the_map.layers[0].polys[0].generatePointArray();
+	
+	ok(testArray[0][0] == 55.0 && testArray[0][1] == -115.0 && 
+		testArray[1][0] == 54.0 && testArray[1][1] == -114.0 && 
+		testArray[2][0] == 55.0 && testArray[2][1] == -113.0
+		, "Generated Array is " + testArray);
 });
 
 module("Layer Delation Tests", {
@@ -181,7 +234,27 @@ test("Poly Delete", function(){
 	var the_controller = new controller();
 	the_controller.newPolyLayer("Test Poly Layer");
 	
-	ok(false, "Write later");
+	var testPoly = new Poly("Test Poly 1", "Bigfoot Habitat");
+	testPoly.addPoint(55.0, -115.0);
+	testPoly.addPoint(54.0, -114.0);
+	testPoly.addPoint(55.0, -113.0);
+	
+	the_controller.the_map.layers[0].addPoly(testPoly);
+	
+	var testPoly2 = new Poly("Test Poly 2", "Manbearpig Habitat");
+	testPoly2.addPoint(52.0, -110.0);
+	testPoly2.addPoint(52.0, -112.0);
+	testPoly2.addPoint(53.0, -111.0);
+	
+	the_controller.the_map.layers[0].addPoly(testPoly2);
+	
+	ok(the_controller.the_map.layers[0].polys.length == 2, "Layer has two polygons!");
+	
+	the_controller.the_map.layers[0].deletePoly(0);
+	
+	ok(the_controller.the_map.layers[0].polys.length == 1, "After deleting a polygon, layer has one polygon!");
+	
+	ok(the_controller.the_map.layers[0].polys[0].name == "Test Poly 2", "Correct polygon was deleted!");
 	
 });
 
