@@ -168,26 +168,6 @@ test("Poly Size Restriction", function(){
 	ok(the_controller.the_map.layers[0].polys[0] == null, "Test not finished");
 });
 
-test("Poly gmaps.js array generator",function(){
-	
-	var the_controller = new controller();
-	the_controller.newPolyLayer("Test Poly Layer");
-	
-	var testPoly = new Poly("Test Poly", "Bigfoot Habitat");
-	testPoly.addPoint(55.0, -115.0);
-	testPoly.addPoint(54.0, -114.0);
-	testPoly.addPoint(55.0, -113.0);
-	
-	the_controller.the_map.layers[0].addPoly(testPoly);
-	
-	var testArray = the_controller.the_map.layers[0].polys[0].generatePointArray();
-	
-	ok(testArray[0][0] == 55.0 && testArray[0][1] == -115.0 && 
-		testArray[1][0] == 54.0 && testArray[1][1] == -114.0 && 
-		testArray[2][0] == 55.0 && testArray[2][1] == -113.0
-		, "Generated Array is " + testArray);
-});
-
 module("Layer Delation Tests", {
 	setup: function(){
 		
@@ -226,7 +206,27 @@ test("Path Delete", function(){
 	var the_controller = new controller();
 	the_controller.newPathLayer("Test Path Layer");
 	
-	ok(false, "Write later");
+	var testPath = new Path("Test Path 1", "Yellow Brick Road");
+	testPath.addPoint(55.0, -115.0);
+	testPath.addPoint(54.0, -114.0);
+	testPath.addPoint(55.0, -113.0);
+	
+	the_controller.the_map.layers[0].addPath(testPath);
+	
+	var testPath2 = new Path("Test Path 2", "Trail of Broken Hearts");
+	testPath2.addPoint(52.0, -110.0);
+	testPath2.addPoint(52.0, -112.0);
+	testPath2.addPoint(53.0, -111.0);
+	
+	the_controller.the_map.layers[0].addPath(testPath2);
+	
+	ok(the_controller.the_map.layers[0].paths.length == 2, "Layer has two paths!");
+	
+	the_controller.the_map.layers[0].deletePath(0);
+	
+	ok(the_controller.the_map.layers[0].paths.length == 1, "After deleting a path, layer has one path!");
+	
+	ok(the_controller.the_map.layers[0].paths[0].name == "Test Path 2", "Correct path was deleted!");
 	
 });
 
@@ -337,4 +337,76 @@ test("Visibility All On/Off", function(){
 				);
 	
 	ok(allOff, "All layers set to non-visible again.");
+});
+
+module("gmaps.js Data Generation", {
+	setup: function(){
+		
+	},
+	teardown: function(){
+		
+	}
+});
+
+test("Path gmaps.js array generator",function(){
+	ok(false, "Test not writen...");
+});
+
+test("Path gmaps.js array generator",function(){
+	
+	var the_controller = new controller();
+	the_controller.newPathLayer("Test Path Layer");
+	
+	var testPath = new Path("Test Path", "Stairway to Heaven");
+	testPath.addPoint(50.0, -115.0);
+	testPath.addPoint(51.0, -114.0);
+	testPath.addPoint(52.0, -113.0);
+	
+	the_controller.the_map.layers[0].addPath(testPath);
+	
+	var testArray = the_controller.the_map.layers[0].paths[0].generatePointArray();
+	
+	ok(testArray[0][0] == 50.0 && testArray[0][1] == -115.0 && 
+		testArray[1][0] == 51.0 && testArray[1][1] == -114.0 && 
+		testArray[2][0] == 52.0 && testArray[2][1] == -113.0
+		, "Generated Array is " + testArray);
+});
+
+test("Poly gmaps.js array generator",function(){
+	
+	var the_controller = new controller();
+	the_controller.newPolyLayer("Test Poly Layer");
+	
+	var testPoly = new Poly("Test Poly", "Bigfoot Habitat");
+	testPoly.addPoint(55.0, -115.0);
+	testPoly.addPoint(54.0, -114.0);
+	testPoly.addPoint(55.0, -113.0);
+	
+	the_controller.the_map.layers[0].addPoly(testPoly);
+	
+	var testArray = the_controller.the_map.layers[0].polys[0].generatePointArray();
+	
+	ok(testArray[0][0] == 55.0 && testArray[0][1] == -115.0 && 
+		testArray[1][0] == 54.0 && testArray[1][1] == -114.0 && 
+		testArray[2][0] == 55.0 && testArray[2][1] == -113.0
+		, "Generated Array is " + testArray);
+});
+
+module("Visual Properties Tests", {
+	setup: function(){
+		
+	},
+	teardown: function(){
+		
+	}
+});
+
+test("Path Layer Visual Properties", function(){
+	
+	ok(false, "Wrtie later...");
+});
+
+test("Poly Layer Visual Properties", function(){
+	
+	ok(false, "Wrtie later...");
 });

@@ -76,6 +76,18 @@ function map(){
 		this.metadata.changeDescription(newDesc);
 	}
 	
+	// !!! PLACEHOLDER !!!
+	// TODO:
+	// Put code to summon a map via gmaps.js here
+	
+	this.renderMap = function(){
+		// TODO:
+		// Write a function to read through the layers, and feed data from each layer
+		// into the gmap.js functions to draw objects onto the map.
+
+		// Also, skip over non-visible objects
+	}
+	
 	this.newLayer = function(name){
 		// You can put new objects (or anything) into an Array with the .push() method
 		this.layers.push(new Layer(name));
@@ -176,6 +188,18 @@ function Path(name, type){
 	this.addPoint = function(lat, long){
 		this.pathPoints.push(new GMapPoint(lat, long));
 	}
+	
+	// In order to make gmaps.js draw a path, you have to give it an array in a specific format; a 2D array with dimentions of 2*n
+	this.generatePointArray = function(){
+		var returnArray = [];
+		for(var i = 0; i < this.pathPoints.length; i++){
+			returnArray[i] = [];
+			returnArray[i][0] = this.pathPoints[i].lat;
+			returnArray[i][1] = this.pathPoints[i].long;
+		}
+		
+		return returnArray;
+	}
 }
 
 function Poly(name, type){
@@ -188,7 +212,7 @@ function Poly(name, type){
 		this.polyPoints.push(new GMapPoint(lat, long));
 	}
 	
-	// In order to make gsmaps.js draw a polygon, you have to give it an array in a specific format; a 2D array with dimentions of 2*n
+	// In order to make gmaps.js draw a polygon, you have to give it an array in a specific format; a 2D array with dimentions of 2*n
 	this.generatePointArray = function(){
 		var returnArray = [];
 		for(var i = 0; i < this.polyPoints.length; i++){
@@ -258,6 +282,14 @@ function pathLayer(name){
 	
 	this.paths = [];
 	
+	// Some default visual properties
+	// User should have he option to change these
+	this.visualProperties = {
+		strokeColor: '#ffffff',
+		strokeOpacity: 1,
+		strokeWeight: 6
+	}
+	
 	this.addPath = function(pathObj){
 		this.paths.push(pathObj);
 	};
@@ -272,6 +304,16 @@ function polyLayer(name){
 	Layer.call(this, name);
 	
 	this.polys = [];
+	
+	// Some default visual properties
+	// User should have he option to change these
+	this.visualProperties = {
+		strokeColor: '#ffffff',
+		strokeOpacity: 1,
+		strokeWeight: 3,
+		fillColor: '#777777',
+		fillOpacity: 0.5
+	};
 	
 	this.addPoly = function(polyObj){
 		if(polyObj.polyPoints.length < 3){
