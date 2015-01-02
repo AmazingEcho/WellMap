@@ -48,8 +48,16 @@ function controller(){
 
 function mapMetadata(name){
 	this.mapName = name;
+	
 	// description is empty on creation
 	this.description = "";
+	
+	// coordinates for where the map should focus on when loaded
+	this.origin = [55.0, -115.0]
+	
+	this.changeName = function(newName){
+		this.mapName = newName;
+	}
 	
 	this.changeDescription = function(newDesc){
 		this.description = newDesc;
@@ -176,7 +184,14 @@ function GMapPoint(lat, long){
 function Point(name, type, gmpoint){
 	this.name = name;
 	this.type = type;
-	this.point = gmpoint;
+	this.GMpoint = gmpoint;
+	
+	this.getLat = function(){
+		return this.GMpoint.lat;
+	}
+	this.getLong = function(){
+		return this.GMpoint.long;
+	}
 }
 
 function Path(name, type){
@@ -261,18 +276,45 @@ function pointLayer(name){
 	
 	this.addPoint = function(name, type, gmpoint){
 		this.points.push(new Point(name, type, gmpoint));
-	};
+	}
+	
+	this.addPointLatLong = function(name, type, lat, long){
+		this.points.push(new Point(name, type, new GMapPoint(lat, long)));
+	}
 	
 	this.getLat = function(index){
-		return this.points[index].point.lat;
+		return this.points[index].GMpoint.lat;
 	}
 	
 	this.getLong = function(index){
-		return this.points[index].point.long;
+		return this.points[index].GMpoint.long;
 	}
 	
 	this.deletePoint = function(index){
 		this.points.splice(index,1);
+	}
+	
+	this.deletePointsByArea = function(lat1, long1, lat2, long2){
+		// this function has to assume that either set of coordinates could be
+		var latBottomLeft = Math.min(lat1, lat2);
+		var latTopRight = Math.max(lat1, lat2);
+		
+		var longBottomLeft = Math.min(long1, long2);
+		var longTopRight = Math.max(long1, long2);
+		
+		//console.log("Bottom Left is: " + latBottomLeft + " and " + longBottomLeft);
+		//console.log("Top right is: " + latTopRight + " and " + longTopRight);
+		
+		for(var i = 0; i < this.points.length;){
+			if(this.points[i].getLat() >= latBottomLeft && this.points[i].getLat() <= latTopRight &&
+			this.points[i].getLong() >= longBottomLeft && this.points[i].getLong() <= longTopRight ){
+				//console.log("Deleting: " + this.points[i].name);
+				this.points.splice(i,1);
+			}
+			else{
+				i++;
+			}
+		}
 	}
 }
 
@@ -297,6 +339,25 @@ function pathLayer(name){
 	this.deletePath = function(index){
 		this.paths.splice(index,1);
 	}
+	
+	this.editLineColor = function(newCol){
+		if(hexCheck(newCol)){
+			this.visualProperties.strokeColor = newCol;
+		}
+	}
+	
+	this.editLineOpacity = function(newOp){
+		if(newOp >= 0.0 && newOp <= 1.0){
+			this.visualProperties.strokeOpacity = newOp;
+		}
+	}
+	
+	this.editLineWeight = function(newWei){
+		// Use a regex to make sure the color is
+		if(newWei > 0.0){
+			this.visualProperties.strokeWeight = newWei;
+		}
+	}
 }
 
 function polyLayer(name){
@@ -317,7 +378,7 @@ function polyLayer(name){
 	
 	this.addPoly = function(polyObj){
 		if(polyObj.polyPoints.length < 3){
-			console.log("polyObj '" + polyObj.name + "' has fewer than 3 points");
+			//console.log("polyObj '" + polyObj.name + "' has fewer than 3 points");
 			return;
 		}
 		this.polys.push(polyObj);
@@ -327,4 +388,46 @@ function polyLayer(name){
 		this.polys.splice(index,1);
 	}
 	
+	this.editStrokeColor = function(newCol){
+		if(hexCheck(newCol)){
+			this.visualProperties.strokeColor = newCol;
+		}
+	}
+	
+	this.editStrokeOpacity = function(newOp){
+		if(newOp >= 0.0 && newOp <= 1.0){
+			this.visualProperties.strokeOpacity = newOp;
+		}
+	}
+	
+	this.editStrokeWeight = function(newWei){
+		// Use a regex to make sure the color is
+		if(newWei > 0.0){
+			this.visualProperties.strokeWeight = newWei;
+		}
+	}
+	
+	this.editFillColor = function(newCol){
+		// Use a regex to make sure the color is
+		if(hexCheck(newCol)){
+			this.visualProperties.fillColor = newCol;
+		}
+	}
+	
+	this.editFillOpacity = function(newOp){
+		// Use a regex to make sure the color is
+		if(newOp >= 0.0 && newOp <= 1.0){
+			this.visualProperties.fillOpacity = newOp;
+		}
+	}
+	
+}
+
+/*
+MISC Functions
+*/
+
+// Uses a regex to make sure a text string is a proper hex color.
+function hexCheck(sNum){
+	return /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i.test(sNum);
 }
