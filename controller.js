@@ -44,6 +44,12 @@ function controller(){
 	this.deleteLayer = function(index){
 		this.the_map.deleteLayer(index);
 	}
+	
+	// Exports Data on the map as a spread sheet
+	// TODO: Write the whole function
+	this.exportXLS = function(){
+		console.log("exportXLS() not yet written");
+	}
 }
 
 function mapMetadata(name){
@@ -166,6 +172,25 @@ function map(){
 	this.switchVisAllOn = function(){
 		for(var i = 0; i < this.layers.length; i++){
 			this.layers[i].visible = true;
+		}
+	}
+	
+	this.sortLayersByName = function(){
+		// Now where did I put my not from Data Structures and Algorithms? -T
+		// Oh, this works:
+		// http://stackoverflow.com/questions/1129216/sorting-objects-in-an-array-by-a-field-value-in-javascript
+		this.layers.sort(function(a,b) {return (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0);} );
+	}
+	
+	// Go through the layer list and delete empty layers
+	this.cullEmptyLayers = function(){
+		for(var i = 0; i < this.layers.length;){
+			if(this.layers[i].isEmpty()){
+				this.layers.splice(i,1);
+			}
+			else{
+				i++;
+			}
 		}
 	}
 }
@@ -316,6 +341,15 @@ function pointLayer(name){
 			}
 		}
 	}
+	
+	this.isEmpty = function(){
+		return (this.points.length == 0);
+	}
+	
+	// Exports the points into an XLS format
+	// TODO:
+	this.exportPointsXLS = function(){
+	}
 }
 
 function pathLayer(name){
@@ -357,6 +391,10 @@ function pathLayer(name){
 		if(newWei > 0.0){
 			this.visualProperties.strokeWeight = newWei;
 		}
+	}
+	
+	this.isEmpty = function(){
+		return (this.paths.length == 0);
 	}
 }
 
@@ -419,6 +457,10 @@ function polyLayer(name){
 		if(newOp >= 0.0 && newOp <= 1.0){
 			this.visualProperties.fillOpacity = newOp;
 		}
+	}
+	
+	this.isEmpty = function(){
+		return (this.polys.length == 0);
 	}
 	
 }

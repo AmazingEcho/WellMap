@@ -168,6 +168,30 @@ test("Poly Size Restriction", function(){
 	ok(the_controller.the_map.layers[0].polys[0] == null, "Test not finished");
 });
 
+test("Layer Sorting by name", function(){
+	
+	var the_controller = new controller();
+	the_controller.newPolyLayer("Test Layer G");
+	the_controller.newPointLayer("Test Layer B");
+	the_controller.newPathLayer("Test Layer A");
+	the_controller.newPathLayer("Test Layer E");
+	the_controller.newPolyLayer("Test Layer F");
+	the_controller.newPointLayer("Test Layer D");
+	the_controller.newPathLayer("Test Layer C");
+	
+	the_controller.the_map.sortLayersByName();
+	
+	ok(the_controller.the_map.layers[0].name == "Test Layer A" &&
+		the_controller.the_map.layers[1].name == "Test Layer B" &&
+		the_controller.the_map.layers[2].name == "Test Layer C" &&
+		the_controller.the_map.layers[3].name == "Test Layer D" &&
+		the_controller.the_map.layers[4].name == "Test Layer E" &&
+		the_controller.the_map.layers[5].name == "Test Layer F" &&
+		the_controller.the_map.layers[6].name == "Test Layer G"
+	, "Layers Sorted by name");
+	
+});
+
 module("Layer Delation Tests", {
 	setup: function(){
 		
@@ -464,7 +488,61 @@ module("Visual Properties Tests", {
 
 test("Path Layer Visual Properties", function(){
 	
-	ok(false, "Wrtie later...");
+	/*
+	this.visualProperties = {
+		strokeColor: '#ffffff',
+		strokeOpacity: 1,
+		strokeWeight: 6
+	}
+	*/
+	
+	var the_controller = new controller();
+	the_controller.newPathLayer("Test Path Layer");
+	
+	ok(the_controller.the_map.layers[0].visualProperties.strokeColor == "#ffffff", "Path Layer has default strokeColor.");
+	ok(the_controller.the_map.layers[0].visualProperties.strokeOpacity == 1, "Path Layer has default strokeOpacity.");
+	ok(the_controller.the_map.layers[0].visualProperties.strokeWeight == 6, "Path Layer has default strokeWeight.");
+	
+	// Should reject strings that aren't hex colours
+	// strokeColor
+	the_controller.the_map.layers[0].editLineColor("#GGGGGG");
+	ok(the_controller.the_map.layers[0].visualProperties.strokeColor == "#ffffff", "Bad string rejected; strokeColor unchanged.");
+	
+	the_controller.the_map.layers[0].editLineColor("ffffff");
+	ok(the_controller.the_map.layers[0].visualProperties.strokeColor == "#ffffff", "Bad string rejected; strokeColor unchanged.");
+	
+	the_controller.the_map.layers[0].editLineColor("1");
+	ok(the_controller.the_map.layers[0].visualProperties.strokeColor == "#ffffff", "Bad string rejected; strokeColor unchanged.");
+	
+	the_controller.the_map.layers[0].editLineColor("#ff0000");
+	ok(the_controller.the_map.layers[0].visualProperties.strokeColor == "#ff0000", "Good String accepted; strokeColor changed.");
+	
+	// strokeOpacity
+	the_controller.the_map.layers[0].editLineOpacity(10);
+	ok(the_controller.the_map.layers[0].visualProperties.strokeOpacity == 1, "Bad value rejected; strokeOpacity unchanged.");
+	
+	the_controller.the_map.layers[0].editLineOpacity(-.01);
+	ok(the_controller.the_map.layers[0].visualProperties.strokeOpacity == 1, "Bad value rejected; strokeOpacity unchanged.");
+	
+	the_controller.the_map.layers[0].editLineOpacity("robot");
+	ok(the_controller.the_map.layers[0].visualProperties.strokeOpacity == 1, "Bad value rejected; strokeOpacity unchanged.");
+	
+	the_controller.the_map.layers[0].editLineOpacity(.5);
+	ok(the_controller.the_map.layers[0].visualProperties.strokeOpacity == .5, "Good value accepted; strokeOpacity changed.");
+	
+	// strokeWeight
+	the_controller.the_map.layers[0].editLineWeight(0);
+	ok(the_controller.the_map.layers[0].visualProperties.strokeWeight == 6, "Bad value rejected; strokeWeight unchanged.");
+	
+	the_controller.the_map.layers[0].editLineWeight(-1);
+	ok(the_controller.the_map.layers[0].visualProperties.strokeWeight == 6, "Bad value rejected; strokeWeight unchanged.");
+	
+	the_controller.the_map.layers[0].editLineWeight("robot");
+	ok(the_controller.the_map.layers[0].visualProperties.strokeWeight == 6, "Bad value rejected; strokeWeight unchanged.");
+	
+	the_controller.the_map.layers[0].editLineWeight(.5);
+	ok(the_controller.the_map.layers[0].visualProperties.strokeWeight == .5, "Good value accepted; strokeWeight changed.");
+	
 });
 
 test("Poly Layer Visual Properties", function(){
