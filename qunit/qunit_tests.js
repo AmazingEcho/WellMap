@@ -420,9 +420,13 @@ test("Create New Point Layer From Selected Points", function(){
 	
 	ok(the_controller.the_map.layers[0].points.length == 8, "Original Layer has " + the_controller.the_map.layers[0].points.length + " points.  Should be 8.");
 	
+	ok(the_controller.the_map.layers[0].points[0].name == "Test Point 18", "Point 18 is " + the_controller.the_map.layers[0].points[0].name);
+	ok(the_controller.the_map.layers[0].points[4].name == "Test Point 22", "Point 22 is " + the_controller.the_map.layers[0].points[4].name);
+	
 	ok(the_controller.the_map.layers[1].points.length == 17, "New Layer has " + the_controller.the_map.layers[1].points.length + " points.  Should be 17.");
 	
-	ok(the_controller.the_map.layers[1].points[3].name == "Test Point 4", "Point 4 is " + the_controller.the_map.layers[1].points[3])
+	ok(the_controller.the_map.layers[1].points[3].name == "Test Point 4", "Point 4 is " + the_controller.the_map.layers[1].points[3].name);
+	ok(the_controller.the_map.layers[1].points[12].name == "Test Point 13", "Point 4 is " + the_controller.the_map.layers[1].points[12].name);
 });
 
 test("Point Delete by Area", function(){

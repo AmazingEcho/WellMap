@@ -71,11 +71,15 @@ function controller(){
 		var newLayerIndex = (this.the_map.layers.length) - 1;
 		console.log("newLayerIndex is " + newLayerIndex);
 		
+		
+		
 		for(var j = 0; j < this.the_map.layers[layerIndex].points.length;){
 			if(this.the_map.layers[layerIndex].points[j].selected){
 				
 				//splice the point from the first layer, and put it in the new layer
-				this.the_map.layers[newLayerIndex].points.push(this.the_map.layers[layerIndex].points.splice(j,1));
+				var temp = this.the_map.layers[layerIndex].points[j];
+				this.the_map.layers[layerIndex].points.splice(j,1);
+				this.the_map.layers[newLayerIndex].points.push(temp);
 			}
 			else{
 				j++;
@@ -87,6 +91,16 @@ function controller(){
 	// TODO: Write the whole function
 	this.exportXLS = function(){
 		console.log("exportXLS() not yet written");
+	}
+	
+	
+	// TODO:
+	// Svaing and loading
+	// I'd like to try and set it up to save the whole thing as an XML or JSON, and then have those loaded the same way...
+	this.saveWorkspace = function(){
+	}
+	
+	this.loadWorkspace = function(){
 	}
 }
 
