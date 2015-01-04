@@ -45,6 +45,44 @@ function controller(){
 		this.the_map.deleteLayer(index);
 	}
 	
+	this.createNewPointLayerFromSelection = function(layerIndex){
+		
+		// TODO:
+		// Code to verify that layer is a point layer
+		
+		// Verify that layer has selected points in the first place
+		
+		var selectedPresent = false;
+		for(var i = 0; i <  this.the_map.layers[layerIndex].points.length; i++){
+			if(this.the_map.layers[layerIndex].points[i].selected){
+				selectedPresent = true;
+				console.log("Selected Point Found");
+				break;
+			}
+		}
+		
+		if(!(selectedPresent)){
+			console.log("No Points Found");
+			return false;
+		}
+		
+		this.the_map.newPointLayer("Selection from " + this.the_map.layers[layerIndex].name);
+		
+		var newLayerIndex = (this.the_map.layers.length) - 1;
+		console.log("newLayerIndex is " + newLayerIndex);
+		
+		for(var j = 0; j < this.the_map.layers[layerIndex].points.length;){
+			if(this.the_map.layers[layerIndex].points[j].selected){
+				
+				//splice the point from the first layer, and put it in the new layer
+				this.the_map.layers[newLayerIndex].points.push(this.the_map.layers[layerIndex].points.splice(j,1));
+			}
+			else{
+				j++;
+			}
+		}
+	}
+	
 	// Exports Data on the map as a spread sheet
 	// TODO: Write the whole function
 	this.exportXLS = function(){
@@ -210,6 +248,7 @@ function Point(name, type, gmpoint){
 	this.name = name;
 	this.type = type;
 	this.GMpoint = gmpoint;
+	this.selected = false;
 	
 	this.getLat = function(){
 		return this.GMpoint.lat;
@@ -319,16 +358,64 @@ function pointLayer(name){
 		this.points.splice(index,1);
 	}
 	
-	this.deletePointsByArea = function(lat1, long1, lat2, long2){
-		// this function has to assume that either set of coordinates could be
+	this.selectPoint = function(index){
+		this.points[index].selected = true;
+	}
+	
+	this.deselectPoint = function(index){
+		this.points[index].selected = false;
+	}
+	
+	this.selectAll = function(){
+		for(var i = 0; i < this.points.length; i++){
+			this.points[i].selected = true;
+		}
+	}
+	
+	this.deselectAll = function(){
+		for(var i = 0; i < this.points.length; i++){
+			this.points[i].selected = false;
+		}
+	}
+	
+	this.selectPointsByArea = function(lat1, long1, lat2, long2){
+		// this function has to assume that either set of coordinates could belong to any corner...
+		// So we have to use min/max functions to figure out the bounds of the area
 		var latBottomLeft = Math.min(lat1, lat2);
 		var latTopRight = Math.max(lat1, lat2);
 		
 		var longBottomLeft = Math.min(long1, long2);
 		var longTopRight = Math.max(long1, long2);
 		
-		//console.log("Bottom Left is: " + latBottomLeft + " and " + longBottomLeft);
-		//console.log("Top right is: " + latTopRight + " and " + longTopRight);
+		for(var i = 0; i < this.points.length; i++){
+			if(this.points[i].getLat() >= latBottomLeft && this.points[i].getLat() <= latTopRight &&
+			this.points[i].getLong() >= longBottomLeft && this.points[i].getLong() <= longTopRight ){
+				this.points[i].selected = true;
+			}
+		}
+	}
+	
+	this.deleteSelectedPoints = function(){
+		
+		// Notice how there's no i++ in the for() loop parameters?
+		// That because if you remove something from a JS array, it shuffles everything afterwards forwards
+		// Which means it should only i++ when it DOESNT delete the point
+		for(var i = 0; i < this.points.length;){
+			if(this.points[i].selected == true){
+				this.points.splice(i,1);
+			}
+			else{
+				i++;
+			}
+		}
+	}
+	
+	this.deletePointsByArea = function(lat1, long1, lat2, long2){
+		var latBottomLeft = Math.min(lat1, lat2);
+		var latTopRight = Math.max(lat1, lat2);
+		
+		var longBottomLeft = Math.min(long1, long2);
+		var longTopRight = Math.max(long1, long2);
 		
 		for(var i = 0; i < this.points.length;){
 			if(this.points[i].getLat() >= latBottomLeft && this.points[i].getLat() <= latTopRight &&
@@ -336,6 +423,7 @@ function pointLayer(name){
 				//console.log("Deleting: " + this.points[i].name);
 				this.points.splice(i,1);
 			}
+			
 			else{
 				i++;
 			}

@@ -235,12 +235,200 @@ test("Point Delete", function(){
 	ok(the_controller.the_map.layers[0].getLat(0) == 55.0 && the_controller.the_map.layers[0].getLat(1) == 53.0, "Correct point was deleted!");
 });
 
-test("Point Delete by Area", function(){
+test("Point Selection", function(){
 	var the_controller = new controller();
 	the_controller.newPointLayer("Test Point Layer");
 	
-	//
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 1", "Well", 55.0, -115.0);
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 2", "Well", 54.0, -114.0);
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 3", "Well", 53.0, -113.0);
 	
+	ok(the_controller.the_map.layers[0].points.length == 3, the_controller.the_map.layers[0].points.length + " points added to Test Point Layer!");
+	
+	the_controller.the_map.layers[0].selectPoint(1);
+	
+	ok(the_controller.the_map.layers[0].points[0].selected == false &&
+		the_controller.the_map.layers[0].points[1].selected == true &&
+		the_controller.the_map.layers[0].points[2].selected == false
+	, "Individual point selected.");
+	
+	the_controller.the_map.layers[0].selectPoint(2);
+	the_controller.the_map.layers[0].deselectPoint(1);
+	
+	ok(the_controller.the_map.layers[0].points[1].selected == false &&
+		the_controller.the_map.layers[0].points[0].selected == false &&
+		the_controller.the_map.layers[0].points[2].selected == true
+	, "Individual point selected.");
+	
+	the_controller.the_map.layers[0].selectAll();
+	
+	ok(the_controller.the_map.layers[0].points[1].selected == true &&
+		the_controller.the_map.layers[0].points[0].selected == true &&
+		the_controller.the_map.layers[0].points[2].selected == true
+	, "All points selected.");
+	
+	the_controller.the_map.layers[0].deselectAll();
+	
+	ok(the_controller.the_map.layers[0].points[1].selected == false &&
+		the_controller.the_map.layers[0].points[0].selected == false &&
+		the_controller.the_map.layers[0].points[2].selected == false
+	, "All points deselected.");
+	
+});
+
+test("Point Selection by Area", function(){
+	
+	var the_controller = new controller();
+	the_controller.newPointLayer("Test Point Layer");
+	
+	// Center - WILL BE SELECTED
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 1", "Well", 53.0, -113.0);
+	
+	// Near edges - WILL BE SELECTED
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 2", "Well", 53.75, -113.75);
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 3", "Well", 53.75, -113.0);
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 4", "Well", 53.75, -112.25);
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 5", "Well", 53.0, -112.25);
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 6", "Well", 52.25, -112.25);
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 7", "Well", 52.25, -113.0);
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 8", "Well", 52.25, -113.75);
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 9", "Well", 53.0, -113.75);
+	
+	// Edges - WILL BE SELECTED
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 10", "Well", 54.0, -114.0);
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 11", "Well", 54.0, -113.0);
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 12", "Well", 54.0, -112.0);
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 13", "Well", 53.0, -112.0);
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 14", "Well", 52.0, -112.0);
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 15", "Well", 52.0, -113.0);
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 16", "Well", 52.0, -114.0);
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 17", "Well", 53.0, -114.0);
+	
+	// Outside - Unselected
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 18", "Well", 54.25, -114.25);
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 19", "Well", 54.25, -113.0);
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 20", "Well", 54.25, -111.75);
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 21", "Well", 53.0, -111.75);
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 22", "Well", 51.75, -111.75);
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 23", "Well", 51.75, -113.0);
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 24", "Well", 51.75, -114.25);
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 25", "Well", 53.0, -114.25);
+	
+	ok(the_controller.the_map.layers[0].points.length == 25, "Points created");
+	
+	the_controller.the_map.layers[0].selectPointsByArea(54.0, -114.0 , 52.0, -112.0);
+	
+	var anyUnselected = false;
+	for(var i = 0; i < 17; i++){
+		if(the_controller.the_map.layers[0].points[i].selected == false){
+			anyUnselected = true;
+			break;
+		}
+	}
+	
+	ok(!(anyUnselected), "Points inside area are selected");
+	
+	var anySelected = false;
+	for(var i = 17; i < 25; i++){
+		if(the_controller.the_map.layers[0].points[i].selected == true){
+			anySelected = true;
+			break;
+		}
+	}
+	
+	ok(!(anySelected), "Points outside area are unselected");
+	
+});
+
+test("Point Delete by Selection", function(){
+	
+	var the_controller = new controller();
+	the_controller.newPointLayer("Test Point Layer");
+	
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 1", "Well", 53.75, -113.75);
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 2", "Well", 53.75, -113.0);
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 3", "Well", 53.75, -112.25);
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 4", "Well", 53.0, -112.25);
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 5", "Well", 52.25, -112.25);
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 6", "Well", 52.25, -113.0);
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 7", "Well", 52.25, -113.75);
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 8", "Well", 53.0, -113.75);
+	
+	ok(the_controller.the_map.layers[0].points.length == 8, "Points created");
+	
+	the_controller.the_map.layers[0].deleteSelectedPoints();
+	
+	ok(the_controller.the_map.layers[0].points.length == 8, "No points selected, no points deleted");
+	
+	the_controller.the_map.layers[0].selectPoint(3);
+	the_controller.the_map.layers[0].selectPoint(6);
+	the_controller.the_map.layers[0].selectPoint(1);
+	
+	the_controller.the_map.layers[0].deleteSelectedPoints();
+	
+	ok(the_controller.the_map.layers[0].points.length == 5, "3 points selected, 3 points deleted, 5 remain");
+	
+});
+
+test("Create New Point Layer From Selected Points", function(){
+	
+	var the_controller = new controller();
+	the_controller.newPointLayer("Test Point Layer");
+
+	// Center - WILL BE IN NEW LAYER
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 1", "Well", 53.0, -113.0);
+	
+	// Near edges - WILL BE IN NEW LAYER
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 2", "Well", 53.75, -113.75);
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 3", "Well", 53.75, -113.0);
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 4", "Well", 53.75, -112.25);
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 5", "Well", 53.0, -112.25);
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 6", "Well", 52.25, -112.25);
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 7", "Well", 52.25, -113.0);
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 8", "Well", 52.25, -113.75);
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 9", "Well", 53.0, -113.75);
+	
+	// Edges - WILL BE IN NEW LAYER
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 10", "Well", 54.0, -114.0);
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 11", "Well", 54.0, -113.0);
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 12", "Well", 54.0, -112.0);
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 13", "Well", 53.0, -112.0);
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 14", "Well", 52.0, -112.0);
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 15", "Well", 52.0, -113.0);
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 16", "Well", 52.0, -114.0);
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 17", "Well", 53.0, -114.0);
+	
+	// Outside - Left alone
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 18", "Well", 54.25, -114.25);
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 19", "Well", 54.25, -113.0);
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 20", "Well", 54.25, -111.75);
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 21", "Well", 53.0, -111.75);
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 22", "Well", 51.75, -111.75);
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 23", "Well", 51.75, -113.0);
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 24", "Well", 51.75, -114.25);
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 25", "Well", 53.0, -114.25);
+	
+	ok(the_controller.the_map.layers[0].points.length == 25, "Points created");
+	
+	the_controller.the_map.layers[0].selectPointsByArea(54.0, -114.0 , 52.0, -112.0);
+	
+	ok(the_controller.the_map.layers[0].points[0].selected, "Point 1 is selected.");
+	
+	the_controller.createNewPointLayerFromSelection(0);
+	
+	ok(the_controller.the_map.layers[1], "New Layer created");
+	
+	ok(the_controller.the_map.layers[0].points.length == 8, "Original Layer has " + the_controller.the_map.layers[0].points.length + " points.  Should be 8.");
+	
+	ok(the_controller.the_map.layers[1].points.length == 17, "New Layer has " + the_controller.the_map.layers[1].points.length + " points.  Should be 17.");
+	
+	ok(the_controller.the_map.layers[1].points[3].name == "Test Point 4", "Point 4 is " + the_controller.the_map.layers[1].points[3])
+});
+
+test("Point Delete by Area", function(){
+	var the_controller = new controller();
+	the_controller.newPointLayer("Test Point Layer");
+
 	// Center - WILL BE DELETED
 	the_controller.the_map.layers[0].addPointLatLong("Test Point 1", "Well", 53.0, -113.0);
 	
