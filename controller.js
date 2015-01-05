@@ -87,6 +87,13 @@ function controller(){
 		}
 	}
 	
+	// TODO:
+	// Put some points onto a DB server, and try to get this function to load them
+	// serverInfo should be an object containing the info needed to access the server
+	this.importPointLayerDataFromServer = function(name, serverInfo){
+		
+	}
+	
 	// Exports Data on the map as a spread sheet
 	// TODO: Write the whole function
 	this.exportXLS = function(){

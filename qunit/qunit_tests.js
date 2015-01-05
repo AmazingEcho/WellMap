@@ -815,3 +815,21 @@ test("Poly Layer Visual Properties", function(){
 	ok(the_controller.the_map.layers[0].visualProperties.fillOpacity == 0.8, "Good value accepted; fillOpacity changed.");
 	
 });
+
+module("Data Import Tests", {
+	setup: function(){
+		
+	},
+	teardown: function(){
+		
+	}
+});
+
+test("Import Data Points", function(){
+	
+	var the_controller = new controller();
+	the_controller.newPolyLayer("Test Point Import Layer");
+	
+	ok(false, "Test not written yet");
+	
+});
