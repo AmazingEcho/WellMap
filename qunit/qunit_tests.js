@@ -833,3 +833,37 @@ test("Import Data Points", function(){
 	ok(false, "Test not written yet");
 	
 });
+
+module("Saving and Loading", {
+	setup: function(){
+		
+	},
+	teardown: function(){
+		
+	}
+});
+
+test("Saving and Loading - Basic", function(){
+	
+	var the_controller = new controller();
+	the_controller.newPolyLayer("Test Point Import Layer");
+	
+	// Add some data
+	
+	the_controller.saveDataJSON("testSaveFileName.json");
+	
+	// Delete everything in the controller
+	
+	// Verify that controller is empty
+	
+	// Load data back in
+	the_controller.loadDataJSON("testSaveFileName.json");
+	
+	// Check that data is restored
+	ok(false, "Test not written yet");
+	
+});
+
+test("Saving and Loading - Larger File", function(){
+	ok(false, "Test not written yet");
+});

@@ -102,12 +102,18 @@ function controller(){
 	
 	
 	// TODO:
-	// Svaing and loading
-	// I'd like to try and set it up to save the whole thing as an XML or JSON, and then have those loaded the same way...
-	this.saveWorkspace = function(){
+	// Saving and Loading
+	// I'd like to try and set it up to save all the objects with JSON, and then have those loaded the same way.
+	// A JSON file is basically just a text file that contains object data that can be parsed by Javascript
+	// and turned into actual objects.
+	
+	// The problem is that JS is kind of weird about openning files on a cilent side HD.
+	// Security concerns about rogue web pages running .js code to peek at the contents of someones HD.
+	
+	this.saveWorkspace = function(filename){
 	}
 	
-	this.loadWorkspace = function(){
+	this.loadWorkspace = function(filename){
 	}
 }
 
@@ -152,6 +158,7 @@ function map(){
 	// !!! PLACEHOLDER !!!
 	// TODO:
 	// Put code to summon a map via gmaps.js here
+	// Could just copy some code right out of the prototype
 	
 	this.renderMap = function(){
 		// TODO:
@@ -277,6 +284,19 @@ function Point(name, type, gmpoint){
 	this.getLong = function(){
 		return this.GMpoint.long;
 	}
+	
+	// TODO:
+	// Returns an object containing all the information gmaps.js needs to make a point
+	// Lat, long, name, all that stuff
+	this.generatePointData = function(){
+		var returnPoint = {
+			lat: this.GMpoint.lat,
+			lng: this.GMpoint.long,
+			title: this.name
+			};
+		
+		return returnPoint;
+	}
 }
 
 function Path(name, type){
@@ -338,9 +358,11 @@ function Layer(name){
 			this.visible = true;
 		}
 	}
+	
 	this.VisOn = function(){
 		this.visible = true;
 	}
+	
 	this.VisOff = function(){
 		this.visible = false;
 	}
