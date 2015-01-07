@@ -828,7 +828,14 @@ module("Data Import Tests", {
 test("Import Data Points", function(){
 	
 	var the_controller = new controller();
-	the_controller.newPolyLayer("Test Point Import Layer");
+	the_controller.newPointLayer("Test Point Import Layer");
+	
+	var serverInfo = {
+		username: "???",
+		password: "???"
+		}
+	
+	the_controller.the_map.layers[0].loadPointsFromServer(serverInfo);
 	
 	ok(false, "Test not written yet");
 	
@@ -843,21 +850,43 @@ module("Saving and Loading", {
 	}
 });
 
-test("Saving and Loading - Basic", function(){
+test("Saving and Loading - Convert Workspace to JSON String", function(){
 	
 	var the_controller = new controller();
-	the_controller.newPolyLayer("Test Point Import Layer");
+	the_controller.newPointLayer("Test Point Import Layer");
 	
 	// Add some data
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 1", "Well", 53.75, -113.75);
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 2", "Well", 53.75, -113.0);
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 3", "Well", 53.75, -112.25);
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 4", "Well", 53.0, -112.25);
 	
-	the_controller.saveDataJSON("testSaveFileName.json");
+	var JSONString = the_controller.saveDataJSON("testSaveFileName.json");
+	
+	console.log("JSONString is: " + JSONString);
 	
 	// Delete everything in the controller
 	
+	the_controller = null;
+	
 	// Verify that controller is empty
 	
+	ok(the_controller == null, "the_controller is " + the_controller);
+	
+	// Reload controller
+	
+	the_controller = new controller();
+	
 	// Load data back in
-	the_controller.loadDataJSON("testSaveFileName.json");
+	the_controller.loadDataJSON(JSONString);
+	
+	// Check that data is restored
+	ok(the_controller.the_map.layers[0].points.length == 4, "Data recreation from JSON string successful");
+	
+	// And that functions are also present
+	the_controller.the_map.layers[0].selectPoint(0);
+	
+	ok(the_controller.the_map.layers[0].points[0].selected == true, "Functions work as well");
 	
 	// Check that data is restored
 	ok(false, "Test not written yet");

@@ -87,6 +87,21 @@ function controller(){
 		}
 	}
 	
+	// Returns an array of layer names and index values for those layers
+	this.generateLayerList = function(){
+		
+		var layerList = [];
+		
+		for(var i = 0; i < this.the_map.layers.length; i++){
+			layerList.push({
+				name: this.the_map.layers[i].name,
+				index: i
+				});
+		}
+		
+		return layerList;
+	}
+	
 	// TODO:
 	// Put some points onto a DB server, and try to get this function to load them
 	// serverInfo should be an object containing the info needed to access the server
@@ -110,10 +125,14 @@ function controller(){
 	// The problem is that JS is kind of weird about openning files on a cilent side HD.
 	// Security concerns about rogue web pages running .js code to peek at the contents of someones HD.
 	
-	this.saveWorkspace = function(filename){
+	this.saveDataJSON = function(fileInfo){
+		var controllerJSONString = JSON.stringify(this.the_map);
+		//console.log(controllerJSONString);
+		return controllerJSONString;
 	}
 	
-	this.loadWorkspace = function(filename){
+	this.loadDataJSON = function(fileInfo){
+		this.the_map = JSON.parse(fileInfo);
 	}
 }
 
@@ -125,6 +144,11 @@ function mapMetadata(name){
 	
 	// coordinates for where the map should focus on when loaded
 	this.origin = [55.0, -115.0]
+	
+	// TODO:
+	// GoogleMaps has a bunch of map types (Satellite, Streets, etc)
+	// Double check those, and maybe make a function to set this
+	this.mapType = "default";
 	
 	this.changeName = function(newName){
 		this.mapName = newName;
