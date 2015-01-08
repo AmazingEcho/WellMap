@@ -881,18 +881,16 @@ test("Saving and Loading - Convert Workspace to JSON String", function(){
 	the_controller.loadDataJSON(JSONString);
 	
 	// Check that data is restored
-	ok(the_controller.the_map.layers[0].points.length == 4, "Data recreation from JSON string successful");
+	ok(the_controller.the_map.metadata.mapName == "Untitled Map", "Metadata restored - Map name is: " + the_controller.the_map.metadata.mapName);
+	ok(false, "TODO: Point data recreation from JSON string successful");
 	
 	// And that functions are also present
-	the_controller.the_map.layers[0].selectPoint(0);
+	the_controller.the_map.changeName("JSON Loaded Map");
 	
-	ok(the_controller.the_map.layers[0].points[0].selected == true, "Functions work as well");
-	
-	// Check that data is restored
-	ok(false, "Test not written yet");
+	ok(the_controller.the_map.metadata.mapName == "JSON Loaded Map", "Functions work as well - Map name has been changed to: " + the_controller.the_map.metadata.mapName);
 	
 });
 
-test("Saving and Loading - Larger File", function(){
+test("Saving and Loading - Local Files", function(){
 	ok(false, "Test not written yet");
 });

@@ -1,7 +1,18 @@
 /*
 WellMap
 controller.js
+Written by: Thomas Condon
+
 */
+
+// A registry of types
+// Needed in order to make sure objects made through JSON.parse() get thier attached functions back.
+// Further information here:
+// http://stackoverflow.com/questions/14027168/how-to-restore-original-object-type-from-json
+var Types = {};
+
+// TODO: Write toJSON and revive functions for each constructor
+// A rather tedious copy-paste job...
 
 /*
 
@@ -19,6 +30,20 @@ function controller(){
 	// When the controller is made, the first thing it does is create a map object
 	// It does this by calling the map() constructor function
 	this.the_map = new map();
+	
+	// !!! PLACEHOLDER !!!
+	// TODO:
+	// Put code to summon a map via gmaps.js here
+	// Could just copy some code right out of the prototype
+	// Needs to go here because I don't want the JSON file to have actual GMap info.
+	
+	this.renderMap = function(){
+		// TODO:
+		// Write a function to read through the layers, and feed data from each layer
+		// into the gmap.js functions to draw objects onto the map.
+
+		// Also, skip over non-visible objects
+	}
 	
 	// Functions are made in a similar fashion as attributes
 	// function() means that that we're declaring a function (duh)
@@ -132,9 +157,11 @@ function controller(){
 	}
 	
 	this.loadDataJSON = function(fileInfo){
-		this.the_map = JSON.parse(fileInfo);
+		this.the_map = JSON.parse(fileInfo, function(key, value){
+			return key === '' && value.hasOwnProperty('__type') ? Types[value.__type].revive(value) : this[key];
+			});
+		}
 	}
-}
 
 function mapMetadata(name){
 	this.mapName = name;
@@ -159,6 +186,26 @@ function mapMetadata(name){
 	}
 }
 
+// SUPER IMPORTANT!!!
+// This is the code that allows JSON.parse() to restore functions to objects made through JSON
+// Every constructor (except controller) needs it's own version of this.
+// More info here:
+// http://stackoverflow.com/questions/14027168/how-to-restore-original-object-type-from-json
+Types.mapMetadata = mapMetadata;
+
+mapMetadata.prototype.toJSON = function(){
+	return {
+		__type: 'mapMetadata',
+		the_map: this.mapName,
+		origin: this.origin,
+		mapType: this.mapType
+	};
+};
+
+mapMetadata.revive = function(data){
+	return new mapMetadata(data.name);
+};
+
 /*
 
 map
@@ -177,19 +224,6 @@ function map(){
 	
 	this.changeDescription = function(newDesc){
 		this.metadata.changeDescription(newDesc);
-	}
-	
-	// !!! PLACEHOLDER !!!
-	// TODO:
-	// Put code to summon a map via gmaps.js here
-	// Could just copy some code right out of the prototype
-	
-	this.renderMap = function(){
-		// TODO:
-		// Write a function to read through the layers, and feed data from each layer
-		// into the gmap.js functions to draw objects onto the map.
-
-		// Also, skip over non-visible objects
 	}
 	
 	this.newLayer = function(name){
@@ -284,6 +318,24 @@ function map(){
 		}
 	}
 }
+
+Types.map = map;
+
+map.prototype.toJSON = function(){
+	return {
+		__type: 'map',
+		layers: this.layers,
+		metaData: this.metaData
+	};
+};
+
+map.revive = function(data){
+	return new map();
+};
+
+map.prototype.changeName = function(newName){
+		this.metadata.changeName(newName);
+	}
 
 /*
 GMapPoint
