@@ -861,6 +861,8 @@ test("Saving and Loading - Convert Workspace to JSON String", function(){
 	the_controller.the_map.layers[0].addPointLatLong("Test Point 3", "Well", 53.75, -112.25);
 	the_controller.the_map.layers[0].addPointLatLong("Test Point 4", "Well", 53.0, -112.25);
 	
+	the_controller.the_map.changeName("Testing Data Preservation");
+	
 	var JSONString = the_controller.saveDataJSON("testSaveFileName.json");
 	
 	console.log("JSONString is: " + JSONString);
@@ -881,7 +883,7 @@ test("Saving and Loading - Convert Workspace to JSON String", function(){
 	the_controller.loadDataJSON(JSONString);
 	
 	// Check that data is restored
-	ok(the_controller.the_map.metadata.mapName == "Untitled Map", "Metadata restored - Map name is: " + the_controller.the_map.metadata.mapName);
+	ok(the_controller.the_map.metadata.mapName == "Testing Data Preservation", "Metadata restored - Map name is: " + the_controller.the_map.metadata.mapName);
 	ok(false, "TODO: Point data recreation from JSON string successful");
 	
 	// And that functions are also present

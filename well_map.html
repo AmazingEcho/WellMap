@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="jquery-ui.min.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="semantic/packaged/css/semantic.min.css">
+<link type="text/css" rel="stylesheet" href="ui.css" />
+<title>Well Map</title>
+<script src="external/jquery/jquery.js"></script>
+<script src="jquery-ui.js"></script>
+<script src="semantic/packaged/javascript/semantic.js"></script>
+<script src="controller.js"></script>
+<script src="ui.js"></script>
+<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBvwCMuLz31gLXoawbDBntieQjGPMrf5vA&sensor=false"></script>
+<script src="gmaps.js"></script>
+
+</head>
+<body>
+<div class="wrapper">
+	<div class="toolbar">
+    	<div class="toolbarTOP">
+        	<div class="ui compact tiered black inverted menu">
+				<div class="menu">
+					<div id="sidebar-toggle" style="display:inline"><a class="active item">
+						<i class="icon exchange"></i>Sidebar
+					</a></div>
+					<a class="ui dropdown item">
+						<i class="level down icon"></i>Find<i class="dropdown icon"></i>
+						<div class="menu">
+							<div class="item">
+								<i class="search icon"></i>Well
+								<div class="menu">
+									<div class="item">By UWI</div>
+									<div class="item">By LatLong</div>
+								</div>
+							</div>
+							<div class="item"><i class="book icon"></i>Archive</div>
+						</div>
+					</a>
+					<a class="item">
+					<i class="user icon"></i> Browse
+				</a>
+			</div>
+		</div>
+        
+        <div class="ui black buttons">
+  <div class="ui button">Update Map</div>
+  <div class="ui teal dropdown icon button">
+    <i class="dropdown icon"></i>
+    <div class="menu">
+      <div class="item"><a href="https://github.com/Team-Avengineers/WellMap" target="_blank"><i class="github alternate icon"></i>Visit Us On GitHub</a></div>
+      <div class="item" id="modal-button"><i class="edit icon"></i>From Public Databse</div>
+      <div class="item"><i class="edit icon"></i>From Private Databse</div>
+      <div class="item"><i class="youtube icon big"></i>Videos of Kittens</div>
+    </div>
+  </div>
+</div>
+        
+		<div id="slider" style="width:300px; display:inline; float:right;"></div>
+	</div>
+    <div class="toolbarBOT">
+		<div class="ui tabular menu">
+  <a class="active item">
+    <i class="home icon"></i> Home
+  </a>
+  <a class="item">
+    <i class="map icon"></i> Map
+  </a>
+</div>
+	</div>
+	</div>
+    <div class="workArea">
+            <div class="ui sidebar">
+                <div id="tabs">
+					<ul>
+						<li><a href="#tabs-1">1</a></li>
+						<li><a href="#tabs-2">2</a></li>
+						<li><a href="#tabs-3">Markers</a></li>
+					</ul>
+					<div id="tabs-1">
+					<p>Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus.</p>
+					</div>
+					<div id="tabs-2">
+					<p>Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id nunc.</p>
+					</div>
+					<div id="tabs-3">
+					<p>
+                    	<ul id="markers-with-index">
+                        </ul>
+                    </p>
+					</div>
+					</div>
+			</div>
+			<div id="mapArea"><div id="googleMap"></div></div>
+    </div>
+</div>
+
+<script type="text/html" id="edit_marker_template">
+<h4>Edit Marker</h4>
+<form class="edit_marker" action="#" method="post" data-marker-index="{{index}}">
+  <p>
+    <label for="marker_{{index}}_lat">Latitude:</label>
+    <input type="text" id="marker_{{index}}_lat" value="{{lat}}" />
+  </p>
+  <p>
+    <label for="marker_{{index}}_lng">Longitude:</label>
+    <input type="text" id="marker_{{index}}_lng" value="{{lng}}" />
+  </p>
+  <input type="submit" value="Update position" />
+</form>
+</script>
+
+<div class="basic modal" style="background-color:#CCC; color:#000">
+  <i class="close icon"></i>
+  <div class="header">
+    Import Public Wells
+  </div>
+  <div class="content">
+    <div class="left">
+      Please specify the wells you would like to access:
+    </div>
+    <div class="right">
+      PUT STUFF HERE
+    </div>
+  </div>
+  <div class="actions">
+    <div class="ui button">
+      Cancel
+    </div>
+    <div class="ui button">
+      Okay
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+	var the_controller = new controller();
+	alert("Controller status: On\n Map name: " + the_controller.the_map.metadata.mapName);
+</script>
+
+</body>
+</html>
