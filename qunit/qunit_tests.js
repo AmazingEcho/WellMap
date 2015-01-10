@@ -43,11 +43,13 @@ module('Map Metadata Tests', {
 
 test("Metadata: Name", function(){
 	var the_controller = new controller();
+	the_controller.newMap();
 	ok(the_controller.the_map.metadata.mapName == "Untitled Map", "Map name is: " + the_controller.the_map.metadata.mapName);
 });
 
 test("Metadata: Description", function(){
 	var the_controller = new controller();
+	the_controller.newMap();
 	ok(the_controller.the_map.metadata.description == "", "Description is: " + the_controller.the_map.metadata.description);
 });
 
@@ -61,6 +63,7 @@ module('Data Structure Tests', {
 test("Basic Data Structure Creation Tests", function(){
 	
 	var the_controller = new controller();
+	the_controller.newMap();
 	ok(the_controller, "Controller created!");
 	
 	the_controller.newLayer("Test Layer");
@@ -74,6 +77,7 @@ test("Basic Data Structure Creation Tests", function(){
 
 test("Point Layer Creation",function(){
 	var the_controller = new controller();
+	the_controller.newMap();
 	the_controller.newPointLayer("Test Point Layer");
 	
 	ok(the_controller.the_map.layers[0].name === "Test Point Layer", "Layer name is: " + the_controller.the_map.layers[0].name);
@@ -91,6 +95,7 @@ test("Path Layer Creation",function(){
 	
 	// Create the controller and add a Path Layer
 	var the_controller = new controller();
+	the_controller.newMap();
 	the_controller.newPathLayer("Test Path Layer");
 	
 	// Create a path, and add some points to it
@@ -118,6 +123,7 @@ test("Path Layer Creation",function(){
 
 test("Poly Layer Creation", function(){
 	var the_controller = new controller();
+	the_controller.newMap();
 	the_controller.newPolyLayer("Test Poly Layer");
 	
 	var testPoly = new Poly("Test Poly", "Bigfoot Habitat");
@@ -157,6 +163,7 @@ test("Poly Size Restriction", function(){
 	// A Polygon with 0, 1 or 2 shouldn't be created...
 	
 	var the_controller = new controller();
+	the_controller.newMap();
 	the_controller.newPolyLayer("Test Poly Layer");
 	
 	var testPoly = new Poly("Test Poly", "Bigfoot Habitat");
@@ -171,6 +178,7 @@ test("Poly Size Restriction", function(){
 test("Layer Sorting by name", function(){
 	
 	var the_controller = new controller();
+	the_controller.newMap();
 	the_controller.newPolyLayer("Test Layer G");
 	the_controller.newPointLayer("Test Layer B");
 	the_controller.newPathLayer("Test Layer A");
@@ -204,6 +212,7 @@ module("Layer Delation Tests", {
 test("Layer Delete", function(){
 	
 	var the_controller = new controller();
+	the_controller.newMap();
 	the_controller.newPointLayer("Test Point Layer");
 	the_controller.newPathLayer("Test Path Layer");
 	the_controller.newPathLayer("Test Poly Layer");
@@ -221,6 +230,7 @@ test("Layer Delete", function(){
 
 test("Point Delete", function(){
 	var the_controller = new controller();
+	the_controller.newMap();
 	the_controller.newPointLayer("Test Point Layer");
 	
 	the_controller.the_map.layers[0].addPointLatLong("Test Point 1", "Well", 55.0, -115.0);
@@ -237,6 +247,7 @@ test("Point Delete", function(){
 
 test("Point Selection", function(){
 	var the_controller = new controller();
+	the_controller.newMap();
 	the_controller.newPointLayer("Test Point Layer");
 	
 	the_controller.the_map.layers[0].addPointLatLong("Test Point 1", "Well", 55.0, -115.0);
@@ -279,6 +290,7 @@ test("Point Selection", function(){
 test("Point Selection by Area", function(){
 	
 	var the_controller = new controller();
+	the_controller.newMap();
 	the_controller.newPointLayer("Test Point Layer");
 	
 	// Center - WILL BE SELECTED
@@ -343,6 +355,7 @@ test("Point Selection by Area", function(){
 test("Point Delete by Selection", function(){
 	
 	var the_controller = new controller();
+	the_controller.newMap();
 	the_controller.newPointLayer("Test Point Layer");
 	
 	the_controller.the_map.layers[0].addPointLatLong("Test Point 1", "Well", 53.75, -113.75);
@@ -373,6 +386,7 @@ test("Point Delete by Selection", function(){
 test("Create New Point Layer From Selected Points", function(){
 	
 	var the_controller = new controller();
+	the_controller.newMap();
 	the_controller.newPointLayer("Test Point Layer");
 
 	// Center - WILL BE IN NEW LAYER
@@ -431,6 +445,7 @@ test("Create New Point Layer From Selected Points", function(){
 
 test("Point Delete by Area", function(){
 	var the_controller = new controller();
+	the_controller.newMap();
 	the_controller.newPointLayer("Test Point Layer");
 
 	// Center - WILL BE DELETED
@@ -485,6 +500,7 @@ test("Point Delete by Area", function(){
 
 test("Path Delete", function(){
 	var the_controller = new controller();
+	the_controller.newMap();
 	the_controller.newPathLayer("Test Path Layer");
 	
 	var testPath = new Path("Test Path 1", "Yellow Brick Road");
@@ -513,6 +529,7 @@ test("Path Delete", function(){
 
 test("Poly Delete", function(){
 	var the_controller = new controller();
+	the_controller.newMap();
 	the_controller.newPolyLayer("Test Poly Layer");
 	
 	var testPoly = new Poly("Test Poly 1", "Bigfoot Habitat");
@@ -550,6 +567,7 @@ module("Layer Settings Tests", {
 
 test("Visibility On/Off", function(){
 	var the_controller = new controller();
+	the_controller.newMap();
 	the_controller.newPointLayer("Test Point Layer");
 	ok(the_controller.the_map.layers[0].visible == true, "Layer is visible on creation!");
 	the_controller.the_map.switchVis(0);
@@ -581,6 +599,7 @@ test("Visibility All On/Off", function(){
 	// and then use the all on/off functions to turn them all on/off at once.
 	
 	var the_controller = new controller();
+	the_controller.newMap();
 	the_controller.newPointLayer("Test Point Layer 1");
 	the_controller.newPointLayer("Test Point Layer 2");
 	the_controller.newPointLayer("Test Point Layer 3");
@@ -632,6 +651,7 @@ module("gmaps.js Data Generation", {
 test("Path gmaps.js array generator",function(){
 	
 	var the_controller = new controller();
+	the_controller.newMap();
 	the_controller.newPathLayer("Test Path Layer");
 	
 	var testPath = new Path("Test Path", "Stairway to Heaven");
@@ -652,6 +672,7 @@ test("Path gmaps.js array generator",function(){
 test("Poly gmaps.js array generator",function(){
 	
 	var the_controller = new controller();
+	the_controller.newMap();
 	the_controller.newPolyLayer("Test Poly Layer");
 	
 	var testPoly = new Poly("Test Poly", "Bigfoot Habitat");
@@ -689,6 +710,7 @@ test("Path Layer Visual Properties", function(){
 	*/
 	
 	var the_controller = new controller();
+	the_controller.newMap();
 	the_controller.newPathLayer("Test Path Layer");
 	
 	ok(the_controller.the_map.layers[0].visualProperties.strokeColor == "#ffffff", "Path Layer has default strokeColor.");
@@ -740,6 +762,7 @@ test("Path Layer Visual Properties", function(){
 test("Poly Layer Visual Properties", function(){
 	
 	var the_controller = new controller();
+	the_controller.newMap();
 	the_controller.newPolyLayer("Test Poly Layer");
 	
 	ok(the_controller.the_map.layers[0].visualProperties.strokeColor == "#ffffff", "Poly Layer has default strokeColor.");
@@ -828,6 +851,7 @@ module("Data Import Tests", {
 test("Import Data Points", function(){
 	
 	var the_controller = new controller();
+	the_controller.newMap();
 	the_controller.newPointLayer("Test Point Import Layer");
 	
 	var serverInfo = {
@@ -853,6 +877,7 @@ module("Saving and Loading", {
 test("Saving and Loading - Convert Workspace to JSON String", function(){
 	
 	var the_controller = new controller();
+	the_controller.newMap();
 	the_controller.newPointLayer("Test Point Import Layer");
 	
 	// Add some data

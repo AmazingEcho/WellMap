@@ -29,13 +29,25 @@ function controller(){
 	// Classes will have attributes and functions, both of which MUST be prefaced with a 'this.'
 	// When the controller is made, the first thing it does is create a map object
 	// It does this by calling the map() constructor function
-	this.the_map = new map();
+	
+	// Edit:
+	// controller now has to be TOLD to make a new map
+	this.the_map = null;
 	
 	// !!! PLACEHOLDER !!!
 	// TODO:
 	// Put code to summon a map via gmaps.js here
 	// Could just copy some code right out of the prototype
 	// Needs to go here because I don't want the JSON file to have actual GMap info.
+	
+	this.newMap = function(){
+		this.the_map = new map("Untitled Map");
+	}
+	
+	this.loadMap = function(){
+		// TODO
+		// relocate the JSON stuff here later...
+	}
 	
 	this.renderMap = function(){
 		// TODO:
@@ -164,6 +176,7 @@ function controller(){
 	}
 
 function mapMetadata(name){
+	//console.log("mapMetadata() constructor called, name is " + name);
 	this.mapName = name;
 	
 	// description is empty on creation
@@ -191,19 +204,21 @@ function mapMetadata(name){
 // Every constructor (except controller) needs it's own version of this.
 // More info here:
 // http://stackoverflow.com/questions/14027168/how-to-restore-original-object-type-from-json
+
 Types.mapMetadata = mapMetadata;
 
 mapMetadata.prototype.toJSON = function(){
 	return {
 		__type: 'mapMetadata',
-		the_map: this.mapName,
+		mapName: this.mapName,
 		origin: this.origin,
 		mapType: this.mapType
 	};
 };
 
 mapMetadata.revive = function(data){
-	return new mapMetadata(data.name);
+	//console.log("Revive Function called" + data.mapName);
+	return new mapMetadata(data.mapName);
 };
 
 /*
@@ -212,7 +227,7 @@ map
 The map object is what will hold the layer objects.
 
 */
-function map(){
+function map(name){
 	// Arrays in Javascript aren't like Arrays in C/C++
 	// You don't have to specify how big the array is or what it's storing
 	
@@ -220,7 +235,7 @@ function map(){
 	// Arrays can also be made like this, which I've been told is better:
 	this.layers = [];
 	
-	this.metadata = new mapMetadata("Untitled Map");
+	this.metadata = new mapMetadata(name);
 	
 	this.changeDescription = function(newDesc){
 		this.metadata.changeDescription(newDesc);
@@ -325,12 +340,13 @@ map.prototype.toJSON = function(){
 	return {
 		__type: 'map',
 		layers: this.layers,
-		metaData: this.metaData
+		metadata: this.metadata
 	};
 };
 
 map.revive = function(data){
-	return new map();
+	//console.log("Revive Function called for map.  Data is " + data);
+	return new map(data.metadata.name);
 };
 
 map.prototype.changeName = function(newName){

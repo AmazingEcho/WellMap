@@ -54,7 +54,18 @@ $(document).on('click', '.pan-to-marker', function(e) {
 });
 
 $('document').ready(function(){
-
+	
+	var the_controller = new controller();
+	
+	// TODO: Start up menu option to select between starting a new map and loading one
+	console.log("Ititializing Start Modal");
+	$('.basic.modal.startup').modal('show');
+	
+	// TODO: control logic that either starts a new map or tries to load an existing one, based on user input...
+	the_controller.newMap();
+	alert("Controller status: On\n Map name: " + the_controller.the_map.metadata.mapName);
+	
+// TODO: Move this over to controller.js
 map = new GMaps({
 	div: '#googleMap',
 	lat: 55.00,
@@ -128,7 +139,7 @@ polygon = map.drawPolygon({
 
 $('#modal-button').click(function(){
 	console.log("modal time");
-	$('.basic.modal').modal('show');
+	$('.basic.modal.wellLoad').modal('show');
 });
 
 $(function() {
