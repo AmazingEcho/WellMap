@@ -1,11 +1,10 @@
 // JavaScript Document
-// ui_proto.js
+// ui.js
 // Author: Thomas 'Toss' Condon
 
-// Small collection of javascript to power current UI Prototype
+// Javascript functionallity for UI components of WellMap
 
-
-var map;
+var Gmap;
 
 $(document).on('submit', '.edit_marker', function(e) {
   e.preventDefault();
@@ -20,8 +19,8 @@ $(document).on('submit', '.edit_marker', function(e) {
   // Update form values
   var content = template.replace(/{{index}}/g, $index).replace(/{{lat}}/g, $lat).replace(/{{lng}}/g, $lng);
 
-  map.markers[$index].setPosition(new google.maps.LatLng($lat, $lng));
-  map.markers[$index].infoWindow.setContent(content);
+  Gmap.markers[$index].setPosition(new google.maps.LatLng($lat, $lng));
+  Gmap.markers[$index].infoWindow.setContent(content);
 
   $marker = $('#markers-with-coordinates').find('li').eq(0).find('a');
   $marker.data('marker-lat', $lat);
@@ -40,7 +39,7 @@ $(document).on('click', '.pan-to-marker', function(e) {
 
   if ($index != undefined) {
     // using indices
-    var position = map.markers[$index].getPosition();
+    var position = Gmap.markers[$index].getPosition();
     lat = position.lat();
     lng = position.lng();
   }
@@ -50,7 +49,7 @@ $(document).on('click', '.pan-to-marker', function(e) {
     lng = $lng;
   }
 
-  map.setCenter(lat, lng);
+  Gmap.setCenter(lat, lng);
 });
 
 $('document').ready(function(){
@@ -58,15 +57,27 @@ $('document').ready(function(){
 	var the_controller = new controller();
 	
 	// TODO: Start up menu option to select between starting a new map and loading one
+	// Also, must be unclosable, in order to force a choice...
 	console.log("Ititializing Start Modal");
-	$('.basic.modal.startup').modal('show');
+	$('.basic.modal.startup')
+		.modal('setting', 'closable', false)
+		.modal('show');
 	
-	// TODO: control logic that either starts a new map or tries to load an existing one, based on user input...
-	the_controller.newMap();
-	alert("Controller status: On\n Map name: " + the_controller.the_map.metadata.mapName);
+	$('.massive.ui.button.startupNewMap').on('click', function(){
+		// TODO: control logic that either starts a new map or tries to load an existing one, based on user input...
+		the_controller.newMap();
+		console.log("Controller status: On - Map name: " + the_controller.the_map.metadata.mapName);
+		$('.basic.modal.startup').modal('hide');
+		// maybe bring up a new map info modal?
+	})
+	
+	$('.massive.ui.button.startupLoadMap').click(function(){
+		// TODO: hook this up to the map load function
+		alert("Map Saving/Loading not yet implemented...");
+	})
 	
 // TODO: Move this over to controller.js
-map = new GMaps({
+Gmap = new GMaps({
 	div: '#googleMap',
 	lat: 55.00,
 	lng: -115.00,
@@ -75,14 +86,14 @@ map = new GMaps({
 	disableDefaultUI:true
 	});
 	
-GMaps.on('marker_added', map, function(marker) {
+GMaps.on('marker_added', Gmap, function(marker) {
     $('#markers-with-index').append('<li><a href="#" class="pan-to-marker" data-marker-index="' + map.markers.indexOf(marker) + '">' + marker.title + '</a></li>');
 
     $('#markers-with-coordinates').append('<li><a href="#" class="pan-to-marker" data-marker-lat="' + marker.getPosition().lat() + '" data-marker-lng="' + marker.getPosition().lng() + '">' + marker.title + '</a></li>');
   });
 
-  GMaps.on('click', map.map, function(event) {
-    var index = map.markers.length;
+  GMaps.on('click', Gmap.map, function(event) {
+    var index = Gmap.markers.length;
     var lat = event.latLng.lat();
     var lng = event.latLng.lng();
 
@@ -90,7 +101,7 @@ GMaps.on('marker_added', map, function(marker) {
 
     var content = template.replace(/{{index}}/g, index).replace(/{{lat}}/g, lat).replace(/{{lng}}/g, lng);
 
-    map.addMarker({
+    Gmap.addMarker({
       lat: lat,
       lng: lng,
       title: 'Marker #' + index,
@@ -99,10 +110,6 @@ GMaps.on('marker_added', map, function(marker) {
       }
     });
   });
-
-$(function(){
-	$( "#slider" ).slider();
-});
 
 $(function() {
     var tabs = $( "#tabs" ).tabs({
@@ -128,7 +135,7 @@ $('.ui.dropdown').dropdown();
 
 var path = [[55.000,-115.000],[55.000,-113.000],[52.000,-113.000],[52.000,-115.000]];
 
-polygon = map.drawPolygon({
+polygon = Gmap.drawPolygon({
   paths: path, // pre-defined polygon shape
   strokeColor: '#BBD8E9',
   strokeOpacity: 1,
@@ -141,73 +148,5 @@ $('#modal-button').click(function(){
 	console.log("modal time");
 	$('.basic.modal.wellLoad').modal('show');
 });
-
-$(function() {
-    $( "#beginning" ).button({
-      text: false,
-      icons: {
-        primary: "ui-icon-seek-start"
-      }
-    });
-    $( "#rewind" ).button({
-      text: false,
-      icons: {
-        primary: "ui-icon-seek-prev"
-      }
-    });
-    $( "#play" ).button({
-      text: false,
-      icons: {
-        primary: "ui-icon-play"
-      }
-    })
-    .click(function() {
-      var options;
-      if ( $( this ).text() === "play" ) {
-        options = {
-          label: "pause",
-          icons: {
-            primary: "ui-icon-pause"
-          }
-        };
-      } else {
-        options = {
-          label: "play",
-          icons: {
-            primary: "ui-icon-play"
-          }
-        };
-      }
-      $( this ).button( "option", options );
-    });
-    $( "#stop" ).button({
-      text: false,
-      icons: {
-        primary: "ui-icon-stop"
-      }
-    })
-    .click(function() {
-      $( "#play" ).button( "option", {
-        label: "play",
-        icons: {
-          primary: "ui-icon-play"
-        }
-      });
-    });
-    $( "#forward" ).button({
-      text: false,
-      icons: {
-        primary: "ui-icon-seek-next"
-      }
-    });
-    $( "#end" ).button({
-      text: false,
-      icons: {
-        primary: "ui-icon-seek-end"
-      }
-    });
-    $( "#shuffle" ).button();
-    $( "#repeat" ).buttonset();
-  });
 
 });	// End of $('document').ready(function());

@@ -9,10 +9,11 @@
 <script src="external/jquery/jquery.js"></script>
 <script src="jquery-ui.js"></script>
 <script src="semantic/packaged/javascript/semantic.js"></script>
-<script src="controller.js"></script>
-<script src="ui.js"></script>
 <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBvwCMuLz31gLXoawbDBntieQjGPMrf5vA&sensor=false"></script>
 <script src="gmaps.js"></script>
+<script src="controller.js"></script>
+<script src="ui.js"></script>
+
 
 </head>
 <body>
@@ -55,8 +56,7 @@
     </div>
   </div>
 </div>
-        
-		<div id="slider" style="width:300px; display:inline; float:right;"></div>
+
 	</div>
     <div class="toolbarBOT">
 		<div class="ui tabular menu">
@@ -134,24 +134,15 @@
 </div>
 
 <div class="basic modal startup" style="background-color:#CCC; color:#000">
-  <i class="close icon"></i>
   <div class="header">
     Well Map
   </div>
   <div class="content">
-    <div class="left">
-      Start a new map
+    <div class="massive ui button startupNewMap">
+		<center><i class="massive file outline icon"></i><br>Start a new map</center>
     </div>
-    <div class="right">
-      Open an existing map
-    </div>
-  </div>
-  <div class="actions">
-    <div class="ui button">
-      Cancel
-    </div>
-    <div class="ui button">
-      Okay
+    <div class="massive ui button startupLoadMap">
+      <center><i class="massive folder open icon"></i><br>Open an existing map</center>
     </div>
   </div>
 </div>
