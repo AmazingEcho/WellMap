@@ -33,6 +33,7 @@ function controller(){
 	// Edit:
 	// controller now has to be TOLD to make a new map
 	this.the_map = null;
+	var Gmap
 	
 	// !!! PLACEHOLDER !!!
 	// TODO:
@@ -40,21 +41,62 @@ function controller(){
 	// Could just copy some code right out of the prototype
 	// Needs to go here because I don't want the JSON file to have actual GMap info.
 	
+	this.initGMaps = function(){
+		Gmap = new GMaps({
+		div: '#googleMap',
+		lat: 55.00,
+		lng: -115.00,
+		zoom: 5,
+		mapTypeId:google.maps.MapTypeId.TERRAIN,
+		disableDefaultUI:true
+	});
+	
+	var path = [[55.000,-115.000],[55.000,-113.000],[52.000,-113.000],[52.000,-115.000]];
+
+	Gmap.drawPolygon({
+		paths: path, // pre-defined polygon shape
+		strokeColor: '#BBD8E9',
+		strokeOpacity: 1,
+		strokeWeight: 3,
+		fillColor: '#BBD8E9',
+		fillOpacity: 0.6
+		});	
+	}
+	
 	this.newMap = function(){
 		this.the_map = new map("Untitled Map");
 	}
 	
-	this.loadMap = function(){
-		// TODO
-		// relocate the JSON stuff here later...
-	}
-	
-	this.renderMap = function(){
+	this.refreshMap = function(){
 		// TODO:
 		// Write a function to read through the layers, and feed data from each layer
 		// into the gmap.js functions to draw objects onto the map.
+		console.log("Refreshing Map! " + this.the_map.layers.length + " layers to draw!");
+		
+		Gmap.removeMarkers();
+		Gmap.removePolylines();
+		Gmap.removePolygons();
 
 		// Also, skip over non-visible objects
+		for(var i = 0; i < this.the_map.layers.length; i++){
+			console.log("Now drawing: " + this.the_map.layers[i].name + "which contains " + this.the_map.layers[i].points.length + " points.");
+			switch(this.the_map.layers[i].layerType){
+				case "point":
+				
+				for(var j = 0; j < this.the_map.layers[i].points.length; j++){
+					Gmap.addMarker({
+						lat: this.the_map.layers[i].points[j].getLat(),
+						lng: this.the_map.layers[i].points[j].getLong(),
+						title: this.the_map.layers[i].points[j].name
+					});
+				}
+				break;
+				
+				case "path":
+				case "poly":
+				default:
+			}
+		}
 	}
 	
 	// Functions are made in a similar fashion as attributes
@@ -88,7 +130,6 @@ function controller(){
 		// Code to verify that layer is a point layer
 		
 		// Verify that layer has selected points in the first place
-		
 		var selectedPresent = false;
 		for(var i = 0; i <  this.the_map.layers[layerIndex].points.length; i++){
 			if(this.the_map.layers[layerIndex].points[i].selected){
@@ -107,8 +148,6 @@ function controller(){
 		
 		var newLayerIndex = (this.the_map.layers.length) - 1;
 		console.log("newLayerIndex is " + newLayerIndex);
-		
-		
 		
 		for(var j = 0; j < this.the_map.layers[layerIndex].points.length;){
 			if(this.the_map.layers[layerIndex].points[j].selected){
@@ -173,6 +212,20 @@ function controller(){
 			return key === '' && value.hasOwnProperty('__type') ? Types[value.__type].revive(value) : this[key];
 			});
 		}
+	
+	// Helper Function	
+	this.generateRandomPoints = function(numPoints){
+		this.newPointLayer("Random Point Layer");
+		var layerIndex = this.the_map.layers.length - 1;
+		
+		for(var i = 0; i < numPoints; i++){
+			var randLat = (Math.random() * 11.0) + 49.0;
+			var randLong = -((Math.random() * 10.0) + 110.0);
+			this.the_map.layers[layerIndex].addPointLatLong("Random Point " + i, "Random Point", randLat, randLong);
+			}
+			
+		console.log("Random Points Generated - Total: " + numPoints);
+		};
 	}
 
 function mapMetadata(name){
@@ -442,6 +495,8 @@ function Layer(name){
 	//New Layers are always visible on creation.
 	this.visible = true;
 	
+	this.layerType = "NONE";
+	
 	this.switchVis = function(){
 		if(this.visible == true){
 			this.visible = false;
@@ -470,6 +525,8 @@ http://www.2ality.com/2011/06/prototypes-as-classes.html
 function pointLayer(name){
 	
 	Layer.call(this, name);
+	
+	this.layerType = "point";
 	
 	this.points = [];
 	
@@ -579,6 +636,8 @@ function pathLayer(name){
 	
 	Layer.call(this, name);
 	
+	this.layerType = "path";
+	
 	this.paths = [];
 	
 	// Some default visual properties
@@ -624,6 +683,8 @@ function pathLayer(name){
 function polyLayer(name){
 	
 	Layer.call(this, name);
+	
+	this.layerType = "poly";
 	
 	this.polys = [];
 	

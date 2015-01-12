@@ -921,3 +921,28 @@ test("Saving and Loading - Convert Workspace to JSON String", function(){
 test("Saving and Loading - Local Files", function(){
 	ok(false, "Test not written yet");
 });
+
+module("Demo Feature Tests", {
+	setup: function(){
+		
+	},
+	teardown: function(){
+		
+	}
+});
+
+test("RNG Tester", function(){
+	
+	var the_controller = new controller();
+	the_controller.newMap();
+	
+	the_controller.generateRandomPoints(100);
+	
+	for(var i = 0; i < 100; i++){
+		ok(the_controller.the_map.layers[0].points[i].getLat() <= 60 &&
+			the_controller.the_map.layers[0].points[i].getLat() >= 49 &&
+			the_controller.the_map.layers[0].points[i].getLong() < -110 &&
+			the_controller.the_map.layers[0].points[i].getLong() > -120
+			, "Randomly generated point falls within specificed bounds - Lat: " + the_controller.the_map.layers[0].points[i].getLat() + "Long: " +the_controller.the_map.layers[0].points[i].getLong())
+	}
+});
