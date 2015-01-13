@@ -21,15 +21,15 @@ body{
 }
 
 .toolbarTOP{
-	padding: 3px;
-	height: 44px;
+	padding: 6px;
+	height: 50px;
 	width: 100%;
 	background-color: #0FF;
 }
 
 .toolbarBOT{
-	padding: 3px;
-	height: 44px;
+	padding: 6px;
+	height: 50px;
 	width: 100%;
 	background-color:#09C;
 }
@@ -46,7 +46,8 @@ body{
 
 .ui.sidebar{
 	top: 100px;
-	background-color:#CCC;
+	background-color:#FFF;
+	padding: 10px;
 }
 
 /*

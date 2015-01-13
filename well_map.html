@@ -17,16 +17,73 @@
 
 </head>
 <body>
-<div class="wrapper">
-	<div class="toolbar">
-    	<div class="toolbarTOP">
-        	<div class="ui compact tiered black inverted menu">
-				<div class="menu">
-					<div id="sidebar-toggle" style="display:inline"><a class="active item">
-						<i class="icon exchange"></i>Sidebar
-					</a></div>
-					<a class="ui dropdown item">
-						<i class="level down icon"></i>Find<i class="dropdown icon"></i>
+<div class="ui sidebar">
+	<div class="ui top attached tabular menu">
+		<a class="active item" data-tab="first">Layers</a>
+		<a class="item" data-tab="second">???</a>
+		<a class="item" data-tab="third">???</a>
+	</div>
+	<div class="ui bottom attached active tab segment" data-tab="first">
+		Layers<br />
+		<div class="ui accordion">
+			<div class="title">
+				<i class="dropdown icon"></i>
+				Layer 1
+			</div>
+			<div class="active content">
+				<ul>
+				<li>Point 1</li>
+				<li>Point 2</li>
+				<li>Point 3</li>
+				<li>Point 4</li>
+				<li>Point 5</li>
+				<li>Point 6</li>
+				</ul>
+			</div>
+			<div class="title">
+				<i class="dropdown icon"></i>
+				Layer 2
+			</div>
+			<div class="content">
+				<ul>
+				<li>Point 1</li>
+				<li>Point 2</li>
+				<li>Point 3</li>
+				<li>Point 4</li>
+
+				</ul>
+			</div>
+			<div class="title">
+				<i class="dropdown icon"></i>
+					Layer 3
+			</div>
+			<div class="content">
+				<ul>
+				<li>Point 1</li>
+				<li>Point 2</li>
+				<li>Point 3</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="ui bottom attached tab segment" data-tab="second">
+		???
+	</div>
+	<div class="ui bottom attached tab segment" data-tab="third">
+		???
+	</div>
+</div>
+
+<div class="pusher">
+	<div class="wrapper">
+		<div class="toolbar">
+			<div class="toolbarTOP">
+				<div class="ui compact tiered black inverted menu">
+					<div class="menu">
+						<div id="sidebar-toggle" style="display:inline">
+							<a class="active item"><i class="icon exchange"></i>Sidebar</a>
+						</div>
+						<a class="ui dropdown item"><i class="level down icon"></i>Find<i class="dropdown icon"></i>
 						<div class="menu">
 							<div class="item">
 								<i class="search icon"></i>Well
@@ -58,43 +115,17 @@
 
 	</div>
     <div class="toolbarBOT">
-		<div class="ui tabular menu">
-  <a class="active item">
-    <i class="home icon"></i> Home
-  </a>
-  <a class="item">
-    <i class="map icon"></i> Map
-  </a>
-</div>
+		
 	</div>
 	</div>
     <div class="workArea">
-            <div class="ui sidebar">
-                <div id="tabs">
-					<ul>
-						<li><a href="#tabs-1">1</a></li>
-						<li><a href="#tabs-2">2</a></li>
-						<li><a href="#tabs-3">Markers</a></li>
-					</ul>
-					<div id="tabs-1">
-					<p>Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus.</p>
-					</div>
-					<div id="tabs-2">
-					<p>Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id nunc.</p>
-					</div>
-					<div id="tabs-3">
-					<p>
-                    	<ul id="markers-with-index">
-                        </ul>
-                    </p>
-					</div>
-					</div>
-			</div>
+            
 			<div id="mapArea"><div id="googleMap"></div></div>
     </div>
 </div>
+</div>
 
-<div class="basic modal importPrivateDB" style="background-color:#CCC; color:#000">
+<div class="ui modal importPrivateDB" style="background-color:#CCC; color:#000">
   <i class="close icon"></i>
   <div class="header">
     Import Private Wells
@@ -129,7 +160,7 @@
   </div>
 </div>
 
-<div class="basic modal startup" style="background-color:#CCC; color:#000">
+<div class="ui modal startup" style="background-color:#CCC; color:#000">
   <div class="header">
     Well Map
   </div>
