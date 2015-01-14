@@ -59,6 +59,7 @@ $('.menu .item').tab();
 
 $('.ui.dropdown').dropdown();
 
+$('.ui.button').popup();
 
 $('#modal-button-importPrivateDB').click(function(){
 	$('.ui.modal.importPrivateDB').modal('show');

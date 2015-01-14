@@ -30,7 +30,7 @@
 				<i class="dropdown icon"></i>
 				Layer 1
 			</div>
-			<div class="active content">
+			<div class="content">
 				<ul>
 				<li>Point 1</li>
 				<li>Point 2</li>
@@ -77,87 +77,112 @@
 <div class="pusher">
 	<div class="wrapper">
 		<div class="toolbar">
+
 			<div class="toolbarTOP">
+				<div class=" icon ui buttons">
+					<div class="ui button" data-content="New Map"><i class="file outline icon"></i></div>
+					<div class="ui button" data-content="Save Map"><i class="save icon"></i></div>
+					<div class="ui button" data-content="Open Map"><i class="folder open icon"></i></div>
+				</div>
+				
+				<div class=" icon ui buttons">
+					<div class="ui button" data-content="Cut"><i class="cut icon"></i></div>
+					<div class="ui button" data-content="Copy"><i class="copy icon"></i></div>
+					<div class="ui button" data-content="Paste"><i class="paste icon"></i></div>
+				</div>
+				
+				<div class=" icon ui buttons">
+					<div class="ui button" data-content="Sort Ascending"><i class="sort numeric ascending icon"></i></div>
+					<div class="ui button" data-content="Sort Descending"><i class="sort numeric descending icon"></i></div>
+					<div class="ui button" data-content="Refresh Map"><i class="refresh icon"></i></div>
+					<div class="ui button" data-content="Search"><i class="search icon"></i></div>
+					<div class="ui button" data-content=""><i class="world icon"></i></div>
+					<div class="ui button" data-content="View Data"><i class="table icon"></i></div>
+				</div>
+				
+				<div class=" icon ui buttons">
+					<div class="ui button" data-content="Settings"><i class="settings icon"></i></div>
+					<div class="ui button" data-content="Help"><i class="help icon"></i></div>
+					<div class="ui button" data-content="Report Bug"><i class="red bug icon"></i></div>
+				</div>
+			</div>
+
+			<div class="toolbarBOT">
 				<div class="ui compact tiered black inverted menu">
 					<div class="menu">
 						<div id="sidebar-toggle" style="display:inline">
 							<a class="active item"><i class="icon exchange"></i>Sidebar</a>
 						</div>
 						<a class="ui dropdown item"><i class="level down icon"></i>Find<i class="dropdown icon"></i>
-						<div class="menu">
-							<div class="item">
-								<i class="search icon"></i>Well
-								<div class="menu">
-									<div class="item">By UWI</div>
-									<div class="item">By LatLong</div>
+							<div class="menu">
+								<div class="item">
+									<i class="search icon"></i>Well
+									<div class="menu">
+										<div class="item">By UWI</div>
+										<div class="item">By LatLong</div>
+									</div>
 								</div>
+								<div class="item"><i class="book icon"></i>Archive</div>
 							</div>
-							<div class="item"><i class="book icon"></i>Archive</div>
+						</a>
+						<a class="item">
+							<i class="user icon"></i>Browse
+						</a>
+					</div>
+				</div>
+				<div class="ui black buttons">
+					<div class="ui button refreshMap">Update Map</div>
+					<div class="ui teal dropdown icon button">
+						<i class="dropdown icon"></i>
+						<div class="menu">
+							<div class="item"><a href="https://github.com/Team-Avengineers/WellMap" target="_blank"><i class="github alternate icon"></i>Visit Us On GitHub</a></div>
+							<div class="item" id="modal-button-importPrivateDB"><i class="edit icon"></i>From Private Databse</div>
+							<div class="item"><i class="youtube icon big"></i>Videos of Kittens</div>
 						</div>
-					</a>
-					<a class="item">
-					<i class="user icon"></i> Browse
-				</a>
+					</div>
+				</div>	
 			</div>
 		</div>
-        
-        <div class="ui black buttons">
-  <div class="ui button refreshMap">Update Map</div>
-  <div class="ui teal dropdown icon button">
-    <i class="dropdown icon"></i>
-    <div class="menu">
-      <div class="item"><a href="https://github.com/Team-Avengineers/WellMap" target="_blank"><i class="github alternate icon"></i>Visit Us On GitHub</a></div>
-      <div class="item" id="modal-button-importPrivateDB"><i class="edit icon"></i>From Private Databse</div>
-      <div class="item"><i class="youtube icon big"></i>Videos of Kittens</div>
-    </div>
-  </div>
-</div>
 
+		<div class="workArea">
+			<div id="mapArea">
+				<div id="googleMap"></div>
+			</div>
+		</div>
 	</div>
-    <div class="toolbarBOT">
-		
-	</div>
-	</div>
-    <div class="workArea">
-            
-			<div id="mapArea"><div id="googleMap"></div></div>
-    </div>
-</div>
 </div>
 
 <div class="ui modal importPrivateDB" style="background-color:#CCC; color:#000">
-  <i class="close icon"></i>
-  <div class="header">
-    Import Private Wells
-  </div>
-  <div class="content">
-    <div class="left">
-		Please specify the well data you would like to access:
-		<div class="ui form">
-			<div class="field">
-				<label>PrivateWellDBList</label>
-				<select class="ui dropdown">
-				<option value="">Select Database</option>
-				<option value="Database1">Database1</option>
-				<option value="Database2">Database2</option>
-			</select>
-  </div>
-</div>
-    </div>
-    <div class="right">
-		<div class="ui button randomPoints">
-        Generate Layer of Random Points
+	<i class="close icon"></i>
+	<div class="header">Import Private Wells</div>
+	<div class="content">
+		<div class="left">
+			Please specify the well data you would like to access:
+			<div class="ui form">
+				<div class="field">
+					<label>PrivateWellDBList</label>
+					<select class="ui dropdown">
+					<option value="">Select Database</option>
+					<option value="Database1">Database1</option>
+					<option value="Database2">Database2</option>
+					</select>
+				</div>
+			</div>
 		</div>
-    </div>
-  </div>
-  <div class="actions">
-    <div class="ui button">
-      Cancel
-    </div>
-    <div class="ui button">
-      Okay
-    </div>
-  </div>
+		<div class="right">
+			<div class="ui button randomPoints">
+				Generate Layer of Random Points
+			</div>
+		</div>
+	</div>
+	<div class="actions">
+		<div class="ui button">
+			Cancel
+		</div>
+		<div class="ui button">
+			Okay
+		</div>
+	</div>
 </div>
 
 <div class="ui modal startup" style="background-color:#CCC; color:#000">
