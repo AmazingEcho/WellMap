@@ -33,16 +33,14 @@ function controller(){
 	// Edit:
 	// controller now has to be TOLD to make a new map
 	this.the_map = null;
-	var Gmap
+	this.Gmap = null;
 	
-	// !!! PLACEHOLDER !!!
 	// TODO:
 	// Put code to summon a map via gmaps.js here
 	// Could just copy some code right out of the prototype
 	// Needs to go here because I don't want the JSON file to have actual GMap info.
-	
 	this.initGMaps = function(){
-		Gmap = new GMaps({
+		this.Gmap = new GMaps({
 		div: '#googleMap',
 		lat: 55.00,
 		lng: -115.00,
@@ -53,7 +51,7 @@ function controller(){
 	
 	var path = [[55.000,-115.000],[55.000,-113.000],[52.000,-113.000],[52.000,-115.000]];
 
-	Gmap.drawPolygon({
+	this.Gmap.drawPolygon({
 		paths: path, // pre-defined polygon shape
 		strokeColor: '#BBD8E9',
 		strokeOpacity: 1,
@@ -73,9 +71,9 @@ function controller(){
 		// into the gmap.js functions to draw objects onto the map.
 		console.log("Refreshing Map! " + this.the_map.layers.length + " layers to draw!");
 		
-		Gmap.removeMarkers();
-		Gmap.removePolylines();
-		Gmap.removePolygons();
+		this.Gmap.removeMarkers();
+		this.Gmap.removePolylines();
+		this.Gmap.removePolygons();
 
 		// Also, skip over non-visible objects
 		for(var i = 0; i < this.the_map.layers.length; i++){
@@ -84,7 +82,7 @@ function controller(){
 				case "point":
 				
 				for(var j = 0; j < this.the_map.layers[i].points.length; j++){
-					Gmap.addMarker({
+					this.Gmap.addMarker({
 						lat: this.the_map.layers[i].points[j].getLat(),
 						lng: this.the_map.layers[i].points[j].getLong(),
 						title: this.the_map.layers[i].points[j].name
@@ -96,6 +94,68 @@ function controller(){
 				case "poly":
 				default:
 			}
+		}
+	}
+	
+	this.refreshLayerList = function(){
+		
+		// Clear the layer list
+		document.getElementById("LayerList").innerHTML = "";
+		
+		/*
+		FORMAT:
+		
+		<div class="title">
+			<i class="dropdown icon"></i>
+			Layer Name
+		</div>
+		<div class="content" >
+			<ul id="layer???">
+			<li>Point 1</li>
+			<li>Point 2</li>
+			<li>Point 3</li>
+			</ul>
+		</div>
+		*/
+		
+		var titleElem;
+		var iconElem;
+		var layerNameText;
+		var ulNode;
+		
+		var contentNode;
+		var ulElem;
+		
+		var liNode;
+		var textnode;
+		
+		for(var i = 0; i < this.the_map.layers.length; i++){
+			
+			titleElem = document.createElement("div");
+			titleElem.className = "title";
+			// iconElem = document.createElement("i");
+			// iconElem.classname = "dropdown icon";
+			titleElem.innerHTML = "<i class=\"dropdown icon\"> </i>" + this.the_map.layers[i].name;
+			
+			//titleElem.appendChild(titleElem);
+			document.getElementById("LayerList").appendChild(titleElem);
+			
+			contentElem = document.createElement("div");
+			contentElem.className = "content";
+			ulElem = document.createElement("ul");
+			ulElem.id = "layer"+i;
+			contentElem.appendChild(ulElem);
+			
+			document.getElementById("LayerList").appendChild(contentElem);
+			
+			for(var j = 0; j < this.the_map.layers[i].points.length; j++){
+				
+				liNode = document.createElement("li");
+				textnode = document.createTextNode(this.the_map.layers[i].points[j].name);
+				liNode.appendChild(textnode);
+				document.getElementById("layer"+i).appendChild(liNode);
+			}
+
 		}
 	}
 	

@@ -71,6 +71,7 @@ $('.ui.button.randomPoints').click(function(){
 
 $('.ui.button.refreshMap').click(function(){
 	the_controller.refreshMap();
+	the_controller.refreshLayerList();
 });
 
 });	// End of $('document').ready(function());
