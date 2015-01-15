@@ -41,23 +41,23 @@ function controller(){
 	// Needs to go here because I don't want the JSON file to have actual GMap info.
 	this.initGMaps = function(){
 		this.Gmap = new GMaps({
-		div: '#googleMap',
-		lat: 55.00,
-		lng: -115.00,
-		zoom: 5,
-		mapTypeId:google.maps.MapTypeId.TERRAIN,
-		disableDefaultUI:true
-	});
+			div: '#googleMap',
+			lat: 55.00,
+			lng: -115.00,
+			zoom: 5,
+			mapTypeId:google.maps.MapTypeId.TERRAIN,
+			disableDefaultUI:true
+		});
 	
-	var path = [[55.000,-115.000],[55.000,-113.000],[52.000,-113.000],[52.000,-115.000]];
+		var path = [[55.000,-115.000],[55.000,-113.000],[52.000,-113.000],[52.000,-115.000]];
 
-	this.Gmap.drawPolygon({
-		paths: path, // pre-defined polygon shape
-		strokeColor: '#BBD8E9',
-		strokeOpacity: 1,
-		strokeWeight: 3,
-		fillColor: '#BBD8E9',
-		fillOpacity: 0.6
+		this.Gmap.drawPolygon({
+			paths: path, // pre-defined polygon shape
+			strokeColor: '#BBD8E9',
+			strokeOpacity: 1,
+			strokeWeight: 3,
+			fillColor: '#BBD8E9',
+			fillOpacity: 0.6
 		});	
 	}
 	
@@ -98,8 +98,8 @@ function controller(){
 	}
 	
 	this.refreshLayerList = function(){
-		
-		// Clear the layer list
+		// Behold, my introduction to Javascripts DOM functionallity. -T
+		// First, clear the layer list
 		document.getElementById("LayerList").innerHTML = "";
 		
 		/*
@@ -129,15 +129,13 @@ function controller(){
 		var liNode;
 		var textnode;
 		
+		// Go through the list of layers and create 'nodes' containing the appropriate tags.
 		for(var i = 0; i < this.the_map.layers.length; i++){
 			
 			titleElem = document.createElement("div");
 			titleElem.className = "title";
-			// iconElem = document.createElement("i");
-			// iconElem.classname = "dropdown icon";
 			titleElem.innerHTML = "<i class=\"dropdown icon\"> </i>" + this.the_map.layers[i].name;
 			
-			//titleElem.appendChild(titleElem);
 			document.getElementById("LayerList").appendChild(titleElem);
 			
 			contentElem = document.createElement("div");
@@ -148,8 +146,9 @@ function controller(){
 			
 			document.getElementById("LayerList").appendChild(contentElem);
 			
+			// For each layer, insert all of it's points into the list.
+			// TODO: Code to handle the other layer types
 			for(var j = 0; j < this.the_map.layers[i].points.length; j++){
-				
 				liNode = document.createElement("li");
 				textnode = document.createTextNode(this.the_map.layers[i].points[j].name);
 				liNode.appendChild(textnode);
@@ -236,20 +235,20 @@ function controller(){
 		}
 		
 		return layerList;
-	}
+	};
 	
 	// TODO:
 	// Put some points onto a DB server, and try to get this function to load them
 	// serverInfo should be an object containing the info needed to access the server
 	this.importPointLayerDataFromServer = function(name, serverInfo){
 		
-	}
+	};
 	
 	// Exports Data on the map as a spread sheet
 	// TODO: Write the whole function
 	this.exportXLS = function(){
 		console.log("exportXLS() not yet written");
-	}
+	};
 	
 	
 	// TODO:
@@ -265,15 +264,16 @@ function controller(){
 		var controllerJSONString = JSON.stringify(this.the_map);
 		//console.log(controllerJSONString);
 		return controllerJSONString;
-	}
+	};
 	
 	this.loadDataJSON = function(fileInfo){
 		this.the_map = JSON.parse(fileInfo, function(key, value){
 			return key === '' && value.hasOwnProperty('__type') ? Types[value.__type].revive(value) : this[key];
-			});
-		}
+		});
+	};
 	
-	// Helper Function	
+	// Helper Function
+	// Not for use in final product
 	this.generateRandomPoints = function(numPoints){
 		this.newPointLayer("Random Point Layer");
 		var layerIndex = this.the_map.layers.length - 1;
@@ -330,7 +330,7 @@ mapMetadata.prototype.toJSON = function(){
 };
 
 mapMetadata.revive = function(data){
-	//console.log("Revive Function called" + data.mapName);
+	console.log("Revive Function called" + data.mapName);
 	return new mapMetadata(data.mapName);
 };
 
@@ -352,7 +352,7 @@ function map(name){
 	
 	this.changeDescription = function(newDesc){
 		this.metadata.changeDescription(newDesc);
-	}
+	};
 	
 	this.newLayer = function(name){
 		// You can put new objects (or anything) into an Array with the .push() method
@@ -373,7 +373,7 @@ function map(name){
 	
 	this.layerCount = function(){
 		return this.layers.length;
-	}
+	};
 	
 	this.deleteLayer = function(index){
 		if(index >= this.layers.length){
@@ -428,7 +428,7 @@ function map(name){
 	}
 	
 	this.sortLayersByName = function(){
-		// Now where did I put my not from Data Structures and Algorithms? -T
+		// Now where did I put my notes from Data Structures and Algorithms? -T
 		// Oh, this works:
 		// http://stackoverflow.com/questions/1129216/sorting-objects-in-an-array-by-a-field-value-in-javascript
 		this.layers.sort(function(a,b) {return (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0);} );
