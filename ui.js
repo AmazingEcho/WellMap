@@ -58,6 +58,7 @@ $('.ui.accordion').accordion({
 $('.menu .item').tab();
 
 $('.ui.dropdown').dropdown();
+$('.ui.checkbox').checkbox();
 
 $('.ui.button').popup();
 
@@ -72,6 +73,20 @@ $('.ui.button.randomPoints').click(function(){
 $('.ui.button.refreshMap').click(function(){
 	the_controller.refreshMap();
 	the_controller.refreshLayerList();
+	
+	// Checkboxes created in the refreshed layer list are not properly initialized if they are created AFTER .checkbox() is called
+	//$('.ui.checkbox').checkbox();
+	for(var i =0 ; i < the_controller.the_map.layers.length; i++){
+		$('.ui.checkbox.layerVis_'+i).checkbox({
+			onChecked: function(){
+				console.log("Layer # " + i + " is set to visible: ");
+			},
+				
+			onUnchecked: function(){
+				console.log("Layer # " + i + " is set to invisible: ");
+			}
+		});
+	}
 });
 
 });	// End of $('document').ready(function());

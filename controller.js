@@ -104,7 +104,9 @@ function controller(){
 		
 		/*
 		FORMAT:
-		
+		<div class="ui checkbox" style="float:left">
+			<input type="checkbox">
+		</div>
 		<div class="title">
 			<i class="dropdown icon"></i>
 			Layer Name
@@ -118,6 +120,7 @@ function controller(){
 		</div>
 		*/
 		
+		var checkElem;
 		var titleElem;
 		var iconElem;
 		var layerNameText;
@@ -131,6 +134,16 @@ function controller(){
 		
 		// Go through the list of layers and create 'nodes' containing the appropriate tags.
 		for(var i = 0; i < this.the_map.layers.length; i++){
+			
+			checkElem = document.createElement("div");
+			
+			checkElem.className = "ui checkbox layerVis_" + i;
+			
+			checkElem.style.cssFloat = 'left';		// For non-IE
+			checkElem.style.styleFloat = 'left';		// For IE
+			checkElem.innerHTML = "<input type=\"checkbox\"><label></label>";
+			
+			document.getElementById("LayerList").appendChild(checkElem);
 			
 			titleElem = document.createElement("div");
 			titleElem.className = "title";
@@ -154,8 +167,26 @@ function controller(){
 				liNode.appendChild(textnode);
 				document.getElementById("layer"+i).appendChild(liNode);
 			}
-
+			
+			if(this.the_map.layers[i].visible == true){
+				$('.ui.checkbox.layerVis_'+i).checkbox('check');
+			}
+			
+			/*
+			$('.ui.checkbox.layerVis_'+i).onEnable = function(){
+				this.the_map.layers[i].visible = true;
+				console.log("Layer # " + i + " is set to visible: " + this.the_map.layers[i].visible);
+			}
+			$('.ui.checkbox.layerVis_'+i).onDisable = function(){
+				this.the_map.layers[i].visible = false;
+				console.log("Layer # " + i + " is set to visible: " + this.the_map.layers[i].visible);
+			}
+			*/
+			
+			
+			
 		}
+		
 	}
 	
 	// Functions are made in a similar fashion as attributes
