@@ -7,7 +7,7 @@
 $('document').ready(function(){
 	
 	// I used to have the controller initialize GMaps on it's own when the constructor was called
-	// This caused the QUnit Test Suite to go all read, so I opted instead to have a seperate method
+	// This caused the QUnit Test Suite to go all red, so I opted instead to have a seperate method
 	var the_controller = new controller();
 	the_controller.initGMaps();
 	
@@ -35,8 +35,8 @@ $('document').ready(function(){
 // Sidebar options
 // This one simply adds some properties to the sidebar
 // transition: "overlay" means the sidebar acts as an overlay, rather than a 'pusher'
-// dimPage means the rest of the page gets dimmed when the sidebar is open
-// closable means the sidebar closes when you click outside of of it
+// dimPage means the rest of the page gets dimmed when the sidebar is open.  We don't want this, so it's been set to false
+// closable means the sidebar closes when you click outside of of it.  Again, we don't want this...
 $('.ui.sidebar').sidebar({
 	// overlay: true,
 	// overlay got depritiated!
