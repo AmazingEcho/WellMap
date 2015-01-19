@@ -72,21 +72,103 @@ $('.ui.button.randomPoints').click(function(){
 
 $('.ui.button.refreshMap').click(function(){
 	the_controller.refreshMap();
-	the_controller.refreshLayerList();
-	
-	// Checkboxes created in the refreshed layer list are not properly initialized if they are created AFTER .checkbox() is called
-	//$('.ui.checkbox').checkbox();
-	for(var i =0 ; i < the_controller.the_map.layers.length; i++){
-		$('.ui.checkbox.layerVis_'+i).checkbox({
-			onChecked: function(){
-				console.log("Layer # " + i + " is set to visible: ");
-			},
-				
-			onUnchecked: function(){
-				console.log("Layer # " + i + " is set to invisible: ");
-			}
-		});
-	}
+	refreshLayerList(the_controller);
+
 });
 
 });	// End of $('document').ready(function());
+
+refreshLayerList = function(the_controller){
+	// Behold, my introduction to Javascripts DOM functionallity. -T
+	// First, clear the layer list
+	document.getElementById("LayerList").innerHTML = "";
+		
+	/*
+	FORMAT:
+	<div class="ui checkbox" style="float:left">
+		<input type="checkbox">			//  Put the onclick functionallity here!
+	</div>
+	<div class="title">
+		<i class="dropdown icon"></i>
+		Layer Name
+	</div>
+	<div class="content" >
+		<ul id="layer???">
+		<li>Point 1</li>
+		<li>Point 2</li>
+		<li>Point 3</li>
+		</ul>
+	</div>
+	*/
+		
+	var checkElem;
+	var actionElem;
+	var titleElem;
+	var iconElem;
+	var layerNameText;
+	var ulNode;
+	
+	var contentNode;
+	var ulElem;
+	
+	var liNode;
+	var textnode;
+		
+	// Go through the list of layers and create 'nodes' containing the appropriate tags.
+	for(var i = 0; i < the_controller.the_map.layers.length; i++){
+			
+		actionElem = document.createElement("input");
+		actionElem.type = "checkbox";
+		
+		//actionElem.onUnchecked = function(){ this.the_map.visOff(i)};
+			
+		checkElem = document.createElement("div");
+		checkElem.className = "ui checkbox layerVis_" + i;
+		checkElem.style.cssFloat = 'left';		// For non-IE
+		checkElem.style.styleFloat = 'left';		// For IE
+		checkElem.onclick = function(){ console.log("Action heard on layer " + i);the_controller.the_map.switchVis(i)};
+		checkElem.appendChild(actionElem);
+		//checkElem.innerHTML = "<label></label>";
+			
+		document.getElementById("LayerList").appendChild(checkElem);
+			
+		titleElem = document.createElement("div");
+		titleElem.className = "title";
+		titleElem.innerHTML = "<i class=\"dropdown icon\"> </i>" + the_controller.the_map.layers[i].name;
+			
+		document.getElementById("LayerList").appendChild(titleElem);
+		
+		contentElem = document.createElement("div");
+		contentElem.className = "content";
+		ulElem = document.createElement("ul");
+		ulElem.id = "layer"+i;
+		contentElem.appendChild(ulElem);
+			
+		document.getElementById("LayerList").appendChild(contentElem);
+			
+		// For each layer, insert all of it's points into the list.
+		// TODO: Code to handle the other layer types
+		for(var j = 0; j < the_controller.the_map.layers[i].points.length; j++){
+			liNode = document.createElement("li");
+			textnode = document.createTextNode(the_controller.the_map.layers[i].points[j].name);
+			liNode.appendChild(textnode);
+			document.getElementById("layer"+i).appendChild(liNode);
+		}
+			
+		if(the_controller.the_map.layers[i].visible == true){
+			$('.ui.checkbox.layerVis_'+i).checkbox('check');
+		}
+			
+		/*
+		$('.ui.checkbox.layerVis_'+i).onEnable = function(){
+			this.the_map.layers[i].visible = true;
+			console.log("Layer # " + i + " is set to visible: " + this.the_map.layers[i].visible);
+		}
+		$('.ui.checkbox.layerVis_'+i).onDisable = function(){
+			this.the_map.layers[i].visible = false;
+			console.log("Layer # " + i + " is set to visible: " + this.the_map.layers[i].visible);
+		}
+		*/	
+		
+	}
+};
