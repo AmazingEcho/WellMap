@@ -77,7 +77,7 @@ function controller(){
 
 		// Also, skip over non-visible objects
 		for(var i = 0; i < this.the_map.layers.length; i++){
-			console.log("Now drawing: " + this.the_map.layers[i].name + "which contains " + this.the_map.layers[i].points.length + " points.");
+			console.log("Now drawing: " + this.the_map.layers[i].name + " which contains " + this.the_map.layers[i].points.length + " points.");
 			switch(this.the_map.layers[i].layerType){
 				case "point":
 				
@@ -124,8 +124,10 @@ function controller(){
 	
 	this.createNewPointLayerFromSelection = function(layerIndex){
 		
-		// TODO:
-		// Code to verify that layer is a point layer
+		if(this.the_map.layers[layerIndex].layerType != "point"){
+			console.log("Layer " + layerIndex + " is not a point layer.");
+			return;
+		}
 		
 		// Verify that layer has selected points in the first place
 		var selectedPresent = false;
@@ -232,7 +234,7 @@ function mapMetadata(name){
 	this.mapName = name;
 	
 	// description is empty on creation
-	this.description = "";
+	this.descript = "";
 	
 	// coordinates for where the map should focus on when loaded
 	this.origin = [55.0, -115.0]
@@ -247,7 +249,7 @@ function mapMetadata(name){
 	}
 	
 	this.changeDescription = function(newDesc){
-		this.description = newDesc;
+		this.descript = newDesc;
 	}
 }
 
@@ -336,7 +338,7 @@ function map(name){
 		}
 	}
 	
-	this.VisOn = function(index){
+	this.visOn = function(index){
 		console.log("Switching vis on "+ index);
 		if(index < 0){
 			return;
@@ -346,7 +348,7 @@ function map(name){
 		}
 		this.layers[index].visible = true;
 	}
-	this.VisOff = function(index){
+	this.visOff = function(index){
 		console.log("Switching vis off "+ index);
 		if(index < 0){
 			return;
@@ -508,11 +510,11 @@ function Layer(name){
 		}
 	}
 	
-	this.VisOn = function(){
+	this.visOn = function(){
 		this.visible = true;
 	}
 	
-	this.VisOff = function(){
+	this.visOff = function(){
 		this.visible = false;
 	}
 }
