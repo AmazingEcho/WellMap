@@ -85,7 +85,8 @@ function controller(){
 					this.Gmap.addMarker({
 						lat: this.the_map.layers[i].points[j].getLat(),
 						lng: this.the_map.layers[i].points[j].getLong(),
-						title: this.the_map.layers[i].points[j].name
+						title: this.the_map.layers[i].points[j].name,
+						infoWindow: {content: '<p>test2</p>'}
 					});
 				}
 				break;
@@ -222,7 +223,9 @@ function controller(){
 		for(var i = 0; i < numPoints; i++){
 			var randLat = (Math.random() * 11.0) + 49.0;
 			var randLong = -((Math.random() * 10.0) + 110.0);
-			this.the_map.layers[layerIndex].addPointLatLong("Random Point " + i, "Random Point", "Lat: " + randLat, randLat, randLong);
+			var infowindow = this.the_map.InfoWindow({content: test});
+			InfoWindow.open(randLat, randLong);
+			this.the_map.layers[layerIndex].addPointLatLong("Random Point " + i, "Random Point", randLat, randLong);
 			
 		}
 			
