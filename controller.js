@@ -222,7 +222,7 @@ function controller(){
 		for(var i = 0; i < numPoints; i++){
 			var randLat = (Math.random() * 11.0) + 49.0;
 			var randLong = -((Math.random() * 10.0) + 110.0);
-			this.the_map.layers[layerIndex].addPointLatLong("Random Point " + i, "Random Point", randLat, randLong);
+			this.the_map.layers[layerIndex].addPointLatLong("Random Point " + i, "Random Point", randLat, randLong, "Lat: "+ randLat, "Long: " + randLong);
 			
 		}
 			
@@ -539,8 +539,8 @@ function pointLayer(name){
 		this.points.push(new Point(name, type, gmpoint));
 	}
 	
-	this.addPointLatLong = function(name, type, lat, long){
-		this.points.push(new Point(name, type, new GMapPoint(lat, long)));
+	this.addPointLatLong = function(name, type, lat, long, namelat, namelong){
+		this.points.push(new Point(name, type, new GMapPoint(lat, long), namelat, namelong));
 	}
 	
 	this.getLat = function(index){
