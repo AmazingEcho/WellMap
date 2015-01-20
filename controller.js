@@ -224,7 +224,6 @@ function controller(){
 			var randLong = -((Math.random() * 10.0) + 110.0);
 			this.the_map.layers[layerIndex].addPointLatLong("Random Point " + i, "Random Point", randLat, randLong);
 			}
-			}
 			
 		console.log("Random Points Generated - Total: " + numPoints);
 		};
