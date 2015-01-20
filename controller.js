@@ -222,8 +222,7 @@ function controller(){
 		for(var i = 0; i < numPoints; i++){
 			var randLat = (Math.random() * 11.0) + 49.0;
 			var randLong = -((Math.random() * 10.0) + 110.0);
-			this.the_map.layers[layerIndex].addPointLatLong("Random Point " + i, "Random Point", randLat, randLong);
-			infoWindow:{content: '<p>HTML</p>'}
+			this.the_map.layers[layerIndex].addPointLatLong("Random Point " + i, "Random Point", "Lat: " + randLat, randLat, randLong);
 			
 		}
 			
