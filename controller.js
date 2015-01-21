@@ -85,7 +85,13 @@ function controller(){
 					this.Gmap.addMarker({
 						lat: this.the_map.layers[i].points[j].getLat(),
 						lng: this.the_map.layers[i].points[j].getLong(),
-						title: this.the_map.layers[i].points[j].name
+						title: this.the_map.layers[i].points[j].name,
+						infoWindow: {
+							content: "<p>Name: " + this.the_map.layers[i].points[j].name + "<br>" +
+								"Lat: " + this.the_map.layers[i].points[j].getLat() + "<br>" +
+								"Long: " + this.the_map.layers[i].points[j].getLong() + "</p>"
+							},
+						icon: "markers/icon1.png"
 					});
 				}
 				break;

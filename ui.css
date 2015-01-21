@@ -139,3 +139,14 @@ body{
 	display: inline;
 	}
 */
+
+nav{
+	border: 1px solid #ccc;
+    padding: 0;
+    margin: 0;
+    overflow: scroll;
+    overflow-x: hidden;
+	height: 550px;
+	overflow:hidden;
+	overflow-y:scroll;
+	}
