@@ -6,8 +6,12 @@
 
 $('document').ready(function(){
 	
-	// I used to have the controller initialize GMaps on it's own when the constructor was called
-	// This caused the QUnit Test Suite to go all red, so I opted instead to have a seperate method
+	// Startup proceedures
+	
+	// I used to have the controller initialize GMaps on it's own when the constructor was called.
+	// Since the test suite page doesn't have a div that holds an instance of GoogleMaps, this would
+	// the QUnit Test Suite to go all red.  Moving gmaps.js initiallization into a seperate function
+	// fixes this.
 	var the_controller = new controller();
 	the_controller.initGMaps();
 	
@@ -51,15 +55,14 @@ $('#sidebar-toggle').click(function() {
 	$('.ui.sidebar').sidebar('toggle');
 });
 
+// Controls the dropdown layer lists
 $('.ui.accordion').accordion({
 	exclusive: false
 	});
 
 $('.menu .item').tab();
-
 $('.ui.dropdown').dropdown();
 $('.ui.checkbox').checkbox();
-
 $('.ui.button').popup();
 
 $('#modal-button-importPrivateDB').click(function(){
@@ -71,9 +74,11 @@ $('.ui.button.randomPoints').click(function(){
 });
 
 $('.ui.button.refreshMap').click(function(){
+	// Note: Temporary
+	// In the final version, the map and layer list should update on just about every user action.
+	// Having this set to a button is better for debugging.
 	the_controller.refreshMap();
 	refreshLayerList(the_controller);
-
 });
 
 });	// End of $('document').ready(function());
@@ -126,12 +131,18 @@ refreshLayerList = function(the_controller){
 		checkElem.className = "ui checkbox layerVis_" + i;
 		checkElem.style.cssFloat = 'left';		// For non-IE
 		checkElem.style.styleFloat = 'left';		// For IE
-		checkElem.onclick = function(){ console.log("Action heard on layer " + i);the_controller.the_map.switchVis(i)};
+		
+		// TODO: Fix this
+		// Need to figure out a way to sear a layer index into the layer...
+		checkElem.onclick = function(){
+			console.log("Action heard on layer " + i);
+			the_controller.the_map.switchVis(i)
+		};
 		checkElem.appendChild(actionElem);
 		//checkElem.innerHTML = "<label></label>";
 			
 		document.getElementById("LayerList").appendChild(checkElem);
-			
+		
 		titleElem = document.createElement("div");
 		titleElem.className = "title";
 		titleElem.innerHTML = "<i class=\"dropdown icon\"> </i>" + the_controller.the_map.layers[i].name;
@@ -148,16 +159,28 @@ refreshLayerList = function(the_controller){
 			
 		// For each layer, insert all of it's points into the list.
 		// TODO: Code to handle the other layer types
-		for(var j = 0; j < the_controller.the_map.layers[i].points.length; j++){
-			liNode = document.createElement("li");
-			textnode = document.createTextNode(the_controller.the_map.layers[i].points[j].name);
-			liNode.appendChild(textnode);
-			document.getElementById("layer"+i).appendChild(liNode);
+		switch(the_controller.the_map.layers[i].layerType){
+			case "point":
+				for(var j = 0; j < the_controller.the_map.layers[i].points.length; j++){
+					liNode = document.createElement("li");
+					textnode = document.createTextNode(the_controller.the_map.layers[i].points[j].name);
+					liNode.appendChild(textnode);
+					document.getElementById("layer"+i).appendChild(liNode);
+				}
+			case "path":
+			case "poly":
+			default:
 		}
-			
+		
 		if(the_controller.the_map.layers[i].visible == true){
 			$('.ui.checkbox.layerVis_'+i).checkbox('check');
 		}
+		
+		// Note: I forgot about this code.
+		// It's a remnant from when I tried running the refreshLayerList code in controller.js
+		// It didn't work because I couldn't get the functions to access the_controller itself...
+		// Might be worth a second try...
+		// -T
 			
 		/*
 		$('.ui.checkbox.layerVis_'+i).onEnable = function(){
@@ -168,7 +191,7 @@ refreshLayerList = function(the_controller){
 			this.the_map.layers[i].visible = false;
 			console.log("Layer # " + i + " is set to visible: " + this.the_map.layers[i].visible);
 		}
-		*/	
+		*/
 		
 	}
 };
