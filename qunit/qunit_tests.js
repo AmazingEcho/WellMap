@@ -30,7 +30,8 @@ module('Dummy Tests', {
 });
 
 test( "Dummy Test", function() {
-  ok( 1 == "1", "Passed!" );
+  ok( 1 == "1", "Example Pass!" );
+  ok( 1 === "1", "Example Fail!" );
 });
 */
 
@@ -51,6 +52,10 @@ test("Metadata: Description", function(){
 	var the_controller = new controller();
 	the_controller.newMap();
 	ok(the_controller.the_map.metadata.description == "", "Description is: " + the_controller.the_map.metadata.description);
+	
+	the_controller.the_map.metadata.changeDescription("This is a test map!");
+	ok(the_controller.the_map.metadata.description == "This is a test map!", "Description is: \"" + the_controller.the_map.metadata.description + "\"");
+	
 });
 
 module('Data Structure Tests', {
@@ -575,13 +580,13 @@ test("Visibility On/Off", function(){
 	the_controller.the_map.switchVis(0);
 	ok(the_controller.the_map.layers[0].visible == true, "Layer is visible again");
 	
-	the_controller.the_map.VisOff(0);
+	the_controller.the_map.visOff(0);
 	ok(the_controller.the_map.layers[0].visible == false, "Layer is off");
-	the_controller.the_map.VisOff(0);
+	the_controller.the_map.visOff(0);
 	ok(the_controller.the_map.layers[0].visible == false, "Layer is still off");
-	the_controller.the_map.VisOn(0);
+	the_controller.the_map.visOn(0);
 	ok(the_controller.the_map.layers[0].visible == true, "Layer is visible again");
-	the_controller.the_map.VisOn(0);
+	the_controller.the_map.visOn(0);
 	ok(the_controller.the_map.layers[0].visible == true, "Layer is still visible");
 	
 	the_controller.newPointLayer("Test Point Layer 2");
