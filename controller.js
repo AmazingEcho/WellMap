@@ -34,6 +34,7 @@ function controller(){
 	// controller now has to be TOLD to make a new map
 	this.the_map = null;
 	this.Gmap = null;
+	this.databases = [];
 	
 	// TODO:
 	// Put code to summon a map via gmaps.js here
@@ -235,6 +236,17 @@ function controller(){
 		console.log("Random Points Generated - Total: " + numPoints);
 		};
 	}
+
+// Database object
+// Will store connection data for access to DBs
+// the controller object should use this when calling the C# functions for DB access
+function databaseObj(){
+	
+	// User set DB name and PW
+	this.dbName = "";
+	this.password = "";
+	
+}
 
 function mapMetadata(name){
 	//console.log("mapMetadata() constructor called, name is " + name);
