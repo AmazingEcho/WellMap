@@ -1,0 +1,12 @@
+I'd normally want to avoid posting info related to DB names and passwords, but since theres not going to be any useful data on this DB, there's no harm in puting these here...
+
+Database name:
+tconxnet_wellmap2
+
+username:
+tconxnet_CScode
+
+password:
+z2lafile6b2mq044
+
+http://www.tconx.net/phpMyAdmin/
