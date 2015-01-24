@@ -951,3 +951,21 @@ test("RNG Tester", function(){
 			, "Randomly generated point falls within specificed bounds - Lat: " + the_controller.the_map.layers[0].points[i].getLat() + "Long: " +the_controller.the_map.layers[0].points[i].getLong())
 	}
 });
+
+module("C# Method Calling Tests", {
+	setup: function(){
+		
+	},
+	teardown: function(){
+		
+	}
+});
+
+test("Call a Basic C# Method", function(){
+	
+	var aNumber = 3;
+	
+	// Write a C# function that will return a 2
+	
+	ok(aNumber == 2, "Write later...");
+});
