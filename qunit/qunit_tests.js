@@ -853,18 +853,18 @@ module("Data Import Tests", {
 	}
 });
 
-test("Import Data Points", function(){
+test("Import Data Points from Database", function(){
 	
 	var the_controller = new controller();
 	the_controller.newMap();
-	the_controller.newPointLayer("Test Point Import Layer");
 	
-	var serverInfo = {
-		username: "???",
-		password: "???"
-		}
+	// NOTE: Currently passing empty object
+	// Replace with actual DB info
+	the_controller.addDatabaseConnection({});
 	
-	the_controller.the_map.layers[0].loadPointsFromServer(serverInfo);
+	the_controller.loadPointsFromDatabase(0);
+	
+	// TODO: Check to see if point into matches the info on the DB
 	
 	ok(false, "Test not written yet");
 	

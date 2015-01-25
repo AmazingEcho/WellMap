@@ -235,15 +235,43 @@ function controller(){
 			
 		console.log("Random Points Generated - Total: " + numPoints);
 		};
+	
+	this.addDatabaseConnection = function(dbObjParams){
+		// NOTE: When implementing this function into the application, make sure dbObjParams is an object that contains:
+		// a name
+		// a hostname
+		// a domain name
+		// a username
+		// a password
+		// and maybe a user provided description
+		
+		this.databases.push(new databaseObj(dbObjParams));
+		};
+	
+	this.loadPointsFromDatabase = function(dbIndex){
+		
+		// dbIndex bounds checking
+		if(dbIndex < 0 || dbIndex >= this.databases.length){
+			return;
+		}
+		
+		// Connect to DB using info stored at dbIndex
+		
+	}
+	
 	}
 
 // Database object
 // Will store connection data for access to DBs
 // the controller object should use this when calling the C# functions for DB access
-function databaseObj(){
+function databaseObj(dbObjParams){
 	
 	// User set DB name and PW
 	this.dbName = "";
+	
+	this.hostName = "";
+	this.domainName = "";
+	this.userName = "";
 	this.password = "";
 	
 }
