@@ -257,6 +257,9 @@ function controller(){
 		
 		// Connect to DB using info stored at dbIndex
 		
+		// NOTE: Read up on some of this later
+		// http://www.w3schools.com/aspnet/webpages_examples.asp
+		
 	}
 	
 	}
