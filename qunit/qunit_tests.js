@@ -962,6 +962,24 @@ module("C# Method Calling Tests", {
 });
 
 test("Call a Basic C# Method", function(){
+
+	function myCSharp_test() {     
+                 $.ajax({
+                 type: "POST",
+                 url: 'Default.aspx/csharp_test',
+                 data: "",
+                 contentType: "application/json; charset=utf-8",
+                 dataType: "json",
+                 success: function (msg) {
+                     ok(true, "ajax function successful");
+                     console.log("ajax function successful");
+                 },
+                 error: function (e) {
+                         ok(false, "ajax function unsuccessful");
+                         console.log("ajax function unsuccessful");
+                 }
+             });
+         }
 	
 	var aNumber = 3;
 	
