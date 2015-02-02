@@ -1,5 +1,4 @@
-<asp:ScriptManager ID="ScriptMgr" runat="server" EnablePageMethods="true">
-                </asp:ScriptManager>
+
 <!DOCTYPE html>
 <html>
 
@@ -9,6 +8,8 @@
   <link rel="stylesheet" href="qunit.css">
 </head>
 <body>
+	<asp:ScriptManager ID="ScriptMgr" runat="server" EnablePageMethods="true">
+        </asp:ScriptManager>
 	<div id="qunit"></div>
 	<div id="qunit-fixture"></div>
 	<script src="qunit.js"></script>
