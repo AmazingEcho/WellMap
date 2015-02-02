@@ -967,7 +967,7 @@ test("Call a Basic C# Method", function(){
                  $.ajax({
                  type: "POST",
                  url: 'Default.aspx/csharp_test',
-                 data: "",
+                 data: "{}",
                  contentType: "application/json; charset=utf-8",
                  dataType: "json",
                  success: function (msg) {
