@@ -984,7 +984,7 @@ test("Call a Basic C# Method", function(){
 	var aNumber = 3;
 	
 	// Write a C# function that will return a 2
-	myCSharp_test();
+	aNumber = myCSharp_test();
 	
 	ok(aNumber == 2, "Write later...");
 });
