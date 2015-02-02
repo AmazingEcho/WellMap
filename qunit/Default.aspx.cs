@@ -1,5 +1,5 @@
 [WebMethod]                                 //Default.aspx.cs
   public static int csharp_test()
   {
-     return 3;
+     return 2;
   }
