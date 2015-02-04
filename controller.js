@@ -236,7 +236,19 @@ function controller(){
 		console.log("Random Points Generated - Total: " + numPoints);
 		};
 	
-	this.addDatabaseConnection = function(dbObjParams){
+	this.addDatabaseConnectionPHP = function(dbObjParams){
+		// NOTE: When implementing this function into the application, make sure dbObjParams is an object that contains:
+		// a name
+		// a hostname
+		// a domain name
+		// a username
+		// a password
+		// and maybe a user provided description
+		
+		this.databases.push(new databaseObj(dbObjParams));
+		};
+		
+	this.addDatabaseConnectionCS = function(dbObjParams){
 		// NOTE: When implementing this function into the application, make sure dbObjParams is an object that contains:
 		// a name
 		// a hostname
@@ -248,7 +260,33 @@ function controller(){
 		this.databases.push(new databaseObj(dbObjParams));
 		};
 	
-	this.loadPointsFromDatabase = function(dbIndex){
+	this.fetchWellListFromDatabasePHP = function(dbIndex){
+		if(databases.length == 0){
+			// No DBs
+			return;
+		}
+		
+		// Use ajax to grab a list of the well groups from the DB
+		
+		// Return a list of Well groups that ui.js can use DOM to print out
+		
+		
+	}
+	
+	this.fetchWellListFromDatabaseCS = function(dbIndex){
+		if(databases.length == 0){
+			// No DBs
+			return;
+		}
+		
+		// Use ajax to grab a list of the well groups from the DB
+		
+		// Return a list of Well groups that ui.js can use DOM to print out
+		
+		
+	}
+	
+	this.loadPointsFromDatabaseCS = function(dbIndex){
 		
 		// dbIndex bounds checking
 		if(dbIndex < 0 || dbIndex >= this.databases.length){
@@ -262,7 +300,10 @@ function controller(){
 		
 	}
 	
+	this.loadPointsFromDatabasePHP = function(dbIndex){
 	}
+	
+}
 
 // Database object
 // Will store connection data for access to DBs
