@@ -69,6 +69,10 @@ $('#modal-button-importPrivateDB').click(function(){
 	$('.ui.modal.importPrivateDB').modal('show');
 });
 
+$('#modal-button-settingsButton').click(function(){
+	alert("omgwtfbbq");
+});
+
 $('.ui.button.randomPoints').click(function(){
 	the_controller.generateRandomPoints(16);
 });
