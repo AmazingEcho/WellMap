@@ -70,7 +70,7 @@ $('#modal-button-importPrivateDB').click(function(){
 });
 
 $('#modal-button-settingsButton').click(function(){
-	alert("omgwtfbbq");
+	$('.ui.modal.settings').modal('show');
 });
 
 $('.ui.button.randomPoints').click(function(){
