@@ -85,6 +85,11 @@ $('#modal-button-settingsButtonOkay').click(function(){
 
 });
 
+$('#modal-button-search').click(function(){
+	var UWI = document.getElementById('UWI').value;
+	//insert function to search for specified UWI from generated data points
+});
+
 $('#modal-button-Help').click(function(){
 		document.location.href= "https://support.google.com/maps/?hl=en"
 });
