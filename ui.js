@@ -86,6 +86,7 @@ $('#modal-button-settingsButtonOkay').click(function(){
 });
 
 $('#modal-button-search').click(function(){
+	$('.ui.modal.search').modal('show');
 	var UWI = document.getElementById('UWI').value;
 	//insert function to search for specified UWI from generated data points
 });
