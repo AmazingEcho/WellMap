@@ -86,10 +86,7 @@ $('#modal-button-settingsButtonOkay').click(function(){
 });
 
 $('#modal-button-Help').click(function(){
-	function newTab(){
-		window.location.assign ("https://support.google.com/maps/?hl=en")
-	}
-	<input type="button" value="Open Google Maps Help" onclick="newTab()">
+		document.location.href= "https://support.google.com/maps/?hl=en"
 });
 
 $('.ui.button.randomPoints').click(function(){
