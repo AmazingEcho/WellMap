@@ -86,7 +86,7 @@ $('#modal-button-settingsButtonOkay').click(function(){
 });
 
 $('#modal-button-Help').click(function(){
-		document.location.href= "https://support.google.com/maps/?hl=en"
+		document.open.href= "https://support.google.com/maps/?hl=en"
 });
 
 $('.ui.button.randomPoints').click(function(){
