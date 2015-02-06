@@ -76,7 +76,12 @@ $('#modal-button-settingsButton').click(function(){
 
 $('#modal-button-settingsButtonOkay').click(function(){
 	//$('.ui.modal.settings').modal('show');
-	alert("piril say okay");
+	//alert("piril say okay");
+	var mapName = document.getElementById('mapNameField').value;
+	var mapDesc= document.getElementById('mapDescField').value;
+
+	alert("piril say: " + mapName +", " + mapDesc);
+
 });
 
 $('.ui.button.randomPoints').click(function(){
