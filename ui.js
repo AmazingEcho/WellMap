@@ -85,6 +85,13 @@ $('#modal-button-settingsButtonOkay').click(function(){
 
 });
 
+$('#modal-button-Help').click(function(){
+	function newTab(){
+		window.location.assign ("https://support.google.com/maps/?hl=en")
+	}
+	<input type="button" value="Open Google Maps Help" onclick="newTab()">
+});
+
 $('.ui.button.randomPoints').click(function(){
 	the_controller.generateRandomPoints(16);
 });
