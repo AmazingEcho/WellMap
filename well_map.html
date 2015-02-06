@@ -19,7 +19,7 @@
 <div class="ui sidebar">
 	<div class="ui top attached tabular menu">
 		<a class="active item" data-tab="first">Layers</a>
-		<a class="item" data-tab="second">???</a>
+		<a class="item" data-tab="second">Well List</a>
 		<a class="item" data-tab="third">???</a>
 	</div>
 	<div class="ui bottom attached active tab segment" data-tab="first">
@@ -27,8 +27,28 @@
 			<div class="ui accordion" id="LayerList">
 				<!-- Write refreshLayerList to change this-->
 			</div>
+			<div class="ui checkbox" style="float: left;">
+				<input type="checkbox">
+			</div>
+			<div class="title">
+				<i class="dropdown icon"></i>
+				Contours
+			</div>
+			<div class="title">
+				<i class="dropdown icon"></i>
+				Boundaries
+			</div>
+			<div class="title">
+				<i class="dropdown icon"></i>
+				Roads
+			</div>
+			<div class="title">
+				<i class="dropdown icon"></i>
+				Rivers
+			</div>
 		</nav>
 	</div>
+	
 	<div class="ui bottom attached tab segment" data-tab="second">
 		<div class="ui accordion">
 			<div class="ui checkbox" style="float: left;">
@@ -72,8 +92,8 @@
 				<div class=" icon ui buttons">
 					<div class="ui button" data-content="Sort Ascending"><i class="sort numeric ascending icon"></i></div>
 					<div class="ui button" data-content="Sort Descending"><i class="sort numeric descending icon"></i></div>
-					<div class="ui button" data-content="Refresh Map"><i class="refresh icon"></i></div>
-					<div class="ui button" data-content="Search"><i class="search icon"></i></div>
+					<div class="ui button" data-content="Refresh Map" id="modal-button-refresh"><i class="refresh icon"></i></div>
+					<div class="ui button" data-content="Search" id="modal-button-Search"><i class="search icon"></i></div>
 					<div class="ui button" data-content=""><i class="world icon"></i></div>
 					<div class="ui button" data-content="View Data"><i class="table icon"></i></div>
 				</div>
@@ -82,7 +102,7 @@
 					<div class="ui button" data-content="Settings" id="modal-button-settingsButton"><i class="settings icon"></i></div>
 					<div class="ui button" data-content="Help" id="modal-button-Help"><i class="help icon"></i></div>
 					<div class="ui button" data-content="Report Bug"><i class="red bug icon"></i></div>
-					<div class="ui button" data-content="History"><i class="history icon"></i></div>
+					<div class="ui button" data-content="History" id="modal-button-History"><i class="history icon"></i></div>
 				</div>
 			</div>
 
