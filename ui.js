@@ -93,8 +93,8 @@ $('#modal-button-search').click(function(){
 
 $('#modal-button-reportbug').click(function(){
 	$('.ui.modal.reportbug').modal('show');
-	var UWI = document.getElementById('email').value;
-	var UWI = document.getElementById('issue').value;
+	var email = document.getElementById('email').value;
+	var issue = document.getElementById('issue').value;
 	//insert function to store data in spreadsheet for IT to access
 });
 
