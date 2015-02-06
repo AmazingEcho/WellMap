@@ -153,7 +153,7 @@
 				<div class=" icon ui buttons">
 					<div class="ui button" data-content="Settings" id="modal-button-settingsButton"><i class="settings icon"></i></div>
 					<div class="ui button" data-content="Help" id="modal-button-Help"><i class="help icon"></i></div>
-					<div class="ui button" data-content="Report Bug"><i class="red bug icon"></i></div>
+					<div class="ui button" data-content="Report Bug" id="modal-button-reportbug"><i class="red bug icon"></i></div>
 					<div class="ui button" data-content="History" id="modal-button-History"><i class="history icon"></i></div>
 				</div>
 			</div>
@@ -297,6 +297,36 @@
 		Find
 	</div>
 	<div class="ui button" id="modal-button-searchcancel">
+		Cancel
+	</div>
+  </div>
+</div>
+
+<div class="ui modal reportbug" style="background-color:#CCC; color:#000">
+	<i class="close icon"></i>
+  <div class="header">
+    Report Bug
+  </div>
+  <div class="content">
+    <div class="ui form">
+	  <div class="field">
+	    <label>Enter Email</label>
+	    <input type="text" id="email">
+	  </div>
+	  <div class="field">
+	    <label>Brief Explanation of Issue</label>
+	    <input type="text" id="issue">
+	  </div>
+	</div>
+	<div class="title">
+		Thank you for reporting the error, you will be contacted by an IT representative.
+	</div>
+  </div>
+  <div class="actions">
+	<div class="ui button" id="modal-button-reportbugok">
+		Ok
+	</div>
+	<div class="ui button" id="modal-button-reportbugcancel">
 		Cancel
 	</div>
   </div>
