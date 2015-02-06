@@ -69,8 +69,14 @@ $('#modal-button-importPrivateDB').click(function(){
 	$('.ui.modal.importPrivateDB').modal('show');
 });
 
+//Settings Button Area
 $('#modal-button-settingsButton').click(function(){
 	$('.ui.modal.settings').modal('show');
+});
+
+$('#modal-button-settingsButtonOkay').click(function(){
+	//$('.ui.modal.settings').modal('show');
+	alert("piril say okay");
 });
 
 $('.ui.button.randomPoints').click(function(){
