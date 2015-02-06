@@ -80,7 +80,8 @@ $('#modal-button-settingsButtonOkay').click(function(){
 	var mapName = document.getElementById('mapNameField').value;
 	var mapDesc= document.getElementById('mapDescField').value;
 
-	alert("piril say: " + mapName +", " + mapDesc);
+	the_controller.the_map.changeName(mapName);
+	the_controller.the_map.changeDescription(mapDesc);
 
 });
 
