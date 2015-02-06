@@ -91,6 +91,13 @@ $('#modal-button-search').click(function(){
 	//insert function to search for specified UWI from generated data points
 });
 
+$('#modal-button-reportbug').click(function(){
+	$('.ui.modal.reportbug').modal('show');
+	var UWI = document.getElementById('email').value;
+	var UWI = document.getElementById('issue').value;
+	//insert function to store data in spreadsheet for IT to access
+});
+
 $('#modal-button-Help').click(function(){
 		document.location.href= "https://support.google.com/maps/?hl=en"
 });
