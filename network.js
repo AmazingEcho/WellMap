@@ -1,22 +1,22 @@
 // networkDB
 
-pingPHP = function(dbSettings){
+var pingPHP = function(dbSettings){
 	
 	var result = 0;
+	var done = false;
 	
-	jQuery.ajax({
+	$.ajax({
 		type: "POST",
-		url: 'http://www.tconx.net/wellMapServ/test.php',
+		url: "http://www.tconx.net/wellMapServ/test.php",
 		dataType: 'json',
-		data: {functionname: 'ping', arguments: [4, 8]},
-		success: function (obj, textstatus){
-
-			if(!('error' in obj)){
-				yourVariable = obj.result;
-				}
-			else{
-				console.log(obj.error);
-			}
+		data:  {'q': 4,'z':8},
+		success: function(output){
+			console.log(output);
+			result = output;
+		},
+		
+		error: function(){
+		console.log("Opps");
 		}
 	});
 	
