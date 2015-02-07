@@ -12,9 +12,6 @@
 <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBvwCMuLz31gLXoawbDBntieQjGPMrf5vA&sensor=false"></script>
 <script src="gmaps.js"></script>
 <script src="controller.js"></script>
-<script src="map.js"></script>
-<script src="layer_types.js"></script>
-<script src="map_objects.js"></script>
 <script src="ui.js"></script>
 <script src="map_objects.js"></script>
 
@@ -134,8 +131,8 @@
 
 			<div class="toolbarTOP">
 				<div class=" icon ui buttons">
-					<div class="ui button" data-content="New Map"><i class="file outline icon"></i></div>
-					<div class="ui button" data-content="Save Map"><i class="save icon"></i></div>
+					<div class="ui button" data-content="New Map" id = modal-button-newMap><i class="file outline icon"></i></div>
+					<div class="ui button" data-content="Save Map" ><i class="save icon"></i></div>
 					<div class="ui button" data-content="Open Map"><i class="folder open icon"></i></div>
 				</div>
 				
@@ -158,6 +155,7 @@
 					<div class="ui button" data-content="Settings" id="modal-button-settingsButton"><i class="settings icon"></i></div>
 					<div class="ui button" data-content="Help" id="modal-button-Help"><i class="help icon"></i></div>
 					<div class="ui button" data-content="Report Bug" id="modal-button-reportbug"><i class="red bug icon"></i></div>
+					<div class="ui button" data-content="History" id="modal-button-History"><i class="history icon"></i></div>
 				</div>
 			</div>
 
@@ -277,9 +275,6 @@
 	</div>
 	<div class="ui button" id="modal-button-settingsButtonApply">
 		Apply
-	</div>
-	<div class="ui button" id="modal-button-settingsButtonCancel">
-		Cancel
 	</div>
   </div>
 </div>
