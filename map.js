@@ -104,6 +104,7 @@ function map(name){
 	
 	this.sortLayersByNameDescending = function(){
 		// Descending Sort I hope - John
+		// I just flipped the return values from the returning sort, hopefully this makes sense
 		this.layers.sortdescending(function(a,b) {return (b.name > a.name) ? 1: ((a.name > b.name) ? -1 : 0);})
 	}
 	
