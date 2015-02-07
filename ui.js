@@ -85,11 +85,6 @@ $('#modal-button-settingsButtonOkay').click(function(){
 
 });
 
-$('#modal-button-saveMapButton').click(function(){ 
-	$('.ui.modal.settings').modal('show');
-	alert("save!");
-});
-
 $('#modal-button-search').click(function(){
 	$('.ui.modal.search').modal('show');
 	var UWI = document.getElementById('UWI').value;
@@ -103,6 +98,10 @@ $('#modal-button-reportbug').click(function(){
 	//insert function to store data in spreadsheet for IT to access
 });
 
+// bens function ------------------
+$('#modal-button-newMap').click(function(){
+    $('.massive.ui.button.startupNewMap').modal('show')
+};)
 $('#modal-button-Help').click(function(){
 		document.location.href= "https://support.google.com/maps/?hl=en"
 });
@@ -122,13 +121,6 @@ $('.ui.button.refreshMap').click(function(){
 	the_controller.refreshMap();
 	refreshLayerList(the_controller);
 });
-
-$('controller.maps.map').click(function(){
-	
-	
-	
-});
-
 
 });	// End of $('document').ready(function());
 
