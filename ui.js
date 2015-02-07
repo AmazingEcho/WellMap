@@ -106,7 +106,7 @@ $('document').ready(function(){
 	
 	// bens function function for new button
 	$('#modal-button-newMap').click(function(){
-		$('.massive.ui.button.startupNewMap').modal('show');
+		the_controller.newMap();
 	});
 
 	$('#modal-button-reportbug').click(function(){
