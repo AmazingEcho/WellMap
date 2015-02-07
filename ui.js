@@ -118,11 +118,16 @@ $('.ui.button.refreshMap').click(function(){
 	refreshLayerList(the_controller);
 });
 
-// opening up a new window with a new layer
-$('.ui.button.newFile').click(function() {
-	window.open(the_controller.refreshMap(), refreshLayerList(the_controller));
-	
-});
+// loads a new map with the new map button
+$('#modal-button-newMap').click(function(){
+	/// Ben's function
+		the_controller.newMap();
+		console.log("Controller status: On - Map name: " + the_controller.the_map.metadata.mapName);
+		$('.ui.modal.startup').modal('hide');
+		// maybe bring up a new map info modal?
+};)
+
+}
 
 });	// End of $('document').ready(function());
 
