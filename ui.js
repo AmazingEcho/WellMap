@@ -135,7 +135,7 @@ $('modal-button-sortdescending').click(function(){
 
 
 
-	// End of $('document').ready(function());
+});// End of $('document').ready(function());
 
 refreshLayerList = function(the_controller){
 	// Behold, my introduction to Javascripts DOM functionallity. -T
@@ -192,6 +192,7 @@ refreshLayerList = function(the_controller){
 			console.log("Action heard on layer " + i);
 			the_controller.the_map.switchVis(i)
 		};
+		
 		checkElem.appendChild(actionElem);
 		//checkElem.innerHTML = "<label></label>";
 			
@@ -247,4 +248,4 @@ refreshLayerList = function(the_controller){
 		}
 		*/
 	}
-});
+}
