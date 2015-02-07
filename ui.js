@@ -127,7 +127,7 @@ $('controller.maps.map').click(function(){
 	
 	
 	
-}
+});
 
 
 });	// End of $('document').ready(function());
