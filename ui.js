@@ -103,6 +103,11 @@ $('document').ready(function(){
 		var UWI = document.getElementById('UWI').value;
 		//insert function to search for specified UWI from generated data points
 	});
+	
+	// bens function function for new button
+	$('#modal-button-newMap').click(function(){
+		$('.massive.ui.button.startupNewMap').modal('show');
+	});
 
 	$('#modal-button-reportbug').click(function(){
 		$('.ui.modal.reportbug').modal('show');
