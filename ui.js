@@ -87,7 +87,7 @@ $('#modal-button-settingsButtonOkay').click(function(){
 
 $('#modal-button-saveMapButton').click(function(){ 
 	$('.ui.modal.settings').modal('show');
-	alert("save!");
+	alert("your map is saved!");
 });
 
 $('#modal-button-search').click(function(){
