@@ -30,7 +30,7 @@ var getWellsPHP = function(dbSettings, index){
 		dataType: 'xml',
 		success: function(output){
 			console.log(output);
-			result = output;
+			console.log(AJAX pull from PHP successful!);
 		},
 		
 		error: function(){
