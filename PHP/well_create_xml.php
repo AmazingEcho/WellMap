@@ -38,7 +38,7 @@ while ($row = @mysql_fetch_assoc($result)){
   echo '<well ';
   echo 'wellKey="' . $row['wellKey'] . '" ';
   echo 'wellGroup="' . $row['wellGroup'] . '" ';
-  echo 'wellName="' . parseToXML($row['wellname']) . '" ';
+  echo 'wellName="' . parseToXML($row['wellName']) . '" ';
   echo 'wellType="' . parseToXML($row['wellType']) . '" ';
   echo 'lat="' . $row['lat'] . '" ';
   echo 'lng="' . $row['lng'] . '" ';
