@@ -133,7 +133,7 @@
 
 			<div class="toolbarTOP">
 				<div class=" icon ui buttons">
-					<div class="ui button" data-content="New Map"><i class="file outline icon"></i></div>
+					<div class="ui button" data-content="New Map" id ="modal-button-newMap"><i class="file outline icon"></i></div>
 					<div class="ui button" data-content="Save Map" id="modal-button-saveMapButton" ><i class="save icon"></i></div>
 					<div class="ui button" data-content="Open Map"><i class="folder open icon"></i></div>
 				</div>
@@ -148,8 +148,7 @@
 					<div class="ui button" data-content="Sort Ascending" id="modal-button-sortascending"><i class="sort numeric ascending icon"></i></div>
 					<div class="ui button" data-content="Sort Descending" id="modal-button-sortdescending"><i class="sort numeric descending icon"></i></div>
 					<div class="ui button" data-content="Refresh Map" id="modal-button-refresh"><i class="refresh icon"></i></div>
-					<div class="ui button" data-content="Search" id="modal-button-search"><i class="search icon"></i></div>
-					<div class="ui button" data-content=""><i class="world icon"></i></div>
+					<div class="ui button" data-content="Sproule" id="modal-button-sproule"><i class="world icon"></i></div>
 					<div class="ui button" data-content="View Data"><i class="table icon"></i></div>
 				</div>
 				
@@ -165,7 +164,7 @@
 				<div class="ui compact tiered black inverted menu">
 					<div class="menu">
 						<div id="sidebar-toggle" style="display:inline">
-							<a class="active item"><i class="icon exchange"></i>Sidebar</a>
+							<a class="active itebm"><i class="icon exchange"></i>Sidebar</a>
 						</div>
 						<a class="ui dropdown item"><i class="level down icon"></i>Find<i class="dropdown icon"></i>
 							<div class="menu">
@@ -179,9 +178,6 @@
 								<div class="item"><i class="book icon"></i>Archive</div>
 							</div>
 						</a>
-						<a class="item">
-							<i class="user icon"></i>Browse
-						</a>
 						</a>
 						
 
@@ -194,7 +190,6 @@
 						<div class="menu">
 							<div class="item"><a href="https://github.com/Team-Avengineers/WellMap" target="_blank"><i class="github alternate icon"></i>Visit Us On GitHub</a></div>
 							<div class="item" id="modal-button-importPrivateDB"><i class="edit icon"></i>From Private Databse</div>
-							<div class="item"><i class="youtube icon big"></i>Videos of Kittens</div>
 						</div>
 					</div>
 				</div>	
@@ -311,29 +306,6 @@
 	</div>
 	<div class="ui button" id="modal-button-settingsButtonApply">
 		Apply
-	</div>
-  </div>
-</div>
-
-<div class="ui modal search" style="background-color:#CCC; color:#000">
-	<i class="close icon"></i>
-  <div class="header">
-    Search
-  </div>
-  <div class="content">
-    <div class="ui form">
-	  <div class="field">
-	    <label>UWI</label>
-	    <input type="text" id="UWI">
-	  </div>
-	</div>
-  </div>
-  <div class="actions">
-	<div class="ui button" id="modal-button-searchfind">
-		Find
-	</div>
-	<div class="ui button" id="modal-button-searchcancel">
-		Cancel
 	</div>
   </div>
 </div>
