@@ -106,9 +106,8 @@ $('document').ready(function(){
 	
 	// bens function function for new button
 	$('#modal-button-newMap').click(function(){
-				the_controller.newMap();
-		console.log("Controller status: On - Map name: " + the_controller.the_map.metadata.mapName);
-		$('.ui.modal.startup').modal('hide');
+		
+	$('.ui.button.refreshMap').modal('show');
 	});
 
 	$('#modal-button-reportbug').click(function(){
