@@ -41,101 +41,105 @@ $('document').ready(function(){
 // transition: "overlay" means the sidebar acts as an overlay, rather than a 'pusher'
 // dimPage means the rest of the page gets dimmed when the sidebar is open.  We don't want this, so it's been set to false
 // closable means the sidebar closes when you click outside of of it.  Again, we don't want this...
-$('.ui.sidebar').sidebar({
-	// overlay: true,
-	// overlay got depritiated!
-	transition: "overlay",
-	dimPage: false,
-	closable: false
+	$('.ui.sidebar').sidebar({
+		// overlay: true,
+		// overlay got depritiated!
+		transition: "overlay",
+		dimPage: false,
+		closable: false
+		});
+
+	// And, of course, clicking the sidebar toggle button makes the sidebar open and close!
+	$('#sidebar-toggle').click(function() {
+		//$('#mapArea').toggleClass('slide-away');
+		$('.ui.sidebar').sidebar('toggle');
 	});
 
-// And, of course, clicking the sidebar toggle button makes the sidebar open and close!
-$('#sidebar-toggle').click(function() {
-	//$('#mapArea').toggleClass('slide-away');
-	$('.ui.sidebar').sidebar('toggle');
-});
+	// Controls the dropdown layer lists
+	$('.ui.accordion').accordion({
+		exclusive: false
+		});
 
-// Controls the dropdown layer lists
-$('.ui.accordion').accordion({
-	exclusive: false
+	$('.menu .item').tab();
+	$('.ui.dropdown').dropdown();
+	$('.ui.checkbox').checkbox();
+	$('.ui.button').popup();
+
+	$('#modal-button-importPrivateDB').click(function(){
+		$('.ui.modal.importPrivateDB').modal('show');
 	});
 
-$('.menu .item').tab();
-$('.ui.dropdown').dropdown();
-$('.ui.checkbox').checkbox();
-$('.ui.button').popup();
+	//Settings Button Area
+	$('#modal-button-settingsButton').click(function(){
+		$('.ui.modal.settings').modal('show');
+	});
 
-$('#modal-button-importPrivateDB').click(function(){
-	$('.ui.modal.importPrivateDB').modal('show');
-});
+	$('#modal-button-settingsButtonOkay').click(function(){
+		//$('.ui.modal.settings').modal('show');
+		//alert("piril say okay");
+		var mapName = document.getElementById('mapNameField').value;
+		var mapDesc= document.getElementById('mapDescField').value;
 
-//Settings Button Area
-$('#modal-button-settingsButton').click(function(){
-	$('.ui.modal.settings').modal('show');
-});
+		the_controller.the_map.changeName(mapName);
+		the_controller.the_map.changeDescription(mapDesc);
 
-$('#modal-button-settingsButtonOkay').click(function(){
-	//$('.ui.modal.settings').modal('show');
-	//alert("piril say okay");
-	var mapName = document.getElementById('mapNameField').value;
-	var mapDesc= document.getElementById('mapDescField').value;
+	});
 
-	the_controller.the_map.changeName(mapName);
-	the_controller.the_map.changeDescription(mapDesc);
+	$('#modal-button-saveMapButton').click(function(){ 
+		$('.ui.modal.settings').modal('show');
+		alert("save!")
+	});
 
-});
+	$('#modal-button-search').click(function(){
+		$('.ui.modal.search').modal('show');
+		var UWI = document.getElementById('UWI').value;
+		//insert function to search for specified UWI from generated data points
+	});
 
-$('#modal-button-saveMapButton').click(function(){ 
-	$('.ui.modal.settings').modal('show');
-	alert("save!")
-});
+	$('#modal-button-reportbug').click(function(){
+		$('.ui.modal.reportbug').modal('show');
+		var email = document.getElementById('email').value;
+		var issue = document.getElementById('issue').value;
+		//insert function to store data in spreadsheet for IT to access
+	});
 
-$('#modal-button-search').click(function(){
-	$('.ui.modal.search').modal('show');
-	var UWI = document.getElementById('UWI').value;
-	//insert function to search for specified UWI from generated data points
-});
-
-$('#modal-button-reportbug').click(function(){
-	$('.ui.modal.reportbug').modal('show');
-	var email = document.getElementById('email').value;
-	var issue = document.getElementById('issue').value;
-	//insert function to store data in spreadsheet for IT to access
-});
-
-$('#modal-button-Help').click(function(){
+	$('#modal-button-Help').click(function(){
 		document.location.href= "https://support.google.com/maps/?hl=en"
-});
+	});
 
-$('#modal-button-refresh').click(function(){
+	$('#modal-button-refresh').click(function(){
 		document.location.reload()
-});
+	});
 
-$('.ui.button.randomPoints').click(function(){
-	the_controller.generateRandomPoints(16);
-});
+	$('#generateRandomPoints').click(function(){
+		the_controller.generateRandomPoints(16);
+	});
+	
+	$('#wellGroup1').click(function(){
+		
+	});
+	
+	$('#wellGroup2').click(function(){
+	});
 
-$('.ui.button.refreshMap').click(function(){
-	// Note: Temporary
-	// In the final version, the map and layer list should update on just about every user action.
-	// Having this set to a button is better for debugging.
-	the_controller.refreshMap();
-	refreshLayerList(the_controller);
-});
+	$('.ui.button.refreshMap').click(function(){
+		// Note: Temporary
+		// In the final version, the map and layer list should update on just about every user action.
+		// Having this set to a button is better for debugging.
+		the_controller.refreshMap();
+		refreshLayerList(the_controller);
+	});
 
-$('#modal-button-sortascending').click(function(){
-	alert("workingA?")	
-	the_controller.the_map.sortLayersByNameAscending();
-});
+	$('#modal-button-sortascending').click(function(){
+		the_controller.the_map.sortLayersByNameAscending();
+	});
 
-$('modal-button-sortdescending').click(function(){
-	alert("workingB?")
-	the_controller.the_map.sortLayersbyNameDescending();
-});
-
-
+	$('#modal-button-sortdescending').click(function(){
+		the_controller.the_map.sortLayersByNameDescending();
+	});
 
 });// End of $('document').ready(function());
+
 
 refreshLayerList = function(the_controller){
 	// Behold, my introduction to Javascripts DOM functionallity. -T

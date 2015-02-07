@@ -99,13 +99,13 @@ function map(name){
 		// Ascending Sort - John
 		// Oh, this works:
 		// http://stackoverflow.com/questions/1129216/sorting-objects-in-an-array-by-a-field-value-in-javascript
-		this.layers.sortascending(function(a,b) {return (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0);} );
+		this.layers.sort(function(a,b) {return (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0);} );
 	}
 	
 	this.sortLayersByNameDescending = function(){
 		// Descending Sort I hope - John
 		// I just flipped the return values from the returning sort, hopefully this makes sense
-		this.layers.sortdescending(function(a,b) {return (b.name > a.name) ? 1: ((a.name > b.name) ? -1 : 0);})
+		this.layers.sort(function(a,b) {return (b.name > a.name) ? 1: ((a.name > b.name) ? -1 : 0);})
 	}
 	
 	// Go through the layer list and delete empty layers
