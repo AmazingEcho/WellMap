@@ -27,7 +27,7 @@ module('Network Tests: PHP', {
 	}
 });
 
-test("Metadata: Name", function(){
+test("Ping the Server PHP", function(){
 	var the_controller = new controller();
 	the_controller.newMap();
 	
@@ -40,7 +40,7 @@ test("Metadata: Name", function(){
 	
 });
 
-test("Metadata: Name", function(){
+test("Get Test Wells PHP", function(){
 	var the_controller = new controller();
 	the_controller.newMap();
 	
