@@ -87,6 +87,10 @@ $('document').ready(function(){
 
 	$('#modal-button-saveMapButton').click(function(){ 
 		$('.ui.modal.saveMapButton').modal('show');
+		alert("piril say okay");
+	});
+	
+		$('#modal-button-saveMapButtonOkay').click(function(){
 		var mapName = document.getElementById('mapNameField').value;
 		var mapDesc= document.getElementById('mapDescField').value;
 
