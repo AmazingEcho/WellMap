@@ -16,6 +16,8 @@ function Point(name, type, gmpoint){
 	this.GMpoint = gmpoint;
 	this.selected = false;
 	
+	this.wellData = null;
+	
 	this.getLat = function(){
 		return this.GMpoint.lat;
 	}
@@ -32,9 +34,9 @@ function Point(name, type, gmpoint){
 			lng: this.GMpoint.long,
 			title: this.name
 			};
-		
 		return returnPoint;
 	}
+	
 }
 
 function Path(name, type){
