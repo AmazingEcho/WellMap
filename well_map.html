@@ -12,9 +12,6 @@
 <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBvwCMuLz31gLXoawbDBntieQjGPMrf5vA&sensor=false"></script>
 <script src="gmaps.js"></script>
 <script src="controller.js"></script>
-<script src="map.js"></script>
-<script src="layer_types.js"></script>
-<script src="map_objects.js"></script>
 <script src="ui.js"></script>
 <script src="map_objects.js"></script>
 
@@ -134,8 +131,8 @@
 
 			<div class="toolbarTOP">
 				<div class=" icon ui buttons">
-					<div class="ui button" data-content="New Map"><i class="file outline icon"></i></div>
-					<div class="ui button" data-content="Save Map" ><i class="save icon"></i></div>
+					<div class="ui button" data-content="New Map" id = "modal-button-newMap" ><i class="file outline icon"></i></div>
+					<div class="ui button" data-content="Save Map" id="modal-button-saveMap" ><i class="save icon"></i></div>
 					<div class="ui button" data-content="Open Map"><i class="folder open icon"></i></div>
 				</div>
 				
@@ -247,7 +244,7 @@
   </div>
   <div class="content">
     <div class="massive ui button startupNewMap">
-		<center><i class="massive file outline icon"  id = ".massive.ui.button.startupNewMap" ></i><br>Start a new map</center>
+		<center><i class="massive file outline icon"></i><br>Start a new map</center>
     </div>
     <div class="massive ui button startupLoadMap">
       <center><i class="massive folder open icon"></i><br>Open an existing map</center>
@@ -259,6 +256,33 @@
 	<i class="close icon"></i>
   <div class="header">
     Map Settings
+  </div>
+  <div class="content">
+    <div class="ui form">
+	  <div class="field">
+	    <label>Map Name</label>
+	    <input type="text" id="mapNameField">
+	  </div>
+	 <div class="field">
+	    <label>Map Description</label>
+	    <input type="text" id="mapDescField">
+	  </div>
+	</div>
+  </div>
+  <div class="actions">
+	<div class="ui button" id="modal-button-settingsButtonOkay">
+		Okay
+	</div>
+	<div class="ui button" id="modal-button-settingsButtonApply">
+		Apply
+	</div>
+  </div>
+</div>
+
+<div class="ui modal saveMap" style="background-color:#CCC; color:#000">
+	<i class="close icon"></i>
+  <div class="header">
+    Save Map
   </div>
   <div class="content">
     <div class="ui form">
