@@ -239,4 +239,4 @@ refreshLayerList = function(the_controller){
 		
 	}
 }
-}
+});
