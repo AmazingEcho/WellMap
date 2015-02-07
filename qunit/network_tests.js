@@ -40,6 +40,19 @@ test("Metadata: Name", function(){
 	
 });
 
+test("Metadata: Name", function(){
+	var the_controller = new controller();
+	the_controller.newMap();
+	
+	the_controller.addDatabaseConnectionPHP({});
+	
+	getWellsPHP({}, 1);
+	getWellsPHP({}, 2);
+	
+	ok(false, "QUnit doesn't like AJAX...");
+	
+});
+
 module('Network Tests: C#', {
 	setup: function () {
 	},
