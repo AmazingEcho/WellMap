@@ -128,7 +128,7 @@ $('.ui.button.refreshMap').click(function(){
 });
 
 // ben have written it there
-}
+
 
 });	// End of $('document').ready(function());
 
