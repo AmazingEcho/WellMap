@@ -94,7 +94,7 @@ function map(name){
 		}
 	}
 	
-	this.sortLayersByName = function(){
+	this.sortLayersByNameAscending = function(){
 		// Now where did I put my notes from Data Structures and Algorithms? -T
 		// Oh, this works:
 		// http://stackoverflow.com/questions/1129216/sorting-objects-in-an-array-by-a-field-value-in-javascript
