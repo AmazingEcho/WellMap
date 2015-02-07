@@ -125,8 +125,10 @@ $('.ui.button.refreshMap').click(function(){
 
 $('#modal-button-sortascending').click(function(){
 	alert("working?")	
-	the_controller.the_map.sortLayersByName();
+	the_controller.the_map.sortLayersByNameAscending();
 });
+
+
 
 	// End of $('document').ready(function());
 
