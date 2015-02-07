@@ -241,6 +241,5 @@ refreshLayerList = function(the_controller){
 			console.log("Layer # " + i + " is set to visible: " + this.the_map.layers[i].visible);
 		}
 		*/
-		
 	}
 });
