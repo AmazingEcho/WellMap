@@ -106,15 +106,6 @@ $('#modal-button-refresh').click(function(){
 		document.location.reload()
 });
 
-// loads a new map with the new map button
-$('#modal-button-newMap').click(function(){
-	/// Ben's function
-		the_controller.newMap();
-		console.log("Controller status: On - Map name: " + the_controller.the_map.metadata.mapName);
-		$('.ui.modal.startup').modal('hide');
-		// maybe bring up a new map info modal?
-};)
-
 $('.ui.button.randomPoints').click(function(){
 	the_controller.generateRandomPoints(16);
 });
@@ -126,9 +117,6 @@ $('.ui.button.refreshMap').click(function(){
 	the_controller.refreshMap();
 	refreshLayerList(the_controller);
 });
-
-// ben have written it there
-
 
 });	// End of $('document').ready(function());
 
