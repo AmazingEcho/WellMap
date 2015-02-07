@@ -117,7 +117,7 @@ $('.ui.button.refreshMap').click(function(){
 	the_controller.refreshMap();
 	refreshLayerList(the_controller);
 });
-
+}
 });	// End of $('document').ready(function());
 
 refreshLayerList = function(the_controller){
