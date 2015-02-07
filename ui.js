@@ -124,8 +124,13 @@ $('.ui.button.refreshMap').click(function(){
 });
 
 $('#modal-button-sortascending').click(function(){
-	alert("working?")	
+	alert("workingA?")	
 	the_controller.the_map.sortLayersByNameAscending();
+});
+
+$('modal-button-sortdescending').click(function(){
+	alert("workingB?")
+	the_controller.the_map.sortLayersbyNameDescending();
 });
 
 
