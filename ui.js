@@ -87,7 +87,7 @@ $('#modal-button-settingsButtonOkay').click(function(){
 
 $('#modal-button-saveMapButton').click(function(){ 
 	$('.ui.modal.settings').modal('show');
-	alert("your map is saved!");
+	alert("save!")
 });
 
 $('#modal-button-search').click(function(){
@@ -122,6 +122,13 @@ $('.ui.button.refreshMap').click(function(){
 	the_controller.refreshMap();
 	refreshLayerList(the_controller);
 });
+
+$('controller.maps.map').click(function(){
+	
+	
+	
+}
+
 
 });	// End of $('document').ready(function());
 
