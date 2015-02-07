@@ -10,3 +10,7 @@ password:
 z2lafile6b2mq044
 
 http://www.tconx.net/phpMyAdmin/
+
+PHP Scripts (Use AJAX to call these up and extract XML info)
+http://www.tconx.net/wellMapServ/well_create_xml.php?id=1
+http://www.tconx.net/wellMapServ/wellGroup_create_xml.php
