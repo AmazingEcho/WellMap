@@ -100,7 +100,7 @@ $('#modal-button-reportbug').click(function(){
 
 // bens function ------------------
 $('#modal-button-newMap').click(function(){
-    $('.massive.ui.button.startupNewMap').modal('show')
+    $('.massive.ui.button.startupNewMap').modal('show');
 };)
 $('#modal-button-Help').click(function(){
 		document.location.href= "https://support.google.com/maps/?hl=en"
