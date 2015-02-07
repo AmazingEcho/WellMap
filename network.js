@@ -22,3 +22,19 @@ var pingPHP = function(dbSettings){
 	
 	return result;
 }
+
+var getWellsPHP = function(dbSettings, index){
+	$.ajax({
+		type: "POST",
+		url: "http://www.tconx.net/wellMapServ/well_create_xml.php?id=" + index,
+		dataType: 'xml',
+		success: function(output){
+			console.log(output);
+			result = output;
+		},
+		
+		error: function(){
+		console.log("Opps");
+		}
+	});
+}
