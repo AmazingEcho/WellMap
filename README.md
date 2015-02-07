@@ -8,6 +8,7 @@ Website: [team-avengineers.github.io/WellMap/](http://team-avengineers.github.io
 Early Prototype UI is [locally hosted](http://team-avengineers.github.io/WellMap/well_map.html)
 
 [QUnit Test Suite](http://team-avengineers.github.io/WellMap/qunit)
+[QUnit Network Tests](http://team-avengineers.github.io/WellMap/qunit/network_tests.html)
 
 Working Test stuff currently hosted at [tconx.net/wellmap](http://tconx.net/wellmap/)
 
