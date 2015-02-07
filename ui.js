@@ -92,7 +92,7 @@ $('document').ready(function(){
 
 		the_controller.the_map.changeName(mapName);
 		the_controller.the_map.changeDescription(mapDesc);
-		alert("piril say okay");
+		
 	});
 
 	$('#modal-button-search').click(function(){
