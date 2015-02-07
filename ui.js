@@ -86,7 +86,7 @@ $('document').ready(function(){
 	});
 
 	$('#modal-button-saveMapButton').click(function(){ 
-		$('.ui.modal.settings').modal('show');
+		$('.ui.modal.saveMapButton').modal('show');
 		var mapName = document.getElementById('mapNameField').value;
 		var mapDesc= document.getElementById('mapDescField').value;
 
