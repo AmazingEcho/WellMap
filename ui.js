@@ -87,7 +87,7 @@ $('#modal-button-settingsButtonOkay').click(function(){
 
 $('#modal-button-saveMapButton').click(function(){ 
 	$('.ui.modal.settings').modal('show');
-	alert("save!");
+	alert("save!")
 });
 
 $('#modal-button-search').click(function(){
@@ -123,9 +123,12 @@ $('.ui.button.refreshMap').click(function(){
 	refreshLayerList(the_controller);
 });
 
-$('controller.maps.map').click(function(){
-	
-});	// End of $('document').ready(function());
+$('#modal-button-sortascending').click(function(){
+	alert("working?")	
+	the_controller.the_map.sortLayersByName();
+});
+
+	// End of $('document').ready(function());
 
 refreshLayerList = function(the_controller){
 	// Behold, my introduction to Javascripts DOM functionallity. -T
@@ -238,5 +241,4 @@ refreshLayerList = function(the_controller){
 		*/
 		
 	}
-}
-});
+};
