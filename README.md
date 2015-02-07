@@ -8,6 +8,7 @@ Website: [team-avengineers.github.io/WellMap/](http://team-avengineers.github.io
 Early Prototype UI is [locally hosted](http://team-avengineers.github.io/WellMap/well_map.html)
 
 [QUnit Test Suite](http://team-avengineers.github.io/WellMap/qunit)
+
 [QUnit Network Tests](http://team-avengineers.github.io/WellMap/qunit/network_tests.html)
 
 Working Test stuff currently hosted at [tconx.net/wellmap](http://tconx.net/wellmap/)
@@ -20,9 +21,7 @@ Languages:
 
 * JavaScript w/ JQuery for the bulk of the UI and controller components
 * DB management with C#
-* Ruby(?)
-	* Should look into it.  I'm not even completely sure at this point what Ruby is or what's so special about it...
-	* Probably not...
+* 
 
 Libraries:
 
