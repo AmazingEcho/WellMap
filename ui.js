@@ -118,6 +118,12 @@ $('.ui.button.refreshMap').click(function(){
 	refreshLayerList(the_controller);
 });
 
+// opening up a new window with a new layer
+$('.ui.button.newFile').click(function() {
+	window.open(the_controller.refreshMap(), refreshLayerList(the_controller));
+	
+});
+
 });	// End of $('document').ready(function());
 
 refreshLayerList = function(the_controller){
