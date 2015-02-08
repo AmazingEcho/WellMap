@@ -157,7 +157,7 @@ $('document').ready(function(){
 		
 	$('#"modal-button-displayMapInfo"').click(function(){
 		$('.ui.modal.displayMapInfo').modal('show');
-		
+	});
 	
 	$('#modal-button-sortascending').click(function(){
 		the_controller.the_map.sortLayersByNameAscending();
