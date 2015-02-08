@@ -117,7 +117,7 @@ $('document').ready(function(){
 	});
 // function for the link to the sproule website
 	$('#modal-button-sproule').click(function(){
-		document.location.href= "www.sproule.com/"
+		document.location.href= "http://www.sproule.com/"
 	});
 
 	$('#modal-button-Help').click(function(){
