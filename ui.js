@@ -111,7 +111,7 @@ $('document').ready(function(){
 	
 	// function to implement the world (sproule) icon
 	$('#modal-button-sproule').click(function(){
-window.open("http://sproule.com/");
+		window.open("http://sproule.com/");
 	});
 
 	$('#modal-button-reportbug').click(function(){
