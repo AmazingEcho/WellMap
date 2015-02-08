@@ -133,11 +133,11 @@ $('document').ready(function(){
 	});
 	
 	$('#wellGroup1').click(function(){
-		the_controller.fetchWellsFromDatabasePHP("Test Wells Group A");
+		the_controller.fetchWellsFromDatabasePHP("Test Wells Group Alpha", 1);
 	});
 	
 	$('#wellGroup2').click(function(){
-		the_controller.fetchWellsFromDatabasePHP("Test Wells Group A");
+		the_controller.fetchWellsFromDatabasePHP("Test Wells Group Beta", 2);
 	});
 
 	$('.ui.button.refreshMap').click(function(){

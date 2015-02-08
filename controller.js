@@ -273,24 +273,35 @@ function controller(){
 		
 	}
 	
-	this.fetchWellsFromDatabasePHP = function(groupName){
+	this.fetchWellsFromDatabasePHP = function(groupName, groupIndex){
+		
+		var conPTR = this;
+		
 		$.ajax({
 			type: "POST",
-			url: "http://www.tconx.net/wellMapServ/well_create_xml.php?id=" + index,
+			url: "http://www.tconx.net/wellMapServ/well_create_xml.php?id=" + groupIndex,
 			dataType: 'xml',
-			success: function(output){
+			success: function(xml_out){
 				
 				console.log("AJAX pull from PHP successful!");
 				
+				conPTR.newPointLayer(groupName);
+				var layerIndex = conPTR.the_map.layers.length - 1;
 				
-				
-				$(xml).find("well").each(function(){
-					$(this).attr("WellName");
+				$(xml_out).find("well").each(function(){
+
+					conPTR.the_map.layers[layerIndex].addPointLatLong(
+						$(this).attr("wellName"),
+						$(this).attr("wellType"),
+						$(this).attr("lat"),
+						$(this).attr("lng"));
+						
+
 				});
 			},
 		
 			error: function(){
-			console.log("Opps");
+			console.log("Problem with fetchWellsFromDatabasePHP()");
 			}
 			
 		});
