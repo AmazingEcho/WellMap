@@ -109,8 +109,9 @@ $('document').ready(function(){
 	window.open("http://team-avengineers.github.io/WellMap/well_map.html");
 	});
 	
+	// function to implement the world (sproule) icon
 	$('#modal-button-sproule').click(function(){
-window.open("http://www.w3schools.com");
+window.open("http://sproule.com/");
 	});
 
 	$('#modal-button-reportbug').click(function(){
