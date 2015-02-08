@@ -122,7 +122,7 @@ $('document').ready(function(){
 	});
 
 	$('#modal-button-Help').click(function(){
-		document.location.href= "https://support.google.com/maps/?hl=en"
+		window.open("https://support.google.com/maps/?hl=en");
 	});
 
 	$('#modal-button-refresh').click(function(){
