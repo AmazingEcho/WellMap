@@ -130,10 +130,11 @@ $('.massive.ui.button.startupNewMap').modal('show');
 	});
 	
 	$('#wellGroup1').click(function(){
-		
+		the_controller.fetchWellsFromDatabasePHP("Test Wells Group A");
 	});
 	
 	$('#wellGroup2').click(function(){
+		the_controller.fetchWellsFromDatabasePHP("Test Wells Group A");
 	});
 
 	$('.ui.button.refreshMap').click(function(){

@@ -23,14 +23,17 @@ var pingPHP = function(dbSettings){
 	return result;
 }
 
-var getWellsPHP = function(dbSettings, index, controller){
+var getWellsPHP = function(a_controller, db_settings, index, layerName){
 	$.ajax({
 		type: "POST",
 		url: "http://www.tconx.net/wellMapServ/well_create_xml.php?id=" + index,
 		dataType: 'xml',
 		success: function(output){
-			console.log(output);
 			console.log("AJAX pull from PHP successful!");
+			a_controller.
+			$(xml).find("well").each(function(){
+				
+			});
 		},
 		
 		error: function(){
