@@ -115,10 +115,6 @@ $('document').ready(function(){
 		var issue = document.getElementById('issue').value;
 		//insert function to store data in spreadsheet for IT to access
 	});
-// function for the link to the sproule website
-	$('#modal-button-sproule').click(function(){
-		document.location.href= "http://www.sproule.com/"
-	});
 
 	$('#modal-button-Help').click(function(){
 		document.location.href= "https://support.google.com/maps/?hl=en"
