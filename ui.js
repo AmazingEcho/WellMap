@@ -110,7 +110,8 @@ $('document').ready(function(){
 	});
 	
 	$('#modal-button-sproule').click(function(){
-		window.open("http://sproule.com/");
+		 var win = window.open(url, '_blank');
+  			win.focus();
 	});
 
 	$('#modal-button-reportbug').click(function(){
