@@ -106,10 +106,7 @@ $('document').ready(function(){
 	
 	
 	$('#modal-button-newMap').click(function(){
-		// make a new map
-	//	the_controller.newMap();
-		the_controller.refreshMap();
-		
+		var input = confirm("I am the one exterminating son")
 	});
 
 	$('#modal-button-reportbug').click(function(){
