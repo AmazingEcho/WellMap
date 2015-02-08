@@ -98,12 +98,15 @@ $('document').ready(function(){
 		
 	});
 
-	$('#modal-button-search').click(function(){
-		$('.ui.modal.search').modal('show');
-		var UWI = document.getElementById('UWI').value;
-		//insert function to search for specified UWI from generated data points
+	$('#modal-button-import').click(function(){
+		$('.ui.modal.import').modal('show');
+		//function needed to import data
 	});
 	
+	$('#modal-button-export').click(function(){
+		$('.ui.modal.export').modal('show');
+		//function needed to export data
+	});
 	
 	$('#modal-button-newMap').click(function(){
 	window.open("http://team-avengineers.github.io/WellMap/well_map.html");
