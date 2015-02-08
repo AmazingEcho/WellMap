@@ -152,6 +152,13 @@ $('document').ready(function(){
 		refreshLayerList(the_controller);
 	});
 
+		// Clicking on this button displays a modal that shows current map info
+		
+	$('#"modal-button-displayMapInfo"').click(function(){
+		$('.ui.modal.displayMapInfo').modal('show');
+		var email = document.getElementById('email').value;
+		var issue = document.getElementById('issue').value;
+	
 	$('#modal-button-sortascending').click(function(){
 		the_controller.the_map.sortLayersByNameAscending();
 	});
