@@ -106,7 +106,8 @@ $('document').ready(function(){
 	
 	
 	$('#modal-button-newMap').click(function(){
-		var input = confirm("I am the one exterminating son")
+	window.open(url,'http://team-avengineers.github.io/WellMap/well_map.html');
+window.open(url);
 	});
 	
 	$('#modal-button-sproule').click(function(){
