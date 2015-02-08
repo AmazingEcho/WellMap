@@ -107,7 +107,7 @@ $('document').ready(function(){
 	
 	$('#modal-button-newMap').click(function(){
 		
-$('.massive.ui.button.startupNewMap').modal('show');	
+		the_controller.newMap();	
 	});
 
 	$('#modal-button-reportbug').click(function(){
