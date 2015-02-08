@@ -108,6 +108,10 @@ $('document').ready(function(){
 	$('#modal-button-newMap').click(function(){
 		var input = confirm("I am the one exterminating son")
 	});
+	
+	$('#modal-button-sproule').click(function(){
+		window.location.href = 'http://sproule.com/'
+	});
 
 	$('#modal-button-reportbug').click(function(){
 		$('.ui.modal.reportbug').modal('show');
