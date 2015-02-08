@@ -150,8 +150,8 @@
 					<div class="ui button" data-content="Refresh Map" id="modal-button-refresh"><i class="refresh icon"></i></div>
 					<div class="ui button" data-content="Sproule" id = "modal-button-sproule"><i class="world icon"></i></div>
 					<div class="ui button" data-content="View Data"><i class="table icon"></i></div>
-					<div class="ui button" data-content="Import Data"><i class="arrow down icon"></i></div>
-					<div class="ui button" data-content="Export Data"><i class="arrow up icon"></i></div>
+					<div class="ui button" data-content="Import Data" id = "modal-button-import"><i class="arrow down icon"></i></div>
+					<div class="ui button" data-content="Export Data" id="modal-button-export"><i class="arrow up icon"></i></div>
 				</div>
 				
 				<div class=" icon ui buttons">
@@ -337,6 +337,44 @@
 	</div>
 	<div class="ui button" id="modal-button-reportbugcancel">
 		Cancel
+	</div>
+  </div>
+</div>
+
+<div class="ui modal import" style="background-color:#CCC; color:#000">
+	<i class="close icon"></i>
+  <div class="header">
+    Import from Excel
+  </div>
+  <div class="actions">
+	<div class="ui button" id="modal-button-importbrowse">
+		Browse
+	</div>
+	<div class="ui button" id="modal-button-importok">
+		Ok
+	</div>
+  </div>
+</div>
+
+<div class="ui modal export" style="background-color:#CCC; color:#000">
+	<i class="close icon"></i>
+  <div class="header">
+    Export to Excel
+  </div>
+  <div class="content">
+    <div class="ui form">
+	  <div class="field">
+	    <label>Enter filename for document</label>
+	    <input type="text" id="excelnewdoc">
+	  </div>
+    </div>
+  </div>
+  <div class="actions">
+	<div class="ui button" id="modal-button-exportgenerate">
+		Ok
+	</div>
+	<div class="ui button" id="modal-button-exportclose">
+		Close
 	</div>
   </div>
 </div>
