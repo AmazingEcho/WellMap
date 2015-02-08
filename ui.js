@@ -110,8 +110,7 @@ $('document').ready(function(){
 	});
 	
 	$('#modal-button-sproule').click(function(){
-		 var win = window.open(url, '_blank');
-  			win.focus();
+window.open("http://www.w3schools.com");
 	});
 
 	$('#modal-button-reportbug').click(function(){
