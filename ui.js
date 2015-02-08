@@ -106,8 +106,10 @@ $('document').ready(function(){
 	
 	
 	$('#modal-button-newMap').click(function(){
+		// make a new map
+	//	the_controller.newMap();
+		the_controller.refreshMap();
 		
-		the_controller.newMap();	
 	});
 
 	$('#modal-button-reportbug').click(function(){
