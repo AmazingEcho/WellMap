@@ -155,7 +155,7 @@ $('document').ready(function(){
 		// Clicking on this button displays a modal that shows current map info
 		// Also allows editing of current map info
 		
-	$('#"modal-button-displayMapInfo"').click(function(){
+	$("#modal-button-displayMapInfo").click(function(){
 		$('.ui.modal.displayMapInfo').modal('show');
 	});
 	
