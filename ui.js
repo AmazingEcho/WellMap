@@ -106,8 +106,7 @@ $('document').ready(function(){
 	
 	
 	$('#modal-button-newMap').click(function(){
-	window.open(url,'http://team-avengineers.github.io/WellMap/well_map.html');
-window.open(url);
+	window.open("http://team-avengineers.github.io/WellMap/well_map.html");
 	});
 	
 	$('#modal-button-sproule').click(function(){
