@@ -23,21 +23,17 @@ var pingPHP = function(dbSettings){
 	return result;
 }
 
-var getWellsPHP = function(a_controller, db_settings, index, layerName){
-	$.ajax({
-		type: "POST",
-		url: "http://www.tconx.net/wellMapServ/well_create_xml.php?id=" + index,
-		dataType: 'xml',
-		success: function(output){
-			console.log("AJAX pull from PHP successful!");
-			a_controller.
-			$(xml).find("well").each(function(){
-				
-			});
-		},
-		
-		error: function(){
-		console.log("Opps");
-		}
-	});
+// Database object
+// Will store connection data for access to DBs
+// the controller object should use this when calling the C# functions for DB access
+function databaseObj(dbObjParams){
+	
+	// User set DB name and PW
+	this.dbName = "";
+	
+	this.hostName = "";
+	this.domainName = "";
+	this.userName = "";
+	this.password = "";
+	
 }

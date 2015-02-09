@@ -15,6 +15,7 @@
 <script src="map.js"></script>
 <script src="layer_types.js"></script>
 <script src="map_objects.js"></script>
+<script src="network.js"></script>
 <script src="ui.js"></script>
 
 </head>
@@ -145,10 +146,10 @@
 				</div>
 				
 				<div class=" icon ui buttons">
-					<div class="ui button" data-content="Display Map Info" id="modal-button-displayMapInfo"><i class="info icon"></i></div>
+					<div class="ui button" data-content="Display Map Info" id="displayMapInfo"><i class="info icon"></i></div>
 					<div class="ui button" data-content="Sort Ascending" id="modal-button-sortascending"><i class="sort numeric ascending icon"></i></div>
 					<div class="ui button" data-content="Sort Descending" id="modal-button-sortdescending"><i class="sort numeric descending icon"></i></div>
-					<div class="ui button" data-content="Refresh Map" id="modal-button-refresh"><i class="refresh icon"></i></div>
+					<div class="ui button" data-content="Refresh Map" id="refreshMap"><i class="refresh icon"></i></div>
 					<div class="ui button" data-content="Sproule" id = "modal-button-sproule"><i class="world icon"></i></div>
 					<div class="ui button" data-content="View Data"><i class="table icon"></i></div>
 					<div class="ui button" data-content="Import Data" id = "modal-button-import"><i class="arrow down icon"></i></div>
@@ -186,12 +187,13 @@
 					</div>
 				</div>
 				<div class="ui black buttons">
-					<div class="ui button refreshMap">Update Map</div>
+					<div class="ui button" id="refreshMap">Update Map</div>
 					<div class="ui teal dropdown icon button">
 						<i class="dropdown icon"></i>
 						<div class="menu">
-							<div class="item"><a href="https://github.com/Team-Avengineers/WellMap" target="_blank"><i class="github alternate icon"></i>Visit Us On GitHub</a></div>
-							<div class="item" id="modal-button-importPrivateDB"><i class="edit icon"></i>From Private Databse</div>
+							<div class="item"><i class="database icon"></i>Add Database</div>
+							<div class="item"><i class="database icon"></i>Manage Databases</div>
+							<div class="item" id="modal-button-importPrivateDB"><i class="database icon"></i>Import Wells From Database</div>
 						</div>
 					</div>
 				</div>	
@@ -199,6 +201,7 @@
 		</div>
 		<div class="workArea">
 			<div id="mapArea">
+				<!-- Google Maps goes here.  Managed entirely by controller.js -->
 				<div id="googleMap"></div>
 			</div>
 		</div>
@@ -343,40 +346,32 @@
 </div>
 
 
-<!-- Appearance of modal for 'Display Map Information
+<!-- Appearance of modal for 'Display Map Information'
 Displays map name and map description
 Allows user the option of exiting through the 'OK' button or
 Allows user to edit current map name and descrption and apply changes with 'Apply' button -->
-<div class="ui modal displayMapInfo" style="background-color:#CCC; color:#000">
+<div class="ui modal" id="mapInfoModal" style="background-color:#CCC; color:#000">
 	<i class="close icon"></i>
-  <div class="header">
-    Map Information
-  </div>
-  <div class="content">
-    <div class="ui form">
-	  <div class="field">
-	    <label>Map Name</label>
-	    <input type="text" id="email">
-	  </div>
-	  <div class="field">
-	    <label>Description</label>
-	    <input type="text" id="issue">
-	  </div>
+	<div class="header">Map Information</div>
+	<div class="content">
+		<div class="ui form">
+			<div class="field">
+				<label>Map Name</label>
+				<input type="text" id="mapNameField" value="xyz"/>
+			</div>
+			<div class="field">
+				<label>Description</label>
+				<input type="text" id="mapDescField" value="abc"/>
+			</div>
+		</div>
 	</div>
-	<div class="title">
-		Thank you for reporting the error, you will be contacted by an IT representative.
+	<div class="actions">
+		<div class="ui button" id="modal-button-mapInfoOk">Ok</div>
+		<div class="ui button" id="modal-button-mapInfoEdit">Apply</div>
 	</div>
-  </div>
-  <div class="actions">
-	<div class="ui button" id="modal-button-mapInfoOk">
-		Ok
-	</div>
-	<div class="ui button" id="modal-button-mapInfoEdit">
-		Apply
-	</div>
-  </div>
 </div>
 
+<!-- Import from Excel Modal'-->
 <div class="ui modal import" style="background-color:#CCC; color:#000">
 	<i class="close icon"></i>
   <div class="header">

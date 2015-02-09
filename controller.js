@@ -260,11 +260,7 @@ function controller(){
 		this.databases.push(new databaseObj(dbObjParams));
 		};
 	
-	this.fetchWellListFromDatabasePHP = function(dbIndex){
-		if(databases.length == 0){
-			// No DBs
-			return;
-		}
+	this.fetchWellGroupsFromDatabasePHP = function(dbIndex){
 		
 		// Use ajax to grab a list of the well groups from the DB
 		
@@ -337,67 +333,6 @@ function controller(){
 	this.loadPointsFromDatabasePHP = function(dbIndex){
 	}
 	
-}
-
-// Database object
-// Will store connection data for access to DBs
-// the controller object should use this when calling the C# functions for DB access
-function databaseObj(dbObjParams){
-	
-	// User set DB name and PW
-	this.dbName = "";
-	
-	this.hostName = "";
-	this.domainName = "";
-	this.userName = "";
-	this.password = "";
-	
-}
-
-function mapMetadata(name){
-	//console.log("mapMetadata() constructor called, name is " + name);
-	this.mapName = name;
-	
-	// description is empty on creation
-	this.description = "";
-	
-	// coordinates for where the map should focus on when loaded
-	this.origin = [55.0, -115.0]
-	
-	// TODO:
-	// GoogleMaps has a bunch of map types (Satellite, Streets, etc)
-	// Double check those, and maybe make a function to set this
-	this.mapType = "default";
-	
-	this.changeName = function(newName){
-		this.mapName = newName;
-	}
-	
-	this.changeDescription = function(newDesc){
-		this.description = newDesc;
-	}
-}
-
-// SUPER IMPORTANT!!!
-// This is the code that allows JSON.parse() to restore functions to objects made through JSON
-// Every constructor (except controller) needs it's own version of this.
-// More info here:
-// http://stackoverflow.com/questions/14027168/how-to-restore-original-object-type-from-json
-
-Types.mapMetadata = mapMetadata;
-
-mapMetadata.prototype.toJSON = function(){
-	return {
-		__type: 'mapMetadata',
-		mapName: this.mapName,
-		origin: this.origin,
-		mapType: this.mapType
-	};
-};
-
-mapMetadata.revive = function(data){
-	console.log("Revive Function called" + data.mapName);
-	return new mapMetadata(data.mapName);
 };
 
 /*

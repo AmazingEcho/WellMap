@@ -15,6 +15,9 @@ $('document').ready(function(){
 	var the_controller = new controller();
 	the_controller.initGMaps();
 	
+	var tossDB = {};
+	the_controller.addDatabaseConnectionPHP(tossDB);
+	
 	// The first thing the application does on startup is show the startup modal
 	console.log("Ititializing Start Modal");
 	$('.ui.modal.startup')
@@ -64,6 +67,18 @@ $('document').ready(function(){
 	$('.ui.dropdown').dropdown();
 	$('.ui.checkbox').checkbox();
 	$('.ui.button').popup();
+
+	///////////////////////////////////////////////////////
+	// Small Button Functions
+	///////////////////////////////////////////////////////
+	
+	$('#modal-button-sortascending').click(function(){
+		the_controller.the_map.sortLayersByNameAscending();
+	});
+
+	$('#modal-button-sortdescending').click(function(){
+		the_controller.the_map.sortLayersByNameDescending();
+	});
 
 	$('#modal-button-importPrivateDB').click(function(){
 		$('.ui.modal.importPrivateDB').modal('show');
@@ -144,7 +159,7 @@ $('document').ready(function(){
 		the_controller.fetchWellsFromDatabasePHP("Test Wells Group Beta", 2);
 	});
 
-	$('.ui.button.refreshMap').click(function(){
+	$('#refreshMap').click(function(){
 		// Note: Temporary
 		// In the final version, the map and layer list should update on just about every user action.
 		// Having this set to a button is better for debugging.
@@ -155,17 +170,16 @@ $('document').ready(function(){
 		// Clicking on this button displays a modal that shows current map info
 		// Also allows editing of current map info
 		
-	$("#modal-button-displayMapInfo").click(function(){
-		$('.ui.modal.displayMapInfo').modal('show');
-	});
-	
-	$('#modal-button-sortascending').click(function(){
-		the_controller.the_map.sortLayersByNameAscending();
+	$("#displayMapInfo").click(function(){
+		// Pull info from controller, and put it in the the inputs
+		console.log("launching info panel");
+		
+		$("#mapInfoModal").modal('show');
+		
+		$("input#mapNameField").val(the_controller.the_map.metadata.mapName);
+		$("input#mapDescField").val(the_controller.the_map.metadata.description);
 	});
 
-	$('#modal-button-sortdescending').click(function(){
-		the_controller.the_map.sortLayersByNameDescending();
-	});
 
 });// End of $('document').ready(function());
 
