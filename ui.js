@@ -171,7 +171,7 @@ $('document').ready(function(){
 		the_controller.the_map.cutwellLayers();
 	});
 	
-	$("modal-button-pastewelldata").click(function(){
+	$("#modal-button-pastewelldata").click(function(){
 		the_controller.the_map.pastewellLayers();
 	});
 	
