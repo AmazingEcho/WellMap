@@ -121,15 +121,24 @@ function map(name){
 	}
 	
 	this.copywellLayers = function(){
-		alert("copy");	
+		alert("copy");
+		//should be able to copy the list is its in an array with the slice function
+		//need to be able to call array from this class though -John
+		//var copiedlist = originallist.slice();
+		
 	}
 	
 	this.cutwellLayers = function(){
 		alert("cut");
+		//cut should be the same as copy but with a delete function built in - John
 	}
 	
 	this.pastewellLayers = function(){
 		alert("paste");
+		//need for loop to copy and overwrite onto array - John
+		//for (var i = 0; i < array.length; i++){
+		//	arr[i] = array.length[i];
+		//}
 	}
 }
 
