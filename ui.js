@@ -133,13 +133,13 @@ $('document').ready(function(){
 		
 	});
 	//import data from excel sheet
-	$('#modal-button-import').click(function(){
-		$('.ui.modal.import').modal('show');
+	$('#modal-button-importexcel').click(function(){
+		$('.ui.modal.importexcel').modal('show');
 		//function needed to import data
 	});
 	//export data to an excel sheet
-	$('#modal-button-export').click(function(){
-		$('.ui.modal.export').modal('show');
+	$('#modal-button-exportexcel').click(function(){
+		$('.ui.modal.exportexcel').modal('show');
 		//function needed to export data
 	});
 	//new map button
