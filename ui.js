@@ -70,14 +70,6 @@ $('document').ready(function(){
 	$('.ui.checkbox').checkbox();
 	$('.ui.button').popup();
 	
-	$("#setMapInfo").click(function(){
-		// Pull info from controller, and put it in the the inputs
-		console.log("launching info panel");
-		$("#editMapInfo").modal('show');
-		
-		$("input#mapNameField").val(the_controller.the_map.metadata.mapName);
-		$("input#mapDescField").val(the_controller.the_map.metadata.description);
-	});
 
 	///////////////////////////////////////////////////////
 	// Small Button Functions
