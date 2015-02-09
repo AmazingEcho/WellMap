@@ -163,6 +163,18 @@ $('document').ready(function(){
 		window.open("https://support.google.com/maps/?hl=en");
 	});
 
+	$('#modal-button-copywelldata').click(function(){
+		alert("copy");
+	});
+	
+	$('#modal-button-cutwelldata').click(function(){
+		alert("cut");
+	});
+	
+	$("modal-button-pastewelldata").click(function(){
+		alert("paste");
+	});
+	
 	///////////////////////////////////////////////////////
 	// Database Management Modal Buttons
 	///////////////////////////////////////////////////////
