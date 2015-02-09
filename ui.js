@@ -164,15 +164,15 @@ $('document').ready(function(){
 	});
 
 	$('#modal-button-copywelldata').click(function(){
-		alert("copy");
+		the_controller.the_map.copywellLayers();
 	});
 	
 	$('#modal-button-cutwelldata').click(function(){
-		alert("cut");
+		the_controller.the_map.cutwellLayers();
 	});
 	
 	$("modal-button-pastewelldata").click(function(){
-		alert("paste");
+		the_controller.the_map.pastewellLayers();
 	});
 	
 	///////////////////////////////////////////////////////
