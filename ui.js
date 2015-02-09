@@ -31,7 +31,8 @@ $('document').ready(function(){
 		$('#startupMenu').modal('hide');
 		// After selection, brings up modal to input map info. Map info is not recorded anywhere yet
 		$("#setMapInfo").modal('show');
-	
+			$("input#mapNameField").val(the_controller.the_map.metadata.mapName);
+			$("input#mapDescField").val(the_controller.the_map.metadata.description);
 	})
 	
 	// This is the button that loads a new map
