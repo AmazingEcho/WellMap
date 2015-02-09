@@ -29,8 +29,9 @@ $('document').ready(function(){
 		the_controller.newMap();
 		console.log("Controller status: On - Map name: " + the_controller.the_map.metadata.mapName);
 		$('#startupMenu').modal('hide');
+		// After selection, brings up modal to input map info. Map info is not recorded anywhere yet
 		$("#setMapInfo").modal('show');
-		// maybe bring up a new map info modal?
+	
 	})
 	
 	// This is the button that loads a new map
@@ -68,6 +69,15 @@ $('document').ready(function(){
 	$('.ui.dropdown').dropdown();
 	$('.ui.checkbox').checkbox();
 	$('.ui.button').popup();
+	
+	$("#setMapInfo").click(function(){
+		// Pull info from controller, and put it in the the inputs
+		console.log("launching info panel");
+		$("#editMapInfo").modal('show');
+		
+		$("input#mapNameField").val(the_controller.the_map.metadata.mapName);
+		$("input#mapDescField").val(the_controller.the_map.metadata.description);
+	});
 
 	///////////////////////////////////////////////////////
 	// Small Button Functions
@@ -83,6 +93,8 @@ $('document').ready(function(){
 		$("input#mapNameField").val(the_controller.the_map.metadata.mapName);
 		$("input#mapDescField").val(the_controller.the_map.metadata.description);
 	});
+	
+	
 	//sort the names on the well list(s) by ascending order
 	$('#modal-button-sortascending').click(function(){
 		the_controller.the_map.sortLayersByNameAscending();
