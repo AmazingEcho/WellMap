@@ -78,10 +78,10 @@ $('document').ready(function(){
 	
 	// Clicking on this button displays a modal that shows current map info
 	// Also allows editing of current map info
-	$("#editMapInfo").click(function(){
+	$("#modal-button-editMapInfo").click(function(){
 		// Pull info from controller, and put it in the the inputs
-		// console.log("launching info panel");
-		$("#editMapInfo").modal('show');
+		console.log("launching info panel");
+		$("#modal-button-editMapInfo").modal('show');
 		//$("input#mapNameField").val(the_controller.the_map.metadata.mapName);
 		//$("input#mapDescField").val(the_controller.the_map.metadata.description);
 	});
