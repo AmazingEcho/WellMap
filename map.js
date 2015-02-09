@@ -128,7 +128,7 @@ function map(name){
 		alert("cut");
 	}
 	
-	this.pastewellLayers =function(){
+	this.pastewellLayers = function(){
 		alert("paste");
 	}
 }
