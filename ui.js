@@ -172,7 +172,7 @@ $('document').ready(function(){
 	});
 	
 	$("#modal-button-pastewelldata").click(function(){
-		the_controller.the_map.cutwellLayers();
+		the_controller.the_map.pastewellLayers();
 	});
 	
 	///////////////////////////////////////////////////////
