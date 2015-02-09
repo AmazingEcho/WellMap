@@ -277,6 +277,7 @@
 </div>
 
 <!-- Set Map Info Modal -->
+<!-- On selecting a new map, directed to set map info before continuing -->
 <div class="ui modal settings" id="setMapInfo" style="background-color:#CCC; color:#000">
 	<i class="close icon"></i>
 	<div class="header">Map Settings</div>
@@ -361,18 +362,18 @@
 Displays map name and map description
 Allows user the option of exiting through the 'OK' button or
 Allows user to edit current map name and descrption and apply changes with 'Apply' button -->
-<div class="ui modal" id="editMapInfoModal" style="background-color:#CCC; color:#000">
+<div class="ui modal" id="editMapInfo" style="background-color:#CCC; color:#000">
 	<i class="close icon"></i>
 	<div class="header">Map Information</div>
 	<div class="content">
 		<div class="ui form">
 			<div class="field">
 				<label>Map Name</label>
-				<input type="text" id="mapNameField" value="xyz"/>
+				<input type="text" id="mapNameField"/>
 			</div>
 			<div class="field">
 				<label>Description</label>
-				<input type="text" id="mapDescField" value="abc"/>
+				<input type="text" id="mapDescField"/>
 			</div>
 		</div>
 	</div>
