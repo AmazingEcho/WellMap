@@ -119,6 +119,18 @@ function map(name){
 			}
 		}
 	}
+	
+	this.copywellLayers = function(){
+		alert("copy");	
+	}
+	
+	this.cutwellLayers = function(){
+		alert("cut");
+	}
+	
+	this.pastewellLayers =function(){
+		alert("paste");
+	}
 }
 
 Types.map = map;
