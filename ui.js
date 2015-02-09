@@ -29,6 +29,7 @@ $('document').ready(function(){
 		the_controller.newMap();
 		console.log("Controller status: On - Map name: " + the_controller.the_map.metadata.mapName);
 		$('#startupMenu').modal('hide');
+		$("#mapInfoModal").modal('show');
 		// maybe bring up a new map info modal?
 	})
 	
@@ -77,7 +78,6 @@ $('document').ready(function(){
 	$("#displayMapInfo").click(function(){
 		// Pull info from controller, and put it in the the inputs
 		console.log("launching info panel");
-		
 		$("#mapInfoModal").modal('show');
 		
 		$("input#mapNameField").val(the_controller.the_map.metadata.mapName);
