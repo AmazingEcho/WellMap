@@ -19,31 +19,31 @@ $('document').ready(function(){
 	the_controller.addDatabaseConnectionPHP(tossDB);
 	
 	// The first thing the application does on startup is show the startup modal
-	console.log("Ititializing Start Modal");
-	$('.ui.modal.startup')
+	console.log("Ititializing Start Menu");
+	$('#startupMenu')
 		.modal('setting', 'closable', false)
 		.modal('show');
 	
 	// This is the button that starts up a new map
-	$('.massive.ui.button.startupNewMap').click(function(){
+	$('#startupNewMap').click(function(){
 		the_controller.newMap();
 		console.log("Controller status: On - Map name: " + the_controller.the_map.metadata.mapName);
-		$('.ui.modal.startup').modal('hide');
+		$('#startupMenu').modal('hide');
 		// maybe bring up a new map info modal?
 	})
 	
 	// This is the button that loads a new map
 	// Since map loading hasn't been done yet, it simply issues an alert
-	$('.massive.ui.button.startupLoadMap').click(function(){
+	$('#startupLoadMap').click(function(){
 		// TODO: hook this up to the map load function
 		alert("Map Saving/Loading not yet implemented...");
 	})
 
-// Sidebar options
-// This one simply adds some properties to the sidebar
-// transition: "overlay" means the sidebar acts as an overlay, rather than a 'pusher'
-// dimPage means the rest of the page gets dimmed when the sidebar is open.  We don't want this, so it's been set to false
-// closable means the sidebar closes when you click outside of of it.  Again, we don't want this...
+	// Sidebar options
+	// This one simply adds some properties to the sidebar
+	// transition: "overlay" means the sidebar acts as an overlay, rather than a 'pusher'
+	// dimPage means the rest of the page gets dimmed when the sidebar is open.  We don't want this, so it's been set to false
+	// closable means the sidebar closes when you click outside of of it.  Again, we don't want this...
 	$('.ui.sidebar').sidebar({
 		// overlay: true,
 		// overlay got depritiated!
@@ -72,6 +72,18 @@ $('document').ready(function(){
 	// Small Button Functions
 	///////////////////////////////////////////////////////
 	
+	// Clicking on this button displays a modal that shows current map info
+	// Also allows editing of current map info
+	$("#displayMapInfo").click(function(){
+		// Pull info from controller, and put it in the the inputs
+		console.log("launching info panel");
+		
+		$("#mapInfoModal").modal('show');
+		
+		$("input#mapNameField").val(the_controller.the_map.metadata.mapName);
+		$("input#mapDescField").val(the_controller.the_map.metadata.description);
+	});
+	
 	$('#modal-button-sortascending').click(function(){
 		the_controller.the_map.sortLayersByNameAscending();
 	});
@@ -79,9 +91,17 @@ $('document').ready(function(){
 	$('#modal-button-sortdescending').click(function(){
 		the_controller.the_map.sortLayersByNameDescending();
 	});
+	
+	$('#refreshMap').click(function(){
+		// Note: Temporary
+		// In the final version, the map and layer list should update on just about every user action.
+		// Having this set to a button is better for debugging.
+		the_controller.refreshMap();
+		refreshLayerList(the_controller);
+	});
 
-	$('#modal-button-importPrivateDB').click(function(){
-		$('.ui.modal.importPrivateDB').modal('show');
+	$("#importWellsFromDatabaseButton").click(function(){
+		$("#importWellsFromDatabaseModal").modal('show');
 	});
 
 	//Settings Button Area
@@ -143,8 +163,12 @@ $('document').ready(function(){
 		window.open("https://support.google.com/maps/?hl=en");
 	});
 
-	$('#modal-button-refresh').click(function(){
-		document.location.reload()
+	///////////////////////////////////////////////////////
+	// Database Management Modal Buttons
+	///////////////////////////////////////////////////////
+	
+	$('#databaseLoadWellListButton').click(function(){
+		
 	});
 
 	$('#generateRandomPoints').click(function(){
@@ -159,26 +183,7 @@ $('document').ready(function(){
 		the_controller.fetchWellsFromDatabasePHP("Test Wells Group Beta", 2);
 	});
 
-	$('#refreshMap').click(function(){
-		// Note: Temporary
-		// In the final version, the map and layer list should update on just about every user action.
-		// Having this set to a button is better for debugging.
-		the_controller.refreshMap();
-		refreshLayerList(the_controller);
-	});
 
-		// Clicking on this button displays a modal that shows current map info
-		// Also allows editing of current map info
-		
-	$("#displayMapInfo").click(function(){
-		// Pull info from controller, and put it in the the inputs
-		console.log("launching info panel");
-		
-		$("#mapInfoModal").modal('show');
-		
-		$("input#mapNameField").val(the_controller.the_map.metadata.mapName);
-		$("input#mapDescField").val(the_controller.the_map.metadata.description);
-	});
 
 
 });// End of $('document').ready(function());

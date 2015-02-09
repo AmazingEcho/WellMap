@@ -193,7 +193,7 @@
 						<div class="menu">
 							<div class="item"><i class="database icon"></i>Add Database</div>
 							<div class="item"><i class="database icon"></i>Manage Databases</div>
-							<div class="item" id="modal-button-importPrivateDB"><i class="database icon"></i>Import Wells From Database</div>
+							<div class="item" id="importWellsFromDatabaseButton"><i class="database icon"></i>Import Wells From Database</div>
 						</div>
 					</div>
 				</div>	
@@ -208,18 +208,39 @@
 	</div>
 </div>
 
-<div class="ui modal importPrivateDB" style="background-color:#CCC; color:#000">
+<!--				-->
+<!-- MODALS			-->
+<!--				-->
+
+<!-- Import Wells from Database Modal-->
+<!-- This menu allows users to select an existing database profile to load a list of well groups from.-->
+<!-- Once a DB is selected and a list of groups is loaded, they can pick a group and load that into the map-->
+<div class="ui modal" id="importWellsFromDatabaseModal" style="background-color:#CCC; color:#000">
 	<i class="close icon"></i>
-	<div class="header">Import Private Wells</div>
+	<div class="header">Import Wells from Database</div>
 	<div class="content">
 		<div class="left">
+			<div class="ui form">
+				<div class="field">
+					<label>Database List</label>
+					<select class="ui dropdown" id="importWellMenuDatabaseList">
+					<!-- Load List of DBs here -->
+					<option value="">Select Database</option>
+					<option value="toss_db">Test Database</option>
+					</select>
+				</div>
+			</div>
+			<div class="ui button" id="databaseLoadWellListButton">
+				Load Well Group List
+			</div><br />
 			Please specify the well data you would like to access:
 			<div class="ui form">
 				<div class="field">
-					<label>PrivateWellDBList</label>
-					<select class="ui dropdown">
-					<option value="">Select Database</option>
-					<option value="test_db">Test Database</option>
+					<label>Well Group List</label>
+					<select class="ui dropdown" id="importWellMenuGroupList">
+					<!-- Use DOM with the load well group AJAX function to throw wallues here -->
+					<option value="">Select Well Group</option>
+					<option value="1">Well Group 1</option>
 					</select>
 				</div>
 			</div>
@@ -238,38 +259,31 @@
 		</div>
 	</div>
 	<div class="actions">
-		<div class="ui button">
-			Cancel
+		<div class="ui button">Exit</div>
+	</div>
+</div>
+
+<!-- Start up Modal -->
+<div class="ui modal" id="startupMenu" style="background-color:#CCC; color:#000">
+	<div class="header">Well Map</div>
+	<div class="content">
+		<div class="massive ui button" id="startupNewMap">
+			<center><i class="massive file outline icon"></i><br>Start a new map</center>
 		</div>
-		<div class="ui button">
-			Okay
+		<div class="massive ui button" id="startupLoadMap">
+			<center><i class="massive folder open icon"></i><br>Open an existing map</center>
 		</div>
 	</div>
 </div>
 
-<div class="ui modal startup" style="background-color:#CCC; color:#000">
-  <div class="header">
-    Well Map
-  </div>
-  <div class="content">
-    <div class="massive ui button startupNewMap">
-		<center><i class="massive file outline icon"></i><br>Start a new map</center>
-    </div>
-    <div class="massive ui button startupLoadMap">
-      <center><i class="massive folder open icon"></i><br>Open an existing map</center>
-    </div>
-  </div>
-</div>
-
+<!-- Map Info Modal -->
 <div class="ui modal settings" style="background-color:#CCC; color:#000">
 	<i class="close icon"></i>
-  <div class="header">
-    Map Settings
-  </div>
-  <div class="content">
-    <div class="ui form">
-	  <div class="field">
-	    <label>Map Name</label>
+	<div class="header">Map Settings</div>
+	<div class="content">
+		<div class="ui form">
+			<div class="field">
+				<label>Map Name</label>
 	    <input type="text" id="mapNameField">
 	  </div>
 	 <div class="field">
@@ -371,7 +385,7 @@ Allows user to edit current map name and descrption and apply changes with 'Appl
 	</div>
 </div>
 
-<!-- Import from Excel Modal'-->
+<!-- Import from Excel Modal-->
 <div class="ui modal import" style="background-color:#CCC; color:#000">
 	<i class="close icon"></i>
   <div class="header">
