@@ -83,11 +83,11 @@ $('document').ready(function(){
 		$("input#mapNameField").val(the_controller.the_map.metadata.mapName);
 		$("input#mapDescField").val(the_controller.the_map.metadata.description);
 	});
-	
+	//sort the names on the well list(s) by ascending order
 	$('#modal-button-sortascending').click(function(){
 		the_controller.the_map.sortLayersByNameAscending();
 	});
-
+	//sort the names of the well lists by descending order
 	$('#modal-button-sortdescending').click(function(){
 		the_controller.the_map.sortLayersByNameDescending();
 	});
@@ -119,11 +119,11 @@ $('document').ready(function(){
 		the_controller.the_map.changeDescription(mapDesc);
 
 	});
-
+	//saves current well lists onto server
 	$('#modal-button-saveMap').click(function(){ 
 		$('.ui.modal.saveMap').modal('show');
 	});
-	
+	//save confirmation button
 	$('#modal-button-saveMapButtonOkay').click(function(){
 	 	var mapName = document.getElementById('mapNameField').value;
 		var mapDesc= document.getElementById('mapDescField').value;
@@ -132,17 +132,17 @@ $('document').ready(function(){
 		the_controller.the_map.changeDescription(mapDesc);
 		
 	});
-
+	//import data from excel sheet
 	$('#modal-button-import').click(function(){
 		$('.ui.modal.import').modal('show');
 		//function needed to import data
 	});
-	
+	//export data to an excel sheet
 	$('#modal-button-export').click(function(){
 		$('.ui.modal.export').modal('show');
 		//function needed to export data
 	});
-	
+	//new map button
 	$('#modal-button-newMap').click(function(){
 	window.open("http://team-avengineers.github.io/WellMap/well_map.html");
 	});
@@ -151,14 +151,14 @@ $('document').ready(function(){
 	$('#modal-button-sproule').click(function(){
 		window.open("http://sproule.com/");
 	});
-
+	//report bug button
 	$('#modal-button-reportbug').click(function(){
 		$('.ui.modal.reportbug').modal('show');
 		var email = document.getElementById('email').value;
 		var issue = document.getElementById('issue').value;
 		//insert function to store data in spreadsheet for IT to access
 	});
-
+	//help button
 	$('#modal-button-Help').click(function(){
 		window.open("https://support.google.com/maps/?hl=en");
 	});
