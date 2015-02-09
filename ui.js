@@ -29,7 +29,7 @@ $('document').ready(function(){
 		the_controller.newMap();
 		console.log("Controller status: On - Map name: " + the_controller.the_map.metadata.mapName);
 		$('#startupMenu').modal('hide');
-		$("#mapInfoModal").modal('show');
+		$("#setMapInfo").modal('show');
 		// maybe bring up a new map info modal?
 	})
 	
@@ -75,10 +75,10 @@ $('document').ready(function(){
 	
 	// Clicking on this button displays a modal that shows current map info
 	// Also allows editing of current map info
-	$("#displayMapInfo").click(function(){
+	$("#editMapInfo").click(function(){
 		// Pull info from controller, and put it in the the inputs
 		console.log("launching info panel");
-		$("#mapInfoModal").modal('show');
+		$("#editMapInfo").modal('show');
 		
 		$("input#mapNameField").val(the_controller.the_map.metadata.mapName);
 		$("input#mapDescField").val(the_controller.the_map.metadata.description);
