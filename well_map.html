@@ -236,16 +236,20 @@
 			Please specify the well data you would like to access:
 			<div class="ui form">
 				<div class="field">
-					<label>Well Group List</label>
-					<select class="ui dropdown" id="importWellMenuGroupList">
-					<!-- Use DOM with the load well group AJAX function to throw wallues here -->
-					<option value="">Select Well Group</option>
-					<option value="1">Well Group 1</option>
-					</select>
+					<div class="ui selection dropdown">
+						<input type="hidden" name="importWellMenuGroupListr">
+						<div class="default text">Well Group List</div>
+						<i class="dropdown icon"></i>
+						<div class="menu" id="#importWellMenuGroupList">
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 		<div class="right">
+			<div class="ui button" id="importWellMenuLoadWellsFromGroup">
+				Load Wells from Selected Group
+			</div><br />
 			<div class="ui button" id="generateRandomPoints">
 				Generate Layer of Random Points
 			</div>

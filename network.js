@@ -26,14 +26,12 @@ var pingPHP = function(dbSettings){
 // Database object
 // Will store connection data for access to DBs
 // the controller object should use this when calling the C# functions for DB access
-function databaseObj(dbObjParams){
+function databaseObjPHP(dbObjParams){
 	
 	// User set DB name and PW
-	this.dbName = "";
-	
-	this.hostName = "";
-	this.domainName = "";
-	this.userName = "";
-	this.password = "";
+	this.dbName = dbObjParams.dbName;
+	this.dbDescription = dbObjParams.dbDesc;
+	this.groupListURL = dbObjParams.groupListURL;
+	this.wellListURL = dbObjParams.wellListURL;
 	
 }

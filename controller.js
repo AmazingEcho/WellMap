@@ -245,7 +245,7 @@ function controller(){
 		// a password
 		// and maybe a user provided description
 		
-		this.databases.push(new databaseObj(dbObjParams));
+		this.databases.push(new databaseObjPHP(dbObjParams));
 		};
 		
 	this.addDatabaseConnectionCS = function(dbObjParams){
@@ -257,25 +257,68 @@ function controller(){
 		// a password
 		// and maybe a user provided description
 		
+		
+		
 		this.databases.push(new databaseObj(dbObjParams));
 		};
 	
 	this.fetchWellGroupsFromDatabasePHP = function(dbIndex){
 		
-		// Use ajax to grab a list of the well groups from the DB
-		
-		// Return a list of Well groups that ui.js can use DOM to print out
-		
-		
-	}
-	
-	this.fetchWellsFromDatabasePHP = function(groupName, groupIndex){
+		if(this.databases.length == 0){
+			console.log("No Database information present.  Please set Databse Options.");
+			return;
+		}
 		
 		var conPTR = this;
 		
 		$.ajax({
 			type: "POST",
-			url: "http://www.tconx.net/wellMapServ/well_create_xml.php?id=" + groupIndex,
+			url: this.databases[dbIndex].groupListURL,
+			dataType: 'xml',
+			success: function(xml_out){
+				/* -FORMAT-
+				<div class="menu" id="#importWellMenuGroupList">
+					<div class="item" data-value="1">Well Group 1</div>
+					<div class="item" data-value="2">Well Group 2</div>
+					<div class="item" data-value="3">Well Group 3</div>
+				</div>
+				*/
+				
+				// Clear list
+				document.getElementById("#importWellMenuGroupList").innerHTML = "";
+				
+				var divElem;
+				
+				$(xml_out).find("wellGroup").each(function(){
+					$(this).attr("wellGroupID");
+					divElem = document.createElement("div");
+					divElem.className = "item";
+					divElem.setAttribute("data-value", $(this).attr("wellGroupID"));
+					divElem.setAttribute("id", "wellGroupIndex");
+					divElem.innerHTML = $(this).attr("wellGroupName") + " - " + $(this).attr("wellGroupOwner");
+					document.getElementById("#importWellMenuGroupList").appendChild(divElem);
+				});
+				
+				console.log("AJAX pull from PHP successful!");
+			},
+		
+			error: function(){
+			console.log("Error in fetchWellGroupsFromDatabasePHP()");
+			}
+		});
+	}
+	
+	this.fetchWellsFromDatabasePHP = function(dbIndex, groupName, groupIndex){
+		if(this.databases.length == 0){
+			console.log("No Database information present.  Please set Databse Options.");
+			return;
+		}
+		
+		var conPTR = this;
+		
+		$.ajax({
+			type: "POST",
+			url: this.databases[dbIndex].wellListURL + groupIndex,
 			dataType: 'xml',
 			success: function(xml_out){
 				
@@ -305,7 +348,7 @@ function controller(){
 	
 	this.fetchWellListFromDatabaseCS = function(dbIndex){
 		if(databases.length == 0){
-			// No DBs
+			console.log("No Database information present.  Please set Databse Options.");
 			return;
 		}
 		

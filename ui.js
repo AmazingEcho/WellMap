@@ -15,7 +15,12 @@ $('document').ready(function(){
 	var the_controller = new controller();
 	the_controller.initGMaps();
 	
-	var tossDB = {};
+	var tossDB = {
+		dbName: "Test Database",
+		dbDesc: "Database of Test Data",
+		groupListURL: "http://www.tconx.net/wellMapServ/wellGroup_create_xml.php",
+		wellListURL: "http://www.tconx.net/wellMapServ/well_create_xml.php?id="
+		};
 	the_controller.addDatabaseConnectionPHP(tossDB);
 	
 	// The first thing the application does on startup is show the startup modal
@@ -185,7 +190,13 @@ $('document').ready(function(){
 	///////////////////////////////////////////////////////
 	
 	$('#databaseLoadWellListButton').click(function(){
-		
+		the_controller.fetchWellGroupsFromDatabasePHP(0);
+	});
+	
+	$("#importWellMenuLoadWellsFromGroup").click(function(){
+		var dataVal = $(".item.active.selected#wellGroupIndex").dropdown("get value");
+		console.log("Selected Well Group: " + dataVal);
+		the_controller.fetchWellsFromDatabasePHP(0, "Test Wells Group Alpha", dataVal);
 	});
 
 	$('#generateRandomPoints').click(function(){
@@ -193,11 +204,11 @@ $('document').ready(function(){
 	});
 	
 	$('#wellGroup1').click(function(){
-		the_controller.fetchWellsFromDatabasePHP("Test Wells Group Alpha", 1);
+		the_controller.fetchWellsFromDatabasePHP(0, "Test Wells Group Alpha", 1);
 	});
 	
 	$('#wellGroup2').click(function(){
-		the_controller.fetchWellsFromDatabasePHP("Test Wells Group Beta", 2);
+		the_controller.fetchWellsFromDatabasePHP(0, "Test Wells Group Beta", 2);
 	});
 
 
