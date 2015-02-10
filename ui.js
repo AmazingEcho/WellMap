@@ -144,6 +144,7 @@ $('document').ready(function(){
 	//export data to an excel sheet
 	$('#modal-button-exportexcel').click(function(){
 		$('.ui.modal.exportexcel').modal('show');
+		var excelnewdoc = document.getElementById('excelnewdoc').value;
 		//function needed to export data
 	});
 	//new map button
