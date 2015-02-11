@@ -1,4 +1,7 @@
-<script type = "text/javascript">
+//scans the database and creates an array of all the wells currently in the database
+//TODO 
+//need to figure out the best way to return that data
+script type = "text/javascript">
 function ImportWells(){
   $.ajax({
   type: "POST",
@@ -15,6 +18,7 @@ function ImportWells(){
   });
 }
 
+//adds a new well the database. requires all fields except wellkey, which will be automatically generated
 <script type = "text/javascript">
 function AddWellToDB(){
   $.ajax({
@@ -32,8 +36,9 @@ function AddWellToDB(){
   });
 }
 
+//updates a well in the database. requires all fields, including wellkey
 <script type = "text/javascript">
-function AddWellToDB(){
+function UpdateExistingWell(){
   $.ajax({
   type: "POST",
   url: 'WellMap.dbaccess/update_well',
@@ -49,8 +54,9 @@ function AddWellToDB(){
   });
 }
 
+//deletes well from database, requires the key (unique identifier) of that well
 <script type = "text/javascript">
-function AddWellToDB(){
+function DeleteWellFromDB(){
   $.ajax({
   type: "POST",
   url: 'WellMap.dbaccess/delete_well',
