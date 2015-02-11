@@ -130,7 +130,11 @@ function map(name){
 	
 	this.cutwellLayers = function(){
 		alert("cut");
-		//cut should be the same as copy but with a delete function built in - John
+		//cut should be the same as copy but with a delete function built in
+		//also Java sucks at garbage collection so just create for loop to deallocate memory- John
+		//for (var i = 0; i < array.length; i++){
+		//	arr[i] = null;	
+		//}
 	}
 	
 	this.pastewellLayers = function(){
