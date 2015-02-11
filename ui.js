@@ -86,7 +86,8 @@ $('document').ready(function(){
 	$("#modal-button-editMapInfo").click(function(){
 		// Pull info from controller, and put it in the the inputs
 		console.log("launching info panel");
-		$("#modal-button-editMapInfo").modal('show');
+		
+		//$("#modal-button-editMapInfo").modal('show');
 		//$("input#mapNameField").val(the_controller.the_map.metadata.mapName);
 		//$("input#mapDescField").val(the_controller.the_map.metadata.description);
 	});
@@ -186,7 +187,7 @@ $('document').ready(function(){
 	});
 	
 	///////////////////////////////////////////////////////
-	// Database Management Modal Buttons
+	// Import Well From Database Modal Buttons
 	///////////////////////////////////////////////////////
 	
 	$('#databaseLoadWellListButton').click(function(){
@@ -194,25 +195,19 @@ $('document').ready(function(){
 	});
 	
 	$("#importWellMenuLoadWellsFromGroup").click(function(){
+		//TODO: Error Checking
+		
 		var dataVal = $(".item.active.selected#wellGroupIndex").dropdown("get value");
 		console.log("Selected Well Group: " + dataVal);
-		the_controller.fetchWellsFromDatabasePHP(0, "Test Wells Group Alpha", dataVal);
+		console.log("Selected Well Group Name: " + the_controller.wellGroupList[dataVal].groupName);
+		
+		//NOTE: replace the 0 in this function with a value from the database selector
+		the_controller.fetchWellsFromDatabasePHP(0, the_controller.wellGroupList[dataVal].groupName, dataVal);
 	});
 
 	$('#generateRandomPoints').click(function(){
 		the_controller.generateRandomPoints(16);
 	});
-	
-	$('#wellGroup1').click(function(){
-		the_controller.fetchWellsFromDatabasePHP(0, "Test Wells Group Alpha", 1);
-	});
-	
-	$('#wellGroup2').click(function(){
-		the_controller.fetchWellsFromDatabasePHP(0, "Test Wells Group Beta", 2);
-	});
-
-
-
 
 });// End of $('document').ready(function());
 

@@ -35,6 +35,7 @@ function controller(){
 	this.the_map = null;
 	this.Gmap = null;
 	this.databases = [];
+	this.wellGroupList = [];
 	
 	// TODO:
 	// Put code to summon a map via gmaps.js here
@@ -286,17 +287,21 @@ function controller(){
 				
 				// Clear list
 				document.getElementById("#importWellMenuGroupList").innerHTML = "";
+				conPTR.wellGroupList = [];
 				
 				var divElem;
 				
 				$(xml_out).find("wellGroup").each(function(){
-					$(this).attr("wellGroupID");
+
 					divElem = document.createElement("div");
 					divElem.className = "item";
 					divElem.setAttribute("data-value", $(this).attr("wellGroupID"));
 					divElem.setAttribute("id", "wellGroupIndex");
 					divElem.innerHTML = $(this).attr("wellGroupName") + " - " + $(this).attr("wellGroupOwner");
 					document.getElementById("#importWellMenuGroupList").appendChild(divElem);
+					
+					conPTR.wellGroupList[$(this).attr("wellGroupID")] = {groupName: $(this).attr("wellGroupName"), groupOwner: $(this).attr("wellGroupOwner")};
+					
 				});
 				
 				console.log("AJAX pull from PHP successful!");
