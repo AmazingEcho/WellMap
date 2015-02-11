@@ -12,11 +12,8 @@ public Struct WellInfo{
   int wellOutput;
 }
 
-//supports 100 wells, can be changed
-WellInfo wellsInDatabase[100];
-
-class database(){
-
+//adding to each function
+/*
 static void initialize_connection(){
   
   SQLConnection myConnection = new SQLConnection("userid = tconxnet_CScode; password = z2lafile6b2mq044; server = http://www.tconx.net/phpMyAdmin/; Trusted_Connection = yes; database = tconxnet_wellmap2; connection timeout = 30");
@@ -28,14 +25,19 @@ static void initialize_connection(){
   }
   return 0;
 }
+*/
 
+//inserts new well into database with given information
+[WebMethod]
 static void add_new(int wellGroup, string wellname, string welltype, double latitude, double longitude, int wellCapacity, int wellOutput){
   
    SQLConnection myConnection = new SQLConnection("userid = tconxnet_CScode; password = z2lafile6b2mq044; server = http://www.tconx.net/phpMyAdmin/; Trusted_Connection = yes; database = tconxnet_wellmap2; connection timeout = 30");
    SQLCommand myCommand = new SQLCommand("INSERT into wells (wellGroup, wellName, wellType, lat, lng, wellCapacity, wellOutput")" +
     "Values('wellgroup', 'wellname', 'welltype', latitude, longitude, wellCapacity, wellOutput)", myConnection);
     try{
+      myConnection.Open();
       myCommand.ExecuteNonQuery();
+      myConnection.Close();
     }
     catch (Exception e){
       Console.WriteLine(e.ToString());
@@ -43,9 +45,13 @@ static void add_new(int wellGroup, string wellname, string welltype, double lati
     return 0;
 }
 
-static void read_data(){
+//returns an array of the wells in the database
+[WebMethod]
+static WellInfo[] read_data(){
+   WellInfo wellsInDatabase[100];
    SQLConnection myConnection = new SQLConnection("userid = tconxnet_CScode; password = z2lafile6b2mq044; server = http://www.tconx.net/phpMyAdmin/; Trusted_Connection = yes; database = tconxnet_wellmap2; connection timeout = 30");
    try{
+     myConnection.Open();
      SQLDataReader myReader = null;
      SQLCommand = new SQLCommand("select * from wells", myConnection);
      myReader = myCommand.ExecuteReader();
@@ -60,19 +66,24 @@ static void read_data(){
        wellsInDatabase[counter].wellCapacity = myReader["wellCapacity"].getInt16();
        wellsInDatabase[counter].wellOutput = myReader["wellOutput"].getInt16();
      }
+     myConnection.Close();
    }
    Catch (Exception e){
      Console.WriteLine(e.ToString());
    }
-   return 0;
+   return wellsInDatabase;
 }
 
+//updates a well entry in the database with the given information
+[WebMethod]
 static void update_well(int workingWellKey, int newWellGroup, string newWellname, string newWelltype, double newLatitude, double newLongitude, int newWellCapacity, int newWellOutput){
   SQLConnection myConnection = new SQLConnection("userid = tconxnet_CScode; password = z2lafile6b2mq044; server = http://www.tconx.net/phpMyAdmin/; Trusted_Connection = yes; database = tconxnet_wellmap2; connection timeout = 30");
   SQLCommand myCommand = new SQLCommand("UPDATE wells SET wellGroup = newWellGroup, wellName = newWellName, wellType = newWellType, lat = newLatitude, lng = newLongitude, wellCapacity = newWellCapacity, wellOutput = newWellOutput" +
       "WHERE wellKey == workingWellKey", myConnection);
     try{
+      myConnection.Open();
       myCommand.ExecuteNonQuery();
+      myConnection.Close();
     }
     catch (Exception e){
       Console.WriteLine(e.ToString());
@@ -80,7 +91,23 @@ static void update_well(int workingWellKey, int newWellGroup, string newWellname
     return 0;
 }
 
-static void close_connection(){
+//delete a well from the database with the matching key as given
+[WebMethod]
+static void delete_well(int workingWellKey){
+    SQLConnection myConnection = new SQLConnection("userid = tconxnet_CScode; password = z2lafile6b2mq044; server = http://www.tconx.net/phpMyAdmin/; Trusted_Connection = yes; database = tconxnet_wellmap2; connection timeout = 30");
+    SQLCommand myCommand = new SQLCommand("Delete from wells WHERE wellKey = workingWellKey", myConnection);
+    try{
+      myConnection.Open();
+      myCommand.ExecuteNonQuery();
+      myConnection.Close();
+    }
+    catch (Exception e){
+      Console.WriteLine(e.ToString());
+    }
+    return 0;
+}
+
+/*static void close_connection(){
    SQLConnection myConnection = new SQLConnection("userid = tconxnet_CScode; password = z2lafile6b2mq044; server = http://www.tconx.net/phpMyAdmin/; Trusted_Connection = yes; database = tconxnet_wellmap2; connection timeout = 30");
    
   try{
@@ -90,6 +117,4 @@ static void close_connection(){
   Console.WriteLine(e.ToString());
   }
   return 0;
-}
-
-}
+}*/
