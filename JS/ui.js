@@ -186,10 +186,15 @@ $('document').ready(function(){
 		var smapdescField = document.getElementById("saveMapDescField");
 		var smapdescLength = smapnameField.value.length;
 
-		if (smapnameLength == 0 || smapdescLength == 0)
-			alert("error");
-		else
+
+		if (smapnameLength != 0 && smapdescLength !=0)
+		{
 			alert("you can save");
+		}
+		else
+		{
+			alert("error");
+		}
 		//check if first is empty
 		
 		//if second is empty
