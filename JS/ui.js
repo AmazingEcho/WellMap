@@ -189,7 +189,7 @@ $('document').ready(function(){
 
 		if (smapnameLength == 0||smapdescLength ==0)
 		{
-			alert("Unable to save. Please fill out the MapName and Description fields.");
+			alert("Unable to save. Please fill out the Name and Description fields.");
 		}
 	});
 	
