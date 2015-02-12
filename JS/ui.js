@@ -161,11 +161,20 @@ $('document').ready(function(){
 		//$('.ui.modal.settings').modal('show');
 		//alert("piril say okay");
 		var mapName = document.getElementById('settingsMapNameField').value;
+		var mapNameLength = mapName.value.length;
+
 		var mapDesc= document.getElementById('settingsMapDescField').value;
-
-		the_controller.the_map.changeName(mapName);
-		the_controller.the_map.changeDescription(mapDesc);
-
+		var mapDescLength = mapDesc.value.length;
+		
+		if (mapNameLength == 0||mapDescLength ==0)
+		{
+			alert("Unable to save. Please fill out the Name and Description fields.");
+		}
+		else
+		{
+			the_controller.the_map.changeName(mapName);
+			the_controller.the_map.changeDescription(mapDesc);
+		}
 	});
 	
 	//save confirmation button
