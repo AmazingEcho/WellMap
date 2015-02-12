@@ -21,31 +21,12 @@ $('document').ready(function(){
 		groupListURL: "http://www.tconx.net/wellMapServ/wellGroup_create_xml.php",
 		wellListURL: "http://www.tconx.net/wellMapServ/well_create_xml.php?id="
 		};
+		
 	the_controller.addDatabaseConnectionPHP(tossDB);
 	
-	// The first thing the application does on startup is show the startup modal
-	console.log("Ititializing Start Menu");
-	$('#startupMenu')
-		.modal('setting', 'closable', false)
-		.modal('show');
-	
-	// This is the button that starts up a new map
-	$('#startupNewMap').click(function(){
-		the_controller.newMap();
-		console.log("Controller status: On - Map name: " + the_controller.the_map.metadata.mapName);
-		$('#startupMenu').modal('hide');
-		// After selection, brings up modal to input map info. Map info is not recorded anywhere yet
-		$("#setMapInfo").modal('show');
-			$("input#mapNameField").val(the_controller.the_map.metadata.mapName);
-			$("input#mapDescField").val(the_controller.the_map.metadata.description);
-	})
-	
-	// This is the button that loads a new map
-	// Since map loading hasn't been done yet, it simply issues an alert
-	$('#startupLoadMap').click(function(){
-		// TODO: hook this up to the map load function
-		alert("Map Saving/Loading not yet implemented...");
-	})
+	////////////////////////////////////////////////////////////
+	// Special Semantic Object Class Initializers
+	////////////////////////////////////////////////////////////
 
 	// Sidebar options
 	// This one simply adds some properties to the sidebar
@@ -71,16 +52,69 @@ $('document').ready(function(){
 		exclusive: false
 		});
 
-	// Special Semantic Object Class Initializers
 	$('.menu .item').tab();
 	$('.ui.dropdown').dropdown();
 	$('.ui.checkbox').checkbox();
 	$('.ui.button').popup();
 	
+	////////////////////////////////////////////////////////////
+	// Start Up Menus
+	////////////////////////////////////////////////////////////
+	
+	// The first thing the application does on startup is show the startup modal
+	console.log("Ititializing Start Menu");
+	$('#startupMenu')
+		.modal('setting', 'closable', false)
+		.modal('show');
+	
+	// This is the button that starts up a new map
+	$('#startupNewMap').click(function(){
+		the_controller.newMap();
+		console.log("Controller status: On");
+		$('#startupMenu').modal('hide');
+		
+		// After selection, brings up modal to input map info. Map info is not recorded anywhere yet
+		$("#newMapModal")
+			.modal('setting', 'closable', false)
+			.modal('show');
+		$("input#newMapNameField").val(the_controller.the_map.metadata.mapName);
+		$("input#newMapDescField").val(the_controller.the_map.metadata.description);
+	});
+	
+	// When the Back button is clicked, they should go back to the first modal
+	$("#newMapModalBack").click(function(){
+		$("#newMapModal").modal('hide');
+		$('#startupMenu')
+			.modal('setting', 'closable', false)
+			.modal('show');
+	});
+
+	$("#newMapModalCreateNewMap").click(function(){
+		if(!($("input#newMapNameField").val())){
+			console.log("Empty Field");
+			$("#NO_NAME_WARNING").html("Ayy Lmao");
+			// TODO: Prevent Modal from hiding
+		}
+		else{
+			the_controller.the_map.metadata.changeName($("input#newMapNameField"));
+		}
+	});
+	
+	// This is the button that loads a new map
+	// Since map loading hasn't been done yet, it simply issues an alert
+	$('#startupLoadMap').click(function(){
+		// TODO: hook this up to the map load function
+		alert("Map Saving/Loading not yet implemented...");
+	});
 
 	///////////////////////////////////////////////////////
 	// Small Button Functions
 	///////////////////////////////////////////////////////
+	
+	// Save Map Button
+	$("#button-saveMapModal").click(function(){ 
+		$("#saveMapModal").modal('show');
+	});
 	
 	// Clicking on this button displays a modal that shows current map info
 	// Also allows editing of current map info
@@ -130,10 +164,7 @@ $('document').ready(function(){
 		the_controller.the_map.changeDescription(mapDesc);
 
 	});
-	//saves current well lists onto server
-	$('#modal-button-saveMap').click(function(){ 
-		$('.ui.modal.saveMap').modal('show');
-	});
+	
 	//save confirmation button
 	$('#modal-button-saveMapButtonOkay').click(function(){
 	 	var mapName = document.getElementById('mapNameField').value;
