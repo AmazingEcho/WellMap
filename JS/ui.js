@@ -177,6 +177,11 @@ $('document').ready(function(){
 		the_controller.the_map.changeDescription(mapDesc);
 		
 	});
+	
+	$('#modal-button-saveMapSave').click(function(){
+	 	alert("wtf0");
+	});
+	
 	//import data from excel sheet
 	$('#modal-button-importexcel').click(function(){
 		$('.ui.modal.importexcel').modal('show');
