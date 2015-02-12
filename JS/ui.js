@@ -170,8 +170,8 @@ $('document').ready(function(){
 	
 	//save confirmation button
 	$('#modal-button-saveMapButtonOkay').click(function(){
-	 	var mapName = document.getElementById('mapNameField').value;
-		var mapDesc= document.getElementById('mapDescField').value;
+	 	var mapName = document.getElementById('saveMapNameField').value;
+		var mapDesc= document.getElementById('saveMapDescField').value;
 
 		the_controller.the_map.changeName(mapName);
 		the_controller.the_map.changeDescription(mapDesc);
@@ -179,7 +179,14 @@ $('document').ready(function(){
 	});
 	
 	$('#modal-button-saveMapSave').click(function(){
-	 	alert("wtf0");
+		
+		//check if first is empty
+		
+		//if second is empty
+		
+		//if both are empty
+		
+		//else save
 	});
 	
 	//import data from excel sheet
