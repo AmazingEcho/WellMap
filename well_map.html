@@ -10,13 +10,13 @@
 <script src="jquery-ui.js"></script>
 <script src="semantic/semantic.js"></script>
 <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBvwCMuLz31gLXoawbDBntieQjGPMrf5vA&sensor=false"></script>
-<script src="gmaps.js"></script>
-<script src="controller.js"></script>
-<script src="map.js"></script>
-<script src="layer_types.js"></script>
-<script src="map_objects.js"></script>
-<script src="network.js"></script>
-<script src="ui.js"></script>
+<script src="JS/gmaps.js"></script>
+<script src="JS/controller.js"></script>
+<script src="JS/map.js"></script>
+<script src="JS/layer_types.js"></script>
+<script src="JS/map_objects.js"></script>
+<script src="JS/network.js"></script>
+<script src="JS/ui.js"></script>
 
 </head>
 <body>
@@ -146,11 +146,11 @@
 				</div>
 				
 				<div class=" icon ui buttons">
-					<div class="ui button" data-content="Display Map Info" id="modal-button-editMapInfo"><i class="info icon"></i></div>
-					<div class="ui button" data-content="Sort Ascending" id="modal-button-sortascending"><i class="sort numeric ascending icon"></i></div>
-					<div class="ui button" data-content="Sort Descending" id="modal-button-sortdescending"><i class="sort numeric descending icon"></i></div>
-					<div class="ui button" data-content="Refresh Map" id="refreshMap"><i class="refresh icon"></i></div>
-					<div class="ui button" data-content="Sproule" id = "modal-button-sproule"><i class="world icon"></i></div>
+					<div class="ui button" data-content="Edit Map Info" id="button-editMapInfoModal"><i class="info icon"></i></div>
+					<div class="ui button" data-content="Sort Ascending" id="button-sortascending"><i class="sort numeric ascending icon"></i></div>
+					<div class="ui button" data-content="Sort Descending" id="button-sortdescending"><i class="sort numeric descending icon"></i></div>
+					<div class="ui button" data-content="Refresh Map" id="button-refreshMap"><i class="refresh icon"></i></div>
+					<div class="ui button" data-content="Sproule" id = "modal-button-"><i class="world icon"></i></div>
 					<div class="ui button" data-content="View Data"><i class="table icon"></i></div>
 					<div class="ui button" data-content="Import Data" id = "modal-button-importexcel"><i class="arrow down icon"></i></div>
 					<div class="ui button" data-content="Export Data" id="modal-button-exportexcel"><i class="arrow up icon"></i></div>
@@ -158,8 +158,8 @@
 				
 				<div class=" icon ui buttons">
 					<div class="ui button" data-content="Settings" id="modal-button-settingsButton"><i class="settings icon"></i></div>
-					<div class="ui button" data-content="Help" id="modal-button-Help"><i class="help icon"></i></div>
-					<div class="ui button" data-content="Report Bug" id="modal-button-reportbug"><i class="red bug icon"></i></div>
+					<div class="ui button" data-content="Help" id="button-help"><i class="help icon"></i></div>
+					<div class="ui button" data-content="Report Bug" id="button-reportBug"><i class="red bug icon"></i></div>
 				</div>
 			</div>
 
@@ -324,7 +324,7 @@
   </div>
 </div>
 
-<div class="ui modal reportbug" style="background-color:#CCC; color:#000">
+<div class="ui modal" id="reportBugModal" style="background-color:#CCC; color:#000">
 	<i class="close icon"></i>
   <div class="header">
     Report Bug
@@ -384,43 +384,36 @@ Allows user to edit current map name and descrption and apply changes with 'Appl
 	</div>
 </div>
 
-<!-- Import from Excel Modal-->
+<!-- 							-->
+<!-- Import from Excel Modal	-->
+<!-- 							-->
 <div class="ui modal importexcel" style="background-color:#CCC; color:#000">
 	<i class="close icon"></i>
-  <div class="header">
-    Import from Excel
-  </div>
-  <div class="actions">
-	<div class="ui button" id="modal-button-importbrowse">
-		Browse
+	<div class="header">Import from Excel</div>
+	<div class="actions">
+		<div class="ui button" id="modal-button-importbrowse">Browse</div>
+		<div class="ui button" id="modal-button-importok">Ok</div>
 	</div>
-	<div class="ui button" id="modal-button-importok">
-		Ok
-	</div>
-  </div>
 </div>
 
+<!-- 							-->
+<!-- Import from Excel Modal	-->
+<!-- 							-->
 <div class="ui modal exportexcel" style="background-color:#CCC; color:#000">
 	<i class="close icon"></i>
-  <div class="header">
-    Export to Excel
-  </div>
-  <div class="content">
-    <div class="ui form">
-	  <div class="field">
-	    <label>Enter filename for document</label>
-	    <input type="text" id="excelnewdoc">
-	  </div>
-    </div>
-  </div>
-  <div class="actions">
-	<div class="ui button" id="modal-button-exportgenerate">
-		Generate
+	<div class="header">Export to Excel</div>
+	<div class="content">
+		<div class="ui form">
+			<div class="field">
+				<label>Enter filename for document</label>
+				<input type="text" id="excelnewdoc">
+			</div>
+		</div>
 	</div>
-	<div class="ui button" id="modal-button-exportclose">
-		Close
+	<div class="actions">
+		<div class="ui button" id="modal-button-exportgenerate">Generate</div>
+		<div class="ui button" id="modal-button-exportclose">Close</div>
 	</div>
-  </div>
 </div>
 
 </body>

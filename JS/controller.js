@@ -34,6 +34,7 @@ function controller(){
 	// controller now has to be TOLD to make a new map
 	this.the_map = null;
 	this.Gmap = null;
+	
 	this.databases = [];
 	this.wellGroupList = [];
 	
@@ -50,7 +51,7 @@ function controller(){
 			mapTypeId:google.maps.MapTypeId.TERRAIN,
 			disableDefaultUI:true
 		});
-	
+	/*
 		var path = [[55.000,-115.000],[55.000,-113.000],[52.000,-113.000],[52.000,-115.000]];
 
 		this.Gmap.drawPolygon({
@@ -60,7 +61,8 @@ function controller(){
 			strokeWeight: 3,
 			fillColor: '#BBD8E9',
 			fillOpacity: 0.6
-		});	
+		});
+	*/
 	}
 	
 	this.newMap = function(){

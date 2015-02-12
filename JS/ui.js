@@ -71,6 +71,7 @@ $('document').ready(function(){
 		exclusive: false
 		});
 
+	// Special Semantic Object Class Initializers
 	$('.menu .item').tab();
 	$('.ui.dropdown').dropdown();
 	$('.ui.checkbox').checkbox();
@@ -83,7 +84,7 @@ $('document').ready(function(){
 	
 	// Clicking on this button displays a modal that shows current map info
 	// Also allows editing of current map info
-	$("#modal-button-editMapInfo").click(function(){
+	$("#button-editMapInfoModal").click(function(){
 		// Pull info from controller, and put it in the the inputs
 		console.log("launching info panel");
 		
@@ -94,15 +95,15 @@ $('document').ready(function(){
 	
 	
 	//sort the names on the well list(s) by ascending order
-	$('#modal-button-sortascending').click(function(){
+	$('#button-sortascending').click(function(){
 		the_controller.the_map.sortLayersByNameAscending();
 	});
 	//sort the names of the well lists by descending order
-	$('#modal-button-sortdescending').click(function(){
+	$('#button-sortdescending').click(function(){
 		the_controller.the_map.sortLayersByNameDescending();
 	});
 	
-	$('#refreshMap').click(function(){
+	$('#button-refreshMap').click(function(){
 		// Note: Temporary
 		// In the final version, the map and layer list should update on just about every user action.
 		// Having this set to a button is better for debugging.
@@ -153,24 +154,27 @@ $('document').ready(function(){
 		var excelnewdoc = document.getElementById('excelnewdoc').value;
 		//function needed to export data
 	});
+	
 	//new map button
 	$('#modal-button-newMap').click(function(){
 	window.open("http://team-avengineers.github.io/WellMap/well_map.html");
 	});
 	
 	// function to implement the world (sproule) icon
-	$('#modal-button-sproule').click(function(){
+	$('#button-sproule').click(function(){
 		window.open("http://sproule.com/");
 	});
-	//report bug button
-	$('#modal-button-reportbug').click(function(){
-		$('.ui.modal.reportbug').modal('show');
+	
+	// report bug button
+	$('#button-reportBug').click(function(){
+		$('#reportBugModal').modal('show');
 		var email = document.getElementById('email').value;
 		var issue = document.getElementById('issue').value;
 		//insert function to store data in spreadsheet for IT to access
 	});
-	//help button
-	$('#modal-button-Help').click(function(){
+	
+	// help button
+	$('#button-help').click(function(){
 		window.open("https://support.google.com/maps/?hl=en");
 	});
 
@@ -186,8 +190,34 @@ $('document').ready(function(){
 		the_controller.the_map.pastewellLayers();
 	});
 	
+	
+	
 	///////////////////////////////////////////////////////
-	// Import Well From Database Modal Buttons
+	//		New Map Info Modal Buttons
+	///////////////////////////////////////////////////////
+	
+	///////////////////////////////////////////////////////
+	//		Save Map Modal Buttons
+	///////////////////////////////////////////////////////
+	
+	///////////////////////////////////////////////////////
+	//		Load Map Modal Buttons
+	///////////////////////////////////////////////////////
+	
+	///////////////////////////////////////////////////////
+	//		Edit Map Info Modal Buttons
+	///////////////////////////////////////////////////////
+	
+	///////////////////////////////////////////////////////
+	//		Import Data Modal Buttons
+	///////////////////////////////////////////////////////
+	
+	///////////////////////////////////////////////////////
+	//		Export Data Info Modal Buttons
+	///////////////////////////////////////////////////////
+	
+	///////////////////////////////////////////////////////
+	//		Import Well From Database Modal Buttons
 	///////////////////////////////////////////////////////
 	
 	$('#databaseLoadWellListButton').click(function(){
@@ -208,12 +238,16 @@ $('document').ready(function(){
 	$('#generateRandomPoints').click(function(){
 		the_controller.generateRandomPoints(16);
 	});
+	
+	///////////////////////////////////////////////////////
+	//		Report Bug Modal
+	///////////////////////////////////////////////////////
 
 });// End of $('document').ready(function());
 
 
 refreshLayerList = function(the_controller){
-	// Behold, my introduction to Javascripts DOM functionallity. -T
+
 	// First, clear the layer list
 	document.getElementById("LayerList").innerHTML = "";
 		

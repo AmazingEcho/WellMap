@@ -4,7 +4,7 @@ map.js
 The map object is what will hold the layer objects.
 
 */
-function map(name){i
+function map(name){
 	// Arrays in Javascript aren't like Arrays in C/C++
 	// You don't have to specify how big the array is or what it's storing
 	
