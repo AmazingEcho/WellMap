@@ -187,21 +187,10 @@ $('document').ready(function(){
 		var smapdescLength = smapdescField.value.length;
 
 
-		if (smapnameLength != 0 && smapdescLength !=0)
+		if (smapnameLength == 0||smapdescLength ==0)
 		{
-			alert("you can save");
+			alert("Unable to save. Please fill out the MapName and Description fields.");
 		}
-		else
-		{
-			alert("error");
-		}
-		//check if first is empty
-		
-		//if second is empty
-		
-		//if both are empty
-		
-		//else save
 	});
 	
 	//import data from excel sheet
