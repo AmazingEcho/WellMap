@@ -169,15 +169,7 @@ $('document').ready(function(){
 	});
 	
 	//save confirmation button
-	$('#modal-button-saveMapButtonOkay').click(function(){
-	 	var mapName = document.getElementById('saveMapNameField').value;
-		var mapDesc= document.getElementById('saveMapDescField').value;
-
-		the_controller.the_map.changeName(mapName);
-		the_controller.the_map.changeDescription(mapDesc);
-		
-	});
-	
+	//DO NOT DELETE IT WORKS!
 	$('#modal-button-saveMapSave').click(function(){
 		
 		var smapnameField = document.getElementById("saveMapNameField");
@@ -190,6 +182,11 @@ $('document').ready(function(){
 		if (smapnameLength == 0||smapdescLength ==0)
 		{
 			alert("Unable to save. Please fill out the Name and Description fields.");
+		}
+		else
+		{
+			the_controller.the_map.changeName(smapnameField);
+			the_controller.the_map.changeDescription(smapdescField);
 		}
 	});
 	
