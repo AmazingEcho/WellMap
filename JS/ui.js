@@ -180,6 +180,10 @@ $('document').ready(function(){
 	
 	$('#modal-button-saveMapSave').click(function(){
 		
+		var smapnameField = document.getElementById("saveMapNameField");
+		var smapnameLength = smapnameField.value.length;
+
+		alert("Length is = " + smapnameLength);
 		//check if first is empty
 		
 		//if second is empty
