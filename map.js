@@ -121,10 +121,10 @@ function map(name){i
 	}
 	
 	this.copywellLayers = function(){
-		
+		alert("copy");
 		//should be able to copy the list is its in an array with the slice function
 		//need to be able to call array from this class though -John
-		var copiedlist = this.layers.slice();
+		//var copiedlist = this.layers.slice();
 		
 	}
 	
