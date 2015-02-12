@@ -157,7 +157,7 @@ $('document').ready(function(){
 		$('.ui.modal.settings').modal('show');
 	});
 
-	$('#modal-button-settingsButtonOkay').click(function(){
+	$('#modal-button-settingsButtonApply').click(function(){
 		//$('.ui.modal.settings').modal('show');
 		//alert("piril say okay");
 		var mapName = document.getElementById('settingsMapNameField').value;
