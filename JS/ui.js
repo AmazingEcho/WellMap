@@ -160,8 +160,8 @@ $('document').ready(function(){
 	$('#modal-button-settingsButtonOkay').click(function(){
 		//$('.ui.modal.settings').modal('show');
 		//alert("piril say okay");
-		var mapName = document.getElementById('mapNameField').value;
-		var mapDesc= document.getElementById('mapDescField').value;
+		var mapName = document.getElementById('settingsMapNameField').value;
+		var mapDesc= document.getElementById('settingsMapDescField').value;
 
 		the_controller.the_map.changeName(mapName);
 		the_controller.the_map.changeDescription(mapDesc);
