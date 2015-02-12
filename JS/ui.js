@@ -113,7 +113,6 @@ $('document').ready(function(){
 	
 	// Save Map Button
 	$("#button-saveMapModal").click(function(){
-		alert("wtf");
 		//$("#saveMapModal").modal('show');
 		//'.ui.modal.settings'
 		$('.ui.modal.save').modal('show');
