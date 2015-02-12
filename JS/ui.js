@@ -184,7 +184,7 @@ $('document').ready(function(){
 		var smapnameLength = smapnameField.value.length;
 
 		var smapdescField = document.getElementById("saveMapDescField");
-		var smapdescLength = smapnameField.value.length;
+		var smapdescLength = smapdescField.value.length;
 
 
 		if (smapnameLength != 0 && smapdescLength !=0)
