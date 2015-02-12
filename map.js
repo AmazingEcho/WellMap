@@ -4,7 +4,7 @@ map.js
 The map object is what will hold the layer objects.
 
 */
-function map(name){
+function map(name){i
 	// Arrays in Javascript aren't like Arrays in C/C++
 	// You don't have to specify how big the array is or what it's storing
 	
@@ -124,7 +124,7 @@ function map(name){
 		alert("copy");
 		//should be able to copy the list is its in an array with the slice function
 		//need to be able to call array from this class though -John
-		//var copiedlist = originallist.slice();
+		var copiedlist = this.layers.slice();
 		
 	}
 	
@@ -132,7 +132,8 @@ function map(name){
 		alert("cut");
 		//cut should be the same as copy but with a delete function built in
 		//also Java sucks at garbage collection so just create for loop to deallocate memory- John
-		//for (var i = 0; i < array.length; i++){
+		//var cutlist = this.layers.slice();
+		//for (var i = 0; i < this.layers.length; i++){
 		//	arr[i] = null;	
 		//}
 	}
@@ -140,7 +141,7 @@ function map(name){
 	this.pastewellLayers = function(){
 		alert("paste");
 		//need for loop to copy and overwrite onto array - John
-		//for (var i = 0; i < array.length; i++){
+		//for (var i = 0; i < this.layer.length; i++){
 		//	arr[i] = array.length[i];
 		//}
 	}
