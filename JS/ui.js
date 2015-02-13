@@ -160,10 +160,10 @@ $('document').ready(function(){
 	$('#modal-button-settingsButtonApply').click(function(){
 		//$('.ui.modal.settings').modal('show');
 		//alert("piril say okay");
-		var mapName = document.getElementById('settingsMapNameField').value;
+		var mapName = document.getElementById('settingsMapNameField');
 		var mapNameLength = mapName.value.length;
 
-		var mapDesc= document.getElementById('settingsMapDescField').value;
+		var mapDesc= document.getElementById('settingsMapDescField');
 		var mapDescLength = mapDesc.value.length;
 		
 		if (mapNameLength == 0||mapDescLength ==0)
