@@ -157,49 +157,6 @@ $('document').ready(function(){
 		$('.ui.modal.settings').modal('show');
 	});
 
-	//DO NOT DELETE IT WORKS!
-	$('#modal-button-settingsButtonApply').click(function(){
-		//$('.ui.modal.settings').modal('show');
-		//alert("piril say okay");
-		var mapName = document.getElementById('settingsMapNameField');
-		var mapNameLength = mapName.value.length;
-
-		var mapDesc= document.getElementById('settingsMapDescField');
-		var mapDescLength = mapDesc.value.length;
-		
-		if (mapNameLength == 0||mapDescLength ==0)
-		{
-			alert("Unable to save. Please fill out the Name and Description fields.");
-		}
-		else
-		{
-			the_controller.the_map.changeName(mapName);
-			the_controller.the_map.changeDescription(mapDesc);
-		}
-	});
-	
-	//save confirmation button
-	//DO NOT DELETE IT WORKS!
-	$('#modal-button-saveMapSave').click(function(){
-		
-		var smapnameField = document.getElementById("saveMapNameField");
-		var smapnameLength = smapnameField.value.length;
-
-		var smapdescField = document.getElementById("saveMapDescField");
-		var smapdescLength = smapdescField.value.length;
-
-
-		if (smapnameLength == 0||smapdescLength ==0)
-		{
-			alert("Unable to save. Please fill out the Name and Description fields.");
-		}
-		else
-		{
-			the_controller.the_map.changeName(smapnameField);
-			the_controller.the_map.changeDescription(smapdescField);
-		}
-	});
-	
 	//import data from excel sheet
 	$('#modal-button-importexcel').click(function(){
 		$('.ui.modal.importexcel').modal('show');
@@ -257,6 +214,27 @@ $('document').ready(function(){
 	//		Save Map Modal Buttons
 	///////////////////////////////////////////////////////
 	
+	//DO NOT DELETE IT WORKS!
+	$('#modal-button-saveMapSave').click(function(){
+		
+		var smapnameField = document.getElementById("saveMapNameField");
+		var smapnameLength = smapnameField.value.length;
+
+		var smapdescField = document.getElementById("saveMapDescField");
+		var smapdescLength = smapdescField.value.length;
+
+
+		if (smapnameLength == 0||smapdescLength ==0)
+		{
+			alert("Unable to save. Please fill out the Name and Description fields.");
+		}
+		else
+		{
+			the_controller.the_map.changeName(smapnameField);
+			the_controller.the_map.changeDescription(smapdescField);
+		}
+	});
+	
 	///////////////////////////////////////////////////////
 	//		Load Map Modal Buttons
 	///////////////////////////////////////////////////////
@@ -276,6 +254,34 @@ $('document').ready(function(){
 	///////////////////////////////////////////////////////
 	//		Import Well From Database Modal Buttons
 	///////////////////////////////////////////////////////
+	
+	///////////////////////////////////////////////////////
+	//		Settings for Map Modal Buttons
+	///////////////////////////////////////////////////////
+	
+		//DO NOT DELETE IT WORKS!
+	$('#modal-button-settingsButtonApply').click(function(){
+		//$('.ui.modal.settings').modal('show');
+		//alert("piril say okay");
+		var mapName = document.getElementById('settingsMapNameField');
+		var mapNameLength = mapName.value.length;
+
+		var mapDesc= document.getElementById('settingsMapDescField');
+		var mapDescLength = mapDesc.value.length;
+		
+		if (mapNameLength == 0||mapDescLength ==0)
+		{
+			alert("Unable to save. Please fill out the Name and Description fields.");
+		}
+		else
+		{
+			the_controller.the_map.changeName(mapName);
+			the_controller.the_map.changeDescription(mapDesc);
+		}
+	});
+	
+	
+	
 	
 	$('#databaseLoadWellListButton').click(function(){
 		the_controller.fetchWellGroupsFromDatabasePHP(0);
