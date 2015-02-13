@@ -20,7 +20,7 @@ $('document').ready(function(){
 		dbDesc: "Database of Test Data",
 		groupListURL: "http://www.tconx.net/wellMapServ/wellGroup_create_xml.php",
 		wellListURL: "http://www.tconx.net/wellMapServ/well_create_xml.php?id="
-		};
+	};
 		
 	the_controller.addDatabaseConnectionPHP(tossDB);
 	
@@ -110,6 +110,11 @@ $('document').ready(function(){
 	///////////////////////////////////////////////////////
 	// Small Button Functions
 	///////////////////////////////////////////////////////
+	
+	// New Map Button
+	$("#button-newMapModal").click(function(){
+		$("#newMapWARNING").modal('show');
+	});
 	
 	// Save Map Button
 	$("#button-saveMapModal").click(function(){
@@ -211,6 +216,56 @@ $('document').ready(function(){
 	///////////////////////////////////////////////////////
 	
 	///////////////////////////////////////////////////////
+	//		New Map Modal Buttons
+	///////////////////////////////////////////////////////
+	//		For when the user clicks the new map button
+	//		on the toolbar.
+	///////////////////////////////////////////////////////
+	//		100% COMPLETE
+	///////////////////////////////////////////////////////
+		
+	// Warning Buttons
+	$('#newMapWARNINGno').click(function(){
+		// This should just close the window...
+	});
+	
+	$('#newMapWARNINGyes').click(function(){
+		
+		// Delete current map, and restart the controller...
+		the_controller = new controller();
+		the_controller.initGMaps();
+		the_controller.newMap();
+	
+		var tossDB = {
+			dbName: "Test Database",
+			dbDesc: "Database of Test Data",
+			groupListURL: "http://www.tconx.net/wellMapServ/wellGroup_create_xml.php",
+			wellListURL: "http://www.tconx.net/wellMapServ/well_create_xml.php?id="
+		};
+			
+		the_controller.addDatabaseConnectionPHP(tossDB);
+		
+		$("#newMapModal")
+			.modal('setting', 'closable', false)
+			.modal('show');
+		$("input#newMapNameField").val(the_controller.the_map.metadata.mapName);
+		$("input#newMapDescField").val(the_controller.the_map.metadata.description);
+	});
+
+	$("#newMapModalCreateNewMap_2").click(function(){
+		if(!($("input#newMapNameField_2").val())){
+			console.log("Empty Field 2");
+			$("#NO_NAME_WARNING_2").html("Ayy Lmao 2");
+			// TODO: Prevent Modal from hiding
+		}
+		else{
+			the_controller.the_map.metadata.changeName($("input#newMapNameField_2"));
+			the_controller.the_map.metadata.changeDescription($("input#newMapDescField_2"));
+		}
+		
+	});
+	
+	///////////////////////////////////////////////////////
 	//		Save Map Modal Buttons
 	///////////////////////////////////////////////////////
 	
@@ -252,10 +307,6 @@ $('document').ready(function(){
 	///////////////////////////////////////////////////////
 	
 	///////////////////////////////////////////////////////
-	//		Import Well From Database Modal Buttons
-	///////////////////////////////////////////////////////
-	
-	///////////////////////////////////////////////////////
 	//		Settings for Map Modal Buttons
 	///////////////////////////////////////////////////////
 	
@@ -280,8 +331,9 @@ $('document').ready(function(){
 		}
 	});
 	
-	
-	
+	///////////////////////////////////////////////////////
+	//		Import Well From Database Modal Buttons
+	///////////////////////////////////////////////////////
 	
 	$('#databaseLoadWellListButton').click(function(){
 		the_controller.fetchWellGroupsFromDatabasePHP(0);

@@ -300,6 +300,57 @@
 	</div>
 </div>
 
+<!-- 																						-->
+<!-- New Map WARNING Modal																	-->
+<!-- If you click the new map button while a map is open				-->
+<!-- You get a warning about losing the current map							-->
+<!-- 																						-->
+<div class="ui basic modal" id="newMapWARNING">
+	<div class="header">WARNING</div>
+	<div class="content">
+		<div class="image">
+			<i class="warning icon"></i>
+		</div>
+		<div class="description">
+			<p>Starting a new Map Project will cause you to lose the current Map Project.  Would you like to start a new Map Project?</p>
+		</div>
+	</div>
+	<div class="actions">
+		<div class="two fluid ui inverted buttons">
+			<div class="ui red basic inverted button" id="newMapWARNINGno">
+				<i class="remove icon"></i>No
+			</div>
+			<div class="ui green basic inverted button" id="newMapWARNINGyes">
+				<i class="checkmark icon"></i>Yes
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- 																						-->
+<!-- New Map Modal																	-->
+<!-- If you click the new map button while a map is open				-->
+<!-- And agree to lose all current work, this is the modal that appears				-->
+<!-- 																		-->
+<div class="ui modal" id="newMapModal_2" style="background-color:#CCC; color:#000">
+	<div class="header">New Project</div>
+	<div class="content">
+		<div class="ui form">
+			<div class="field">
+				<label>Map Name</label><div id="NO_NAME_WARNING_2"></div>
+				<input type="text" id="newMapNameField_2">
+			</div>
+			<div class="field">
+				<label>Map Description</label>
+				<input type="text" id="newMapDescField_2">
+			</div>
+		</div>
+	</div>
+	<div class="actions">
+		<div class="ui button" id="newMapModalCreateNewMap_2">Create New Map</div>
+	</div>
+</div>
+
 <!-- 										-->
 <!-- Save Map Modal							-->
 <!-- Lets a user save a map					-->
