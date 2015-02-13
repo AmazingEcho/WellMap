@@ -331,6 +331,10 @@
   </div>
 </div>
 
+<!-- 										-->
+<!-- Report Bug Modal						-->
+<!-- Report a Bug							-->
+<!-- 										-->
 <div class="ui modal" id="reportBugModal" style="background-color:#CCC; color:#000">
 	<i class="close icon"></i>
   <div class="header">
@@ -361,12 +365,11 @@
   </div>
 </div>
 
-
-<!-- Appearance of modal for 'Display Map Information'
-Displays map name and map description
-Allows user the option of exiting through the 'OK' button or
-Allows user to edit current map name and descrption and apply changes with 'Apply' button -->
-<div class="ui modal edit" style="background-color:#CCC; color:#000">
+<!-- Display Map Information																	-->
+<!-- Displays map name and map description														-->
+<!-- Allows user the option of exiting through the 'OK' button or								-->
+<!--Allows user to edit current map name and descrption and apply changes with 'Apply' button	-->
+<div class="ui modal" id="mapInformationModal" style="background-color:#CCC; color:#000">
 	<i class="close icon"></i>
 	<div class="header">Map Information</div>
 	<div class="content">
@@ -394,7 +397,7 @@ Allows user to edit current map name and descrption and apply changes with 'Appl
 <!-- 							-->
 <!-- Import from Excel Modal	-->
 <!-- 							-->
-<div class="ui modal importexcel" style="background-color:#CCC; color:#000">
+<div class="ui modal importexcel" id="importExcelModal" style="background-color:#CCC; color:#000">
 	<i class="close icon"></i>
 	<div class="header">Import from Excel</div>
 	<div class="actions">
@@ -406,7 +409,7 @@ Allows user to edit current map name and descrption and apply changes with 'Appl
 <!-- 							-->
 <!-- Import from Excel Modal	-->
 <!-- 							-->
-<div class="ui modal exportexcel" style="background-color:#CCC; color:#000">
+<div class="ui modal exportexcel" id="exportExcelModal" style="background-color:#CCC; color:#000">
 	<i class="close icon"></i>
 	<div class="header">Export to Excel</div>
 	<div class="content">
@@ -423,31 +426,28 @@ Allows user to edit current map name and descrption and apply changes with 'Appl
 	</div>
 </div>
 
-<div class="ui modal settings" style="background-color:#CCC; color:#000">
+<!-- 							-->
+<!-- Settings Modal				-->
+<!-- 							-->
+<div class="ui modal settings" id="settingsModal" style="background-color:#CCC; color:#000">
 	<i class="close icon"></i>
-  <div class="header">
-    Map Settings
-  </div>
-  <div class="content">
-    <div class="ui form">
-	  <div class="field">
-	    <label>Map Name</label>
-	    <input type="text" id="settingsMapNameField">
-	  </div>
-	 <div class="field">
-	    <label>Map Description</label>
-	    <input type="text" id="settingsMapDescField">
-	  </div>
+	<div class="header">Map Settings</div>
+	<div class="content">
+		<div class="ui form">
+			<div class="field">
+				<label>Map Name</label>
+				<input type="text" id="settingsMapNameField">
+			</div>
+			<div class="field">
+				<label>Map Description</label>
+				<input type="text" id="settingsMapDescField">
+			</div>
+		</div>
 	</div>
-  </div>
-  <div class="actions">
-	<div class="ui button" id="modal-button-settingsButtonCancel">
-		Cancel
+	<div class="actions">
+		<div class="ui button" id="modal-button-settingsButtonCancel">Cancel</div>
+		<div class="ui button" id="modal-button-settingsButtonApply">Apply</div>
 	</div>
-	<div class="ui button" id="modal-button-settingsButtonApply">
-		Apply
-	</div>
-  </div>
 </div>
 
 </body>
