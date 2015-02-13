@@ -157,6 +157,7 @@ $('document').ready(function(){
 		$('.ui.modal.settings').modal('show');
 	});
 
+	//DO NOT DELETE IT WORKS!
 	$('#modal-button-settingsButtonApply').click(function(){
 		//$('.ui.modal.settings').modal('show');
 		//alert("piril say okay");
