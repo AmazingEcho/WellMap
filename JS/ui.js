@@ -139,18 +139,18 @@ $('document').ready(function(){
 	//sort the names on the well list(s) by ascending order
 	$('#button-sortascending').click(function(){
 		the_controller.the_map.sortLayersByNameAscending();
+		fullRefresh(the_controller);
 	});
 	//sort the names of the well lists by descending order
 	$('#button-sortdescending').click(function(){
 		the_controller.the_map.sortLayersByNameDescending();
+		fullRefresh(the_controller);
 	});
 	
 	$('#button-refreshMap').click(function(){
 		// Note: Temporary
 		// In the final version, the map and layer list should update on just about every user action.
-		// Having this set to a button is better for debugging.
-		the_controller.refreshMap();
-		refreshLayerList(the_controller);
+		fullRefresh(the_controller);
 	});
 
 	$("#importWellsFromDatabaseButton").click(function(){
@@ -252,6 +252,8 @@ $('document').ready(function(){
 		$("input#newMapDescField").val(the_controller.the_map.metadata.description);
 	});
 
+	// No back button!
+
 	$("#newMapModalCreateNewMap_2").click(function(){
 		if(!($("input#newMapNameField_2").val())){
 			console.log("Empty Field 2");
@@ -348,10 +350,14 @@ $('document').ready(function(){
 		
 		//NOTE: replace the 0 in this function with a value from the database selector
 		the_controller.fetchWellsFromDatabasePHP(0, the_controller.wellGroupList[dataVal].groupName, dataVal);
+		
+		//NOTE: since well pulls are ajax powers, it might take a few ms to actually get the wells
+		fullRefresh(the_controller);
 	});
 
 	$('#generateRandomPoints').click(function(){
 		the_controller.generateRandomPoints(16);
+		fullRefresh(the_controller);
 	});
 	
 	///////////////////////////////////////////////////////
@@ -360,6 +366,10 @@ $('document').ready(function(){
 
 });// End of $('document').ready(function());
 
+fullRefresh = function(conPTR){
+		conPTR.refreshMap();
+		refreshLayerList(conPTR);
+};
 
 refreshLayerList = function(the_controller){
 

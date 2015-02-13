@@ -330,7 +330,8 @@
 <!-- 																						-->
 <!-- New Map Modal																	-->
 <!-- If you click the new map button while a map is open				-->
-<!-- And agree to lose all current work, this is the modal that appears				-->
+<!-- And agree to lose all current work, this is the modal that appears		-->
+<!-- Key difference from the modal that pops up on start up: no back button-->
 <!-- 																		-->
 <div class="ui modal" id="newMapModal_2" style="background-color:#CCC; color:#000">
 	<div class="header">New Project</div>
@@ -388,32 +389,24 @@
 <!-- 										-->
 <div class="ui modal" id="reportBugModal" style="background-color:#CCC; color:#000">
 	<i class="close icon"></i>
-  <div class="header">
-    Report Bug
-  </div>
-  <div class="content">
-    <div class="ui form">
-	  <div class="field">
-	    <label>Enter Email</label>
-	    <input type="text" id="email">
-	  </div>
-	  <div class="field">
-	    <label>Brief Explanation of Issue</label>
-	    <input type="text" id="issue">
-	  </div>
+	<div class="header">Report Bug</div>
+	<div class="content">
+		<div class="ui form">
+			<div class="field">
+				<label>Enter Email</label>
+				<input type="text" id="email">
+			</div>
+			<div class="field">
+				<label>Brief Explanation of Issue</label>
+				<input type="text" id="issue">
+			</div>
+		</div>
+		<div class="title">Thank you for reporting the error, you will be contacted by an IT representative.</div>
 	</div>
-	<div class="title">
-		Thank you for reporting the error, you will be contacted by an IT representative.
+	<div class="actions">
+		<div class="ui button" id="modal-button-reportbugok">Ok</div>
+		<div class="ui button" id="modal-button-reportbugcancel">Cancel</div>
 	</div>
-  </div>
-  <div class="actions">
-	<div class="ui button" id="modal-button-reportbugok">
-		Ok
-	</div>
-	<div class="ui button" id="modal-button-reportbugcancel">
-		Cancel
-	</div>
-  </div>
 </div>
 
 <!-- Display Map Information																	-->
