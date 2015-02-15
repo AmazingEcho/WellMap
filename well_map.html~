@@ -505,7 +505,7 @@
 	<i class="close icon"></i>
 	<div class="header">Graph Viewer</div>
 		<div class="content">
-		<canvas id="myChart" width="600" height="400"></canvas>
+		<canvas id="myChart" width="400" height="400"></canvas>
 		</div>
 	<div class="actions">
 		<div class="ui button">Exit</div>
