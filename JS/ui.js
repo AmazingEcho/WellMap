@@ -113,15 +113,14 @@ $('document').ready(function(){
 	
 	// New Map Button
 	$("#button-newMapModal").click(function(){
-		$("#newMapWARNING").modal('show');
+		$("#newMapWARNING")
+			.modal('setting', 'closable', false)
+			.modal('show');
 	});
 	
 	// Save Map Button
 	$("#button-saveMapModal").click(function(){
-		//$("#saveMapModal").modal('show');
-		//'.ui.modal.settings'
-		$('.ui.modal.save').modal('show');
-
+		$("#saveMapModal").modal('show');
 	});
 	
 	$("#button-loadMapModal").click(function(){
