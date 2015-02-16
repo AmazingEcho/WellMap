@@ -69,6 +69,24 @@ function controller(){
 		this.the_map = new map("Untitled Map");
 	}
 	
+	this.changeMapType = function(mapType){
+		switch(mapType) {
+			case 1:
+				this.Gmap.setMapTypeId(google.maps.MapTypeId.SATELLITE);
+				break;
+			case 2:
+				this.Gmap.setMapTypeId(google.maps.MapTypeId.TERRAIN);
+				break;
+			case 3:
+				this.Gmap.setMapTypeId(google.maps.MapTypeId.ROADMAP);
+				break;
+			case 4:
+				this.Gmap.setMapTypeId(google.maps.MapTypeId.HYBRID);
+				break;
+			default:
+		}
+	}
+	
 	this.refreshMap = function(){
 		// TODO:
 		// Write a function to read through the layers, and feed data from each layer

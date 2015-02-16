@@ -138,24 +138,30 @@
 					<div class="menu">
 						<a class="ui dropdown item">File<i class="dropdown icon"></i>
 							<div class="menu">
-								<div class="item"><i class="book icon"></i>New</div>
-								<div class="item"><i class="save icon"></i>Save</div>
-								<div class="item"><i class="folder outline icon"></i>Load</div>
+								<div class="item" id="button-newMapModal"><i class="book icon"></i>New</div>
+								<div class="item" id="button-saveMapModal"><i class="save icon"></i>Save</div>
+								<div class="item" id="button-loadMapModal"><i class="folder outline icon"></i>Load</div>
 							</div>
 						</a>
 						
 						<a class="ui dropdown item">Edit<i class="dropdown icon"></i>
 							<div class="menu">
-								<div class="item"><i class="book icon"></i>New</div>
-								<div class="item"><i class="search icon"></i>Save</div>
-								<div class="item"><i class="book icon"></i>Load</div>
+								<div class="item"><i class="book icon"></i>???</div>
 							</div>
 						</a>
 						
 						<a class="ui dropdown item">View<i class="dropdown icon"></i>
 							<div class="menu">
-								<div class="item"><i class="book icon"></i>View Data</div>
-								<div class="item"><i class="search icon"></i>Graphs</div>
+								<div class="item"><i class="table icon"></i>View Data</div>
+								<div class="item" id="modal-button-graphs"><i class="bar chart icon"></i>Graphs</div>
+								<div class="item">Display Type<i class="angle right icon"></i>
+									<div class="menu">
+										<div class="item" id="changeMapTypeSAT"><i class="world icon"></i>Satelite</div>
+										<div class="item" id="changeMapTypeTER"><i class="map icon"></i>Terrain</div>
+										<div class="item" id="changeMapTypeROAD"><i class="road icon"></i>Road</div>
+										<div class="item" id="changeMapTypeHYB"><i class="cloud icon"></i>Hybrid</div>
+									</div>
+								</div>
 							</div>
 						</a>
 						
@@ -169,7 +175,8 @@
 						
 						<a class="ui dropdown item">Help<i class="dropdown icon"></i>
 							<div class="menu">
-								<div class="item"><i class="book icon"></i>About</div>
+								<div class="item"><i class="info circle icon"></i>Help</div>
+								<div class="item"><i class="help icon"></i>About</div>
 							</div>
 						</a>
 						

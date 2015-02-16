@@ -277,6 +277,29 @@ $('document').ready(function(){
 		window.open("https://support.google.com/maps/?hl=en");
 	});
 	
+	///////////////////////////////////////////////////////
+	//		Toolbar Buttons
+	///////////////////////////////////////////////////////
+	
+	///////////////////////////////////////////////////////
+	//		Change Map Display Type Buttons
+	///////////////////////////////////////////////////////
+	
+	$("#changeMapTypeSAT").click(function(){
+		the_controller.changeMapType(1);
+	});
+	
+	$("#changeMapTypeTER").click(function(){
+		the_controller.changeMapType(2);
+	});
+	
+	$("#changeMapTypeROAD").click(function(){
+		the_controller.changeMapType(3);
+	});
+	
+	$("#changeMapTypeHYB").click(function(){
+		the_controller.changeMapType(4);
+	});
 	
 	///////////////////////////////////////////////////////
 	//		New Map Info Modal Buttons
