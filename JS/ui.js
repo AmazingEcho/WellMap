@@ -43,7 +43,6 @@ $('document').ready(function(){
 
 	// And, of course, clicking the sidebar toggle button makes the sidebar open and close!
 	$('#sidebar-toggle').click(function() {
-		//$('#mapArea').toggleClass('slide-away');
 		$('.ui.sidebar').sidebar('toggle');
 	});
 
@@ -73,12 +72,25 @@ $('document').ready(function(){
 		console.log("Controller status: On");
 		$('#startupMenu').modal('hide');
 		
-		// After selection, brings up modal to input map info. Map info is not recorded anywhere yet
+		// After selection, brings up modal to input map info.
 		$("#newMapModal")
-			.modal('setting', 'closable', false)
+			.modal({
+				closable: false,
+				onApprove: function(){
+					if(!($("input#newMapNameField").val())){
+						$("#NO_NAME_WARNING").html(" - Map Name cannot be empty");
+						// Returning false prevents this modal from closing
+						return false;
+					}
+					else{
+						the_controller.the_map.changeName($("input#newMapNameField").val());
+						the_controller.the_map.changeDescription($("input#newMapDescField").val());
+					}
+				},
+			})
 			.modal('show');
 		$("input#newMapNameField").val(the_controller.the_map.metadata.mapName);
-		$("input#newMapDescField").val(the_controller.the_map.metadata.description);
+		$("input#newMapDescField").val(the_controller.the_map.metadata.desc);
 	});
 	
 	// When the Back button is clicked, they should go back to the first modal
@@ -90,14 +102,7 @@ $('document').ready(function(){
 	});
 
 	$("#newMapModalCreateNewMap").click(function(){
-		if(!($("input#newMapNameField").val())){
-			console.log("Empty Field");
-			$("#NO_NAME_WARNING").html("Ayy Lmao");
-			// TODO: Prevent Modal from hiding
-		}
-		else{
-			the_controller.the_map.metadata.changeName($("input#newMapNameField"));
-		}
+
 	});
 	
 	// This is the button that loads a new map
@@ -120,7 +125,29 @@ $('document').ready(function(){
 	
 	// Save Map Button
 	$("#button-saveMapModal").click(function(){
-		$("#saveMapModal").modal('show');
+		// Pull info from controller, and put it in the the inputs
+		$("input#saveMapNameField").val(the_controller.the_map.metadata.mapName);
+		$("input#saveMapDescField").val(the_controller.the_map.metadata.desc);
+		
+		$("#saveMapModal")
+			.modal({
+				closable: false,
+				onApprove: function(){
+					if(!($("input#saveMapNameField").val())){
+						$("#NO_NAME_WARNING_SAVE").html(" - Map Name cannot be empty");
+						// Returning false prevents this modal from closing
+						return false;
+					}
+					else{
+						the_controller.the_map.changeName($("input#saveMapNameField").val());
+						the_controller.the_map.changeDescription($("input#saveMapDescField").val());
+						
+						// TODO:
+						// Call the SaveMap function
+					}
+				},
+			})
+			.modal('show');
 	});
 	
 	$("#button-loadMapModal").click(function(){
@@ -128,20 +155,26 @@ $('document').ready(function(){
 		// load map modal
 	});
 	
-	// TODO:
-	// Move cut/copy/paste here
+	$('#modal-button-copywelldata').click(function(){
+		the_controller.the_map.copywellLayers();
+	});
+	
+	$('#modal-button-cutwelldata').click(function(){
+		the_controller.the_map.cutwellLayers();
+	});
+	
+	$("#modal-button-pastewelldata").click(function(){
+		the_controller.the_map.pastewellLayers();
+	});
 	
 	// Clicking on this button displays a modal that shows current map info
 	// Also allows editing of current map info
 	$("#button-editMapInfoModal").click(function(){
 		// Pull info from controller, and put it in the the inputs
-		console.log("launching info panel");
-		
-		//$("#modal-button-editMapInfo").modal('show');
-		//$("input#mapNameField").val(the_controller.the_map.metadata.mapName);
-		//$("input#mapDescField").val(the_controller.the_map.metadata.description);
+		$("input#mapInfoNameField").val(the_controller.the_map.metadata.mapName);
+		$("input#mapInfoDescField").val(the_controller.the_map.metadata.desc);
+		$("#mapInformationModal").modal('show');
 	});
-	
 	
 	//sort the names on the well list(s) by ascending order
 	$('#button-sortascending').click(function(){
@@ -243,19 +276,6 @@ $('document').ready(function(){
 	$('#button-help').click(function(){
 		window.open("https://support.google.com/maps/?hl=en");
 	});
-
-	$('#modal-button-copywelldata').click(function(){
-		the_controller.the_map.copywellLayers();
-	});
-	
-	$('#modal-button-cutwelldata').click(function(){
-		the_controller.the_map.cutwellLayers();
-	});
-	
-	$("#modal-button-pastewelldata").click(function(){
-		the_controller.the_map.pastewellLayers();
-	});
-	
 	
 	
 	///////////////////////////////////////////////////////
@@ -303,7 +323,6 @@ $('document').ready(function(){
 
 	$("#newMapModalCreateNewMap_2").click(function(){
 		if(!($("input#newMapNameField_2").val())){
-			console.log("Empty Field 2");
 			$("#NO_NAME_WARNING_2").html("Ayy Lmao 2");
 			// TODO: Prevent Modal from hiding
 		}
@@ -318,8 +337,10 @@ $('document').ready(function(){
 	//		Save Map Modal Buttons
 	///////////////////////////////////////////////////////
 	
-	//DO NOT DELETE IT WORKS!
-	$('#modal-button-saveMapSave').click(function(){
+	// DO NOT DELETE IT WORKS!
+	// Note: moved to $("#button-saveMapModal")
+	/*
+	$('#saveMapModalSave').click(function(){
 		
 		var smapnameField = document.getElementById("saveMapNameField");
 		var smapnameLength = smapnameField.value.length;
@@ -338,6 +359,7 @@ $('document').ready(function(){
 			the_controller.the_map.changeDescription(smapdescField);
 		}
 	});
+	*/
 	
 	///////////////////////////////////////////////////////
 	//		Load Map Modal Buttons

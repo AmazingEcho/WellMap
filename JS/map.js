@@ -14,6 +14,10 @@ function map(name){
 	
 	this.metadata = new mapMetadata(name);
 	
+	this.changeName = function(newName){
+		this.metadata.changeName(newName);
+	};
+	
 	this.changeDescription = function(newDesc){
 		this.metadata.changeDescription(newDesc);
 	};
@@ -172,7 +176,7 @@ function mapMetadata(name){
 	this.mapName = name;
 	
 	// description is empty on creation
-	this.description = "";
+	this.desc = "";
 	
 	// coordinates for where the map should focus on when loaded
 	this.origin = [55.0, -115.0]
@@ -187,7 +191,7 @@ function mapMetadata(name){
 	}
 	
 	this.changeDescription = function(newDesc){
-		this.description = newDesc;
+		this.desc = newDesc;
 	}
 }
 

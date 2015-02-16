@@ -134,55 +134,63 @@
 		<div class="toolbar">
 
 			<div class="toolbarTOP">
-<div class="ui compact tiered black inverted menu">
+				<div class="ui compact tiered black large inverted menu">
 					<div class="menu">
-						<div id="sidebar-toggle" style="display:inline">
-							<a class="active item"><i class="icon exchange"></i>Sidebar</a>
-						</div>
-						<a class="ui dropdown item"><i class="level down icon"></i>Find<i class="dropdown icon"></i>
+						<a class="ui dropdown item">File<i class="dropdown icon"></i>
 							<div class="menu">
-								<div class="item">
-									<i class="search icon"></i>Well
-									<div class="menu">
-										<div class="item">By UWI</div>
-										<div class="item">By LatLong</div>
-									</div>
-								</div>
-								<div class="item"><i class="book icon"></i>Archive</div>
+								<div class="item"><i class="book icon"></i>New</div>
+								<div class="item"><i class="save icon"></i>Save</div>
+								<div class="item"><i class="folder outline icon"></i>Load</div>
 							</div>
 						</a>
+						
+						<a class="ui dropdown item">Edit<i class="dropdown icon"></i>
+							<div class="menu">
+								<div class="item"><i class="book icon"></i>New</div>
+								<div class="item"><i class="search icon"></i>Save</div>
+								<div class="item"><i class="book icon"></i>Load</div>
+							</div>
 						</a>
 						
-
-					</div>
-				</div>
-				<div class="ui black buttons">
-					<div class="ui button" id="refreshMap">Update Map</div>
-					<div class="ui teal dropdown icon button">
-						<i class="dropdown icon"></i>
-						<div class="menu">
+						<a class="ui dropdown item">View<i class="dropdown icon"></i>
+							<div class="menu">
+								<div class="item"><i class="book icon"></i>View Data</div>
+								<div class="item"><i class="search icon"></i>Graphs</div>
+							</div>
+						</a>
+						
+						<a class="ui dropdown item">Database<i class="dropdown icon"></i>
+							<div class="menu">
 							<div class="item"><i class="database icon"></i>Add Database</div>
 							<div class="item"><i class="database icon"></i>Manage Databases</div>
 							<div class="item" id="importWellsFromDatabaseButton"><i class="database icon"></i>Import Wells From Database</div>
-						</div>
+							</div>
+						</a>
+						
+						<a class="ui dropdown item">Help<i class="dropdown icon"></i>
+							<div class="menu">
+								<div class="item"><i class="book icon"></i>About</div>
+							</div>
+						</a>
+						
 					</div>
 				</div>
 			</div> <!-- END of toolbarTOP -->
 
 			<div class="toolbarBOT">
-				
 				<div class=" icon ui buttons">
 					<div class="ui button" data-content="New Map" data-position="bottom left" id ="button-newMapModal"><i class="file outline icon"></i></div>
 					<div class="ui button" data-content="Save Map" data-position="bottom left" id="button-saveMapModal" ><i class="save icon"></i></div>
 					<div class="ui button" data-content="Open Map" data-position="bottom left" id="button-loadMapModal"><i class="folder open icon"></i></div>
 				</div>
-				
 				<div class=" icon ui buttons">
 					<div class="ui button" data-content="Cut" data-position="bottom left" id= "modal-button-cutwelldata"><i class="cut icon"></i></div>
 					<div class="ui button" data-content="Copy" data-position="bottom left" id= "modal-button-copywelldata"><i class="copy icon"></i></div>
 					<div class="ui button" data-content="Paste" data-position="bottom left" id= "modal-button-pastewelldata"><i class="paste icon"></i></div>
 				</div>
-				
+				<div class=" icon ui buttons">
+					<div class="ui button" id="sidebar-toggle"><i class="icon exchange"></i>Sidebar</div>				
+				</div>
 				<div class=" icon ui buttons">
 					<div class="ui button" data-content="Edit Map Info" data-position="bottom left" id="button-editMapInfoModal"><i class="info icon"></i></div>
 					<div class="ui button" data-content="Sort Ascending" data-position="bottom left" id="button-sortascending"><i class="sort numeric ascending icon"></i></div>
@@ -194,7 +202,6 @@
 					<div class="ui button" data-content="Import Data" data-position="bottom left" id = "modal-button-importexcel"><i class="arrow down icon"></i></div>
 					<div class="ui button" data-content="Export Data" data-position="bottom left" id="modal-button-exportexcel"><i class="arrow up icon"></i></div>
 				</div>
-				
 				<div class=" icon ui buttons">
 					<div class="ui button" data-content="Settings" data-position="bottom left" id="modal-button-settingsButton"><i class="settings icon"></i></div>
 					<div class="ui button" data-content="Help" data-position="bottom left" id="button-help"><i class="help icon"></i></div>
@@ -280,7 +287,7 @@
 </div>
 
 <!-- 																		-->
-<!-- Set Map Info Modal														-->
+<!-- Set New Map Info Modal														-->
 <!-- On selecting a new map, directed to set map info before continuing		-->
 <!-- 																		-->
 <div class="ui modal" id="newMapModal" style="background-color:#CCC; color:#000">
@@ -289,17 +296,17 @@
 		<div class="ui form">
 			<div class="field">
 				<label>Map Name</label><div id="NO_NAME_WARNING"></div>
-				<input type="text" id="newMapNameField">
+				<input type="text" id="newMapNameField"/>
 			</div>
 			<div class="field">
 				<label>Map Description</label>
-				<input type="text" id="newMapDescField">
+				<input type="text" id="newMapDescField"/>
 			</div>
 		</div>
 	</div>
 	<div class="actions">
-		<div class="ui button" id="newMapModalBack">Back</div>
-		<div class="ui button" id="newMapModalCreateNewMap">Create New Map</div>
+		<div class="ui cancel button" id="newMapModalBack">Back</div>
+		<div class="ui ok button" id="newMapModalCreateNewMap">Create New Map</div>
 	</div>
 </div>
 
@@ -365,7 +372,7 @@
 	<div class="content">
 		<div class="ui form">
 			<div class="field">
-				<label>Map Name</label>
+				<label>Map Name</label><div id="NO_NAME_WARNING_SAVE"></div>
 				<input type="text" id="saveMapNameField">
 			</div>
 			<div class="field">
@@ -376,9 +383,9 @@
 	</div>
 	<div class="actions">
 		<div class="ui buttons">
-			<div class="ui button negative" id="modal-button-saveMapCancel">Cancel</div>
+			<div class="ui button negative" id="saveMapModalCancel">Cancel</div>
 			<div class="or"></div>
-			<div class="ui button positive" id="modal-button-saveMapSave">Save</div>
+			<div class="ui button positive" id="saveMapModalSave">Save</div>
 		</div>
 	</div>
 </div>
@@ -423,11 +430,11 @@
 		<div class="ui form">
 			<div class="field">
 				<label>Map Name</label>
-				<input type="text" id="mapNameField" value="abc"/>
+				<input type="text" id="mapInfoNameField"/>
 			</div>
 			<div class="field">
 				<label>Description</label>
-				<input type="text" id="mapDescField" value="xyz"/>
+				<input type="text" id="mapInfoDescField"/>
 			</div>
 		</div>
 	</div>

@@ -16,22 +16,22 @@ body{
 }
 
 .toolbar{
-	height: 100px;
+	height: 80px;
 	width: 100%;
 }
 
 .toolbarTOP{
-	padding: 6px;
-	height: 50px;
+	padding: 0px;
+	height: 40px;
 	width: 100%;
-	background-color: #0FF;
+	background-color: #1b1c1d;
 }
 
 .toolbarBOT{
-	padding: 6px;
-	height: 50px;
+	padding: 0px;
+	height: 40px;
 	width: 100%;
-	background-color:#09C;
+	background-color:#e0e0e0;
 }
 
 .workArea{
@@ -40,46 +40,17 @@ body{
 	height: 100%;
 	
 	position: absolute;
-	top: 100px;
+	top: 80px;
 	z-index: 5;
 }
 
 .ui.sidebar{
-	top: 100px;
+	top: 80px;
 	background-color:#FFF;
 	padding: 10px;
 }
 
-/*
-.panel{
-	padding: 3px;
-	width: 294px;
-	min-height: 100%;
-	background-color:#CC0;
-	float:left;
-	margin-left: 0!important;
-	
-	position: absolute;
-	top: 0;
-	left: 0;
-	transition: width 0.3s ease;
-	-webkit-transition: width 0.3s ease;
-	-moz-transition: width 0.3s ease;
-	-ms-transition: width 0.3s ease;
-	-o-transition: width 0.3s ease;
-	overflow: auto;
 
-	z-index: 1;
-}
-
-.slide-away {
-	transform: translate(300px, 0);
-	-webkit-transform: translate(300px, 0);
-	-moz-transform: translate(300px, 0);
-	-ms-transform: translate(300px, 0);
-	-o-transform: translate(300px, 0);
-}
-*/
 #mapArea{
 	position: absolute;
 	top: 0;
