@@ -117,14 +117,14 @@ $('document').ready(function(){
 	///////////////////////////////////////////////////////
 	
 	// New Map Button
-	$("#button-newMapModal").click(function(){
+	$("#dropdown-newMapModal, #button-newMapModal").click(function(){
 		$("#newMapWARNING")
 			.modal('setting', 'closable', false)
 			.modal('show');
 	});
 	
 	// Save Map Button
-	$("#button-saveMapModal").click(function(){
+	$("#dropdown-saveMapModal, #button-saveMapModal").click(function(){
 		// Pull info from controller, and put it in the the inputs
 		$("input#saveMapNameField").val(the_controller.the_map.metadata.mapName);
 		$("input#saveMapDescField").val(the_controller.the_map.metadata.desc);
@@ -150,7 +150,7 @@ $('document').ready(function(){
 			.modal('show');
 	});
 	
-	$("#button-loadMapModal").click(function(){
+	$("#dropdown-loadMapModal, #button-loadMapModal").click(function(){
 		// TODO:
 		// load map modal
 	});
@@ -203,7 +203,7 @@ $('document').ready(function(){
 	});
 	
 	// Chart/Graph modal button
-	$('#modal-button-graphs').click(function(){
+	$('#dropdown-graphsViewer, #button-graphsViewer').click(function(){
 		
 		var data = {
 		labels: ["January", "February", "March", "April", "May", "June", "July"],
