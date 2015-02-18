@@ -144,6 +144,11 @@ $('document').ready(function(){
 						
 						// TODO:
 						// Call the SaveMap function
+						
+						var saveData = the_controller.saveDataJSON("testSaveFileName.json");
+						console.log(JSON.stringify(saveData));
+						var blob = new Blob([JSON.stringify(saveData)], {type: "text/plain;charset=utf-8"});
+						saveAs(blob, "hello world.txt");
 					}
 				},
 			})

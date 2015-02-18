@@ -191,19 +191,12 @@ controller.prototype = {
 	// A JSON file is basically just a text file that contains object data that can be parsed by Javascript
 	// and turned into actual objects.
 	
-	// The problem is that JS is kind of weird about openning files on a cilent side HD.
+	// The problem is that JS is kind of weird about opening files on a client side HD.
 	// Security concerns about rogue web pages running .js code to peek at the contents of someones HD.
 	
 	saveDataJSON : function(fileInfo){
 		var mapJSONString = this.the_map.toJSON();
-		console.log(mapJSONString);
 		return mapJSONString;
-	},
-	
-	loadDataJSON_OLD : function(fileInfo){
-		this.the_map = JSON.parse(fileInfo, function(key, value){
-			return key === '' && value.hasOwnProperty('__type') ? Types[value.__type].revive(value) : this[key];
-		});
 	},
 	
 	loadDataJSON : function(mapJSONString){

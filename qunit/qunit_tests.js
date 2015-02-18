@@ -910,7 +910,7 @@ test("Saving and Loading - Convert Workspace to JSON String", function(){
 	the_controller = new controller();
 	
 	// Load data back in
-	the_controller.loadDataJSON(JSONString);
+	the_controller.loadDataJSON(JSON.parse(JSON.stringify(JSONString)));
 	
 	// Check that data is restored
 	ok(the_controller.the_map.metadata.mapName == "Testing Data Preservation", "Metadata restored - Map name is: " + the_controller.the_map.metadata.mapName);
