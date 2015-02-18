@@ -200,7 +200,8 @@ controller.prototype = {
 	},
 	
 	loadDataJSON : function(mapJSONString){
-		this.the_map = restore(mapJSONString);
+		console.log("Recieved: " + mapJSONString);
+		this.the_map = restore(JSON.parse(mapJSONString));
 	},
 
 	// Helper Function
@@ -366,7 +367,9 @@ function hexCheck(sNum){
 
 // restore()
 // Restores a JSON object
+
 function restore(obj) {
+	console.log("restore() called");
 	var initializer = window[obj.initializer];
 	if (typeof initializer.restore == "function") {
 		return initializer.restore(obj);

@@ -383,7 +383,6 @@
 <!-- Lets a user save a map					-->
 <!-- 										-->
 <div class="ui modal" id="saveMapModal" style="background-color:#CCC; color:#000">
-	<i class="close icon"></i>
 	<div class="header">Save Map</div>
 	<div class="content">
 		<div class="ui form">
@@ -402,6 +401,23 @@
 			<div class="ui button negative" id="saveMapModalCancel">Cancel</div>
 			<div class="or"></div>
 			<div class="ui button positive" id="saveMapModalSave">Save</div>
+		</div>
+	</div>
+</div>
+
+<div class="ui modal" id="loadMapModal">
+	<div class="header">Load Map</div>
+	<div class="content">
+		<div class="description">
+			<p>Load a map file?</p>
+			<input type="file" id="file" name="file" /><br />
+		</div>
+	</div>
+	<div class="actions">
+		<div class="ui buttons">
+			<div class="ui button negative" id="loadMapModalCancel">Cancel</div>
+			<div class="or"></div>
+			<div class="ui button positive" id="loadMapModalLoad">Load</div>
 		</div>
 	</div>
 </div>

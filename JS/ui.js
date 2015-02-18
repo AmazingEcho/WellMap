@@ -158,6 +158,15 @@ $('document').ready(function(){
 	$("#dropdown-loadMapModal, #button-loadMapModal").click(function(){
 		// TODO:
 		// load map modal
+		
+		$("#loadMapModal")
+			.modal({
+				closable: false,
+				onApprove: function(){
+					//Load function goes here
+				},
+			})
+			.modal('show');
 	});
 	
 	$('#modal-button-copywelldata').click(function(){

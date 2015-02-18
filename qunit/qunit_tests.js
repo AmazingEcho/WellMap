@@ -910,20 +910,26 @@ test("Saving and Loading - Convert Workspace to JSON String", function(){
 	the_controller = new controller();
 	
 	// Load data back in
-	the_controller.loadDataJSON(JSON.parse(JSON.stringify(JSONString)));
+	the_controller.loadDataJSON(JSON.stringify(JSONString));
 	
 	// Check that data is restored
 	ok(the_controller.the_map.metadata.mapName == "Testing Data Preservation", "Metadata restored - Map name is: " + the_controller.the_map.metadata.mapName);
 	ok(the_controller.the_map.layers[0].name == "Test Point Import Layer", "Layer restored - Layer name is: " + the_controller.the_map.layers[0].name);
 	
 	// And that functions are also present
+
+	the_controller.the_map.sortLayersByNameAscending();
+	
+	ok(true, "Functions in map restored!");
+
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 5", "Well", 51.45, -113.25);
+	
+	ok(the_controller.the_map.layers[0].points[4].name == "Test Point 5", "New Point added");
+
 	the_controller.the_map.changeName("JSON Loaded Map");
 	
 	ok(the_controller.the_map.metadata.mapName == "JSON Loaded Map", "Functions work as well - Map name has been changed to: " + the_controller.the_map.metadata.mapName);
 	
-	the_controller.the_map.layers[0].addPointLatLong("Test Point 5", "Well", 51.45, -113.25);
-	
-	ok(the_controller.the_map.layers[0].points[4].name == "Test Point 5", "New Point added");
 });
 
 test("Saving and Loading - Local Files", function(){

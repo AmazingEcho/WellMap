@@ -199,6 +199,7 @@ mapMetadata.prototype = {
 
 // JSON Saving
 mapMetadata.prototype.initializer = "mapMetadata";
+/*
 mapMetadata.prototype.toJSON = function(){
 	var result = this instanceof Array ? [] : {};
 	result.initializer = this.initializer;
@@ -209,3 +210,4 @@ mapMetadata.prototype.toJSON = function(){
 	}
 	return result;
 }
+*/
