@@ -5,21 +5,6 @@ Written by: Thomas Condon
 
 */
 
-// A registry of types
-// Needed in order to make sure objects made through JSON.parse() get thier attached functions back.
-// Further information here:
-// http://stackoverflow.com/questions/14027168/how-to-restore-original-object-type-from-json
-var Types = {};
-
-// TODO: Write toJSON and revive functions for each constructor
-// A rather tedious copy-paste job...
-
-/*
-
-Constructors for the various classes.
-
-*/
-
 /*
 controller
 The controller that handles all of the control logic
@@ -38,10 +23,6 @@ function controller(){
 	this.databases = [];
 	this.wellGroupList = [];
 	
-	// TODO:
-	// Put code to summon a map via gmaps.js here
-	// Could just copy some code right out of the prototype
-	// Needs to go here because I don't want the JSON file to have actual GMap info.
 	this.initGMaps = function(){
 		this.Gmap = new GMaps({
 			div: '#googleMap',
@@ -50,26 +31,17 @@ function controller(){
 			zoom: 5,
 			mapTypeId:google.maps.MapTypeId.TERRAIN,
 			disableDefaultUI:true
-		});
-	/*
-		var path = [[55.000,-115.000],[55.000,-113.000],[52.000,-113.000],[52.000,-115.000]];
-
-		this.Gmap.drawPolygon({
-			paths: path, // pre-defined polygon shape
-			strokeColor: '#BBD8E9',
-			strokeOpacity: 1,
-			strokeWeight: 3,
-			fillColor: '#BBD8E9',
-			fillOpacity: 0.6
-		});
-	*/
+			});
+		}
 	}
 	
-	this.newMap = function(){
+controller.prototype = {
+	
+	newMap : function(){
 		this.the_map = new map("Untitled Map");
-	}
+	},
 	
-	this.changeMapType = function(mapType){
+	changeMapType : function(mapType){
 		switch(mapType) {
 			case 1:
 				this.Gmap.setMapTypeId(google.maps.MapTypeId.SATELLITE);
@@ -85,9 +57,9 @@ function controller(){
 				break;
 			default:
 		}
-	}
+	},
 	
-	this.refreshMap = function(){
+	refreshMap : function(){
 		// TODO:
 		// Write a function to read through the layers, and feed data from each layer
 		// into the gmap.js functions to draw objects onto the map.
@@ -123,34 +95,34 @@ function controller(){
 				default:
 			}
 		}
-	}
+	},
 	
 	// Functions are made in a similar fashion as attributes
 	// function() means that that we're declaring a function (duh)
 	// the name in function(name) is an incoming argument
 	// Notice how its not 'String name'.  That's because JavaScript uses Duck Typing.  Look it up...
-	this.newLayer = function(name){
+	newLayer : function(name){
 		// the only thing this function does is call the newLayer() function on the_map object, passing along the name...
 		this.the_map.newLayer(name);
-	};
+	},
 	
-	this.newPointLayer = function(name){
+	newPointLayer : function(name){
 		this.the_map.newPointLayer(name);
-	}
+	},
 	
-	this.newPathLayer = function(name){
+	newPathLayer : function(name){
 		this.the_map.newPathLayer(name);
-	}
+	},
 	
-	this.newPolyLayer = function(name){
+	newPolyLayer : function(name){
 		this.the_map.newPolyLayer(name);
-	}
+	},
 	
-	this.deleteLayer = function(index){
+	deleteLayer : function(index){
 		this.the_map.deleteLayer(index);
-	}
+	},
 	
-	this.createNewPointLayerFromSelection = function(layerIndex){
+	createNewPointLayerFromSelection : function(layerIndex){
 		
 		if(this.the_map.layers[layerIndex].layerType != "point"){
 			console.log("Layer " + layerIndex + " is not a point layer.");
@@ -189,10 +161,10 @@ function controller(){
 				j++;
 			}
 		}
-	}
+	},
 	
 	// Returns an array of layer names and index values for those layers
-	this.generateLayerList = function(){
+	generateLayerList : function(){
 		
 		var layerList = [];
 		
@@ -204,20 +176,13 @@ function controller(){
 		}
 		
 		return layerList;
-	};
-	
-	// TODO:
-	// Put some points onto a DB server, and try to get this function to load them
-	// serverInfo should be an object containing the info needed to access the server
-	this.importPointLayerDataFromServer = function(name, serverInfo){
-		
-	};
+	},
 	
 	// Exports Data on the map as a spread sheet
 	// TODO: Write the whole function
-	this.exportXLS = function(){
+	exportXLS : function(){
 		console.log("exportXLS() not yet written");
-	};
+	},
 	
 	
 	// TODO:
@@ -229,21 +194,25 @@ function controller(){
 	// The problem is that JS is kind of weird about openning files on a cilent side HD.
 	// Security concerns about rogue web pages running .js code to peek at the contents of someones HD.
 	
-	this.saveDataJSON = function(fileInfo){
-		var controllerJSONString = JSON.stringify(this.the_map);
-		//console.log(controllerJSONString);
-		return controllerJSONString;
-	};
+	saveDataJSON : function(fileInfo){
+		var mapJSONString = this.the_map.toJSON();
+		console.log(mapJSONString);
+		return mapJSONString;
+	},
 	
-	this.loadDataJSON = function(fileInfo){
+	loadDataJSON_OLD : function(fileInfo){
 		this.the_map = JSON.parse(fileInfo, function(key, value){
 			return key === '' && value.hasOwnProperty('__type') ? Types[value.__type].revive(value) : this[key];
 		});
-	};
+	},
 	
+	loadDataJSON : function(mapJSONString){
+		this.the_map = restore(mapJSONString);
+	},
+
 	// Helper Function
 	// Not for use in final product
-	this.generateRandomPoints = function(numPoints){
+	generateRandomPoints : function(numPoints){
 		this.newPointLayer("Random Point Layer");
 		var layerIndex = this.the_map.layers.length - 1;
 		
@@ -251,13 +220,11 @@ function controller(){
 			var randLat = (Math.random() * 11.0) + 49.0;
 			var randLong = -((Math.random() * 10.0) + 110.0);
 			this.the_map.layers[layerIndex].addPointLatLong("Lat: " + (randLat).toFixed(1) + "\n" + "Long: " + (randLong).toFixed(1), "Random Point", randLat, randLong);
-			
 		}
-			
 		console.log("Random Points Generated - Total: " + numPoints);
-		};
+	},
 	
-	this.addDatabaseConnectionPHP = function(dbObjParams){
+	addDatabaseConnectionPHP : function(dbObjParams){
 		// NOTE: When implementing this function into the application, make sure dbObjParams is an object that contains:
 		// a name
 		// a hostname
@@ -267,9 +234,9 @@ function controller(){
 		// and maybe a user provided description
 		
 		this.databases.push(new databaseObjPHP(dbObjParams));
-		};
+	},
 		
-	this.addDatabaseConnectionCS = function(dbObjParams){
+	addDatabaseConnectionCS : function(dbObjParams){
 		// NOTE: When implementing this function into the application, make sure dbObjParams is an object that contains:
 		// a name
 		// a hostname
@@ -277,13 +244,11 @@ function controller(){
 		// a username
 		// a password
 		// and maybe a user provided description
-		
-		
-		
+
 		this.databases.push(new databaseObj(dbObjParams));
-		};
+	},
 	
-	this.fetchWellGroupsFromDatabasePHP = function(dbIndex){
+	fetchWellGroupsFromDatabasePHP : function(dbIndex){
 		
 		if(this.databases.length == 0){
 			console.log("No Database information present.  Please set Databse Options.");
@@ -331,9 +296,9 @@ function controller(){
 			console.log("Error in fetchWellGroupsFromDatabasePHP()");
 			}
 		});
-	}
+	},
 	
-	this.fetchWellsFromDatabasePHP = function(dbIndex, groupName, groupIndex){
+	fetchWellsFromDatabasePHP : function(dbIndex, groupName, groupIndex){
 		if(this.databases.length == 0){
 			console.log("No Database information present.  Please set Databse Options.");
 			return;
@@ -369,22 +334,19 @@ function controller(){
 			}
 			
 		});
-	}
+	},
 	
-	this.fetchWellListFromDatabaseCS = function(dbIndex){
+	fetchWellListFromDatabaseCS : function(dbIndex){
 		if(databases.length == 0){
 			console.log("No Database information present.  Please set Databse Options.");
 			return;
 		}
 		
 		// Use ajax to grab a list of the well groups from the DB
-		
 		// Return a list of Well groups that ui.js can use DOM to print out
-		
-		
-	}
+	},
 	
-	this.loadPointsFromDatabaseCS = function(dbIndex){
+	loadPointsFromDatabaseCS : function(dbIndex){
 		
 		// dbIndex bounds checking
 		if(dbIndex < 0 || dbIndex >= this.databases.length){
@@ -398,9 +360,6 @@ function controller(){
 		
 	}
 	
-	this.loadPointsFromDatabasePHP = function(dbIndex){
-	}
-	
 };
 
 /*
@@ -410,4 +369,19 @@ MISC Functions
 // Uses a regex to make sure a text string is a proper hex color.
 function hexCheck(sNum){
 	return /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i.test(sNum);
+}
+
+// restore()
+// Restores a JSON object
+function restore(obj) {
+	var initializer = window[obj.initializer];
+	if (typeof initializer.restore == "function") {
+		return initializer.restore(obj);
+	}
+
+	var restoredObj = new initializer();
+	for (var key in obj) {
+		restoredObj[key] = obj[key];
+	}
+	return restoredObj;
 }

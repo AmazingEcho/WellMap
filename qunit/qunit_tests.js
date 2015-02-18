@@ -51,10 +51,10 @@ test("Metadata: Name", function(){
 test("Metadata: Description", function(){
 	var the_controller = new controller();
 	the_controller.newMap();
-	ok(the_controller.the_map.metadata.description == "", "Description is: " + the_controller.the_map.metadata.description);
+	ok(the_controller.the_map.metadata.desc == "", "Description is: " + the_controller.the_map.metadata.desc);
 	
 	the_controller.the_map.metadata.changeDescription("This is a test map!");
-	ok(the_controller.the_map.metadata.description == "This is a test map!", "Description is: \"" + the_controller.the_map.metadata.description + "\"");
+	ok(the_controller.the_map.metadata.desc == "This is a test map!", "Description is: \"" + the_controller.the_map.metadata.desc + "\"");
 	
 });
 
@@ -192,7 +192,7 @@ test("Layer Sorting by name", function(){
 	the_controller.newPointLayer("Test Layer D");
 	the_controller.newPathLayer("Test Layer C");
 	
-	the_controller.the_map.sortLayersByName();
+	the_controller.the_map.sortLayersByNameAscending();
 	
 	ok(the_controller.the_map.layers[0].name == "Test Layer A" &&
 		the_controller.the_map.layers[1].name == "Test Layer B" &&
@@ -914,13 +914,16 @@ test("Saving and Loading - Convert Workspace to JSON String", function(){
 	
 	// Check that data is restored
 	ok(the_controller.the_map.metadata.mapName == "Testing Data Preservation", "Metadata restored - Map name is: " + the_controller.the_map.metadata.mapName);
-	ok(false, "TODO: Point data recreation from JSON string successful");
+	ok(the_controller.the_map.layers[0].name == "Test Point Import Layer", "Layer restored - Layer name is: " + the_controller.the_map.layers[0].name);
 	
 	// And that functions are also present
 	the_controller.the_map.changeName("JSON Loaded Map");
 	
 	ok(the_controller.the_map.metadata.mapName == "JSON Loaded Map", "Functions work as well - Map name has been changed to: " + the_controller.the_map.metadata.mapName);
 	
+	the_controller.the_map.layers[0].addPointLatLong("Test Point 5", "Well", 51.45, -113.25);
+	
+	ok(the_controller.the_map.layers[0].points[4].name == "Test Point 5", "New Point added");
 });
 
 test("Saving and Loading - Local Files", function(){
