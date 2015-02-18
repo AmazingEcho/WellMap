@@ -61,7 +61,7 @@ $('document').ready(function(){
 	////////////////////////////////////////////////////////////
 	
 	// The first thing the application does on startup is show the startup modal
-	console.log("Ititializing Start Menu");
+	console.log("Initializing Start Menu");
 	$('#startupMenu')
 		.modal('setting', 'closable', false)
 		.modal('show');
@@ -247,14 +247,15 @@ $('document').ready(function(){
 		$('#graphsModal').modal('show');
 	});
 
-	//import data from excel sheet
-	$('#modal-button-importexcel').click(function(){
-		$('.ui.modal.importexcel').modal('show');
+	//Import data from excel sheet 
+	$("#dropdown-importexcelMapModal, #button-importexcelMapModal").click(function(){
+		$("#dropdown-importexcelMapModal").modal('show');
 		//function needed to import data
 	});
-	//export data to an excel sheet
-	$('#modal-button-exportexcel').click(function(){
-		$('.ui.modal.exportexcel').modal('show');
+	
+	//Export data to an excel sheet
+	$("#dropdown-exportexcelMapModal, #button-exportexcelMapModal").click(function(){
+		$("#dropdown-exportexcelMapModal").modal('show');
 		var excelnewdoc = document.getElementById('excelnewdoc').value;
 		//function needed to export data
 	});
