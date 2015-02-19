@@ -171,7 +171,7 @@ map.prototype.toJSON = function(){
 
 
 function mapMetadata(name){
-	//console.log("mapMetadata() constructor called, name is " + name);
+
 	this.mapName = name;
 	
 	// description is empty on creation
@@ -186,7 +186,7 @@ function mapMetadata(name){
 	this.mapType = "default";
 	
 };
-	
+
 mapMetadata.prototype = {	
 	changeName : function(newName){
 		this.mapName = newName;
@@ -199,7 +199,6 @@ mapMetadata.prototype = {
 
 // JSON Saving
 mapMetadata.prototype.initializer = "mapMetadata";
-/*
 mapMetadata.prototype.toJSON = function(){
 	var result = this instanceof Array ? [] : {};
 	result.initializer = this.initializer;
@@ -210,4 +209,3 @@ mapMetadata.prototype.toJSON = function(){
 	}
 	return result;
 }
-*/

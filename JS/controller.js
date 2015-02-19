@@ -200,8 +200,11 @@ controller.prototype = {
 	},
 	
 	loadDataJSON : function(mapJSONString){
-		console.log("Recieved: " + mapJSONString);
-		this.the_map = restore(JSON.parse(mapJSONString));
+		console.log("Received: " + mapJSONString);
+		var parsedJSON = JSON.parse(mapJSONString);
+		this.the_map = restore(parsedJSON);
+		console.log(parsedJSON);
+		this.the_map.mapMetadata = restore(JSON.parse(mapJSONString).mapMetadata)
 	},
 
 	// Helper Function

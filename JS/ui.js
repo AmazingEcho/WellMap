@@ -6,6 +6,13 @@
 
 $('document').ready(function(){
 	
+	if(window.File && window.FileReader && window.FileList && window.Blob){
+		console.log("FileReader is supported!");
+	}
+	else {
+		alert('The File APIs are not fully supported in this browser.');
+	}	
+	
 	// Startup proceedures
 	
 	// I used to have the controller initialize GMaps on it's own when the constructor was called.
@@ -146,9 +153,9 @@ $('document').ready(function(){
 						// Call the SaveMap function
 						
 						var saveData = the_controller.saveDataJSON("testSaveFileName.json");
-						console.log(JSON.stringify(saveData));
 						var blob = new Blob([JSON.stringify(saveData)], {type: "text/plain;charset=utf-8"});
 						saveAs(blob, "hello world.txt");
+						// TODO: Replace hello world with something meaningful
 					}
 				},
 			})
@@ -156,14 +163,16 @@ $('document').ready(function(){
 	});
 	
 	$("#dropdown-loadMapModal, #button-loadMapModal").click(function(){
-		// TODO:
-		// load map modal
 		
 		$("#loadMapModal")
 			.modal({
 				closable: false,
 				onApprove: function(){
-					//Load function goes here
+					// !!!!!!!!!!!!!!!!!!!!!!!!
+					// Load function goes here
+					// !!!!!!!!!!!!!!!!!!!!!!!!
+					
+					
 				},
 			})
 			.modal('show');
