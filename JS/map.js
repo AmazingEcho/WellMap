@@ -156,21 +156,9 @@ map.prototype = {
 	}
 };
 
-// JSON Saving
-/*
-map.prototype.initializer = "map";
-map.prototype.toJSON = function(){
-	var result = this instanceof Array ? [] : {};
-	result.initializer = this.initializer;
-	for (var key in this) {
-		if (this.hasOwnProperty(key)) {
-			result[key] = this[key];
-		}
-	}
-	return result;
-}
-*/
-
+//////////////////////////////
+// JSON Saving and Loading
+//////////////////////////////
 map.prototype.toJSON = function() {
 	return Generic_toJSON("map", this);
 };
@@ -208,21 +196,9 @@ mapMetadata.prototype = {
 	}
 }
 
-// JSON Saving
-/*
-mapMetadata.prototype.initializer = "mapMetadata";
-mapMetadata.prototype.toJSON = function(){
-	var result = this instanceof Array ? [] : {};
-	result.initializer = this.initializer;
-	for (var key in this) {
-		if (this.hasOwnProperty(key)) {
-			result[key] = this[key];
-		}
-	}
-	return result;
-}
-*/
-
+//////////////////////////////
+// JSON Saving and Loading
+//////////////////////////////
 mapMetadata.prototype.toJSON = function() {
 	return Generic_toJSON("mapMetadata", this);
 };

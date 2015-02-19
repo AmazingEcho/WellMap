@@ -365,25 +365,6 @@ function hexCheck(sNum){
 	return /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i.test(sNum);
 }
 
-// restore()
-// Restores a JSON object
-/*
-function restore(obj) {
-	console.log("restore() called");
-	console.log(obj);
-	var initializer = window[obj.initializer];
-	if (typeof initializer.restore == "function") {
-		return initializer.restore(obj);
-	}
-
-	var restoredObj = new initializer();
-	for (var key in obj) {
-		restoredObj[key] = obj[key];
-	}
-	return restoredObj;
-}
-*/
-
 // JSON Functions
 // Thanks to this thread:
 // http://stackoverflow.com/questions/8111446/turning-json-strings-into-objects-with-methods
@@ -394,7 +375,10 @@ function restore(obj) {
 // constructor that has a `fromJSON` property on it, it hands
 // off to that `fromJSON` fuunction, passing in the value.
 function Reviver(key, value) {
-	console.info( 'reviver with key =' + key );
+
+	// console.info( 'reviver with key =' + key );
+	// ^ uncomment for debugging
+	
 	var ctor;
 
 	if (typeof value === "object" &&

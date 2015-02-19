@@ -3,6 +3,7 @@
 // Author: Thomas 'Toss' Condon
 
 // Javascript functionallity for UI components of WellMap
+// Wonder if I should start splitting this up...
 
 $('document').ready(function(){
 	

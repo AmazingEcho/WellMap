@@ -33,7 +33,9 @@ Layer.prototype = {
 	}
 };
 
-// JSON Functions
+//////////////////////////////
+// JSON Saving and Loading
+//////////////////////////////
 Layer.prototype.toJSON = function() {
 	return Generic_toJSON("Layer", this);
 };
@@ -45,7 +47,9 @@ Layer.fromJSON = function(value) {
 Reviver.constructors.Layer = Layer;
 
 /*
-So it turns out that inheritance in JS works a lot differently than it does in Java/C++.  JS is Object Oriented, but it doesn't have classes, so trying to create a "class" that inherits properties from another "class" is somewhat unusual.
+So it turns out that inheritance in JS works a lot differently than it does in Java/C++.
+JS is Object Oriented, but it doesn't have classes, so trying to create a "class" that inherits
+properties from another "class" is somewhat unusual.
 
 Regardless, after some creative Googling, I found out how to make "constructors" that will pass on params to superclasses...
 http://www.2ality.com/2011/06/prototypes-as-classes.html
@@ -164,7 +168,9 @@ pointLayer.prototype.exportPointsXLS = function(){
 
 };
 
-// JSON Functions
+//////////////////////////////
+// JSON Saving and Loading
+//////////////////////////////
 pointLayer.prototype.toJSON = function() {
 	return Generic_toJSON("pointLayer", this);
 };

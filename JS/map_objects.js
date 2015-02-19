@@ -9,7 +9,9 @@ function GMapPoint(lat, long){
 	this.long = long;
 }
 
-// JSON Functions
+//////////////////////////////
+// JSON Saving and Loading
+//////////////////////////////
 GMapPoint.prototype.toJSON = function() {
 	return Generic_toJSON("GMapPoint", this);
 };
@@ -50,6 +52,9 @@ function Point(name, type, gmpoint){
 	
 }
 
+//////////////////////////////
+// JSON Saving and Loading
+//////////////////////////////
 Point.prototype.toJSON = function() {
 	return Generic_toJSON("Point", this);
 };
@@ -83,6 +88,19 @@ function Path(name, type){
 	}
 }
 
+//////////////////////////////
+// JSON Saving and Loading
+//////////////////////////////
+Path.prototype.toJSON = function() {
+	return Generic_toJSON("Path", this);
+};
+
+Path.fromJSON = function(value) {
+	return Generic_fromJSON(Path, value.data);
+};
+
+Reviver.constructors.Path = Path;
+
 function Poly(name, type){
 	this.name = name;
 	this.type = type;
@@ -105,3 +123,16 @@ function Poly(name, type){
 		return returnArray;
 	}
 }
+
+//////////////////////////////
+// JSON Saving and Loading
+//////////////////////////////
+Poly.prototype.toJSON = function() {
+	return Generic_toJSON("Poly", this);
+};
+
+Poly.fromJSON = function(value) {
+	return Generic_fromJSON(Poly, value.data);
+};
+
+Reviver.constructors.Poly = Poly;
