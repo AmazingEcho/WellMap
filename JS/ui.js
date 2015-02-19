@@ -301,8 +301,13 @@ $('document').ready(function(){
 	});
 	
 	// help button
-	$('#dropdown-help, #button-help').click(function(){
+	$('#dropdown-helpButton').click(function(){
 		window.open("https://support.google.com/maps/?hl=en");
+	});
+	
+	// print button
+	$('#dropdown-printButton').click(function(){
+		window.print();
 	});
 	
 	///////////////////////////////////////////////////////
