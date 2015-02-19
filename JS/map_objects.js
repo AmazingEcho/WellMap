@@ -9,6 +9,17 @@ function GMapPoint(lat, long){
 	this.long = long;
 }
 
+// JSON Functions
+GMapPoint.prototype.toJSON = function() {
+	return Generic_toJSON("GMapPoint", this);
+};
+
+GMapPoint.fromJSON = function(value) {
+	return Generic_fromJSON(GMapPoint, value.data);
+};
+
+Reviver.constructors.GMapPoint = GMapPoint;
+
 
 function Point(name, type, gmpoint){
 	this.name = name;
@@ -16,7 +27,7 @@ function Point(name, type, gmpoint){
 	this.GMpoint = gmpoint;
 	this.selected = false;
 	
-	this.wellData = null;
+	this.wellData = {};
 	
 	this.getLat = function(){
 		return this.GMpoint.lat;
@@ -38,6 +49,16 @@ function Point(name, type, gmpoint){
 	}
 	
 }
+
+Point.prototype.toJSON = function() {
+	return Generic_toJSON("Point", this);
+};
+
+Point.fromJSON = function(value) {
+	return Generic_fromJSON(Point, value.data);
+};
+
+Reviver.constructors.Point = Point;
 
 function Path(name, type){
 	this.name = name;

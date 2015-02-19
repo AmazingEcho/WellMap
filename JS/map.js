@@ -157,6 +157,7 @@ map.prototype = {
 };
 
 // JSON Saving
+/*
 map.prototype.initializer = "map";
 map.prototype.toJSON = function(){
 	var result = this instanceof Array ? [] : {};
@@ -168,7 +169,17 @@ map.prototype.toJSON = function(){
 	}
 	return result;
 }
+*/
 
+map.prototype.toJSON = function() {
+	return Generic_toJSON("map", this);
+};
+
+map.fromJSON = function(value) {
+	return Generic_fromJSON(map, value.data);
+};
+
+Reviver.constructors.map = map;
 
 function mapMetadata(name){
 
@@ -198,6 +209,7 @@ mapMetadata.prototype = {
 }
 
 // JSON Saving
+/*
 mapMetadata.prototype.initializer = "mapMetadata";
 mapMetadata.prototype.toJSON = function(){
 	var result = this instanceof Array ? [] : {};
@@ -209,3 +221,14 @@ mapMetadata.prototype.toJSON = function(){
 	}
 	return result;
 }
+*/
+
+mapMetadata.prototype.toJSON = function() {
+	return Generic_toJSON("mapMetadata", this);
+};
+
+mapMetadata.fromJSON = function(value) {
+	return Generic_fromJSON(mapMetadata, value.data);
+};
+
+Reviver.constructors.mapMetadata = mapMetadata;

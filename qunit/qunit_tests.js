@@ -896,7 +896,7 @@ test("Saving and Loading - Convert Workspace to JSON String", function(){
 	var JSONString = the_controller.saveDataJSON("testSaveFileName.json");
 	
 	console.log("JSONString is: " + JSONString);
-	console.log(JSONString);
+
 	// Delete everything in the controller, and verify controllers empty state
 	
 	the_controller = null;
@@ -907,14 +907,14 @@ test("Saving and Loading - Convert Workspace to JSON String", function(){
 	the_controller = new controller();
 	
 	// Load data back in
-	the_controller.loadDataJSON(JSON.stringify(JSONString));
+	the_controller.loadDataJSON(JSONString);
 	// the_controller.loadDataJSON(JSONString);
 	
 	// Check that data is restored
 	ok(the_controller.the_map.metadata.mapName == "Testing Data Preservation", "Metadata restored - Map name is: " + the_controller.the_map.metadata.mapName);
 	ok(the_controller.the_map.layers[0].name == "Test Point Import Layer", "Layer restored - Layer name is: " + the_controller.the_map.layers[0].name);
 	
-	// And that functions are also present
+	// And that functions are also properly restored
 
 	the_controller.the_map.sortLayersByNameAscending();
 	

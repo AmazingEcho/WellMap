@@ -33,17 +33,16 @@ Layer.prototype = {
 	}
 };
 
-Layer.prototype.initializer = "Layer";
-Layer.prototype.toJSON = function(){  
-  var result = this instanceof Array? [] : {};
-  result.initializer = this.initializer;
-  for (var key in this) {
-    if (this.hasOwnProperty(key)) {
-      result[key] = this[key];
-    }
-  }
-  return result;
-}
+// JSON Functions
+Layer.prototype.toJSON = function() {
+	return Generic_toJSON("Layer", this);
+};
+
+Layer.fromJSON = function(value) {
+	return Generic_fromJSON(Layer, value.data);
+};
+
+Reviver.constructors.Layer = Layer;
 
 /*
 So it turns out that inheritance in JS works a lot differently than it does in Java/C++.  JS is Object Oriented, but it doesn't have classes, so trying to create a "class" that inherits properties from another "class" is somewhat unusual.
@@ -164,6 +163,17 @@ pointLayer.prototype.isEmpty = function(){
 pointLayer.prototype.exportPointsXLS = function(){
 
 };
+
+// JSON Functions
+pointLayer.prototype.toJSON = function() {
+	return Generic_toJSON("pointLayer", this);
+};
+
+pointLayer.fromJSON = function(value) {
+	return Generic_fromJSON(pointLayer, value.data);
+};
+
+Reviver.constructors.pointLayer = pointLayer;
 
 function pathLayer(name){
 	
