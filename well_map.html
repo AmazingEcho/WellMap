@@ -141,7 +141,7 @@
 							<div class="menu">
 								<div class="item" id="dropdown-newMapModal"><i class="file outline icon"></i>New</div>
 								<div class="item" id="dropdown-saveMapModal"><i class="save icon"></i>Save</div>
-								<div class="item" id="dropdown-loadMapModal"><i class="folder outline icon"></i>Open</div>
+								<div class="item" id="dropdown-loadMapModal"><i class="folder open icon"></i>Open</div>
 								<div class="item" id="dropdown-importexcelMapModal"><i class="book icon"></i>Import from Excel</div>
 								<div class="item" id="dropdown-exportexcelMapModal"><i class="book icon"></i>Export to Excel</div>
 							</div>
@@ -184,8 +184,8 @@
 						
 						<a class="ui dropdown item">Help<i class="dropdown icon"></i>
 							<div class="menu">
-								<div class="item"><i class="info circle icon"></i>Help</div>
-								<div class="item"><i class="help icon"></i>About</div>
+								<div class="item" id="dropdown-help"><i class="info circle icon"></i>Help</div>
+								<div class="item" id="dropdown-about"><i class="help icon"></i>About</div>
 							</div>
 						</a>
 						
@@ -208,15 +208,15 @@
 					<div class="ui button" id="sidebar-toggle"><i class="icon exchange"></i>Sidebar</div>				
 				</div>
 				<div class=" icon ui buttons">
-					<div class="ui button" data-content="Edit Map Info" data-position="bottom left" id="button-editMapInfoModal"><i class="info icon"></i></div>
+					<div class="ui button" data-content="Edit Map Info" data-position="bottom left" id="button-editmapinfoMapModal"><i class="info icon"></i></div>
 					<div class="ui button" data-content="Sort Ascending" data-position="bottom left" id="button-sortascending"><i class="sort numeric ascending icon"></i></div>
 					<div class="ui button" data-content="Sort Descending" data-position="bottom left" id="button-sortdescending"><i class="sort numeric descending icon"></i></div>
 					<div class="ui button" data-content="Refresh Map" data-position="bottom left" id="button-refreshMap"><i class="refresh icon"></i></div>
 					<div class="ui button" data-content="Sproule" data-position="bottom left" id = "button-sproule"><i class="world icon"></i></div>
 					<div class="ui button" data-content="View Data" data-position="bottom left" ><i class="table icon"></i></div>
 					<div class="ui button" data-content="Graphs" data-position="bottom left" id="button-graphsViewer"><i class="bar chart icon"></i></div>
-					<div class="ui button" data-content="Import Data" data-position="bottom left" id = "modal-button-importexcel"><i class="arrow down icon"></i></div>
-					<div class="ui button" data-content="Export Data" data-position="bottom left" id="modal-button-exportexcel"><i class="arrow up icon"></i></div>
+					<div class="ui button" data-content="Import Data" data-position="bottom left" id = "button-importexcelMapModal"><i class="arrow down icon"></i></div>
+					<div class="ui button" data-content="Export Data" data-position="bottom left" id="button-exportexcelMapModal"><i class="arrow up icon"></i></div>
 				</div>
 				<div class=" icon ui buttons">
 					<div class="ui button" data-content="Settings" data-position="bottom left" id="modal-button-settingsButton"><i class="settings icon"></i></div>
@@ -439,7 +439,7 @@
 <!-- Displays map name and map description														-->
 <!-- Allows user the option of exiting through the 'OK' button or								-->
 <!-- Allows user to edit current map name and description and apply changes with 'Apply' button	-->
-<div class="ui modal" id="mapInformationModal" style="background-color:#CCC; color:#000">
+<div class="ui modal" id="editmapinfoMapModal" style="background-color:#CCC; color:#000">
 	<i class="close icon"></i>
 	<div class="header">Map Information</div>
 	<div class="content">
@@ -455,31 +455,31 @@
 		</div>
 	</div>
 	<div class="actions">
-		<div class="ui button" id="modal-button-mapInfoOk">
-			Ok
-		</div>
-		<div class="ui button" id="modal-button-mapInfoEdit">
-			Apply
-		</div>
+		<div class="ui button negative" id="editmapinfoMapModalCancel">Cancel</div>
+		<div class="or"></div>
+		<div class="ui button positive" id="editmapinfoMapModalOk">Ok</div>
 	</div>
 </div>
 
 <!-- 							-->
 <!-- Import from Excel Modal	-->
 <!-- 							-->
-<div class="ui modal importexcel" id="importExcelModal" style="background-color:#CCC; color:#000">
+<div class="ui modal" id="importexcelModal" style="background-color:#CCC; color:#000">
 	<i class="close icon"></i>
 	<div class="header">Import from Excel</div>
+	<div class="title">Please browse directory for Excel File</div>
 	<div class="actions">
-		<div class="ui button" id="modal-button-importbrowse">Browse</div>
-		<div class="ui button" id="modal-button-importok">Ok</div>
+		<div class="ui button negative" id="importexcelMapModalCancel">Cancel</div>
+		<div class="or"></div>
+		<div class="ui button positive" id="importexcelMapModalBrowse">Browse</div>
+		<div class="ui button" id="importexcelMapModalOk">Ok</div>
 	</div>
 </div>
 
 <!-- 							-->
-<!-- Import from Excel Modal	-->
+<!-- Export to Excel Modal	-->
 <!-- 							-->
-<div class="ui modal exportexcel" id="exportExcelModal" style="background-color:#CCC; color:#000">
+<div class="ui modal" id="exportExcelModal" style="background-color:#CCC; color:#000">
 	<i class="close icon"></i>
 	<div class="header">Export to Excel</div>
 	<div class="content">
@@ -491,8 +491,10 @@
 		</div>
 	</div>
 	<div class="actions">
-		<div class="ui button" id="modal-button-exportgenerate">Generate</div>
-		<div class="ui button" id="modal-button-exportclose">Close</div>
+		<div class="ui button positive" id="exportexcelMapModalGenerate">Generate</div>
+		<div class="or"></div>
+		<div class="ui button" id="exportexcelMapModalCancel">Cancel</div>
+		<div class="ui button" id="exportexcelMapModalClose">Close</div>
 	</div>
 </div>
 

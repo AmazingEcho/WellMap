@@ -174,7 +174,7 @@ $('document').ready(function(){
 	
 	// Clicking on this button displays a modal that shows current map info
 	// Also allows editing of current map info
-	$("#button-editMapInfoModal").click(function(){
+	$("#dropdown-editmapinfoMapModal, #button-editmapinfoMapModal").click(function(){
 		// Pull info from controller, and put it in the the inputs
 		$("input#mapInfoNameField").val(the_controller.the_map.metadata.mapName);
 		$("input#mapInfoDescField").val(the_controller.the_map.metadata.desc);
@@ -279,7 +279,7 @@ $('document').ready(function(){
 	});
 	
 	// help button
-	$('#button-help').click(function(){
+	$('#dropdown-help, #button-help').click(function(){
 		window.open("https://support.google.com/maps/?hl=en");
 	});
 	
