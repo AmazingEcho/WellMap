@@ -149,13 +149,11 @@ $('document').ready(function(){
 						the_controller.the_map.changeName($("input#saveMapNameField").val());
 						the_controller.the_map.changeDescription($("input#saveMapDescField").val());
 						
-						// TODO:
-						// Call the SaveMap function
+						// Call the Save Map function
 						
 						var saveData = the_controller.saveDataJSON("testSaveFileName.json");
 						var blob = new Blob([JSON.stringify(saveData)], {type: "text/plain;charset=utf-8"});
-						saveAs(blob, "hello world.txt");
-						// TODO: Replace hello world with something meaningful
+						saveAs(blob, the_controller.the_map.metadata.mapName + ".txt");
 					}
 				},
 			})

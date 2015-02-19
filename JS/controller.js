@@ -203,8 +203,6 @@ controller.prototype = {
 		console.log("Received: " + mapJSONString);
 		var parsedJSON = JSON.parse(mapJSONString);
 		this.the_map = restore(parsedJSON);
-		console.log(parsedJSON);
-		this.the_map.mapMetadata = restore(JSON.parse(mapJSONString).mapMetadata)
 	},
 
 	// Helper Function
@@ -373,6 +371,7 @@ function hexCheck(sNum){
 
 function restore(obj) {
 	console.log("restore() called");
+	console.log(obj);
 	var initializer = window[obj.initializer];
 	if (typeof initializer.restore == "function") {
 		return initializer.restore(obj);
