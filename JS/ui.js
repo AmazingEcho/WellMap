@@ -190,13 +190,17 @@ $('document').ready(function(){
 		the_controller.the_map.pastewellLayers();
 	});
 	
+	$("#importWellsFromDatabaseButton").click(function(){
+		$("#importWellsFromDatabaseModal").modal('show');
+	});
+	
 	// Clicking on this button displays a modal that shows current map info
 	// Also allows editing of current map info
-	$("#dropdown-editmapinfoMapModal, #button-editmapinfoMapModal").click(function(){
+	$("#dropdown-editmapinfoButton").click(function(){
+		$("#dropdown-editmapinfoModal").modal('show');
 		// Pull info from controller, and put it in the the inputs
 		$("input#mapInfoNameField").val(the_controller.the_map.metadata.mapName);
 		$("input#mapInfoDescField").val(the_controller.the_map.metadata.desc);
-		$("#mapInformationModal").modal('show');
 	});
 	
 	//sort the names on the well list(s) by ascending order
@@ -266,14 +270,14 @@ $('document').ready(function(){
 	});
 
 	//Import data from excel sheet 
-	$("#dropdown-importexcelMapModal, #button-importexcelMapModal").click(function(){
-		$("#dropdown-importexcelMapModal").modal('show');
+	$("#dropdown-importexcelButton").click(function(){
+		$("#dropdown-importexcelModal").modal('show');
 		//function needed to import data
 	});
 	
 	//Export data to an excel sheet
-	$("#dropdown-exportexcelMapModal, #button-exportexcelMapModal").click(function(){
-		$("#dropdown-exportexcelMapModal").modal('show');
+	$("#dropdown-exportexcelButton").click(function(){
+		$("#dropdown-exportexcelModal").modal('show');
 		var excelnewdoc = document.getElementById('excelnewdoc').value;
 		//function needed to export data
 	});
@@ -289,8 +293,8 @@ $('document').ready(function(){
 	});
 	
 	// report bug button
-	$('#button-reportBug').click(function(){
-		$('#reportBugModal').modal('show');
+	$('#dropdown-reportbugButton').click(function(){
+		$('#dropdown-reportbugModal').modal('show');
 		var email = document.getElementById('email').value;
 		var issue = document.getElementById('issue').value;
 		//insert function to store data in spreadsheet for IT to access
