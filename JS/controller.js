@@ -47,6 +47,7 @@ controller.prototype = {
 	},
 	
 	changeMapType : function(mapType){
+		this.the_map.metadata.mapType = mapType;
 		switch(mapType) {
 			case 1:
 				this.Gmap.setMapTypeId(google.maps.MapTypeId.SATELLITE);
@@ -215,6 +216,7 @@ controller.prototype = {
 		this.the_map = null;
 		this.the_map = JSON.parse(mapJSONString, Reviver);
 
+		this.changeMapType(this.the_map.metadata.mapType);
 		this.Gmap.panTo({lat: this.the_map.metadata.origin[0], lng: this.the_map.metadata.origin[1]});
 		this.Gmap.setZoom(this.the_map.metadata.zoomLVL);
 	},

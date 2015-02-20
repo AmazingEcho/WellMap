@@ -183,7 +183,7 @@ function mapMetadata(mapName){
 	// TODO:
 	// GoogleMaps has a bunch of map types (Satellite, Streets, etc)
 	// Double check those, and maybe make a function to set this
-	this.mapType = "default";
+	this.mapType = 2;
 	
 };
 

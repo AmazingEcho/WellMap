@@ -312,7 +312,7 @@ $('document').ready(function(){
 		}
 
 		// Get the context of the canvas element we want to select
-		var ctx = document.getElementById("myChart").getContext("2d");
+		var ctx = document.getElementById("modalChart").getContext("2d");
 		var myLineChart = new Chart(ctx).Line(data, options);
 		
 		$('#graphsModal').modal('show');
@@ -421,7 +421,7 @@ $('document').ready(function(){
 			.modal('setting', 'closable', false)
 			.modal('show');
 		$("input#newMapNameField").val(the_controller.the_map.metadata.mapName);
-		$("input#newMapDescField").val(the_controller.the_map.metadata.description);
+		$("input#newMapDescField").val(the_controller.the_map.metadata.desc);
 	});
 
 	// No back button!

@@ -8,7 +8,7 @@
 graph = function(){
 	this.graphData = {};
 	this.graphOptions = {};
-	this.targetID = "modalChart";
+	this.targetID = "#modalChart";
 }
 
 graph.prototype.renderGraph = function(){
