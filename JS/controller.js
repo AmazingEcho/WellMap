@@ -206,6 +206,7 @@ controller.prototype = {
 	
 	loadDataJSON : function(mapJSONString){
 		// console.log("Received: " + mapJSONString);
+		this.the_map = null;
 		this.the_map = JSON.parse(mapJSONString, Reviver);
 	},
 

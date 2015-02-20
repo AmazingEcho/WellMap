@@ -102,7 +102,7 @@ $('document').ready(function(){
 	});
 	
 	// When the Back button is clicked, they should go back to the first modal
-	$("#newMapModalBack").click(function(){
+	$("#newMapModalBack , #loadMapModalBack").click(function(){
 		$("#newMapModal").modal('hide');
 		$('#startupMenu')
 			.modal('setting', 'closable', false)
@@ -116,8 +116,35 @@ $('document').ready(function(){
 	// This is the button that loads a new map
 	// Since map loading hasn't been done yet, it simply issues an alert
 	$('#startupLoadMap').click(function(){
+		
 		// TODO: hook this up to the map load function
-		alert("Map Saving/Loading not yet implemented...");
+		$("#startupMenu").modal('hide');
+		$("#startupLoadMapModal")
+			.modal({
+				closable: false,
+				onApprove: function(){
+					console.log("Preparing to load file");
+					var fileInput = document.getElementById("loadFileFieldStartup");
+					
+					var file = fileInput.files[0];
+					var textType = "text/plain";
+					
+					console.log(file.type);
+					if (file.type.match(textType)) {
+						var reader = new FileReader();
+						reader.onload = function(e){
+							the_controller.loadDataJSON(e.target.result);
+						}
+						reader.readAsText(file);
+					}
+					else{
+						console.log("ERROR! Invalid file type!");
+						return false;
+						// ^ prevents modal from closing
+					}
+				},
+			})
+			.modal('show');
 	});
 
 	///////////////////////////////////////////////////////
@@ -153,7 +180,7 @@ $('document').ready(function(){
 						// Call the Save Map function
 						
 						var saveData = the_controller.saveDataJSON("testSaveFileName.json");
-						var blob = new Blob([JSON.stringify(saveData)], {type: "text/plain;charset=utf-8"});
+						var blob = new Blob([saveData], {type: "text/plain"});
 						saveAs(blob, the_controller.the_map.metadata.mapName + ".txt");
 					}
 				},
@@ -181,7 +208,8 @@ $('document').ready(function(){
 						var reader = new FileReader();
 						reader.onload = function(e){
 							// Do stuff here
-							
+							// console.log(e.target.result);
+							the_controller.loadDataJSON(e.target.result);
 						}
 
 						reader.readAsText(file);

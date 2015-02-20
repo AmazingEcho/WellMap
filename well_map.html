@@ -328,6 +328,25 @@
 	</div>
 </div>
 
+<!-- 										-->
+<!-- Load Map Modal - Secondary		-->
+<!-- Lets you load a map during start up	-->
+<!-- 										-->
+<div class="ui modal" id="startupLoadMapModal" style="background-color:#CCC; color:#000">
+	<div class="header">Load Project</div>
+	<div class="content">
+		<div class="ui form">
+			<div class="field">
+				<input type="file" id="loadFileFieldStartup" name="files[]" multiple /><br />
+			</div>
+		</div>
+	</div>
+	<div class="actions">
+		<div class="ui cancel button" id="loadMapModalBack">Back</div>
+		<div class="ui ok button">Load Map</div>
+	</div>
+</div>
+
 <!-- 																						-->
 <!-- New Map WARNING Modal																	-->
 <!-- If you click the new map button while a map is open				-->
@@ -407,6 +426,10 @@
 	</div>
 </div>
 
+<!-- 										-->
+<!-- Load Map Modal - Secondary		-->
+<!-- Lets you load a map while working on an existing map	-->
+<!-- 										-->
 <div class="ui modal" id="loadMapModal">
 	<div class="header">Load Map</div>
 	<div class="content">
