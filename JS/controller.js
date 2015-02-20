@@ -71,36 +71,39 @@ controller.prototype = {
 		// into the gmap.js functions to draw objects onto the map.
 		console.log("Refreshing Map! " + this.the_map.layers.length + " layers to draw!");
 		
+		// Clear the map
 		this.Gmap.removeMarkers();
 		this.Gmap.removePolylines();
 		this.Gmap.removePolygons();
 
-		// Also, skip over non-visible objects
 		for(var i = 0; i < this.the_map.layers.length; i++){
-			console.log("Now drawing: " + this.the_map.layers[i].name + " which contains " + this.the_map.layers[i].points.length + " points.");
-			switch(this.the_map.layers[i].layerType){
-				case "point":
+			// Skip over non-visible objects
+			if(this.the_map.layers[i].visible == true){
+				console.log("Now drawing: " + this.the_map.layers[i].name + " which contains " + this.the_map.layers[i].points.length + " points.");
+				switch(this.the_map.layers[i].layerType){
+					case "point":
+					
+					for(var j = 0; j < this.the_map.layers[i].points.length; j++){
+						this.Gmap.addMarker({
+							lat: this.the_map.layers[i].points[j].getLat(),
+							lng: this.the_map.layers[i].points[j].getLong(),
+							title: this.the_map.layers[i].points[j].name,
+							infoWindow: {
+								content: "<p>Name: " + this.the_map.layers[i].points[j].name + "<br>" +
+									"Lat: " + this.the_map.layers[i].points[j].getLat() + "<br>" +
+									"Long: " + this.the_map.layers[i].points[j].getLong() + "</p>"
+								},
+							icon: "markers/icon1.png"
+						});
+					}
+					break;
 				
-				for(var j = 0; j < this.the_map.layers[i].points.length; j++){
-					this.Gmap.addMarker({
-						lat: this.the_map.layers[i].points[j].getLat(),
-						lng: this.the_map.layers[i].points[j].getLong(),
-						title: this.the_map.layers[i].points[j].name,
-						infoWindow: {
-							content: "<p>Name: " + this.the_map.layers[i].points[j].name + "<br>" +
-								"Lat: " + this.the_map.layers[i].points[j].getLat() + "<br>" +
-								"Long: " + this.the_map.layers[i].points[j].getLong() + "</p>"
-							},
-						icon: "markers/icon1.png"
-					});
-				}
-				break;
-				
-				case "path":
-				case "poly":
-				default:
-			}
-		}
+					case "path":
+					case "poly":
+					default:
+				}	// End of Switch
+			}	// End of if visible
+		}	// End of for loop
 	},
 	
 	// Functions are made in a similar fashion as attributes

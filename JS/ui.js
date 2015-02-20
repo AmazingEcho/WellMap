@@ -567,42 +567,54 @@ refreshLayerList = function(the_controller){
 		</ul>
 	</div>
 	*/
-		
-	var checkElem;
-	var actionElem;
-	var titleElem;
-	var iconElem;
-	var layerNameText;
-	var ulNode;
 	
-	var contentNode;
-	var ulElem;
+	function generate_handler_visON(j){
+		return function(event){
+			the_controller.the_map.layers[j].visible = true;
+		};
+	}
 	
-	var liNode;
-	var textnode;
-		
+	function generate_handler_visOFF(j){
+		return function(event){ 
+			the_controller.the_map.layers[j].visible = false;
+		};
+	}
+	
 	// Go through the list of layers and create 'nodes' containing the appropriate tags.
 	for(var i = 0; i < the_controller.the_map.layers.length; i++){
-			
+
+		var checkElem;
+		var actionElem;
+		var titleElem;
+		var iconElem;
+		var layerNameText;
+		var ulNode;
+	
+		var contentNode;
+		var ulElem;
+	
+		var liNode;
+		var textnode;
+		
 		actionElem = document.createElement("input");
 		actionElem.type = "checkbox";
-		
-		//actionElem.onUnchecked = function(){ this.the_map.visOff(i)};
 			
 		checkElem = document.createElement("div");
-		checkElem.className = "ui checkbox layerVis_" + i;
+		checkElem.className = "ui checkbox";
+		checkElem.id = "layerVis-" + i;
 		checkElem.style.cssFloat = 'left';		// For non-IE
 		checkElem.style.styleFloat = 'left';		// For IE
 		
+		
 		// TODO: Fix this
 		// Need to figure out a way to sear a layer index into the layer...
+		/*
 		checkElem.onclick = function(){
 			console.log("Action heard on layer " + i);
 			the_controller.the_map.switchVis(i)
 		};
-		
+		*/
 		checkElem.appendChild(actionElem);
-		//checkElem.innerHTML = "<label></label>";
 			
 		document.getElementById("LayerList").appendChild(checkElem);
 		
@@ -636,24 +648,14 @@ refreshLayerList = function(the_controller){
 		}
 		
 		if(the_controller.the_map.layers[i].visible == true){
-			$('.ui.checkbox.layerVis_'+i).checkbox('check');
+			$("#layerVis-" + i).checkbox('check');
 		}
 		
-		// Note: I forgot about this code.
-		// It's a remnant from when I tried running the refreshLayerList code in controller.js
-		// It didn't work because I couldn't get the functions to access the_controller itself...
-		// Might be worth a second try...
-		// -T
-			
-		/*
-		$('.ui.checkbox.layerVis_'+i).onEnable = function(){
-			this.the_map.layers[i].visible = true;
-			console.log("Layer # " + i + " is set to visible: " + this.the_map.layers[i].visible);
-		}
-		$('.ui.checkbox.layerVis_'+i).onDisable = function(){
-			this.the_map.layers[i].visible = false;
-			console.log("Layer # " + i + " is set to visible: " + this.the_map.layers[i].visible);
-		}
-		*/
+		$("#layerVis-" + i).checkbox(
+			{
+				onChecked : generate_handler_visON(i),
+				onUnchecked : generate_handler_visOFF(i),
+			}
+		);
 	}
 }
