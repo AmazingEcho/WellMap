@@ -169,15 +169,16 @@ map.fromJSON = function(value) {
 
 Reviver.constructors.map = map;
 
-function mapMetadata(name){
+function mapMetadata(mapName){
 
-	this.mapName = name;
+	this.mapName = mapName;
 	
 	// description is empty on creation
 	this.desc = "";
 	
 	// coordinates for where the map should focus on when loaded
-	this.origin = [55.0, -115.0]
+	this.origin = [55.0, -115.0];
+	this.zoomLVL = 5;
 	
 	// TODO:
 	// GoogleMaps has a bunch of map types (Satellite, Streets, etc)

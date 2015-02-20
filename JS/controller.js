@@ -200,6 +200,12 @@ controller.prototype = {
 	// Security concerns about rogue web pages running .js code to peek at the contents of someones HD.
 	
 	saveDataJSON : function(fileInfo){
+		
+		var currentCenter = this.Gmap.getCenter()
+		this.the_map.metadata.origin = [currentCenter.lat(), currentCenter.lng()];
+		this.the_map.metadata.zoomLVL = this.Gmap.getZoom();
+		//this.the_map.metadata.mapType = this.Gmap.mapTypeId;
+		
 		var mapJSONString = JSON.stringify(this.the_map);
 		return mapJSONString;
 	},
@@ -208,6 +214,9 @@ controller.prototype = {
 		// console.log("Received: " + mapJSONString);
 		this.the_map = null;
 		this.the_map = JSON.parse(mapJSONString, Reviver);
+
+		this.Gmap.panTo({lat: this.the_map.metadata.origin[0], lng: this.the_map.metadata.origin[1]});
+		this.Gmap.setZoom(this.the_map.metadata.zoomLVL);
 	},
 
 	// Helper Function
