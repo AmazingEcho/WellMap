@@ -22,8 +22,11 @@ function controller(){
 	
 	this.databases = [];
 	this.wellGroupList = [];
-	
-	this.initGMaps = function(){
+}
+
+controller.prototype = {
+
+	initGMaps : function(){
 		this.Gmap = new GMaps({
 			div: '#googleMap',
 			lat: 55.00,
@@ -31,11 +34,13 @@ function controller(){
 			zoom: 5,
 			mapTypeId:google.maps.MapTypeId.TERRAIN,
 			disableDefaultUI:true
-			});
-		}
-	}
-	
-controller.prototype = {
+		});
+	},
+
+
+// Functions can also be added through a prototype
+// This is more memory efficient...	
+
 	
 	newMap : function(){
 		this.the_map = new map("Untitled Map");
