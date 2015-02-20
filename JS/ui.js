@@ -571,12 +571,14 @@ refreshLayerList = function(the_controller){
 	function generate_handler_visON(j){
 		return function(event){
 			the_controller.the_map.layers[j].visible = true;
+			the_controller.refreshMap();
 		};
 	}
 	
 	function generate_handler_visOFF(j){
 		return function(event){ 
 			the_controller.the_map.layers[j].visible = false;
+			the_controller.refreshMap();
 		};
 	}
 	
