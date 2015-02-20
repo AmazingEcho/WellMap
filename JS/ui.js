@@ -134,6 +134,8 @@ $('document').ready(function(){
 						var reader = new FileReader();
 						reader.onload = function(e){
 							the_controller.loadDataJSON(e.target.result);
+							
+							fullRefresh(the_controller);
 						}
 						reader.readAsText(file);
 					}
@@ -210,10 +212,10 @@ $('document').ready(function(){
 							// Do stuff here
 							// console.log(e.target.result);
 							the_controller.loadDataJSON(e.target.result);
+							
+							fullRefresh(the_controller);
 						}
-
 						reader.readAsText(file);
-						console.log(reader);
 					}
 					
 					else{
