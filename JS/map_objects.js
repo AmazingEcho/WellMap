@@ -1,9 +1,10 @@
 
-/*
-GMapPoint
-Just a point in GMap with a lat and a long
-Points will have just one, while paths and polys will have more than one
-*/
+//////////////////////////////
+// GMapPoint
+//////////////////////////////
+// Just a point in GMap with a lat and a long
+// Points will have just one, while paths and polys will have more than one
+//////////////////////////////
 function GMapPoint(lat, long){
 	this.lat = lat;
 	this.long = long;
@@ -30,27 +31,28 @@ function Point(name, type, gmpoint){
 	this.selected = false;
 	
 	this.wellData = {};
-	
-	this.getLat = function(){
-		return this.GMpoint.lat;
-	}
-	this.getLong = function(){
-		return this.GMpoint.long;
-	}
-	
-	// TODO:
-	// Returns an object containing all the information gmaps.js needs to make a point
-	// Lat, long, name, all that stuff
-	this.generatePointData = function(){
-		var returnPoint = {
-			lat: this.GMpoint.lat,
-			lng: this.GMpoint.long,
-			title: this.name
-			};
-		return returnPoint;
-	}
-	
 }
+	
+Point.prototype.getLat = function(){
+	return this.GMpoint.lat;
+}
+Point.prototype.getLong = function(){
+	return this.GMpoint.long;
+}
+	
+// TODO:
+// Returns an object containing all the information gmaps.js needs to make a point
+// Lat, long, name, all that stuff
+
+Point.prototype.generatePointData = function(){
+	var returnPoint = {
+		lat: this.GMpoint.lat,
+		lng: this.GMpoint.long,
+		title: this.name
+		};
+	return returnPoint;
+}
+
 
 //////////////////////////////
 // JSON Saving and Loading
