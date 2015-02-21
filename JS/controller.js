@@ -19,6 +19,8 @@ function controller(){
 	// controller now has to be TOLD to make a new map
 	this.the_map = null;
 	this.Gmap = null;
+	this.graph = new graph();
+	this.graph.initGraph();
 	
 	this.databases = [];
 	this.wellGroupList = [];
