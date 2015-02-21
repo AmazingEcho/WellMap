@@ -588,6 +588,7 @@ refreshLayerList = function(the_controller){
 		var checkElem;
 		var actionElem;
 		var titleElem;
+		var layerNameElem;
 		var iconElem;
 		var layerNameText;
 		var ulNode;
@@ -622,9 +623,13 @@ refreshLayerList = function(the_controller){
 		
 		titleElem = document.createElement("div");
 		titleElem.className = "title";
-		titleElem.innerHTML = "<i class=\"dropdown icon\"> </i>" + the_controller.the_map.layers[i].name;
+		titleElem.innerHTML = "<i class=\"dropdown icon\" style =\"float: left;\"> </i>";
 			
 		document.getElementById("LayerList").appendChild(titleElem);
+		
+		layerNameElem = document.createTextNode(the_controller.the_map.layers[i].name);
+		
+		document.getElementById("LayerList").appendChild(layerNameElem);
 		
 		contentElem = document.createElement("div");
 		contentElem.className = "content";
