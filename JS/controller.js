@@ -106,6 +106,7 @@ controller.prototype = {
 							lat: this.the_map.layers[i].points[j].getLat(),
 							lng: this.the_map.layers[i].points[j].getLong(),
 							title: this.the_map.layers[i].points[j].name,
+							icon: "markers/icon1" + (this.the_map.layers[i].points[j].selected == true ? "s" : "") + ".png",
 							/*
 							infoWindow: {
 								content: "<p>Name: " + this.the_map.layers[i].points[j].name + "<br>" +
@@ -113,8 +114,7 @@ controller.prototype = {
 									"Long: " + this.the_map.layers[i].points[j].getLong() + "</p>"
 								},
 							*/
-							click: generate_handler_selectPoint(i, j, this),
-							icon: "markers/icon1.png"
+							click: generate_handler_selectPoint(i, j, this)
 						});
 					}
 					break;

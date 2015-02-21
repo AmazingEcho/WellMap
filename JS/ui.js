@@ -240,7 +240,10 @@ $('document').ready(function(){
 	});
 	
 	$("#importWellsFromDatabaseButton").click(function(){
-		$("#importWellsFromDatabaseModal").modal('show');
+		$("#importWellsFromDatabaseModal")
+			.modal('setting', 'closable', false)
+			.modal('show')
+		;
 	});
 	
 	// Clicking on this button displays a modal that shows current map info
@@ -535,11 +538,14 @@ $('document').ready(function(){
 		the_controller.fetchWellsFromDatabasePHP(0, the_controller.wellGroupList[dataVal].groupName, dataVal);
 		
 		//NOTE: since well pulls are ajax powers, it might take a few ms to actually get the wells
-		fullRefresh(the_controller);
 	});
 
 	$('#generateRandomPoints').click(function(){
 		the_controller.generateRandomPoints(16);
+		
+	});
+	
+	$("#exitImportWellsFromDB").click(function(){
 		fullRefresh(the_controller);
 	});
 	
@@ -551,8 +557,9 @@ $('document').ready(function(){
 
 // Refreshes the map AND the layer list
 fullRefresh = function(conPTR){
-		conPTR.refreshMap();
-		refreshLayerList(conPTR);
+	console.log("Refreshing");
+	conPTR.refreshMap();
+	refreshLayerList(conPTR);
 };
 
 refreshLayerList = function(the_controller){
