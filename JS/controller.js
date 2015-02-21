@@ -71,17 +71,33 @@ controller.prototype = {
 		// TODO:
 		// Write a function to read through the layers, and feed data from each layer
 		// into the gmap.js functions to draw objects onto the map.
-		console.log("Refreshing Map! " + this.the_map.layers.length + " layers to draw!");
+		// console.log("Refreshing Map! " + this.the_map.layers.length + " layers to draw!");
 		
 		// Clear the map
 		this.Gmap.removeMarkers();
 		this.Gmap.removePolylines();
 		this.Gmap.removePolygons();
+		
+		function generate_handler_selectPoint(layerIndex, pointIndex, the_controller){
+			return function(event){
+
+				if(the_controller.the_map.layers[layerIndex].points[pointIndex].selected == false){
+					the_controller.the_map.layers[layerIndex].points[pointIndex].selected = true;
+					// console.log("Layer " + layerIndex + " Point " + pointIndex + " selected");
+				}
+				else if(the_controller.the_map.layers[layerIndex].points[pointIndex].selected == true){
+					the_controller.the_map.layers[layerIndex].points[pointIndex].selected = false;
+					// console.log("Layer " + layerIndex + " Point " + pointIndex + " unselected");
+				}
+				
+				the_controller.refreshMap();
+			};
+		}
 
 		for(var i = 0; i < this.the_map.layers.length; i++){
 			// Skip over non-visible objects
 			if(this.the_map.layers[i].visible == true){
-				console.log("Now drawing: " + this.the_map.layers[i].name + " which contains " + this.the_map.layers[i].points.length + " points.");
+				// console.log("Now drawing: " + this.the_map.layers[i].name + " which contains " + this.the_map.layers[i].points.length + " points.");
 				switch(this.the_map.layers[i].layerType){
 					case "point":
 					
@@ -90,11 +106,14 @@ controller.prototype = {
 							lat: this.the_map.layers[i].points[j].getLat(),
 							lng: this.the_map.layers[i].points[j].getLong(),
 							title: this.the_map.layers[i].points[j].name,
+							/*
 							infoWindow: {
 								content: "<p>Name: " + this.the_map.layers[i].points[j].name + "<br>" +
 									"Lat: " + this.the_map.layers[i].points[j].getLat() + "<br>" +
 									"Long: " + this.the_map.layers[i].points[j].getLong() + "</p>"
 								},
+							*/
+							click: generate_handler_selectPoint(i, j, this),
 							icon: "markers/icon1.png"
 						});
 					}
