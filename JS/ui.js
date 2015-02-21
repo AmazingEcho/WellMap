@@ -263,6 +263,16 @@ $('document').ready(function(){
 		fullRefresh(the_controller);
 	});
 	
+	$("#button-zoomIn").click(function(){
+		var currentZoom = the_controller.Gmap.getZoom();
+		the_controller.Gmap.setZoom(currentZoom + 1);
+	});
+	
+	$("#button-zoomOut").click(function(){
+		var currentZoom = the_controller.Gmap.getZoom();
+		the_controller.Gmap.setZoom(currentZoom - 1);
+	});
+	
 	$('#button-refreshMap').click(function(){
 		// Note: Temporary
 		// In the final version, the map and layer list should update on just about every user action.
@@ -540,6 +550,7 @@ $('document').ready(function(){
 
 });// End of $('document').ready(function());
 
+// Refreshes the map AND the layer list
 fullRefresh = function(conPTR){
 		conPTR.refreshMap();
 		refreshLayerList(conPTR);
@@ -549,25 +560,8 @@ refreshLayerList = function(the_controller){
 
 	// First, clear the layer list
 	document.getElementById("LayerList").innerHTML = "";
-		
-	/*
-	FORMAT:
-	<div class="ui checkbox" style="float:left">
-		<input type="checkbox">			//  Put the onclick functionallity here!
-	</div>
-	<div class="title">
-		<i class="dropdown icon"></i>
-		Layer Name
-	</div>
-	<div class="content" >
-		<ul id="layer???">
-		<li>Point 1</li>
-		<li>Point 2</li>
-		<li>Point 3</li>
-		</ul>
-	</div>
-	*/
 	
+	// handlers for layer visibility
 	function generate_handler_visON(j){
 		return function(event){
 			the_controller.the_map.layers[j].visible = true;
