@@ -20,6 +20,12 @@ body{
 	width: 100%;
 }
 
+.toolbarLEFT{
+	top: 80px;
+	background-color:#FFF;
+	padding: 10px;
+}
+
 .toolbarTOP{
 	padding: 0px;
 	height: 40px;

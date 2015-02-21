@@ -294,17 +294,49 @@ $('document').ready(function(){
 		$('#graphsModal').modal('show');
 	});
 
+
 	//Import data from excel sheet 
 	$("#dropdown-importexcelButton").click(function(){
-		$("#dropdown-importexcelModal").modal('show');
-		//function needed to import data
+		$("#dropdown-importexcelModal")
+		.modal({
+				closable: false,
+				onApprove: function(){
+					// !!!!!!!!!!!!!!!!!!!!!!!!
+					// Load function goes here
+					// !!!!!!!!!!!!!!!!!!!!!!!!
+					console.log("Preparing to load file");
+					var fileInput = document.getElementById("loadExcelFile");
+					
+					var file = fileInput.files[0];
+					var textType = "text/plain";
+					
+					console.log(file.type);
+					if (file.type.match(textType)) {
+						var reader = new FileReader();
+						reader.onload = function(e){
+							// Do stuff here
+							// console.log(e.target.result);
+							the_controller.loadDataJSON(e.target.result);
+							fullRefresh(the_controller);
+						}
+						reader.readAsText(file);
+					}	
+					else{
+						console.log("ERROR! Invalid file type!");
+						}
+				}
+			})
+		.modal('show');
 	});
 	
 	//Export data to an excel sheet
 	$("#dropdown-exportexcelButton").click(function(){
 		$("#dropdown-exportexcelModal").modal('show');
+		//Input data needs to be linked to selected wells!!
+		var dataToWrite = document.getElementById('inputTextToSave').value;
+		var blob = new Blob([dataToWrite], {type: "text/plain"});
 		var excelnewdoc = document.getElementById('excelnewdoc').value;
-		//function needed to export data
+		saveAs(blob, excelnewdoc + ".txt");
 	});
 	
 	//new map button
@@ -325,7 +357,8 @@ $('document').ready(function(){
 		//insert function to store data in spreadsheet for IT to access
 	});
 	
-	// help button
+	// Help button
+	// Google help page currently a placeholder it will be linked to User Manual in April
 	$('#dropdown-helpButton').click(function(){
 		window.open("https://support.google.com/maps/?hl=en");
 	});

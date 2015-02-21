@@ -134,7 +134,9 @@
 <div class="pusher">
 	<div class="wrapper">
 		<div class="toolbar">
-
+			<div class="toolbarLEFT">
+				<a class="ui button" id="sidebar-toggle"><i class="icon exchange"></i>Sidebar</a>
+			</div>
 			<div class="toolbarTOP">
 				<div class="ui compact tiered black large inverted menu">
 					<div class="menu">
@@ -143,9 +145,7 @@
 								<div class="item" id="dropdown-newMapModal"><i class="file outline icon"></i>New</div>
 								<div class="item" id="dropdown-saveMapModal"><i class="save icon"></i>Save</div>
 								<div class="item" id="dropdown-loadMapModal"><i class="folder open icon"></i>Open</div>
-								<div class="item" id="dropdown-printButton"><i class="print icon"></i>Print</div>
-								<div class="item" id="dropdown-importexcelButton"><i class="book icon"></i>Import from Excel</div> 
-								<div class="item" id="dropdown-exportexcelButton"><i class="book icon"></i>Export to Excel</div>
+								<div class="item" id="dropdown-printButton"><i class="print icon"></i>Print</div>	
 							</div>
 						</a>
 						
@@ -158,7 +158,7 @@
 						<a class="ui dropdown item">View<i class="dropdown icon"></i>
 							<div class="menu">
 								<div class="item"><i class="table icon"></i>View Data</div>
-								<div class="item" id="dropdown-graphsViewer"><i class="bar chart icon"></i>Graphs</div>
+								<!--<div class="item" id="dropdown-graphsViewer"><i class="bar chart icon"></i>Graphs</div>-->
 								<div class="item">Display Type<i class="angle right icon"></i>
 									<div class="menu">
 										<div class="item" id="changeMapTypeSAT"><i class="world icon"></i>Satelite</div>
@@ -172,7 +172,9 @@
 						
 						<a class="ui dropdown item">Project<i class="dropdown icon"></i>
 							<div class="menu">
-								<div class="item" id="dropdown-mapinfoMapModal"><i class="book icon"></i>Map info</div>
+								<!--<div class="item" id="dropdown-mapinfoMapModal"><i class="book icon"></i>Map info</div>-->
+								<div class="item" id="dropdown-importexcelButton"><i class="table icon"></i>Import from Excel</div> 
+								<div class="item" id="dropdown-exportexcelButton"><i class="table icon"></i>Export to Excel</div>
 							</div>
 						</a>
 						
@@ -187,7 +189,7 @@
 						<a class="ui dropdown item">Help<i class="dropdown icon"></i>
 							<div class="menu">
 								<div class="item" id="dropdown-helpButton"><i class="info circle icon"></i>Help</div>
-								<div class="item" id="dropdown-aboutButton"><i class="help icon"></i>About</div>
+								<div class="item" id="button-sproule"><i class="world icon"></i>Sproule</div>
 								<div class="item" id="dropdown-reportbugButton"><i class="red bug icon"></i>Report Bug</div>
 							</div>
 						</a>
@@ -219,14 +221,14 @@
 					<div class="ui button" data-content="Zoom In" data-position="bottom left" id="button-zoomIn"><i class="zoom icon"></i></div>
 					<div class="ui button" data-content="Zoom Out" data-position="bottom left" id="button-zoomOut"><i class="zoom out icon"></i></div>
 					<div class="ui button" data-content="Refresh Map" data-position="bottom left" id="button-refreshMap"><i class="refresh icon"></i></div>
-					<div class="ui button" data-content="Sproule" data-position="bottom left" id = "button-sproule"><i class="world icon"></i></div>
+					<!--<div class="ui button" data-content="Sproule" data-position="bottom left" id = "button-sproule"><i class="world icon"></i></div>-->
 					<!--<div class="ui button" data-content="View Data" data-position="bottom left" ><i class="table icon"></i></div>-->
 					<!--<div class="ui button" data-content="Graphs" data-position="bottom left" id="button-graphsViewer"><i class="bar chart icon"></i></div>-->
 					<!--<div class="ui button" data-content="Import Data" data-position="bottom left" id = "button-importexcelMapModal"><i class="arrow down icon"></i></div>-->
 					<!--<div class="ui button" data-content="Export Data" data-position="bottom left" id="button-exportexcelMapModal"><i class="arrow up icon"></i></div>-->
 				</div>
 				<div class=" icon ui buttons">
-					<div class="ui button" data-content="Settings" data-position="bottom left" id="modal-button-settingsButton"><i class="settings icon"></i></div>
+					<!--<div class="ui button" data-content="Settings" data-position="bottom left" id="modal-button-settingsButton"><i class="settings icon"></i></div>-->
 					<!--<div class="ui button" data-content="Help" data-position="bottom left" id="button-help"><i class="help icon"></i></div>-->
 					<!--<div class="ui button" data-content="Report Bug" data-position="bottom left" id="button-reportBug"><i class="red bug icon"></i></div>-->
 				</div>	
@@ -515,7 +517,11 @@
 <div class="ui modal" id="dropdown-importexcelModal" style="background-color:#CCC; color:#000">
 	<i class="close icon"></i>
 	<div class="header">Import from Excel</div>
-	<div class="title">Please browse directory for Excel File</div>
+	<div class="content">
+		<div class ="description">
+			<p>Load Excel File</p>
+			<input type="file" id="loadExcelFile" name="files[]" multiple /><br />
+		</div>
 	<div class="actions">
 		<div class="ui buttons">
 			<div class="ui button negative" id="dropdown-importexcelModalCancel">Cancel</div>
