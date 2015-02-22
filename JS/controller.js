@@ -37,6 +37,12 @@ controller.prototype = {
 			mapTypeId:google.maps.MapTypeId.TERRAIN,
 			disableDefaultUI:true
 		});
+		
+		console.log("loading KML");
+		this.Gmap.loadFromKML({
+			url: "http://team-avengineers.github.io/WellMap/NTS/doc.kml"
+		});
+		console.log("loaded KML");
 	},
 
 
