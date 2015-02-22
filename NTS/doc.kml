@@ -1,0 +1,1150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>NTS Grid</name>
+	<open>1</open>
+	<Snippet maxLines="0"></Snippet>
+	<description>Exported from NTS250kgrid on 11/18/2010</description>
+	<Style id="FEATURES">
+		<LineStyle>
+			<color>ff000000</color>
+			<width>0.7</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="FEATURES0">
+		<IconStyle>
+			<Icon>
+			</Icon>
+		</IconStyle>
+		<ListStyle>
+		</ListStyle>
+		<LineStyle>
+			<color>ff000000</color>
+			<width>0.7</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<StyleMap id="FEATURES1">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#FEATURES3</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#FEATURES0</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="FEATURES_LABELS0">
+		<IconStyle>
+			<color>00000000</color>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href>
+			</Icon>
+		</IconStyle>
+	</Style>
+	<Style id="FEATURES2">
+		<LineStyle>
+			<color>ff000000</color>
+			<width>0.7</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="FEATURES3">
+		<IconStyle>
+			<Icon>
+			</Icon>
+		</IconStyle>
+		<ListStyle>
+		</ListStyle>
+		<LineStyle>
+			<color>ff000000</color>
+			<width>0.7</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="FEATURES4">
+		<LineStyle>
+			<color>ff000000</color>
+			<width>0.4</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<StyleMap id="FEATURES5">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#FEATURES</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#FEATURES2</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Folder>
+		<name>Mapsheets</name>
+		<Placemark>
+			<name>72E</name>
+			<Snippet maxLines="0"></Snippet>
+			<styleUrl>#FEATURES5</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-111.999999988852,50.0000049163631,0 -111.999428049147,49.0000051154651,0 -109.999999437914,49.0000013198047,0 -110.000000333819,49.9999978616928,0 -111.999999988852,50.0000049163631,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>72L</name>
+			<Snippet maxLines="0"></Snippet>
+			<styleUrl>#FEATURES5</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-112.000000405198,50.9999943420427,0 -111.999999988852,50.0000049163631,0 -110.000000333819,49.9999978616928,0 -109.999999499958,51.0000019118984,0 -112.000000405198,50.9999943420427,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>72M</name>
+			<Snippet maxLines="0"></Snippet>
+			<styleUrl>#FEATURES5</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-112.000000340052,51.9999980596585,0 -112.000000405198,50.9999943420427,0 -109.999999499958,51.0000019118984,0 -109.999999555742,52.0000003081488,0 -112.000000340052,51.9999980596585,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>73D</name>
+			<Snippet maxLines="0"></Snippet>
+			<styleUrl>#FEATURES5</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-111.99999999972,52.9999990386203,0 -112.000000340052,51.9999980596585,0 -109.999999555742,52.0000003081488,0 -109.99999999715,52.9999978121021,0 -111.99999999972,52.9999990386203,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>73E</name>
+			<Snippet maxLines="0"></Snippet>
+			<styleUrl>#FEATURES5</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-112.000000587706,53.9999984245724,0 -111.99999999972,52.9999990386203,0 -109.99999999715,52.9999978121021,0 -109.999999782118,53.9999992146804,0 -112.000000587706,53.9999984245724,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>73L</name>
+			<Snippet maxLines="0"></Snippet>
+			<styleUrl>#FEATURES5</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-111.999999819458,54.99999742625741,0 -112.000000587706,53.9999984245724,0 -109.999999782118,53.9999992146804,0 -110.000000316924,55.0000004587071,0 -111.999999819458,54.99999742625741,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>73M</name>
+			<Snippet maxLines="0"></Snippet>
+			<styleUrl>#FEATURES5</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-112.000000134051,56.0000020159585,0 -111.999999819458,54.99999742625741,0 -110.000000316924,55.0000004587071,0 -110.000000093087,56.0000019183253,0 -112.000000134051,56.0000020159585,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>74D</name>
+			<Snippet maxLines="0"></Snippet>
+			<styleUrl>#FEATURES5</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-111.999999789647,57.0000002235099,0 -112.000000134051,56.0000020159585,0 -110.000000093087,56.0000019183253,0 -110.000144836575,56.7364708489048,0 -110.002219815263,57.0000164760934,0 -111.999999789647,57.0000002235099,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>74E</name>
+			<Snippet maxLines="0"></Snippet>
+			<styleUrl>#FEATURES5</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-112.000000608068,58.00000279490309,0 -111.999999789647,57.0000002235099,0 -110.002219815263,57.0000164760934,0 -110.002952535387,57.2242879695237,0 -110.00244154759,57.5619188798421,0 -110.000167861709,57.6766344923495,0 -110.00000059099,57.99999861650711,0 -112.000000608068,58.00000279490309,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>74L</name>
+			<Snippet maxLines="0"></Snippet>
+			<styleUrl>#FEATURES5</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-112.000000318908,58.9999980426376,0 -112.000000608068,58.00000279490309,0 -110.00000059099,57.99999861650711,0 -110.000144910215,58.2624053220425,0 -110.002319534915,59.00001715598491,0 -112.000000318908,58.9999980426376,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>74M</name>
+			<Snippet maxLines="0"></Snippet>
+			<styleUrl>#FEATURES5</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-110.003349423284,60.0000218238401,0 -110.267402784203,60.0017510267192,0 -111.837577153345,60.0011309384893,0 -111.999999892204,60.000001471216,0 -112.000000318908,58.9999980426376,0 -110.002319534915,59.00001715598491,0 -110.000060857657,59.08834477431901,0 -110.000167563133,59.3208761490061,0 -110.003349423284,60.0000218238401,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>82G</name>
+			<Snippet maxLines="0"></Snippet>
+			<styleUrl>#FEATURES5</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-114.663398824977,50.004025345133,0 -114.668991306035,49.966579497355,0 -114.68704234393,49.9042749986195,0 -114.674003580988,49.881380050543,0 -114.661575567357,49.8628448015287,0 -114.635040078335,49.7848149846046,0 -114.657768450548,49.7632845587152,0 -114.632247828675,49.73152863297379,0 -114.674438515702,49.6949155405632,0 -114.661713063624,49.6424555787238,0 -114.751449495314,49.6093984551618,0 -114.696273821475,49.5473763101574,0 -114.57258592564,49.55643388314441,0 -114.605369954612,49.4389582968743,0 -114.590126019814,49.39426321921331,0 -114.549079547614,49.3766890255281,0 -114.488731595005,49.3473270838695,0 -114.490157883972,49.3125082054329,0 -114.455550992478,49.2974753343906,0 -114.448699521763,49.2644711046224,0 -114.380394000354,49.2488268668492,0 -114.403175420132,49.240433838952,0 -114.395393530073,49.2078037135984,0 -114.319732697269,49.199441267392,0 -114.286369675716,49.1783802065925,0 -114.225265847633,49.1881913672595,0 -114.173706079219,49.1632394950583,0 -114.145797574915,49.09156957981709,0 -114.065414261861,49.0460808224232,0 -114.071060504031,49.00046373320149,0 -113.999999911127,49.0000001835787,0 -114.000000231324,50.000001939803,0 -114.663398824977,50.004025345133,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>82H</name>
+			<Snippet maxLines="0"></Snippet>
+			<styleUrl>#FEATURES5</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-114.000000231324,50.000001939803,0 -113.999999911127,49.0000001835787,0 -111.999428049147,49.0000051154651,0 -111.999999988852,50.0000049163631,0 -114.000000231324,50.000001939803,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>82I</name>
+			<Snippet maxLines="0"></Snippet>
+			<styleUrl>#FEATURES5</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-113.99999962633,50.99999764157549,0 -114.000000231324,50.000001939803,0 -111.999999988852,50.0000049163631,0 -112.000000405198,50.9999943420427,0 -113.99999962633,50.99999764157549,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>82J</name>
+			<Snippet maxLines="0"></Snippet>
+			<styleUrl>#FEATURES5</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-115.67224901941,51.0023432377589,0 -115.566894536261,50.8971058062207,0 -115.65011615802,50.8724537354573,0 -115.640564128602,50.84070414574271,0 -115.567398241023,50.8360628117984,0 -115.549591248676,50.7967165182403,0 -115.499382172731,50.7864973232768,0 -115.483535589922,50.7584229815688,0 -115.433517421081,50.7548500821741,0 -115.410492097861,50.71427345755589,0 -115.319229111047,50.7265874533258,0 -115.275436543009,50.65236469905409,0 -115.311492718346,50.6313071398866,0 -115.207603573662,50.5276664102037,0 -115.172805632944,50.56820439471931,0 -115.019439889324,50.5844306603542,0 -114.93295304113,50.48363056369781,0 -114.925361438069,50.4735584007196,0 -114.862167164805,50.4267750212029,0 -114.862838681205,50.3940491549803,0 -114.829208477376,50.3910895988268,0 -114.812087941933,50.3807705646015,0 -114.785720809874,50.3611473184978,0 -114.768409761314,50.35240493292341,0 -114.797516080966,50.32707833138571,0 -114.751770202386,50.29661968041349,0 -114.768066265826,50.2436820435677,0 -114.737426706932,50.21424512452389,0 -114.733230772609,50.12027560559591,0 -114.712264927584,50.102806387948,0 -114.66271212502,50.06379459585009,0 -114.663398824977,50.004025345133,0 -114.000000231324,50.000001939803,0 -113.99999962633,50.99999764157549,0 -115.67224901941,51.0023432377589,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>82N</name>
+			<Snippet maxLines="0"></Snippet>
+			<styleUrl>#FEATURES5</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-117.225891185688,52.004031892274,0 -117.104926843367,51.95690863805451,0 -117.02494831513,51.8945480078114,0 -117.031845024297,51.8554850155749,0 -116.980598185336,51.83419295106191,0 -116.974754462845,51.75915562449971,0 -116.922676153971,51.70790461658451,0 -116.814872614267,51.7065790751829,0 -116.817184433808,51.7495263432078,0 -116.752967916752,51.80337968838829,0 -116.678657421379,51.81462044844899,0 -116.646240064801,51.78905415429039,0 -116.642509665788,51.7361031755505,0 -116.587066808294,51.71388090584271,0 -116.588821496518,51.6717926951403,0 -116.57363882699,51.6459271168316,0 -116.475219627861,51.6076683369885,0 -116.460975492143,51.5639242133574,0 -116.389511062869,51.5437599832907,0 -116.394943330609,51.5073521312314,0 -116.362953181834,51.4720594575632,0 -116.285736260824,51.4581963502766,0 -116.309333814101,51.3831157038685,0 -116.269386542533,51.3126844522652,0 -116.217254521344,51.2918902659263,0 -116.162628070316,51.2960258562159,0 -116.154106137881,51.2639762284618,0 -116.007667349857,51.2212028450498,0 -116.034614385562,51.1668335989373,0 -115.999984729332,51.12547802157999,0 -115.9999998195,52.0000018896101,0 -117.225891185688,52.004031892274,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>82O</name>
+			<Snippet maxLines="0"></Snippet>
+			<styleUrl>#FEATURES5</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-115.9999998195,52.0000018896101,0 -115.999984729332,51.12547802157999,0 -115.913986172697,51.08290117250279,0 -115.865905737365,51.0891461958859,0 -115.816795439914,51.0857347282702,0 -115.763015795686,51.07339104324151,0 -115.772888274568,51.04720578412749,0 -115.739860570356,51.0334304470884,0 -115.724967819918,51.0180952844884,0 -115.69207741153,51.02840644569189,0 -115.67224901941,51.0023432377589,0 -113.99999962633,50.99999764157549,0 -113.999999725183,52.0000018857445,0 -115.9999998195,52.0000018896101,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>82P</name>
+			<Snippet maxLines="0"></Snippet>
+			<styleUrl>#FEATURES5</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-113.999999725183,52.0000018857445,0 -113.99999962633,50.99999764157549,0 -112.000000405198,50.9999943420427,0 -112.000000340052,51.9999980596585,0 -113.999999725183,52.0000018857445,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>83A</name>
+			<Snippet maxLines="0"></Snippet>
+			<styleUrl>#FEATURES5</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-114.000000320328,52.99999797098509,0 -113.999999725183,52.0000018857445,0 -112.000000340052,51.9999980596585,0 -111.99999999972,52.9999990386203,0 -114.000000320328,52.99999797098509,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>83B</name>
+			<Snippet maxLines="0"></Snippet>
+			<styleUrl>#FEATURES5</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-116.000000145439,52.999997967068,0 -115.9999998195,52.0000018896101,0 -113.999999725183,52.0000018857445,0 -114.000000320328,52.99999797098509,0 -116.000000145439,52.999997967068,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>83C</name>
+			<Snippet maxLines="0"></Snippet>
+			<styleUrl>#FEATURES5</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-118.00000000028,52.9999990386203,0 -117.999885805702,52.498066804253,0 -117.909194903668,52.4327219411453,0 -117.722557130139,52.3905538656469,0 -117.706405722822,52.3559284836995,0 -117.843239035129,52.2733786677648,0 -117.815933399434,52.2261700228153,0 -117.733566392234,52.18787413310951,0 -117.662078977426,52.1977777288749,0 -117.562141358681,52.1266876615494,0 -117.517585712587,52.1581144439473,0 -117.341445907447,52.1452767123477,0 -117.319038348744,52.19176178016841,0 -117.291626013491,52.1215973244563,0 -117.305427537664,52.0770849185681,0 -117.216667366071,52.0299394197619,0 -117.225891185688,52.004031892274,0 -115.9999998195,52.0000018896101,0 -116.000000145439,52.999997967068,0 -118.00000000028,52.9999990386203,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>83D</name>
+			<Snippet maxLines="0"></Snippet>
+			<styleUrl>#FEATURES5</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-118.641014050862,53.0036692917408,0 -118.669601361877,52.9799611661687,0 -118.608497519422,52.9367539728469,0 -118.610466228861,52.8804068606688,0 -118.544242854124,52.90816040023369,0 -118.497238210272,52.90632037676421,0 -118.446807571545,52.8841187281895,0 -118.448585324838,52.855445543324,0 -118.383941815087,52.84818851757551,0 -118.416015627623,52.7740193671095,0 -118.327507138209,52.7373355063547,0 -118.341682664495,52.70892722034181,0 -118.287727393163,52.6772861653693,0 -118.353324601845,52.6200121736401,0 -118.326858714817,52.57912269846701,0 -118.269607569289,52.56320976210301,0 -118.267669433962,52.51541441979081,0 -118.192863405657,52.47984008488,0 -118.248206864963,52.4491079333765,0 -118.22090152004,52.3750227053384,0 -118.185951465424,52.3774914836831,0 -118.135406546654,52.4061694800355,0 -118.038101030358,52.3981586097801,0 -118.03139492405,52.43844915207939,0 -118.055045720356,52.4546107161294,0 -118.019821320094,52.45555205610861,0 -117.999885805702,52.498066804253,0 -118.00000000028,52.9999990386203,0 -118.641014050862,53.0036692917408,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>83E</name>
+			<Snippet maxLines="0"></Snippet>
+			<styleUrl>#FEATURES5</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-119.999999980326,53.9999992245866,0 -119.999878061834,53.8009075288095,0 -119.972641207362,53.8028889273347,0 -119.944724893199,53.7748659903693,0 -119.88558183321,53.7770983287515,0 -119.906166291502,53.70936751044619,0 -119.845474076571,53.7130540097831,0 -119.834358229278,53.6952848858468,0 -119.797538662071,53.7060760355851,0 -119.736854583508,53.661037325931,0 -119.714164697613,53.6116183614203,0 -119.749091923759,53.5916422432003,0 -119.877754093505,53.6185682787412,0 -119.929107889263,53.6081325038291,0 -119.862678393319,53.55889848804231,0 -119.900024751927,53.5199948076759,0 -119.864578429052,53.50036351124169,0 -119.834892389916,53.5177917342784,0 -119.78292109135,53.4911092345633,0 -119.726844856898,53.3877869945255,0 -119.625259528427,53.35816021105121,0 -119.594840718931,53.36823492836939,0 -119.604293748467,53.38383743212711,0 -119.455932721322,53.3538819755021,0 -119.401763983594,53.36491411714711,0 -119.34915940899,53.32864571149631,0 -119.258255190092,53.1768923639481,0 -119.228294199709,53.19309439243631,0 -119.146461608848,53.18872626803261,0 -119.025314501369,53.1245849603942,0 -118.992362991972,53.2020071025839,0 -119.025535683332,53.2296410627331,0 -118.945274265492,53.2354829329525,0 -118.728179832075,53.115512368016,0 -118.770996081246,53.041824355073,0 -118.728233230176,53.0576342221233,0 -118.694816708879,53.03215147163409,0 -118.668174601256,53.0413723338881,0 -118.641014050862,53.0036692917408,0 -118.00000000028,52.9999990386203,0 -117.999999888569,53.9999984126753,0 -119.999999980326,53.9999992245866,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>83F</name>
+			<Snippet maxLines="0"></Snippet>
+			<styleUrl>#FEATURES5</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-117.999999888569,53.9999984126753,0 -118.00000000028,52.9999990386203,0 -116.000000145439,52.999997967068,0 -115.99999992272,54.000000872269,0 -117.999999888569,53.9999984126753,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>83G</name>
+			<Snippet maxLines="0"></Snippet>
+			<styleUrl>#FEATURES5</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-115.99999992272,54.000000872269,0 -116.000000145439,52.999997967068,0 -114.000000320328,52.99999797098509,0 -113.999999600424,54.0000008683017,0 -115.99999992272,54.000000872269,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>83H</name>
+			<Snippet maxLines="0"></Snippet>
+			<styleUrl>#FEATURES5</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-113.999999600424,54.0000008683017,0 -114.000000320328,52.99999797098509,0 -111.99999999972,52.9999990386203,0 -112.000000587706,53.9999984245724,0 -113.999999600424,54.0000008683017,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>83I</name>
+			<Snippet maxLines="0"></Snippet>
+			<styleUrl>#FEATURES5</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-114.000000239195,54.99999880622831,0 -113.999999600424,54.0000008683017,0 -112.000000587706,53.9999984245724,0 -111.999999819458,54.99999742625741,0 -114.000000239195,54.99999880622831,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>83J</name>
+			<Snippet maxLines="0"></Snippet>
+			<styleUrl>#FEATURES5</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-115.999999760805,54.99999880622831,0 -115.99999992272,54.000000872269,0 -113.999999600424,54.0000008683017,0 -114.000000239195,54.99999880622831,0 -115.999999760805,54.99999880622831,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>83K</name>
+			<Snippet maxLines="0"></Snippet>
+			<styleUrl>#FEATURES5</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-118.000000180542,54.99999742625741,0 -117.999999888569,53.9999984126753,0 -115.99999992272,54.000000872269,0 -115.999999760805,54.99999880622831,0 -118.000000180542,54.99999742625741,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>83L</name>
+			<Snippet maxLines="0"></Snippet>
+			<styleUrl>#FEATURES5</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-120.000000169932,55.0000004386498,0 -119.999999980326,53.9999992245866,0 -117.999999888569,53.9999984126753,0 -118.000000180542,54.99999742625741,0 -120.000000169932,55.0000004386498,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>83M</name>
+			<Snippet maxLines="0"></Snippet>
+			<styleUrl>#FEATURES5</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-120.000000156588,56.00000190817731,0 -120.000000169932,55.0000004386498,0 -118.000000180542,54.99999742625741,0 -118.000000366522,56.000002003771,0 -120.000000156588,56.00000190817731,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>83N</name>
+			<Snippet maxLines="0"></Snippet>
+			<styleUrl>#FEATURES5</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-118.000000366522,56.000002003771,0 -118.000000180542,54.99999742625741,0 -115.999999760805,54.99999880622831,0 -116.000000176214,55.9999981558976,0 -118.000000366522,56.000002003771,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>83O</name>
+			<Snippet maxLines="0"></Snippet>
+			<styleUrl>#FEATURES5</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-116.000000176214,55.9999981558976,0 -115.999999760805,54.99999880622831,0 -114.000000239195,54.99999880622831,0 -113.999999823786,55.9999981558976,0 -116.000000176214,55.9999981558976,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>83P</name>
+			<Snippet maxLines="0"></Snippet>
+			<styleUrl>#FEATURES5</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-113.999999823786,55.9999981558976,0 -114.000000239195,54.99999880622831,0 -111.999999819458,54.99999742625741,0 -112.000000134051,56.0000020159585,0 -113.999999823786,55.9999981558976,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>84A</name>
+			<Snippet maxLines="0"></Snippet>
+			<styleUrl>#FEATURES5</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-114.000000018482,57.00000102124299,0 -113.999999823786,55.9999981558976,0 -112.000000134051,56.0000020159585,0 -111.999999789647,57.0000002235099,0 -114.000000018482,57.00000102124299,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>84B</name>
+			<Snippet maxLines="0"></Snippet>
+			<styleUrl>#FEATURES5</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-115.999999981518,57.00000102124299,0 -116.000000176214,55.9999981558976,0 -113.999999823786,55.9999981558976,0 -114.000000018482,57.00000102124299,0 -115.999999981518,57.00000102124299,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>84C</name>
+			<Snippet maxLines="0"></Snippet>
+			<styleUrl>#FEATURES5</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-118.000000210353,57.0000002235099,0 -118.000000366522,56.000002003771,0 -116.000000176214,55.9999981558976,0 -115.999999981518,57.00000102124299,0 -118.000000210353,57.0000002235099,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>84D</name>
+			<Snippet maxLines="0"></Snippet>
+			<styleUrl>#FEATURES5</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-119.999999927332,56.9999996203597,0 -120.000000156588,56.00000190817731,0 -118.000000366522,56.000002003771,0 -118.000000210353,57.0000002235099,0 -119.999999927332,56.9999996203597,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>84E</name>
+			<Snippet maxLines="0"></Snippet>
+			<styleUrl>#FEATURES5</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-119.999999672451,57.99999860612981,0 -119.999999927332,56.9999996203597,0 -118.000000210353,57.0000002235099,0 -117.999999920101,58.00000278244021,0 -119.999999672451,57.99999860612981,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>84F</name>
+			<Snippet maxLines="0"></Snippet>
+			<styleUrl>#FEATURES5</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-117.999999920101,58.00000278244021,0 -118.000000210353,57.0000002235099,0 -115.999999981518,57.00000102124299,0 -116.000000151196,58.0000006917427,0 -117.999999920101,58.00000278244021,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>84G</name>
+			<Snippet maxLines="0"></Snippet>
+			<styleUrl>#FEATURES5</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-116.000000151196,58.0000006917427,0 -115.999999981518,57.00000102124299,0 -114.000000018482,57.00000102124299,0 -113.999999848804,58.0000006917427,0 -116.000000151196,58.0000006917427,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>84H</name>
+			<Snippet maxLines="0"></Snippet>
+			<styleUrl>#FEATURES5</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-113.999999848804,58.0000006917427,0 -114.000000018482,57.00000102124299,0 -111.999999789647,57.0000002235099,0 -112.000000608068,58.00000279490309,0 -113.999999848804,58.0000006917427,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>84I</name>
+			<Snippet maxLines="0"></Snippet>
+			<styleUrl>#FEATURES5</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-114.000000257371,58.9999996531258,0 -113.999999848804,58.0000006917427,0 -112.000000608068,58.00000279490309,0 -112.000000318908,58.9999980426376,0 -114.000000257371,58.9999996531258,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>84J</name>
+			<Snippet maxLines="0"></Snippet>
+			<styleUrl>#FEATURES5</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-115.999999742629,58.9999996531258,0 -116.000000151196,58.0000006917427,0 -113.999999848804,58.0000006917427,0 -114.000000257371,58.9999996531258,0 -115.999999742629,58.9999996531258,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>84K</name>
+			<Snippet maxLines="0"></Snippet>
+			<styleUrl>#FEATURES5</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-118.000000224493,58.99999803004259,0 -117.999999920101,58.00000278244021,0 -116.000000151196,58.0000006917427,0 -115.999999742629,58.9999996531258,0 -118.000000224493,58.99999803004259,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>84L</name>
+			<Snippet maxLines="0"></Snippet>
+			<styleUrl>#FEATURES5</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-119.999999844834,58.9999994357404,0 -119.999999672451,57.99999860612981,0 -117.999999920101,58.00000278244021,0 -118.000000224493,58.99999803004259,0 -119.999999844834,58.9999994357404,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>84M</name>
+			<Snippet maxLines="0"></Snippet>
+			<styleUrl>#FEATURES5</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-118.000000107796,60.000001471216,0 -120.000007318687,59.99999798640809,0 -119.999999844834,58.9999994357404,0 -118.000000224493,58.99999803004259,0 -118.000000107796,60.000001471216,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>84N</name>
+			<Snippet maxLines="0"></Snippet>
+			<styleUrl>#FEATURES5</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-116.000640647883,60.0000046931364,0 -118.000000107796,60.000001471216,0 -118.000000224493,58.99999803004259,0 -115.999999742629,58.9999996531258,0 -116.000640647883,60.0000046931364,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>84O</name>
+			<Snippet maxLines="0"></Snippet>
+			<styleUrl>#FEATURES5</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-114.166672005816,60.0011572442829,0 -116.000640647883,60.0000046931364,0 -115.999999742629,58.9999996531258,0 -114.000000257371,58.9999996531258,0 -114.000000159117,60.00000056269929,0 -114.166672005816,60.0011572442829,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>84P</name>
+			<Snippet maxLines="0"></Snippet>
+			<styleUrl>#FEATURES5</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-112.166595032565,60.0011572339052,0 -113.833305810417,60.0011577325063,0 -114.000000159117,60.00000056269929,0 -114.000000257371,58.9999996531258,0 -112.000000318908,58.9999980426376,0 -111.999999892204,60.000001471216,0 -112.166595032565,60.0011572339052,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+	</Folder>
+	<Folder>
+		<name>Mapsheet labels</name>
+		<Placemark>
+			<name>72E</name>
+			<styleUrl>#FEATURES1</styleUrl>
+			<Point>
+				<coordinates>-110.999857502083,49.5000261001435,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>72L</name>
+			<styleUrl>#FEATURES1</styleUrl>
+			<Point>
+				<coordinates>-110.999997619528,50.49999981009119,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>72M</name>
+			<styleUrl>#FEATURES1</styleUrl>
+			<Point>
+				<coordinates>-111.000000837131,51.4999986503961,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>73D</name>
+			<styleUrl>#FEATURES1</styleUrl>
+			<Point>
+				<coordinates>-111.000000552335,52.4999987720598,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>73E</name>
+			<styleUrl>#FEATURES1</styleUrl>
+			<Point>
+				<coordinates>-110.999999755569,53.49999865595289,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>73L</name>
+			<styleUrl>#FEATURES1</styleUrl>
+			<Point>
+				<coordinates>-110.999999752828,54.4999988267607,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>73M</name>
+			<styleUrl>#FEATURES1</styleUrl>
+			<Point>
+				<coordinates>-111.000000612559,55.5000004772463,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>74D</name>
+			<styleUrl>#FEATURES1</styleUrl>
+			<Point>
+				<coordinates>-111.000179649957,56.4999420065349,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>74E</name>
+			<styleUrl>#FEATURES1</styleUrl>
+			<Point>
+				<coordinates>-111.000836914308,57.5001551777697,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>74L</name>
+			<styleUrl>#FEATURES1</styleUrl>
+			<Point>
+				<coordinates>-111.000460199319,58.4998982787144,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>74M</name>
+			<styleUrl>#FEATURES1</styleUrl>
+			<Point>
+				<coordinates>-111.000605620426,59.5005229641381,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>82G</name>
+			<styleUrl>#FEATURES1</styleUrl>
+			<Point>
+				<coordinates>-114.298249277211,49.60163272534151,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>82H</name>
+			<styleUrl>#FEATURES1</styleUrl>
+			<Point>
+				<coordinates>-112.999857364045,49.49997922468649,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>82I</name>
+			<styleUrl>#FEATURES1</styleUrl>
+			<Point>
+				<coordinates>-113.000001108949,50.4999996673906,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>82J</name>
+			<styleUrl>#FEATURES1</styleUrl>
+			<Point>
+				<coordinates>-114.603142401228,50.5928467873391,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>82N</name>
+			<styleUrl>#FEATURES1</styleUrl>
+			<Point>
+				<coordinates>-116.392995323614,51.7341028215495,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>82O</name>
+			<styleUrl>#FEATURES1</styleUrl>
+			<Point>
+				<coordinates>-114.989314788534,51.50601481378341,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>82P</name>
+			<styleUrl>#FEATURES1</styleUrl>
+			<Point>
+				<coordinates>-113.000000111949,51.4999979890888,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>83A</name>
+			<styleUrl>#FEATURES1</styleUrl>
+			<Point>
+				<coordinates>-112.999999280699,52.4999992777297,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>83B</name>
+			<styleUrl>#FEATURES1</styleUrl>
+			<Point>
+				<coordinates>-115.000000001315,52.4999999171351,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>83C</name>
+			<styleUrl>#FEATURES1</styleUrl>
+			<Point>
+				<coordinates>-116.928100082197,52.5346043120705,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>83D</name>
+			<styleUrl>#FEATURES1</styleUrl>
+			<Point>
+				<coordinates>-118.214699957154,52.7587350240301,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>83E</name>
+			<styleUrl>#FEATURES1</styleUrl>
+			<Point>
+				<coordinates>-118.847914934336,53.5767959974654,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>83F</name>
+			<styleUrl>#FEATURES1</styleUrl>
+			<Point>
+				<coordinates>-116.999999400728,53.4999990772837,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>83G</name>
+			<styleUrl>#FEATURES1</styleUrl>
+			<Point>
+				<coordinates>-114.999999998541,53.49999944037209,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>83H</name>
+			<styleUrl>#FEATURES1</styleUrl>
+			<Point>
+				<coordinates>-113.000000712271,53.4999990211246,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>83I</name>
+			<styleUrl>#FEATURES1</styleUrl>
+			<Point>
+				<coordinates>-112.999999884402,54.49999893996549,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>83J</name>
+			<styleUrl>#FEATURES1</styleUrl>
+			<Point>
+				<coordinates>-114.999999880125,54.499999804895,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>83K</name>
+			<styleUrl>#FEATURES1</styleUrl>
+			<Point>
+				<coordinates>-117.000000118096,54.4999988982693,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>83L</name>
+			<styleUrl>#FEATURES1</styleUrl>
+			<Point>
+				<coordinates>-119.000000421589,54.4999988712773,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>83M</name>
+			<styleUrl>#FEATURES1</styleUrl>
+			<Point>
+				<coordinates>-118.9999997004,55.50000043590831,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>83N</name>
+			<styleUrl>#FEATURES1</styleUrl>
+			<Point>
+				<coordinates>-117.000000992327,55.49999908847949,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>83O</name>
+			<styleUrl>#FEATURES1</styleUrl>
+			<Point>
+				<coordinates>-115,55.4999985156803,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>83P</name>
+			<styleUrl>#FEATURES1</styleUrl>
+			<Point>
+				<coordinates>-112.999999130786,55.4999990706692,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>84A</name>
+			<styleUrl>#FEATURES1</styleUrl>
+			<Point>
+				<coordinates>-113.00000071779,56.5000003766142,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>84B</name>
+			<styleUrl>#FEATURES1</styleUrl>
+			<Point>
+				<coordinates>-115,56.49999957234559,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>84C</name>
+			<styleUrl>#FEATURES1</styleUrl>
+			<Point>
+				<coordinates>-116.999999409384,56.50000035271,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>84D</name>
+			<styleUrl>#FEATURES1</styleUrl>
+			<Point>
+				<coordinates>-119.000000080606,56.5000009359091,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>84E</name>
+			<styleUrl>#FEATURES1</styleUrl>
+			<Point>
+				<coordinates>-118.999999337033,57.5000003095843,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>84F</name>
+			<styleUrl>#FEATURES1</styleUrl>
+			<Point>
+				<coordinates>-117.000000547197,57.50000116057029,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>84G</name>
+			<styleUrl>#FEATURES1</styleUrl>
+			<Point>
+				<coordinates>-115,57.5000008706327,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>84H</name>
+			<styleUrl>#FEATURES1</styleUrl>
+			<Point>
+				<coordinates>-112.999999582768,57.500001141679,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>84I</name>
+			<styleUrl>#FEATURES1</styleUrl>
+			<Point>
+				<coordinates>-113.000000877231,58.5000003246741,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>84J</name>
+			<styleUrl>#FEATURES1</styleUrl>
+			<Point>
+				<coordinates>-115,58.500000138387,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>84K</name>
+			<styleUrl>#FEATURES1</styleUrl>
+			<Point>
+				<coordinates>-116.99999939064,58.50000031904429,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>84L</name>
+			<styleUrl>#FEATURES1</styleUrl>
+			<Point>
+				<coordinates>-119.000000845806,58.4999997080872,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>84M</name>
+			<styleUrl>#FEATURES1</styleUrl>
+			<Point>
+				<coordinates>-119.00000105887,59.4999995471257,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>84N</name>
+			<styleUrl>#FEATURES1</styleUrl>
+			<Point>
+				<coordinates>-117.000159905583,59.49997424826611,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>84O</name>
+			<styleUrl>#FEATURES1</styleUrl>
+			<Point>
+				<coordinates>-115.000000395346,59.5003170153409,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>84P</name>
+			<styleUrl>#FEATURES1</styleUrl>
+			<Point>
+				<coordinates>-112.999999903548,59.5005300319747,0</coordinates>
+			</Point>
+		</Placemark>
+	</Folder>
+</Document>
+</kml>
