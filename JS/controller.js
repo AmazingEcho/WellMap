@@ -22,6 +22,7 @@ function controller(){
 	
 	this.databases = [];
 	this.wellGroupList = [];
+	this.clickState = 0;
 }
 
 controller.prototype = {
@@ -36,17 +37,18 @@ controller.prototype = {
 			disableDefaultUI:true
 		});
 		
+		// TODO: Actually get some KML data, and set it up on a different tab somewhere...
 		console.log("loading KML");
 		this.Gmap.loadFromKML({
 			url: "http://team-avengineers.github.io/WellMap/NTS/doc.kml"
 		});
 		console.log("loaded KML");
+		
+		this.Gmap.enableKeyDragZoom({key: 'ctrl'});
 	},
-
 
 // Functions can also be added through a prototype
 // This is more memory efficient...	
-
 	
 	newMap : function(){
 		this.the_map = new map("Untitled Map");
@@ -69,6 +71,10 @@ controller.prototype = {
 				break;
 			default:
 		}
+	},
+	
+	changeClickState : function(newState){
+		this.clickState = newState;
 	},
 	
 	refreshMap : function(){

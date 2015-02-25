@@ -281,6 +281,15 @@ $('document').ready(function(){
 		// In the final version, the map and layer list should update on just about every user action.
 		fullRefresh(the_controller);
 	});
+	
+	$("#button-selectByClick").click(function(){
+		the_controller.changeClickState(1);
+		
+	});
+	
+	$("#button-selectByArea").click(function(){
+		the_controller.changeClickState(2);
+	});
 
 	$("#importWellsFromDatabaseButton").click(function(){
 		$("#importWellsFromDatabaseModal").modal('show');
