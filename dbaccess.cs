@@ -28,8 +28,9 @@ static void initialize_connection(){
 */
 
 //inserts new well into database with given information
+//returns true if successful, false if an exception occurred
 [WebMethod]
-static void add_new(int wellGroup, string wellname, string welltype, double latitude, double longitude, int wellCapacity, int wellOutput){
+static string add_new(int wellGroup, string wellname, string welltype, double latitude, double longitude, int wellCapacity, int wellOutput){
   
    SQLConnection myConnection = new SQLConnection("userid = tconxnet_CScode; password = z2lafile6b2mq044; server = http://www.tconx.net/phpMyAdmin/; Trusted_Connection = yes; database = tconxnet_wellmap2; connection timeout = 30");
    SQLCommand myCommand = new SQLCommand("INSERT into wells (wellGroup, wellName, wellType, lat, lng, wellCapacity, wellOutput")" +
@@ -41,8 +42,9 @@ static void add_new(int wellGroup, string wellname, string welltype, double lati
     }
     catch (Exception e){
       Console.WriteLine(e.ToString());
+	  return "False";
     }
-    return 0;
+    return "True";
 }
 
 //returns an array of the wells in the database
@@ -75,8 +77,10 @@ static WellInfo[] read_data(){
 }
 
 //updates a well entry in the database with the given information
+//returns true if successful, false if an exception occurred
+
 [WebMethod]
-static void update_well(int workingWellKey, int newWellGroup, string newWellname, string newWelltype, double newLatitude, double newLongitude, int newWellCapacity, int newWellOutput){
+static string update_well(int workingWellKey, int newWellGroup, string newWellname, string newWelltype, double newLatitude, double newLongitude, int newWellCapacity, int newWellOutput){
   SQLConnection myConnection = new SQLConnection("userid = tconxnet_CScode; password = z2lafile6b2mq044; server = http://www.tconx.net/phpMyAdmin/; Trusted_Connection = yes; database = tconxnet_wellmap2; connection timeout = 30");
   SQLCommand myCommand = new SQLCommand("UPDATE wells SET wellGroup = newWellGroup, wellName = newWellName, wellType = newWellType, lat = newLatitude, lng = newLongitude, wellCapacity = newWellCapacity, wellOutput = newWellOutput" +
       "WHERE wellKey == workingWellKey", myConnection);
@@ -87,13 +91,16 @@ static void update_well(int workingWellKey, int newWellGroup, string newWellname
     }
     catch (Exception e){
       Console.WriteLine(e.ToString());
+	  return "False";
     }
-    return 0;
+    return "True";
 }
 
 //delete a well from the database with the matching key as given
+//returns true if successful, false if an exception occurred
+
 [WebMethod]
-static void delete_well(int workingWellKey){
+static string delete_well(int workingWellKey){
     SQLConnection myConnection = new SQLConnection("userid = tconxnet_CScode; password = z2lafile6b2mq044; server = http://www.tconx.net/phpMyAdmin/; Trusted_Connection = yes; database = tconxnet_wellmap2; connection timeout = 30");
     SQLCommand myCommand = new SQLCommand("Delete from wells WHERE wellKey = workingWellKey", myConnection);
     try{
@@ -103,8 +110,9 @@ static void delete_well(int workingWellKey){
     }
     catch (Exception e){
       Console.WriteLine(e.ToString());
+	  return "False";
     }
-    return 0;
+    return "True";
 }
 
 /*static void close_connection(){
