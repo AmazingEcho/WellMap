@@ -9,6 +9,7 @@ function ImportWells(){
   data: "",
   contentType: "application/json; charset=utf-8",
   datatype: "json",
+  async:false,
   success: function(msg){
     $("#divResult").html("success");
   },
@@ -28,6 +29,7 @@ function AddWellToDB(){
   data: "{'wellGroup': " +document.getElementById('txtWellGroup').value+ ", 'wellName': " +document.getElementById('txtWellName').value+ ", 'wellType': " +document.getElementById('txtWellType').value+ ", 'latitude': " +document.getElementById('txtWellLat').value+ ", 'longitude': " +document.getElementById('txtWellLong').value+ ", 'wellCapacity': " +document.getElementById('txtWellCapacity').value+ ", 'wellOutput': " +document.getElementById('txtWellOutput').value+ "}",
   contentType: "application/json; charset=utf-8",
   datatype: "json",
+  async:false,
   success: function(msg){
 	$(#'txtWellGroup').val('');
 	$(#'txtWellName').val('')
@@ -54,6 +56,7 @@ function UpdateExistingWell(){
   data: "{'wellKey': "+wellKey+", 'wellGroup': " +document.getElementById('txtWellGroup').value+ ", 'wellName': " +document.getElementById('txtWellName').value+ ", 'wellType': " +document.getElementById('txtWellType').value+ ", 'latitude': " +document.getElementById('txtWellLat').value+ ", 'longitude': " +document.getElementById('txtWellLong').value+ ", 'wellCapacity': " +document.getElementById('txtWellCapacity').value+ ", 'wellOutput': " +document.getElementById('txtWellOutput').value+ "}",
   contentType: "application/json; charset=utf-8",
   datatype: "json",
+  async:false,
   success: function(msg){
 	$(#'toUpdateWellKey').val('');
 	$(#'txtWellGroup').val('');
@@ -81,6 +84,7 @@ function DeleteWellFromDB(){
   data: "{workingWellKey: " +key+ "},
   contentType: "application/json; charset=utf-8",
   datatype: "json",
+  async:false,
   success: function(msg){
 	$(#'toDeleteWellKey').val('');
     $("#divResult").html("success");
