@@ -13,7 +13,6 @@
 <script src="JS/keydragzoom.js" type="text/javascript"></script>
 <script src="JS/filesave.js"></script>
 <script src="JS/gmaps.js"></script>
-<script src="JS/chartjs/Chart.js" ></script>
 <script src="JS/controller.js"></script>
 <script src="JS/map.js"></script>
 <script src="JS/layer_types.js"></script>
@@ -26,8 +25,7 @@
 <div class="ui sidebar">
 	<div class="ui top attached tabular menu">
 		<a class="active item" data-tab="first">Layers</a>
-		<a class="item" data-tab="second">Well List</a>
-		<a class="item" data-tab="third">Owners</a>
+		<!-- <a class="item" data-tab="second">Well List</a> -->
 	</div>
 	<div class="ui bottom attached active tab segment" data-tab="first">
 		<nav>
@@ -60,7 +58,9 @@
 			</div>
 		</nav>
 	</div>
-	
+	<!-- Keeping this commented for now -->
+	<!-- I might need it later... -->
+	<!--
 	<div class="ui bottom attached tab segment" data-tab="second">
 		<div class="ui accordion">
 			<div class="ui checkbox" style="float: left;">
@@ -78,57 +78,7 @@
 				</ul>
 			</div>
 		</div>
-	</div>
-	<div class="ui bottom attached tab segment" data-tab="third">
-		<div class="ui accordion">
-			<div class="ui checkbox" style="float: left;">
-				<input type="checkbox">
-			</div>
-			<div class="title">
-				<i class="dropdown icon"></i>
-				CNRL
-			</div>
-			<div class="content" >
-				<ul>
-					<li>Well 1</li>
-					<li>Well 2</li>
-					<li>Well 3</li>
-				</ul>
-			</div>
-		</div>
-		<div class="ui accordion">
-			<div class="ui checkbox" style="float: left;">
-				<input type="checkbox">
-			</div>
-			<div class="title">
-				<i class="dropdown icon"></i>
-				Suncor
-			</div>
-			<div class="content" >
-				<ul>
-					<li>Well 1</li>
-					<li>Well 2</li>
-					<li>Well 3</li>
-				</ul>
-			</div>
-		</div>
-		<div class="ui accordion">
-			<div class="ui checkbox" style="float: left;">
-				<input type="checkbox">
-			</div>
-			<div class="title">
-				<i class="dropdown icon"></i>
-				Imperial Oil
-			</div>
-			<div class="content" >
-				<ul>
-					<li>Well 1</li>
-					<li>Well 2</li>
-					<li>Well 3</li>
-				</ul>
-			</div>
-		</div>
-	</div>
+	</div> -->
 </div>
 
 <div class="pusher">
@@ -228,7 +178,7 @@
 					<!--<div class="ui button" data-content="Export Data" data-position="bottom left" id="button-exportexcelMapModal"><i class="arrow up icon"></i></div>-->
 				</div>
 				<div class=" icon ui buttons">
-					<div class="ui button" data-content="Select" data-position="bottom left" id="button-selectByClick"><i class="selected radio icon"></i></div>
+					<div class="ui button activated" data-content="Select" data-position="bottom left" id="button-selectByClick"><i class="selected radio icon"></i></div>
 					<div class="ui button" data-content="Select By Area" data-position="bottom left" id="button-selectByArea"><i class="crop icon"></i></div>
 				</div>
 				<div class=" icon ui buttons">
