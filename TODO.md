@@ -1,14 +1,14 @@
 # TODO LIST
 
 * Database Access
-* Saving (via JSON)
-* Loading (via JSON)
+* Saving (via JSON) **DONE!**
+* Loading (via JSON) **DONE!**
 * Import via csv
 * Export via csv
 
 
 * Change Layer Properties
- * Visibility
+ * Visibility **DONE!**
  * Change Icon
  
 * Data visualization(?)
