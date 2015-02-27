@@ -282,13 +282,22 @@ $('document').ready(function(){
 		fullRefresh(the_controller);
 	});
 	
+	/////////////////////////////////////////////////
+	// Selection Mode Buttons
+	/////////////////////////////////////////////////
+	// Clicking on one turns it blue,
+	// and also turns the others not-blue
+	/////////////////////////////////////////////////
 	$("#button-selectByClick").click(function(){
 		the_controller.changeClickState(1);
-		
+		$("#button-selectByClick").toggleClass("blue", true);
+		$("#button-selectByArea").toggleClass("blue", false);
 	});
 	
 	$("#button-selectByArea").click(function(){
 		the_controller.changeClickState(2);
+		$("#button-selectByArea").toggleClass("blue", true);
+		$("#button-selectByClick").toggleClass("blue", false);
 	});
 
 	$("#importWellsFromDatabaseButton").click(function(){
