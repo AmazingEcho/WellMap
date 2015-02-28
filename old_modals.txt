@@ -1,0 +1,59 @@
+
+<!-- 										-->
+<!-- Start up Modal							-->
+<!-- First Thing a user sees on start up	-->
+<!-- 										-->
+<div class="ui basic modal" id="startupMenu">
+	<div class="header">Well Map</div>
+	<div class="content">
+		<div class="massive ui button" id="startupNewMap">
+			<center><i class="massive file outline icon"></i><br>Start a new map</center>
+		</div>
+		<div class="massive ui button" id="startupLoadMap">
+			<center><i class="massive folder open icon"></i><br>Open an existing map</center>
+		</div>
+	</div>
+</div>
+
+<!-- 																		-->
+<!-- Set New Map Info Modal														-->
+<!-- On selecting a new map, directed to set map info before continuing		-->
+<!-- 																		-->
+<div class="ui modal" id="newMapModal" style="background-color:#CCC; color:#000">
+	<div class="header">New Project</div>
+	<div class="content">
+		<div class="ui form">
+			<div class="field">
+				<label>Map Name</label><div id="NO_NAME_WARNING"></div>
+				<input type="text" id="newMapNameField"/>
+			</div>
+			<div class="field">
+				<label>Map Description</label>
+				<input type="text" id="newMapDescField"/>
+			</div>
+		</div>
+	</div>
+	<div class="actions">
+		<div class="ui cancel button" id="newMapModalBack">Back</div>
+		<div class="ui ok button" id="newMapModalCreateNewMap">Create New Map</div>
+	</div>
+</div>
+
+<!-- 										-->
+<!-- Load Map Modal - Secondary		-->
+<!-- Lets you load a map during start up	-->
+<!-- 										-->
+<div class="ui modal" id="startupLoadMapModal" style="background-color:#CCC; color:#000">
+	<div class="header">Load Project</div>
+	<div class="content">
+		<div class="ui form">
+			<div class="field">
+				<input type="file" id="loadFileFieldStartup" name="files[]" multiple /><br />
+			</div>
+		</div>
+	</div>
+	<div class="actions">
+		<div class="ui cancel button" id="loadMapModalBack">Back</div>
+		<div class="ui ok button">Load Map</div>
+	</div>
+</div>

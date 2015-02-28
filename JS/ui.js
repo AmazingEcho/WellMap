@@ -11,7 +11,7 @@ $('document').ready(function(){
 		console.log("FileReader is supported!");
 	}
 	else {
-		alert('The File APIs are not fully supported in this browser.');
+		alert('The File APIs are not fully supported in this browser.  Saving and Loading will not function...');
 	}	
 	
 	// Startup proceedures
@@ -22,6 +22,8 @@ $('document').ready(function(){
 	// fixes this.
 	var the_controller = new controller();
 	the_controller.initGMaps();
+	the_controller.newMap();
+	console.log("Controller status: On");
 	
 	var tossDB = {
 		dbName: "Test Database",
@@ -69,12 +71,16 @@ $('document').ready(function(){
 	////////////////////////////////////////////////////////////
 	
 	// The first thing the application does on startup is show the startup modal
+
+/*
 	console.log("Initializing Start Menu");
 	$('#startupMenu')
 		.modal('setting', 'closable', false)
 		.modal('show');
+*/
 	
 	// This is the button that starts up a new map
+/*	
 	$('#startupNewMap').click(function(){
 		the_controller.newMap();
 		console.log("Controller status: On");
@@ -100,8 +106,10 @@ $('document').ready(function(){
 		$("input#newMapNameField").val(the_controller.the_map.metadata.mapName);
 		$("input#newMapDescField").val(the_controller.the_map.metadata.desc);
 	});
+*/
 	
 	// When the Back button is clicked, they should go back to the first modal
+/*
 	$("#newMapModalBack , #loadMapModalBack").click(function(){
 		$("#newMapModal").modal('hide');
 		$('#startupMenu')
@@ -109,9 +117,11 @@ $('document').ready(function(){
 			.modal('show');
 	});
 
+
 	$("#newMapModalCreateNewMap").click(function(){
 
 	});
+	*/
 	
 	// This is the button that loads a new map
 	// Since map loading hasn't been done yet, it simply issues an alert
