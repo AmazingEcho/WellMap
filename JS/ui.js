@@ -165,9 +165,13 @@ $('document').ready(function(){
 	
 	// New Map Button
 	$("#dropdown-newMapModal, #button-newMapModal").click(function(){
+		/*
 		$("#newMapWARNING")
 			.modal('setting', 'closable', false)
 			.modal('show');
+		*/
+		window.open("http://team-avengineers.github.io/WellMap/well_map.html");
+  		win.focus();
 	});
 	
 	// Save Map Button
