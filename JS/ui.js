@@ -18,7 +18,7 @@ $('document').ready(function(){
 	
 	// I used to have the controller initialize GMaps on it's own when the constructor was called.
 	// Since the test suite page doesn't have a div that holds an instance of GoogleMaps, this would
-	// the QUnit Test Suite to go all red.  Moving gmaps.js initiallization into a seperate function
+	// the QUnit Test Suite to go all red.  Moving gmaps.js initiallization into a separate function
 	// fixes this.
 	var the_controller = new controller();
 	
