@@ -171,7 +171,7 @@ $('document').ready(function(){
 			.modal('show');
 		*/
 		window.open("http://team-avengineers.github.io/WellMap/well_map.html");
-  		win.focus();
+  		//win.focus();
 	});
 	
 	// Save Map Button

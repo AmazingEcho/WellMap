@@ -44,7 +44,9 @@ controller.prototype = {
 		});
 		console.log("loaded KML");
 		
-		google.maps.event.trigger(this.Gmap, 'resize');
+		google.maps.event.addListenerOnce(this.Gmap, 'idle', function() {
+			google.maps.event.trigger(this.Gmap, 'resize');
+		});
 		
 		this.Gmap.enableKeyDragZoom({key: 'ctrl'});
 	},
