@@ -48,6 +48,7 @@ $('document').ready(function(){
 	// transition: "overlay" means the sidebar acts as an overlay, rather than a 'pusher'
 	// dimPage means the rest of the page gets dimmed when the sidebar is open.  We don't want this, so it's been set to false
 	// closable means the sidebar closes when you click outside of of it.  Again, we don't want this...
+/*
 	$('.ui.sidebar').sidebar({
 		// overlay: true,
 		// overlay got depritiated!
@@ -60,6 +61,7 @@ $('document').ready(function(){
 	$('#sidebar-toggle').click(function() {
 		$('.ui.sidebar').sidebar('toggle');
 	});
+*/
 
 	// Controls the dropdown layer lists
 	$('.ui.accordion').accordion({

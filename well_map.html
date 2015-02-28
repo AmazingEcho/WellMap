@@ -22,71 +22,10 @@
 
 </head>
 <body>
-<div class="ui sidebar">
-	<div class="ui top attached tabular menu">
-		<a class="active item" data-tab="first">Layers</a>
-		<!-- <a class="item" data-tab="second">Well List</a> -->
-	</div>
-	<div class="ui bottom attached active tab segment" data-tab="first">
-		<nav>
-			<div class="ui accordion" id="LayerList">
-				<!-- Write refreshLayerList to change this-->
-			</div>
-			<div class="ui checkbox" style="float: left;">
-				<input type="checkbox">
-			</div>
-			<div class="title">
-				Contours
-			</div>
-			<div class="ui checkbox" style="float: left;">
-				<input type="checkbox">
-			</div>
-			<div class="title">
-				Boundaries
-			</div>
-			<div class="ui checkbox" style="float: left;">
-				<input type="checkbox">
-			</div>
-			<div class="title">
-				Roads
-			</div>
-			<div class="ui checkbox" style="float: left;">
-				<input type="checkbox">
-			</div>
-			<div class="title">
-				Rivers
-			</div>
-		</nav>
-	</div>
-	<!-- Keeping this commented for now -->
-	<!-- I might need it later... -->
-	<!--
-	<div class="ui bottom attached tab segment" data-tab="second">
-		<div class="ui accordion">
-			<div class="ui checkbox" style="float: left;">
-				<input type="checkbox">
-			</div>
-			<div class="title">
-				<i class="dropdown icon" style="float: left;"></i>	
-			</div>
-			Layer Name
-			<div class="content">
-				<ul>
-					<li>Well 1</li>
-					<li>Well 2</li>
-					<li>Well 3</li>
-				</ul>
-			</div>
-		</div>
-	</div> -->
-</div>
 
 <div class="pusher">
 	<div class="wrapper">
 		<div class="toolbar">
-			<!--<div class="toolbarLEFT">
-				<a class="ui button" id="sidebar-toggle"><i class="icon exchange"></i>Sidebar</a>
-			</div>-->
 			<div class="toolbarTOP">
 				<div class="ui compact tiered black large inverted menu">
 					<div class="menu">
@@ -161,9 +100,11 @@
 					<div class="ui button" data-content="Paste" data-position="bottom left" id= "modal-button-pastewelldata"><i class="paste icon"></i></div>
 				</div>
 				-->
+				<!--
 				<div class=" icon ui buttons">
 					<div class="ui button" id="sidebar-toggle"><i class="icon exchange"></i>Sidebar</div>				
 				</div>
+				-->
 				<div class=" icon ui buttons">
 					<!--<div class="ui button" data-content="Edit Map Info" data-position="bottom left" id="button-editmapinfoMapModal"><i class="info icon"></i></div>-->
 					<div class="ui button" data-content="Sort Ascending" data-position="bottom left" id="button-sortascending"><i class="sort numeric ascending icon"></i></div>
@@ -189,6 +130,64 @@
 			</div>
 		</div>
 		<div class="workArea">
+			<div id="sidebar">
+				<div class="ui top attached tabular menu">
+					<a class="active item" data-tab="first">Layers</a>
+					<!-- <a class="item" data-tab="second">Well List</a> -->
+				</div>
+				<div class="ui bottom attached active tab segment" data-tab="first">
+					<nav>
+						<div class="ui accordion" id="LayerList">
+							<!-- Write refreshLayerList() to change this-->
+						</div>
+						<div class="ui checkbox" style="float: left;">
+							<input type="checkbox">
+						</div>
+						<div class="title">
+							Contours
+						</div>
+						<div class="ui checkbox" style="float: left;">
+							<input type="checkbox">
+						</div>
+						<div class="title">
+							Boundaries
+						</div>
+						<div class="ui checkbox" style="float: left;">
+							<input type="checkbox">
+						</div>
+						<div class="title">
+							Roads
+						</div>
+						<div class="ui checkbox" style="float: left;">
+							<input type="checkbox">
+						</div>
+						<div class="title">
+							Rivers
+						</div>
+					</nav>
+				</div>
+	<!-- Keeping this commented for now -->
+	<!-- I might need it later... -->
+	<!--
+	<div class="ui bottom attached tab segment" data-tab="second">
+		<div class="ui accordion">
+			<div class="ui checkbox" style="float: left;">
+				<input type="checkbox">
+			</div>
+			<div class="title">
+				<i class="dropdown icon" style="float: left;"></i>	
+			</div>
+			Layer Name
+			<div class="content">
+				<ul>
+					<li>Well 1</li>
+					<li>Well 2</li>
+					<li>Well 3</li>
+				</ul>
+			</div>
+		</div>
+	</div> -->
+			</div>
 			<div id="mapArea">
 				<!-- Google Maps goes here.  Managed entirely by controller.js -->
 				<div id="googleMap"></div>
@@ -337,8 +336,11 @@
 	<div class="content">
 		<div class="description">
 			<div class="ui primary inverted red segment">
-				<i class="warning sign big icon" style="float: left;"></i>
-				<p><b>WARNING: </b>Loading a Map will erase all data in this tab.</p>
+				<h2 class="ui header">
+					<i class="warning sign icon"></i>
+					<div class="content">WARNING</div>
+				</h2>
+				<p>Loading a Map will erase all data in this tab.</p>
 			</div>
 			<p>Load a map file?</p>
 			<input type="file" id="loadFileField" name="files[]" multiple /><br />
