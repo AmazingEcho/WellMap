@@ -37,18 +37,14 @@ controller.prototype = {
 			disableDefaultUI:true
 		});
 		
+		this.Gmap.enableKeyDragZoom({key: 'ctrl'});
+		
 		// TODO: Actually get some KML data, and set it up on a different tab somewhere...
 		console.log("loading KML");
 		this.Gmap.loadFromKML({
 			url: "http://team-avengineers.github.io/WellMap/NTS/doc.kml"
 		});
 		console.log("loaded KML");
-		
-		google.maps.event.addListenerOnce(this.Gmap, 'idle', function() {
-			google.maps.event.trigger(this.Gmap, 'resize');
-		});
-		
-		this.Gmap.enableKeyDragZoom({key: 'ctrl'});
 	},
 
 // Functions can also be added through a prototype

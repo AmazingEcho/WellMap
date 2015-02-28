@@ -21,7 +21,12 @@ $('document').ready(function(){
 	// the QUnit Test Suite to go all red.  Moving gmaps.js initiallization into a seperate function
 	// fixes this.
 	var the_controller = new controller();
-	the_controller.initGMaps();
+	
+	setTimeout(function(){
+		the_controller.initGMaps();
+		},
+		100);
+		
 	the_controller.newMap();
 	console.log("Controller status: On");
 	
@@ -170,7 +175,8 @@ $('document').ready(function(){
 			.modal('setting', 'closable', false)
 			.modal('show');
 		*/
-		window.open("http://team-avengineers.github.io/WellMap/well_map.html");
+		window.open("file:///C:/Users/TConX/Documents/GitHub/WellMap/well_map.html");
+		//window.open("http://team-avengineers.github.io/WellMap/well_map.html");
   		//win.focus();
 	});
 	
