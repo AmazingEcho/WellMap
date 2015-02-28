@@ -58,6 +58,9 @@ body{
 	height: 100%;
 }
 
+.ui.bottom.attached.active.tab.segment{
+	height: 80%;
+}
 
 #mapArea{
 	position: absolute;
@@ -125,7 +128,7 @@ nav{
     margin: 0;
     overflow: scroll;
     overflow-x: hidden;
-	height: 550px;
+	height: 100%;
 	overflow:hidden;
 	overflow-y:scroll;
 	}

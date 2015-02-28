@@ -177,14 +177,14 @@ $('document').ready(function(){
 			.modal('setting', 'closable', false)
 			.modal('show');
 		*/
-		window.open("file:///C:/Users/TConX/Documents/GitHub/WellMap/well_map.html");
-		//window.open("http://team-avengineers.github.io/WellMap/well_map.html");
+		//window.open("file:///C:/Users/TConX/Documents/GitHub/WellMap/well_map.html");
+		window.open("http://team-avengineers.github.io/WellMap/well_map.html");
   		//win.focus();
 	});
 	
 	// Save Map Button
 	$("#dropdown-saveMapModal, #button-saveMapModal").click(function(){
-		// Pull info from controller, and put it in the the inputs
+		// Pull info from controller, and put it in the inputs
 		$("input#saveMapNameField").val(the_controller.the_map.metadata.mapName);
 		$("input#saveMapDescField").val(the_controller.the_map.metadata.desc);
 		
@@ -219,7 +219,7 @@ $('document').ready(function(){
 				closable: false,
 				onApprove: function(){
 					// !!!!!!!!!!!!!!!!!!!!!!!!
-					// Load function goes here
+					// Load function 
 					// !!!!!!!!!!!!!!!!!!!!!!!!
 					console.log("Preparing to load file");
 					var fileInput = document.getElementById("loadFileField");
@@ -345,7 +345,7 @@ $('document').ready(function(){
 				closable: false,
 				onApprove: function(){
 					// !!!!!!!!!!!!!!!!!!!!!!!!
-					// Load function goes here
+					// Load function 
 					// !!!!!!!!!!!!!!!!!!!!!!!!
 					console.log("Preparing to load file");
 					var fileInput = document.getElementById("loadExcelFile");
@@ -357,8 +357,6 @@ $('document').ready(function(){
 					if (file.type.match(textType)) {
 						var reader = new FileReader();
 						reader.onload = function(e){
-							// Do stuff here
-							// console.log(e.target.result);
 							the_controller.loadDataJSON(e.target.result);
 							fullRefresh(the_controller);
 						}
