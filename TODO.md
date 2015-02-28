@@ -12,6 +12,5 @@
  * Change Icon
  
 * Data visualization(?)
-
 * UWI Grid (via KML)
-* Lock Sidebar
+* Lock Sidebar **DONE!**
