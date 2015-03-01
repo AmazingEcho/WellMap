@@ -1,7 +1,7 @@
 //scans the database and creates an array of all the wells currently in the database
 //TODO 
 //need to figure out the best way to return that data
-script type = "text/javascript">
+// script type = "text/javascript">
 function ImportWells(){
   $.ajax({
   type: "GET",
@@ -31,13 +31,13 @@ function AddWellToDB(){
   datatype: "json",
   async:false,
   success: function(msg){
-	$(#'txtWellGroup').val('');
-	$(#'txtWellName').val('')
-	$(#'txtWellType').val('');
-	$(#'txtWellLat').val('');
-	$(#'txtWellLng').val('');
-	$(#'txtWellCapacity').val('');
-	$(#'txtWellOutput').val('');
+	$('#txtWellGroup').val('');
+	$('#txtWellName').val('')
+	$('#txtWellType').val('');
+	$('#txtWellLat').val('');
+	$('#txtWellLng').val('');
+	$('#txtWellCapacity').val('');
+	$('#txtWellOutput').val('');
     $("#divResult").html("success");
   },
   error: function(e){
@@ -58,14 +58,14 @@ function UpdateExistingWell(){
   datatype: "json",
   async:false,
   success: function(msg){
-	$(#'toUpdateWellKey').val('');
-	$(#'txtWellGroup').val('');
-	$(#'txtWellName').val('')
-	$(#'txtWellType').val('');
-	$(#'txtWellLat').val('');
-	$(#'txtWellLng').val('');
-	$(#'txtWellCapacity').val('');
-	$(#'txtWellOutput').val('');
+	$('#toUpdateWellKey').val('');
+	$('#txtWellGroup').val('');
+	$('#txtWellName').val('')
+	$('#txtWellType').val('');
+	$('#txtWellLat').val('');
+	$('#txtWellLng').val('');
+	$('#txtWellCapacity').val('');
+	$('#txtWellOutput').val('');
     $("#divResult").html("success");
   },
   error: function(e){
@@ -81,12 +81,12 @@ function DeleteWellFromDB(){
   $.ajax({
   type: "POST",
   url: 'WellMap.dbaccess/delete_well',
-  data: "{workingWellKey: " +key+ "},
+  data: "{workingWellKey: " +key+ "}",
   contentType: "application/json; charset=utf-8",
   datatype: "json",
   async:false,
   success: function(msg){
-	$(#'toDeleteWellKey').val('');
+	$('#toDeleteWellKey').val('');
     $("#divResult").html("success");
   },
   error: function(e){
