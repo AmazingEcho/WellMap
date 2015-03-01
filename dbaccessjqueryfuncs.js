@@ -4,7 +4,7 @@
 // script type = "text/javascript">
 function ImportWells(){
   $.ajax({
-  type: "GET",
+  type: "POST",
   url: 'WellMap.dbaccess/read_data',
   //url: 'dbaccess/read_data',
   data: "",
