@@ -11,6 +11,8 @@ Prototype is [locally hosted](http://team-avengineers.github.io/WellMap/well_map
 
 [QUnit Network Tests](http://team-avengineers.github.io/WellMap/qunit/network_tests.html)
 
+[DB Access Tests](http://team-avengineers.github.io/WellMap/db_testing.html)
+
 Working Test stuff currently hosted at [tconx.net/wellmap](http://tconx.net/wellmap/)
 
 Current Phase(s):
