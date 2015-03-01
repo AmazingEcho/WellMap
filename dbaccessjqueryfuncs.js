@@ -5,11 +5,11 @@
 function ImportWells(){
   $.ajax({
   type: "GET",
-  url: 'WellMap.dbaccess.aspx/read_data',
+  url: 'dbaccess.aspx/read_data',
   data: "",
   contentType: "application/json; charset=utf-8",
   datatype: "json",
-  async:false,
+  //async:false,
   success: function(msg){
     $("#divResult").html("success");
   },
