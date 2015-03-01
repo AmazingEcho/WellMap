@@ -10,7 +10,7 @@ function ImportWells(){
   data: "",
   contentType: "application/json; charset=utf-8",
   datatype: "json",
-  async:false,
+  //async:false,
   success: function(msg){
     $("#divResult").html("success");
   },
