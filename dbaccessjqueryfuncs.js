@@ -5,7 +5,7 @@
 function ImportWells(){
   $.ajax({
   type: "POST",
-  url: 'WellMap.dbaccess/read_data',
+  url: 'WellMap.dbaccess.cs/read_data',
   //url: 'dbaccess/read_data',
   data: "",
   contentType: "application/json; charset=utf-8",
