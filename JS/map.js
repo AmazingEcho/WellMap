@@ -20,6 +20,7 @@ map.prototype = {
 	
 	changeName : function(newName){
 		this.metadata.changeName(newName);
+		document.title = "WellMap - " + this.metadata.mapName;
 	},
 	
 	changeDescription : function(newDesc){
