@@ -271,7 +271,27 @@ $('document').ready(function(){
 	// Clicking on this button displays a modal that shows current map info
 	// Also allows editing of current map info
 	$("#dropdown-editmapinfoButton").click(function(){
-		$("#dropdown-editmapinfoModal").modal('show');
+		$("#NO_NAME_WARNING_MAP_INFO").html("");
+		$("#dropdown-editmapinfoModal")
+			.modal({
+				closable: false,
+				onApprove: function(){
+					// !!!!!!!!!!!!!!!!!!!!!!!!
+					// Check that the map name field has a name 
+					// !!!!!!!!!!!!!!!!!!!!!!!!
+					
+					if(($("input#mapInfoNameField").val())){
+						the_controller.the_map.changeName($("input#mapInfoNameField").val());
+						the_controller.the_map.changeDescription($("input#mapInfoDescField").val());
+					}
+					else{
+						$("#NO_NAME_WARNING_MAP_INFO").html(" - Map Name cannot be empty");
+						// Returning false prevents this modal from closing
+						return false;
+					}
+				}
+			})
+			.modal('show');
 		// Pull info from controller, and put it in the the inputs
 		$("input#mapInfoNameField").val(the_controller.the_map.metadata.mapName);
 		$("input#mapInfoDescField").val(the_controller.the_map.metadata.desc);
