@@ -8,7 +8,7 @@
 function ImportWells(){
   $.ajax({
   type: "GET",
-  url: 'dbaccess.aspx/read_data',
+  url: "dbaccess.aspx/read_data",
   data: "",
   contentType: "application/json; charset=utf-8",
   datatype: "json",
