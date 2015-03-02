@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="default.aspx.cs" Inherits="_Default" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="DBImport.aspx.cs" Inherits="_Default" %>
  
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -12,7 +12,7 @@
         $(document).ready(function () {
 		$.ajax({
 			type: "POST",
-			url: 'WellMap.dbaccess/delete_well',
+			url: 'WellMap.DBImport.aspx/delete_well',
 			data: "{workingWellKey: " +key+ "}",
 			contentType: "application/json; charset=utf-8",
 			datatype: "json",
@@ -29,19 +29,8 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div class="demo">
-        <div class="ui-widget">
-            <label for="tbAuto">
-                Enter UserName:
-            </label>
-&nbsp;<asp:TextBox ID="txtUserName" runat="server" ClientIDMode="Static" Width="202px"></asp:TextBox>
-            <br />
-            <br />
-            Email: <asp:TextBox ID="txtEmail" runat="server" ClientIDMode="Static" Width="210px"></asp:TextBox>
-            <br />
-            <br />           
-            <asp:Button ID="Button1" runat="server" Text="Button" ClientIDMode="Static" />
-        </div>
+    <div>
+       
     </div>
     </form>
 </body>
