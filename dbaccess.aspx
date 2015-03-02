@@ -1,5 +1,11 @@
-using System.Data.SQLClient
-using System
+<%@ WebService language = "c#" class = "WellAccess" %>
+
+using System.Web.Services;
+using System.Data.SQLClient;
+using System;
+using System.Xml.Serialization;
+
+public class WellAccess{
 
 public Struct WellInfo{
   int wellKey;
@@ -141,3 +147,5 @@ public string delete_well(int workingWellKey){
   }
   return 0;
 }*/
+
+}
