@@ -13,7 +13,7 @@
                $('#Button1').click(function () {
                    $.ajax({
                        type: "POST",
-                       url: 'WellMap.dbaccess/add_new',
+                       url: 'DBImport.aspx/add_new',
                        data: "{'wellGroup': " +document.getElementById('txtWellGroup').value+ ", 'wellName': " +document.getElementById('txtWellName').value+ ", 'wellType': " +document.getElementById('txtWellType').value+ ", 'latitude': " +document.getElementById('txtWellLat').value+ ", 'longitude': " +document.getElementById('txtWellLong').value+ ", 'wellCapacity': " +document.getElementById('txtWellCapacity').value+ ", 'wellOutput': " +document.getElementById('txtWellOutput').value+ "}",
                        contentType: "application/json; charset=utf-8",
                        datatype: "json",
