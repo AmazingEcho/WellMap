@@ -1,11 +1,19 @@
-<%@ WebService language = "c#" class = "WellAccess" %>
-
+using System;
+using System.Collections.Generic;
+using System.Web;
 using System.Web.Services;
 using System.Data.SQLClient;
-using System;
+using System.Web.Script.Services;
+using System.IO;
 using System.Xml.Serialization;
+using System.Data;
+using System.Text;
 
-public class WellAccess{
+[WebService(Namespace = "http://team-avengineers.github.io/")]
+[WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile_1)]
+[System.Web.Script.Services.ScriptService]
+
+public class WellAccess : System.Web.Services.WebService{
 
 public Struct WellInfo{
   int wellKey;
@@ -56,6 +64,7 @@ static string add_new(int wellGroup, string wellname, string welltype, double la
 }
 
 //returns an array of the wells in the database
+[ScriptMethod(ResponseFormat = ResponseFormat = ResponseFormat.Json)]
 [WebMethod]
 public List<WellInfo> read_data(){
      try{

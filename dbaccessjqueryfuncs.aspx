@@ -1,7 +1,10 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="dbaccess.aspx.cs" Inherits="_Default" %>
+<html>
+
 //scans the database and creates an array of all the wells currently in the database
 //TODO 
 //need to figure out the best way to return that data
-//<script type = "text/javascript">
+<script type = "text/javascript">
 function ImportWells(){
   $.ajax({
   type: "GET",
@@ -21,7 +24,7 @@ function ImportWells(){
 
 //adds a new well the database. requires all fields except wellkey, which will be automatically generated
 //variable names in the success and data sections need to be the same as those on the page, with the corresponding text entry fields
-//<script type = "text/javascript">
+<script type = "text/javascript">
 function AddWellToDB(){
   $.ajax({
   type: "POST",
@@ -48,7 +51,7 @@ function AddWellToDB(){
 
 //updates a well in the database. requires all fields, including wellkey
 //TODO provide proper well key to the function
-//<script type = "text/javascript">
+<script type = "text/javascript">
 function UpdateExistingWell(){
   $.ajax({
   type: "POST",
@@ -76,7 +79,7 @@ function UpdateExistingWell(){
 
 //deletes well from database, requires the key (unique identifier) of that well
 //TODO need the well key from the system of which well to delete
-//<script type = "text/javascript">
+<script type = "text/javascript">
 function DeleteWellFromDB(){
   $.ajax({
   type: "POST",
@@ -94,3 +97,5 @@ function DeleteWellFromDB(){
   }
   });
 }
+
+</html>
