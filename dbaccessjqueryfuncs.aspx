@@ -1,7 +1,7 @@
 //scans the database and creates an array of all the wells currently in the database
 //TODO 
 //need to figure out the best way to return that data
-<script type = "text/javascript">
+//<script type = "text/javascript">
 function ImportWells(){
   $.ajax({
   type: "GET",
