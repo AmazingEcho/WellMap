@@ -98,4 +98,8 @@ function DeleteWellFromDB(){
   });
 }
 
+<body>
+</body>
+
+
 </html>
