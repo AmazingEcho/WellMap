@@ -644,6 +644,7 @@ refreshLayerList = function(the_controller){
 	// Go through the list of layers and create 'nodes' containing the appropriate tags.
 	for(var i = 0; i < the_controller.the_map.layers.length; i++){
 
+		var containerElem = document.createElement("div");
 		var checkElem;
 		var actionElem;
 		var titleElem;
@@ -658,24 +659,17 @@ refreshLayerList = function(the_controller){
 		var liNode;
 		var textnode;
 		
+		$("#LayerList").append("<div>");
+		
 		actionElem = document.createElement("input");
 		actionElem.type = "checkbox";
-			
+		
 		checkElem = document.createElement("div");
 		checkElem.className = "ui checkbox";
 		checkElem.id = "layerVis-" + i;
 		checkElem.style.cssFloat = 'left';		// For non-IE
 		checkElem.style.styleFloat = 'left';		// For IE
 		
-		
-		// TODO: Fix this
-		// Need to figure out a way to sear a layer index into the layer...
-		/*
-		checkElem.onclick = function(){
-			console.log("Action heard on layer " + i);
-			the_controller.the_map.switchVis(i)
-		};
-		*/
 		checkElem.appendChild(actionElem);
 			
 		document.getElementById("LayerList").appendChild(checkElem);
@@ -697,7 +691,9 @@ refreshLayerList = function(the_controller){
 		contentElem.appendChild(ulElem);
 			
 		document.getElementById("LayerList").appendChild(contentElem);
-			
+		
+		$("#LayerList").append("</div>");
+		
 		// For each layer, insert all of it's points into the list.
 		// TODO: Code to handle the other layer types
 		switch(the_controller.the_map.layers[i].layerType){
