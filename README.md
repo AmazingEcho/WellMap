@@ -11,9 +11,7 @@ Prototype is [locally hosted](http://team-avengineers.github.io/WellMap/well_map
 
 [QUnit Network Tests](http://team-avengineers.github.io/WellMap/qunit/network_tests.html)
 
-[DB Access Tests](http://team-avengineers.github.io/WellMap/db_testing.html)
-
-Working Test stuff currently hosted at [tconx.net/wellmap](http://tconx.net/wellmap/)
+Early Prototype and Experimental materials currently hosted at [tconx.net/wellmap](http://tconx.net/wellmap/)
 
 Current Phase(s):
 * DEVELOPMENT
@@ -22,13 +20,16 @@ Current Phase(s):
 Languages:
 
 * JavaScript w/ JQuery for the bulk of the UI and controller components
-* DB management with C#
+* DB management with PHP/SQL
 
 Libraries:
 
 * UI
 	* [Semantic UI](https://github.com/Semantic-Org/Semantic-UI)
+	* FileReader
+
 * Map
+	* Google Maps	
 	* [gmaps.js](https://github.com/hpneo/gmaps)
 
 ### <style color="#ff0000">DO NOT</style>
