@@ -104,13 +104,20 @@ if(isset($_POST['submit'])){
 					
 		$query_params = array( 
 		':groupIndex' => $groupIndex,
-		':ownerName' => $_POST['owner'],
+		':wellName' => $_POST['name']." ".$i ,
+		':wellType' => "Well",
+		':lat' => $randLat,
+		':lng' => $randLng,
+		':wellCap' => $randCapacity,
+		':wellOut' => $randOutput
 		);
 
-		$result = mysql_query($query);
-	
-		if(!$result){
-			die('Invalid query: ' . mysql_error());
+		try{
+			$stmt = $con->prepare($query); 
+			$result = $stmt->execute($query_params); 
+		} 
+		catch(PDOException $ex){ 
+			die("Failed to run query: " . $ex->getMessage()); 
 		}
 	}
 }
