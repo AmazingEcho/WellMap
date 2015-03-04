@@ -12,11 +12,26 @@ $xmlStr=str_replace("&",'&amp;',$xmlStr);
 return $xmlStr;
 }
 
+
 // Select all the rows in the markers table
+
+//$query = "SELECT * FROM wellGroups WHERE 1";
+//$result = mysql_query($query);
+//if (!$result) {
+//  die('Invalid query: ' . mysql_error());
+//}
+
 $query = "SELECT * FROM wellGroups WHERE 1";
-$result = mysql_query($query);
-if (!$result) {
-  die('Invalid query: ' . mysql_error());
+//$query_params = array();
+
+try{
+	// Execute the query to check for an existing entry 
+	$stmt = $con->prepare($query); 
+	$stmt->execute(); 
+}
+
+catch(PDOException $ex){ 
+	die("Failed to run query: " . $ex->getMessage()); 
 }
 
 header("Content-type: text/xml");
@@ -25,8 +40,10 @@ header("Content-type: text/xml");
 echo '<markers>';
 
 // Iterate through the rows, printing XML nodes for each
-while ($row = @mysql_fetch_assoc($result)){
+$rows = $stmt->fetchAll();
+//while ($row = @mysql_fetch_assoc($result)){
   // ADD TO XML DOCUMENT NODE
+foreach($rows as $row){
   echo '<wellGroup ';
   echo 'wellGroupID="' . $row['wellGroupID'] . '" ';
   echo 'wellGroupName="' . parseToXML($row['wellGroupName']) . '" ';

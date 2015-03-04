@@ -22,10 +22,18 @@ return $xmlStr;
 
 // Select all the rows in the markers table
 $query = "SELECT * FROM wells WHERE wellGroup =" . $id;
-$result = mysql_query($query);
-if (!$result) {
-  die('Invalid query: ' . mysql_error());
+
+try{
+	// Execute the query to check for an existing entry 
+	$stmt = $con->prepare($query); 
+	$stmt->execute(); 
 }
+
+catch(PDOException $ex){ 
+	die("Failed to run query: " . $ex->getMessage()); 
+}
+
+$rows = $stmt->fetchAll();
 
 header("Content-type: text/xml");
 
@@ -33,8 +41,8 @@ header("Content-type: text/xml");
 echo '<wells>';
 
 // Iterate through the rows, printing XML nodes for each
-while ($row = @mysql_fetch_assoc($result)){
-  // ADD TO XML DOCUMENT NODE
+foreach($rows as $row){
+  // ADD TO XML DOCUMENT
   echo '<well ';
   echo 'wellKey="' . $row['wellKey'] . '" ';
   echo 'wellGroup="' . $row['wellGroup'] . '" ';

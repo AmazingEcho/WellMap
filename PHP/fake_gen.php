@@ -13,57 +13,82 @@
 
 require("common.php");
 
-$wells = $_POST['wells'];
-
-if(is_numeric($wells)){
-	
-	$groupName = $_POST['name'];
-	$ownerName = $_POST['owner'];
-	$groupInfo = $_POST['info'];
-}
-
-
 if(isset($_POST['submit'])){
+	
+	$wells = $_POST['wells'];
+	
+	if(!is_numeric($wells)){
+		die("Value in wells is not numeric!");
+	}
 	
 	$query = "SELECT *
 				FROM wellGroups
-				WHERE wellGroupName='$groupName' AND wellGroupOwner='$ownerName'";
-				
-	$result = mysql_query($query);
+				WHERE wellGroupName= :groupName AND wellGroupOwner= :ownerName ";
 	
-	if(!$result){
-		die('Invalid query: ' . mysql_error());
+	$query_params = array( 
+		':groupName' => $_POST['name'],
+		':ownerName' => $_POST['owner']
+	);
+	
+	try{
+		// Execute the query to check for an existing entry 
+		$stmt = $con->prepare($query); 
+		$result = $stmt->execute($query_params); 
+	} 
+	catch(PDOException $ex){ 
+		die("Failed to run query: " . $ex->getMessage()); 
 	}
+	
+	$row = $stmt->fetch();
 	
 	// If the row exists, don't add a dupe.
 	// Just add extra wells
 	
 	// If it doesn't, create it, and add wells...
-	if(mysql_num_rows($result) == 0){
+	if(!($row)){
 
 		$query = "INSERT INTO wellGroups (wellGroupName, wellGroupOwner, wellGroupInfo)
-				VALUES ('$groupName','$ownerName','$groupInfo')";
-	
-		$result = mysql_query($query);
-	
-		if(!$result){
-			die('Invalid query: ' . mysql_error());
+				VALUES (:groupName, :ownerName, :groupInfo)";
+		
+		$query_params = array( 
+		':groupName' => $_POST['name'],
+		':ownerName' => $_POST['owner'],
+		':groupInfo' => $_POST['info']
+		);	
+			
+		try{
+			// Execute the query to check for an existing entry 
+			$stmt = $con->prepare($query); 
+			$result = $stmt->execute($query_params); 
+		}
+		 
+		catch(PDOException $ex){ 
+			die("Failed to run query: " . $ex->getMessage()); 
 		}
 	
-	echo "Record Posted";
+		echo "Record Posted";
 	}
 	
 	$query = "SELECT *
 				FROM wellGroups
-				WHERE wellGroupName='$groupName' AND wellGroupOwner='$ownerName'";
-				
-	$result = mysql_query($query);
+				WHERE wellGroupName= :groupName AND wellGroupOwner= :ownerName ";
 	
-	if(!$result){
-		die('Invalid query: ' . mysql_error());
+	$query_params = array( 
+		':groupName' => $_POST['name'],
+		':ownerName' => $_POST['owner'],
+	);
+	
+	try{
+		// Execute the query to check for an existing entry 
+		$stmt = $con->prepare($query); 
+		$result = $stmt->execute($query_params); 
+	} 
+	catch(PDOException $ex){ 
+		die("Failed to run query: " . $ex->getMessage()); 
 	}
 	
-	$groupIndex;
+	$row = $stmt->fetch();
+	$groupIndex = $row['wellGroupID'];
 	
 	// Add wells
 	for($i = 0 ; $i < $wells; $i++){
@@ -71,11 +96,16 @@ if(isset($_POST['submit'])){
 		$randLat = 49.0 + 10.0 * mt_rand() / mt_getrandmax();
 		$randLng = -120.0 + 20.0 * mt_rand() / mt_getrandmax();
 
-		$randCapacity = rand(10,100000);
-		$randOutput = rand(10,100000);
+		$randCapacity = rand(10,10000);
+		$randOutput = rand(10,10000);
 		
 		$query = "INSERT INTO wells (wellGroup, wellName, wellType, lat, lng, wellCapacity, wellOutput)
-					VALUES ('$groupIndex','$ownerName','$groupInfo')";
+					VALUES (:groupIndex, :wellName ,:wellType, :lat, :lng, :wellCap, :wellOut)";
+					
+		$query_params = array( 
+		':groupIndex' => $groupIndex,
+		':ownerName' => $_POST['owner'],
+		);
 
 		$result = mysql_query($query);
 	
