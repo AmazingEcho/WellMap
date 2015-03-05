@@ -235,13 +235,8 @@ controller.prototype = {
 		});
 		
 	},
-	
-<<<<<<< HEAD
-	processData:function(alltext){
-=======
-	processData : function(alltext)
-	{
->>>>>>> origin/gh-pages
+
+	processData : function(alltext){
 		var allTextLines = allText.split(/\r\n|\n/);
 		var headers = allTextLines[0].split(',');
 		var lines = [];
