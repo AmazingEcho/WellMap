@@ -1,10 +1,11 @@
 # TODO LIST
 
-* Database Access
+* Database Access  **DONE!**
+ * May have to write a few more PHP Scripts to handle well adding...
 * Saving (via JSON) **DONE!**
 * Loading (via JSON) **DONE!**
-* Import via csv
-* Export via csv
+* Import via csv/xls
+* Export via csv/xls
 
 
 * Change Layer Properties
