@@ -236,7 +236,7 @@ controller.prototype = {
 		
 	},
 	
-	function processData(alltext){
+	processData:function(alltext){
 		var allTextLines = allText.split(/\r\n|\n/);
 		var headers = allTextLines[0].split(',');
 		var lines = [];
@@ -251,8 +251,7 @@ controller.prototype = {
 				lines.push(tarr);
 			}
 		}
-	}
-}
+	},
 	
 	// TODO:
 	// Saving and Loading
