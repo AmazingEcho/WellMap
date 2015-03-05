@@ -399,10 +399,12 @@ $('document').ready(function(){
 		//var blob = new Blob([dataToWrite], {type: "text/plain"});
 		//var excelnewdoc = document.getElementById('excelnewdoc').value;
 		//saveAs(blob, excelnewdoc + ".txt");
+		$("#dropdown-exportexcelModalGenerate").click(function(){
 		var data = $('#txt').val();
         if(data == '')
             return;
         JSONToCSVConvertor(data, excelnewdoc, true);
+		});
 	});
 	//Function for export data to excel
 	function JSONToCSVConvertor(JSONData, ReportTitle, ShowLabel) {
