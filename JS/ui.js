@@ -391,8 +391,32 @@ $('document').ready(function(){
 					console.log("Preparing to load file");
 					var fileInput = document.getElementById("loadExcelFile");
 					console.log(fileInput)
-					if(typeof require !== 'undefined') XLS = require('xlsjs');
-					var workbook = XLS.readFile('test.xls');
+					/* set up XMLHttpRequest */
+					var url = "test_files/formula_stress_test_ajax.xls";
+					console.log(url);
+					var oReq = new XMLHttpRequest();
+					console.log(oReq);
+					oReq.open("GET", url, true);
+					oReq.responseType = "arraybuffer";
+
+					oReq.onload = function(e) {
+  					var arraybuffer = oReq.response;
+
+  					/* convert data to binary string */
+  					var data = new Uint8Array(arraybuffer);
+  					var arr = new Array();
+  					for(var i = 0; i != data.length; ++i) arr[i] = String.fromCharCode(data[i]);
+  					var bstr = arr.join("");
+
+  					/* Call XLS */
+  					var workbook = XLS.read(bstr, {type:"binary"});
+
+  					/* DO SOMETHING WITH workbook HERE */
+					}
+					
+					//Error here
+					oReq.send();
+					//
 					console.log("File loaded");
 					var sheet_name_list = workbook.SheetNames;
 					console.log(sheet_name_list);

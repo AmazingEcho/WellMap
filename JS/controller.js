@@ -226,7 +226,8 @@ controller.prototype = {
 	
 	//Imports Data from spreadsheet to map
 	importXLS : function(){
-		console.log("importXLS() not yet written");
+		console.log("importXLS() not yet written");	
+		
 		$.ajax({
 		type: "GET",
 		url: "data.txt",
