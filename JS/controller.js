@@ -224,6 +224,35 @@ controller.prototype = {
 		console.log("exportXLS() not yet written");
 	},
 	
+	//Imports Data from spreadsheet to map
+	importXLS : function(){
+		console.log("importXLS() not yet written");
+		$.ajax({
+		type: "GET",
+		url: "data.txt",
+		dataType: "text",
+		success: function(data) {processData(data);}
+		});
+		
+	},
+	
+	function processData(alltext){
+		var allTextLines = allText.split(/\r\n|\n/);
+		var headers = allTextLines[0].split(',');
+		var lines = [];
+		
+		for(var i=1; i<allTextLines.length; i++){
+			var data = allTextLines[i].split(',');
+			if(data.length == headers.length){
+			var tarr = [];
+			for(var j=0; j<headers.length; j++){
+				tarr.push(headers[j]+":"+data[j]);
+				}
+				lines.push(tarr);
+			}
+		}
+	}
+}
 	
 	// TODO:
 	// Saving and Loading
