@@ -38,16 +38,19 @@
 								<div class="item" id="dropdown-printButton"><i class="print icon"></i>Print</div>	
 							</div>
 						</a>
-						
+<!-- edit drop down menu -->
 						<a class="ui dropdown item">Edit<i class="dropdown icon"></i>
 							<div class="menu">
 								<div class="item" id="dropdown-editmapinfoButton"><i class="book icon"></i>Map Info</div>
+
+
 							</div>
 						</a>
 						
 						<a class="ui dropdown item">View<i class="dropdown icon"></i>
 							<div class="menu">
 								<div class="item"><i class="table icon"></i>View Data</div>
+							
 								<!--<div class="item" id="dropdown-graphsViewer"><i class="bar chart icon"></i>Graphs</div>-->
 								<div class="item">Display Type<i class="angle right icon"></i>
 									<div class="menu">
@@ -88,6 +91,7 @@
 				</div>
 			</div> <!-- END of toolbarTOP -->
 
+<!-- start of tool bar bottom -->
 			<div class="toolbarBOT">
 				<div class=" icon ui buttons">
 					<div class="ui button" data-content="New Map" data-position="bottom left" id ="button-newMapModal"><i class="file outline icon"></i></div>
@@ -113,6 +117,7 @@
 					<div class="ui button" data-content="Zoom In" data-position="bottom left" id="button-zoomIn"><i class="zoom icon"></i></div>
 					<div class="ui button" data-content="Zoom Out" data-position="bottom left" id="button-zoomOut"><i class="zoom out icon"></i></div>
 					<div class="ui button" data-content="Refresh Map" data-position="bottom left" id="button-refreshMap"><i class="refresh icon"></i></div>
+
 					<!--<div class="ui button" data-content="Sproule" data-position="bottom left" id = "button-sproule"><i class="world icon"></i></div>-->
 					<!--<div class="ui button" data-content="View Data" data-position="bottom left" ><i class="table icon"></i></div>-->
 					<!--<div class="ui button" data-content="Graphs" data-position="bottom left" id="button-graphsViewer"><i class="bar chart icon"></i></div>-->
@@ -120,6 +125,8 @@
 					<!--<div class="ui button" data-content="Export Data" data-position="bottom left" id="button-exportexcelMapModal"><i class="arrow up icon"></i></div>-->
 				</div>
 				<div class=" icon ui buttons">
+					<!-- button created to add new list  -->
+					<div class="ui button" data-content= "Add New List" data-position = "bottom left" id = "button-addNewList"> <i class = "add circle icon"> </i></div>
 					<div class="ui button activated" data-content="Select" data-position="bottom left" id="button-selectByClick"><i class="selected radio icon"></i></div>
 					<div class="ui button" data-content="Select By Area" data-position="bottom left" id="button-selectByArea"><i class="crop icon"></i></div>
 				</div>
@@ -128,7 +135,8 @@
 					<!--<div class="ui button" data-content="Help" data-position="bottom left" id="button-help"><i class="help icon"></i></div>-->
 					<!--<div class="ui button" data-content="Report Bug" data-position="bottom left" id="button-reportBug"><i class="red bug icon"></i></div>-->
 				</div>	
-			</div>
+			</div> <!-- end of toolbar bottom -->
+
 		</div>
 		<div class="workArea">
 			<div id="sidebar">
@@ -498,6 +506,42 @@
 	</div>
 </div>
 
+<!-- Add multiple lists-->
+<!-- make new list out of selected wells-->
+<!-- show the new list to the side bar-->
+<!-- select or deselect the new well lists	-->
+<div class="ui modal" id="listModal" style="background-color:#CCC; color:#000">
+	<div class="header">Create New List</div>
+	<div class="content">
+		<div class="ui form">
+			<div class="field">
+				<label>List Name</label>
+				<p id="NO_NAME_WARNING_MAP_INFO"></p>
+				<input type="text" id="listNameField"/>
+			</div>
+			<h3>
+				<div>
+					<p> function implementation in progress</p>
+
+				</div>	
+			</h3>
+								
+				<p>// select the generated wells with a mouse</p>	 
+					<p>// click the add new list button to </p>
+					<p>// a window asking to create new list name</p>
+					<p>// pull the selected wells from one list and import to new list</p>
+					<p>// the new list with imported wells should be displayed to the sidebar</p>
+			
+		</div>
+	</div>
+	<div class="actions">
+		<div class="ui buttons">
+			<div class="ui button negative" id="dropdown-reportbugModalCancel">Cancel</div>
+			<div class="or"></div>
+			<div class="ui button positive" id="dropdown-reportbugModalOk">Ok</div>
+		</div>
+	</div>
+</div>
 <!--	-->
 <!-- Chart/Graph Modal	-->
 <!-- For displaying charts and graphs-->

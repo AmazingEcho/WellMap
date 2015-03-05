@@ -249,6 +249,26 @@ $('document').ready(function(){
 			})
 			.modal('show');
 	});
+//////////////////////////////
+// create a new list button
+//////////////////////////////
+		$('#button-addNewList').click(function(){
+		
+		$('#listModal')
+			.modal({
+				closable: false,
+				onApprove: function(){
+					// select the generated wells with a mouse 
+					// click the add new list button to 
+					// a window asking to create new list name
+					// pull the selected wells from one list and import to new list
+					// the new list with imported wells should be displayed to the sidebar 
+
+				},
+			})
+			.modal('show');
+	});
+	
 	
 	$('#modal-button-copywelldata').click(function(){
 		the_controller.the_map.copywellLayers();
