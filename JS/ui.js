@@ -370,22 +370,15 @@ $('document').ready(function(){
 					// !!!!!!!!!!!!!!!!!!!!!!!!
 					console.log("Preparing to load file");
 					var fileInput = document.getElementById("loadExcelFile");
-					
-					var file = fileInput.files[0];
-					var textType = "text/plain";
-					
-					console.log(file.type);
-					if (file.type.match(textType)) {
-						var reader = new FileReader();
-						reader.onload = function(e){
-							the_controller.loadDataJSON(e.target.result);
-							fullRefresh(the_controller);
-						}
-						reader.readAsText(file);
-					}	
-					else{
-						console.log("ERROR! Invalid file type!");
-						}
+					console.log(fileInput)
+					if(typeof require !== 'undefined') XLS = require('xlsjs');
+					var workbook = XLS.readFile('test.xls');
+					console.log("File loaded");
+					var sheet_name_list = workbook.SheetNames;
+					console.log(sheet_name_list);
+					var dataobj = XLS.utils.sheet_to_json(sheet_name_list);
+					console.log(dataobj);
+
 				}
 			})
 		.modal('show');
