@@ -203,6 +203,47 @@ controller.prototype = {
 		}
 	},
 	
+	createNewPointLayerFromSelectionAllLayers : function(){
+		
+		if(this.the_map.layers[layerIndex].layerType != "point"){
+			console.log("Layer " + layerIndex + " is not a point layer.");
+			return;
+		}
+		
+		// Verify that layer has selected points in the first place
+		var selectedPresent = false;
+		for(var i = 0; i <  this.the_map.layers[layerIndex].points.length; i++){
+			if(this.the_map.layers[layerIndex].points[i].selected){
+				selectedPresent = true;
+				console.log("Selected Point Found");
+				break;
+			}
+		}
+		
+		if(!(selectedPresent)){
+			console.log("No Points Found");
+			return false;
+		}
+		
+		this.the_map.newPointLayer("Selection from " + this.the_map.layers[layerIndex].name);
+		
+		var newLayerIndex = (this.the_map.layers.length) - 1;
+		console.log("newLayerIndex is " + newLayerIndex);
+		
+		for(var j = 0; j < this.the_map.layers[layerIndex].points.length;){
+			if(this.the_map.layers[layerIndex].points[j].selected){
+				
+				//splice the point from the first layer, and put it in the new layer
+				var temp = this.the_map.layers[layerIndex].points[j];
+				this.the_map.layers[layerIndex].points.splice(j,1);
+				this.the_map.layers[newLayerIndex].points.push(temp);
+			}
+			else{
+				j++;
+			}
+		}
+	},
+	
 	// Returns an array of layer names and index values for those layers
 	generateLayerList : function(){
 		
@@ -256,22 +297,18 @@ controller.prototype = {
 			}
 		}
 	},
-	
-	// TODO:
-	// Saving and Loading
-	// I'd like to try and set it up to save all the objects with JSON, and then have those loaded the same way.
-	// A JSON file is basically just a text file that contains object data that can be parsed by Javascript
-	// and turned into actual objects.
-	
-	// The problem is that JS is kind of weird about opening files on a client side HD.
-	// Security concerns about rogue web pages running .js code to peek at the contents of someones HD.
-	
+
+	//////////////////////////////////////////////////////
+	// Saving and Loading Maps
+	//////////////////////////////////////////////////////
+	// 100% Done
+	//////////////////////////////////////////////////////
+
 	saveDataJSON : function(fileInfo){
 		
 		var currentCenter = this.Gmap.getCenter()
 		this.the_map.metadata.origin = [currentCenter.lat(), currentCenter.lng()];
 		this.the_map.metadata.zoomLVL = this.Gmap.getZoom();
-		//this.the_map.metadata.mapType = this.Gmap.mapTypeId;
 		
 		var mapJSONString = JSON.stringify(this.the_map);
 		return mapJSONString;

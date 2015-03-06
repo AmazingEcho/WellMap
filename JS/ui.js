@@ -726,6 +726,29 @@ $('document').ready(function(){
 	//		Report Bug Modal
 	///////////////////////////////////////////////////////
 
+	// handlers for layer visibility
+	generate_handler_visON = function(j){
+		return function(event){
+			the_controller.the_map.layers[j].visible = true;
+			the_controller.refreshMap();
+		};
+	};
+	
+	generate_handler_visOFF = function(j){
+		return function(event){ 
+			the_controller.the_map.layers[j].visible = false;
+			the_controller.refreshMap();
+		};
+	};
+	
+	generate_handler_selectLayer = function(j){
+		return function(event){
+			the_controller.the_map.layers[j].selected = true;
+			console.log("Layer " + j + " selected");
+			$("#clickable_layer"+j).css("background-color","blue")
+		}
+	};
+
 });// End of $('document').ready(function());
 
 // Refreshes the map AND the layer list
@@ -740,25 +763,10 @@ refreshLayerList = function(the_controller){
 	// First, clear the layer list
 	document.getElementById("LayerList").innerHTML = "";
 	
-	// handlers for layer visibility
-	function generate_handler_visON(j){
-		return function(event){
-			the_controller.the_map.layers[j].visible = true;
-			the_controller.refreshMap();
-		};
-	}
-	
-	function generate_handler_visOFF(j){
-		return function(event){ 
-			the_controller.the_map.layers[j].visible = false;
-			the_controller.refreshMap();
-		};
-	}
-	
 	// Go through the list of layers and create 'nodes' containing the appropriate tags.
 	for(var i = 0; i < the_controller.the_map.layers.length; i++){
 
-		var containerElem = document.createElement("div");
+		var selectNameElem;
 		var checkElem;
 		var actionElem;
 		var titleElem;
@@ -794,9 +802,13 @@ refreshLayerList = function(the_controller){
 			
 		document.getElementById("LayerList").appendChild(titleElem);
 		
-		layerNameElem = document.createTextNode(the_controller.the_map.layers[i].name);
+		selectNameElem = document.createElement("div");
 		
-		document.getElementById("LayerList").appendChild(layerNameElem);
+		layerNameElem = document.createTextNode(the_controller.the_map.layers[i].name);
+		selectNameElem.appendChild(layerNameElem);
+		selectNameElem.id = "clickable_layer" + i;
+		
+		document.getElementById("LayerList").appendChild(selectNameElem);
 		
 		contentElem = document.createElement("div");
 		contentElem.className = "content";
@@ -833,5 +845,7 @@ refreshLayerList = function(the_controller){
 				onUnchecked : generate_handler_visOFF(i),
 			}
 		);
+		
+		$("#clickable_layer" + i).click(generate_handler_selectLayer(i));
 	}
 }

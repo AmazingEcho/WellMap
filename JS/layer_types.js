@@ -11,6 +11,8 @@ function Layer(name){
 	this.visible = true;
 	
 	this.layerType = "NONE";
+	
+	this.selected = false;
 };
 
 Layer.prototype = {
