@@ -289,18 +289,26 @@ controller.prototype = {
 
 	// Helper Function
 	// Not for use in final product
+	// generate random points function
+	// The map.js is what will hold the layer objects
 	generateRandomPoints : function(numPoints){
-		this.newPointLayer("Random Point Layer");
+		this.newPointLayer("Random Points"); // generate a title in this case in the sidebar
 		var layerIndex = this.the_map.layers.length - 1;
 		
 		for(var i = 0; i < numPoints; i++){
-			var randLat = (Math.random() * 11.0) + 49.0;
-			var randLong = -((Math.random() * 10.0) + 110.0);
+			var randLat = (Math.random() * 11.0) + 49.0; //  call math.random functon to generate random latitudes
+			var randLong = -((Math.random() * 10.0) + 110.0); // call math.random functon to  generate random longitudes
+			// show points in the map 
 			this.the_map.layers[layerIndex].addPointLatLong("Lat: " + (randLat).toFixed(1) + "\n" + "Long: " + (randLong).toFixed(1), "Random Point", randLat, randLong);
 		}
-		console.log("Random Points Generated - Total: " + numPoints);
+		console.log("Random Points Generated - Total: " + numPoints); // I DON'T EXACTLY KNOW WHAT THIS DOES YET FIGURE OUT LATER
 	},
 	
+	// add a list name
+	addList: function(names)
+	{
+		this.newPointLayer(names); // create a title for the list
+	},
 	addDatabaseConnectionPHP : function(dbObjParams){
 		// NOTE: When implementing this function into the application, make sure dbObjParams is an object that contains:
 		// a name

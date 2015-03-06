@@ -244,6 +244,7 @@
 			<div class="ui button" id="importWellMenuLoadWellsFromGroup">
 				Load Wells from Selected Group
 			</div><br />
+			<!-- put random points in the map -->
 			<div class="ui button" id="generateRandomPoints">
 				Generate Layer of Random Points
 			</div>
@@ -507,7 +508,7 @@
 	</div>
 </div>
 
-<!-- Add multiple lists-->
+<!-- Add multiple lists MODAL-->
 <!-- make new list out of selected wells-->
 <!-- show the new list to the side bar-->
 <!-- select or deselect the new well lists	-->
@@ -517,8 +518,8 @@
 		<div class="ui form">
 			<div class="field">
 				<label>List Name</label>
-				<p id="NO_NAME_WARNING_MAP_INFO"></p>
-				<input type="text" id="listNameField"/>
+				<!-- need to get the input id and put it into the sidebar -->
+				<input type="text" id="inputNameField"/>
 			</div>
 			<h3>
 				<div>
@@ -528,8 +529,10 @@
 			</h3>
 								
 				<p>// select the generated wells with a mouse</p>	 
-					<p>// click the add new list button to </p>
-					<p>// a window asking to create new list name</p>
+					<p>// click the add new list button to to show modal window -> DONE </p>
+					<p> clear previous value when user clicks the add new list button -> DONE</p>
+					<p> add title to the list  -> DONE</p>
+					<p>// a window asking to create new list name -> DONE</p>
 					<p>// pull the selected wells from one list and import to new list</p>
 					<p>// the new list with imported wells should be displayed to the sidebar</p>
 			
@@ -537,9 +540,9 @@
 	</div>
 	<div class="actions">
 		<div class="ui buttons">
-			<div class="ui button negative" id="dropdown-reportbugModalCancel">Cancel</div>
+			<div class="ui button negative" id="listModalCancel">Cancel</div>
 			<div class="or"></div>
-			<div class="ui button positive" id="dropdown-reportbugModalOk">Ok</div>
+			<div class="ui button positive" id="listModalOk">Ok</div>
 		</div>
 	</div>
 </div>
