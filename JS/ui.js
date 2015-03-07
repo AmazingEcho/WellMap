@@ -458,12 +458,24 @@ $("#inputNameField").each(function ()
 	
 	function process_wb(wb) {
 		var output = "";
-		var mapPoints = to_json(wb);
+		var jsondata = to_json(wb);
 		if(typeof console !== 'undefined') 
 		{
 			console.log("output", new Date());
 		}
-		alert(mapPoints[0]);
+		var sheetList = wb.SheetNames;
+		var returnedData = new Array();
+		for (sheet in sheetList) {
+			if (jsondata.sheet !== undefined)
+			{
+				for (row in jsondata.sheet)
+				{
+					returnedData.push(row);
+				}
+			}
+		}
+		
+		alert(returnedData[0]);
 	}
 	
 	function to_json(workbook) {
