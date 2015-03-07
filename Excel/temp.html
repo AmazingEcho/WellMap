@@ -158,14 +158,9 @@ function handleFile(e) {
 	
 
 	
-	reader.onload = function(e) {
-			if(typeof console !== 'undefined') console.log("onload", new Date(), rABS, use_worker);
-			var data = e.target.result;
 
-		};
-	}
 }
-
+if(xlf.addEventListener) xlf.addEventListener('change', handleFile, false);
 </script>
 <script type="text/javascript">
 	var _gaq = _gaq || [];
