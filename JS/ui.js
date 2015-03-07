@@ -466,7 +466,7 @@ $("#inputNameField").each(function ()
 		var sheetList = wb.SheetNames;
 		var returnedData = new Array();
 		for (sheet in sheetList) {
-			if (jsondata.sheet !== undefined)
+			if (jsondata[sheet] !== undefined)
 			{
 				for (row in jsondata.sheet)
 				{
