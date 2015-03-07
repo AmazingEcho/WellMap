@@ -427,7 +427,7 @@ $("#inputNameField").each(function ()
 	});
 	
 	function handleFile() {
-		alert("omgwtfbbq");
+	console.log("handleFile function activated");
 	rABS = false;
 	use_worker = false;
 	var files = xlf.files;
@@ -440,12 +440,15 @@ $("#inputNameField").each(function ()
 					console.log("onload", new Date(), rABS, use_worker);
 					
 				var data = e.target.result;
+				console.log(data);
 				var wb;
 				var arr = fixdata(data);
 				wb = X.read(btoa(arr), {type: 'base64'});
+				console.log(wb+"x.read works");
 				process_wb(wb);
 			};
 			reader.readAsArrayBuffer(f);
+			console.log("Read f in array buffer" + f);
 		}
 	}
 	
