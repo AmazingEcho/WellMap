@@ -478,9 +478,23 @@ $("#inputNameField").each(function ()
 				returnedData.push(jsondata[sheetList[sheet]]);
 			}
 		}
-		var X=0
-		//returnedData is your map points
+		addPointsToMap(returnedData);
+		//returnedData is your map points boo
 		//from here, add map points to map
+	}
+	
+	function addPointsToMap(points)
+	{
+		//the_controller
+					for(var j = 0; j < points.length; j++){
+						the_controller.Gmap.addMarker({
+							lat: points[i].lat,
+							lng: points[i].lng,
+							title: points[i].well_name,
+							icon: "markers/icon1s.png"
+						});
+					}
+		
 	}
 	
 	function to_json(workbook) {
