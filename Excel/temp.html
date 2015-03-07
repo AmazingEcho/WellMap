@@ -14,28 +14,10 @@ Output Format:
 <br />
 <script src="shim.js"></script>
 <script src="jszip.js"></script>
-<script src="xlsx.js"></script>
+<script src="xls.js"></script>
 <script src="ods.js"></script>
 <script>
-var rABS = typeof FileReader !== "undefined" && typeof FileReader.prototype !== "undefined" && typeof FileReader.prototype.readAsBinaryString !== "undefined";
-if(!rABS) {
-	document.getElementsByName("userabs")[0].disabled = true;
-	document.getElementsByName("userabs")[0].checked = false;
-}
-
-var use_worker = typeof Worker !== 'undefined';
-if(!use_worker) {
-	document.getElementsByName("useworker")[0].disabled = true;
-	document.getElementsByName("useworker")[0].checked = false;
-}
-
-var transferable = use_worker;
-if(!transferable) {
-	document.getElementsByName("xferable")[0].disabled = true;
-	document.getElementsByName("xferable")[0].checked = false;
-}
-
-var wtf_mode = false;
+var X = XLS;
 
 function fixdata(data) {
 	var o = "", l = 0, w = 10240;
@@ -122,14 +104,8 @@ function b64it() {
 }
 
 function process_wb(wb) {
-	var output = "";
-	switch(get_radio_value("format")) {
-		case "json":
-			output = JSON.stringify(to_json(wb), 2, 2);
-			break;
-	}
-	if(out.innerText === undefined) out.textContent = output;
-	else out.innerText = output;
+	console.log("herro");
+	var output = JSON.stringify(to_json(wb), 2, 2);
 	if(typeof console !== 'undefined') console.log("output", new Date());
 }
 
@@ -147,18 +123,7 @@ function handleDrop(e) {
 		reader.onload = function(e) {
 			if(typeof console !== 'undefined') console.log("onload", new Date(), rABS, use_worker);
 			var data = e.target.result;
-			if(use_worker) {
-				xlsxworker(data, process_wb);
-			} else {
-				var wb;
-				if(rABS) {
-					wb = XLSX.read(data, {type: 'binary'});
-				} else {
-				var arr = fixdata(data);
-					wb = XLSX.read(btoa(arr), {type: 'base64'});
-				}
-				process_wb(wb);
-			}
+
 		};
 		if(rABS) reader.readAsBinaryString(f);
 		else reader.readAsArrayBuffer(f);
@@ -171,42 +136,28 @@ function handleDragover(e) {
 	e.dataTransfer.dropEffect = 'copy';
 }
 
-if(drop.addEventListener) {
-	drop.addEventListener('dragenter', handleDragover, false);
-	drop.addEventListener('dragover', handleDragover, false);
-	drop.addEventListener('drop', handleDrop, false);
-}
+//if(drop.addEventListener) {
+	//drop.addEventListener('dragenter', handleDragover, false);
+	//drop.addEventListener('dragover', handleDragover, false);
+	//drop.addEventListener('drop', handleDrop, false);
+//}
 
 
 var xlf = document.getElementById('xlf');
 function handleFile(e) {
-	rABS = document.getElementsByName("userabs")[0].checked;
-	use_worker = document.getElementsByName("useworker")[0].checked;
 	var files = e.target.files;
-	var i,f;
-	for (i = 0, f = files[i]; i != files.length; ++i) {
+	var f = files[0];
+	{
 		var reader = new FileReader();
 		var name = f.name;
 		reader.onload = function(e) {
 			if(typeof console !== 'undefined') console.log("onload", new Date(), rABS, use_worker);
 			var data = e.target.result;
-			if(use_worker) {
-				xlsxworker(data, process_wb);
-			} else {
-				var wb;
-				if(rABS) {
-					wb = XLSX.read(data, {type: 'binary'});
-				} else {
-				var arr = fixdata(data);
-					wb = XLSX.read(btoa(arr), {type: 'base64'});
-				}
-				process_wb(wb);
-			}
+
 		};
-		if(rABS) reader.readAsBinaryString(f);
-		else reader.readAsArrayBuffer(f);
 	}
 }
+
 
 if(xlf.addEventListener) xlf.addEventListener('change', handleFile, false);
 </script>
