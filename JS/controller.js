@@ -438,16 +438,20 @@ controller.prototype = {
 				
 				conPTR.newPointLayer(groupName);
 				var layerIndex = conPTR.the_map.layers.length - 1;
-				
+				var pointIndex = 0;
 				$(xml_out).find("well").each(function(){
 
 					conPTR.the_map.layers[layerIndex].addPointLatLong(
 						$(this).attr("wellName"),
 						$(this).attr("wellType"),
 						$(this).attr("lat"),
-						$(this).attr("lng"));
-						
-
+						$(this).attr("lng")
+					);
+					conPTR.the_map.layers[layerIndex].points[pointIndex].wellData = {
+						wellCapacity : $(this).attr("wellCapacity"),
+						wellOutput   : $(this).attr("wellOutput")
+					};
+					//console.log("Added well with " + conPTR.the_map.layers[layerIndex].points[pointIndex].wellData.wellCapacity);
 				});
 			},
 		
