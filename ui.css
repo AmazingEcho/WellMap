@@ -124,10 +124,10 @@ body{
 
 nav{
 	border: 1px solid #ccc;
-    padding: 0;
-    margin: 0;
-    overflow: scroll;
-    overflow-x: hidden;
+	padding: 0px;
+	margin: 0px;
+	overflow: scroll;
+	overflow-x: hidden;
 	height: 100%;
 	overflow:hidden;
 	overflow-y:scroll;

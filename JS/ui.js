@@ -834,9 +834,20 @@ $("#inputNameField").each(function ()
 	
 	generate_handler_selectLayer = function(j){
 		return function(event){
-			the_controller.the_map.layers[j].selected = true;
-			console.log("Layer " + j + " selected");
-			$("#clickable_layer"+j).css("background-color","blue")
+			if(the_controller.the_map.layers[j].selected == false){
+				the_controller.the_map.layers[j].selected = true;
+				$("#clickable_layer"+j).css("background-color","blue");
+			}
+			else if(the_controller.the_map.layers[j].selected == true){
+				the_controller.the_map.layers[j].selected = false;
+				$("#clickable_layer"+j).css("background-color","transparent");
+			}
+		}
+	};
+	
+	generate_handler_dropper = function(j){
+		return function(event){
+			$("#sublist"+j).toggle();
 		}
 	};
 
@@ -850,6 +861,78 @@ fullRefresh = function(conPTR){
 };
 
 refreshLayerList = function(the_controller){
+	document.getElementById("LayerList").innerHTML = "";
+	
+	// Go through the list of layers and create 'nodes' containing the appropriate tags.
+	for(var i = 0; i < the_controller.the_map.layers.length; i++){
+		
+		//$("#LayerList").append("<div>");
+		
+		var actionElem = document.createElement("input");
+		actionElem.type = "checkbox";
+		
+		var checkElem = document.createElement("div");
+		checkElem.className = "ui checkbox";
+		checkElem.id = "layerVis-" + i;
+		checkElem.style.cssFloat = 'left';		// For non-IE
+		checkElem.style.styleFloat = 'left';		// For IE
+		checkElem.appendChild(actionElem);
+			
+		document.getElementById("LayerList").appendChild(checkElem);
+		
+		var dropperNode = document.createElement("div");
+		dropperNode.id = "dropper"+i;
+		dropperNode.style.cssFloat = 'left';		// For non-IE
+		dropperNode.style.styleFloat = 'left';		// For IE
+		dropperNode.innerHTML = "[+] ";
+		document.getElementById("LayerList").appendChild(dropperNode);
+		
+		var listItemNode = document.createElement("div");
+		listItemNode.id = "clickable_layer" + i;
+		listItemNode.innerHTML += the_controller.the_map.layers[i].name;
+		document.getElementById("LayerList").appendChild(listItemNode)
+		
+		var subItemListNode = document.createElement("ul");
+		subItemListNode.id = "sublist"+i;
+		subItemListNode.className = "sublist";
+		document.getElementById("LayerList").appendChild(subItemListNode);
+		
+		//$("#LayerList").append("</div>");
+		
+		// For each layer, insert all of it's points into the list.
+		// TODO: Code to handle the other layer types
+		switch(the_controller.the_map.layers[i].layerType){
+			case "point":
+				for(var j = 0; j < the_controller.the_map.layers[i].points.length; j++){
+					liNode = document.createElement("li");
+					textnode = document.createTextNode(the_controller.the_map.layers[i].points[j].name);
+					liNode.appendChild(textnode);
+					document.getElementById("sublist"+i).appendChild(liNode);
+				}
+			case "path":
+			case "poly":
+			default:
+		}
+		
+		if(the_controller.the_map.layers[i].visible == true){
+			$("#layerVis-" + i).checkbox('check');
+		}
+		
+		$("#layerVis-" + i).checkbox(
+			{
+				onChecked : generate_handler_visON(i),
+				onUnchecked : generate_handler_visOFF(i),
+			}
+		);
+		
+		$("#dropper" + i).click(generate_handler_dropper(i));
+		$("#clickable_layer" + i).click(generate_handler_selectLayer(i));
+	}
+	
+	$(".sublist").hide();
+}
+
+OLD_refreshLayerList = function(the_controller){
 
 	// First, clear the layer list
 	document.getElementById("LayerList").innerHTML = "";
