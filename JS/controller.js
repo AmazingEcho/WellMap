@@ -353,6 +353,7 @@ controller.prototype = {
 		for(var i = 0; i < numPoints; i++){
 			var randLat = (Math.random() * 11.0) + 49.0; //  call math.random functon to generate random latitudes
 			var randLong = -((Math.random() * 10.0) + 110.0); // call math.random functon to  generate random longitudes
+			var randCap= (Math.random() *100) + (Math.random() * 50); // call math.random function to generate random capacity
 			// show points in the map 
 			this.the_map.layers[layerIndex].addPointLatLong("Lat: " + (randLat).toFixed(1) + "\n" + "Long: " + (randLong).toFixed(1), "Random Point", randLat, randLong);
 		}
