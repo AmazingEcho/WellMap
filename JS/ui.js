@@ -480,7 +480,7 @@ $("#inputNameField").each(function ()
 		}
 		
 					
-		//addPointsToMap(returnedData);
+		addPointsToMap(returnedData);
 		//returnedData is your map points boo
 		//from here, add map points to map
 	}
