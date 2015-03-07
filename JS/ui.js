@@ -472,7 +472,8 @@ $("#inputNameField").each(function ()
 			}
 		}
 		
-		alert(returnedData[0]);
+		//returnedData is your map points
+		//from here, add map points to map
 	}
 	
 	function to_json(workbook) {
