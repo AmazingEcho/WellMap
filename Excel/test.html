@@ -1,0 +1,66 @@
+<!-- Temp Placeholder will be merged with Wellmap html -->
+<!DOCTYPE html>
+<!-- xlsx.js (C) 2013-2014 SheetJS http://sheetjs.com -->
+<!-- vim: set ts=2: -->
+<html>
+<body>
+Output Format:
+<select name="format">
+<option value="json"> JSON</option>
+<option value="form"> FORMULAE</option>
+</select><br />
+
+<p><input type="file" name="xlfile" id="xlf" /> ... or click here to select a file</p>
+<br />
+<script src="shim.js"></script>
+<script src="jszip.js"></script>
+<script src="xls.js"></script>
+<script src="ods.js"></script>
+<script>
+
+var xlf = document.getElementById('xlf');
+function handleFile(e) {
+	rABS = document.getElementsByName("userabs")[0].checked;
+	use_worker = document.getElementsByName("useworker")[0].checked;
+	var files = e.target.files;
+	var i,f;
+	var reader = new FileReader();
+	
+	for (i = 0, f = files[i]; i != files.length; ++i) {
+		var name = f.name;
+		reader.onload = function(e) {
+			if(typeof console !== 'undefined') 
+				console.log("onload", new Date(), rABS, use_worker);
+			var data = e.target.result;
+				if(use_worker) {
+					xlsxworker(data, process_wb);
+				} else {
+					var wb;
+					if(rABS) {
+						wb = XLSX.read(data, {type: 'binary'});
+					} else {
+					var arr = fixdata(data);
+						wb = XLSX.read(btoa(arr), {type: 'base64'});
+					}
+					process_wb(wb);
+				}
+		};
+		if(rABS) reader.readAsBinaryString(f);
+			else reader.readAsArrayBuffer(f);
+	}
+}
+
+if(xlf.addEventListener) xlf.addEventListener('change', handleFile, false);
+</script>
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-36810333-1']);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script>
+</body>
+</html>
