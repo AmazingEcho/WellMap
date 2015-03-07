@@ -118,6 +118,11 @@ map.prototype = {
 		this.layers.sort(function(a,b) {return (b.name > a.name) ? 1: ((a.name > b.name) ? -1 : 0);})
 	},
 	
+	sortCapacity : function(){
+		this.layers.sort(function(a,b) {return (b.wellData.wellCapacity > a.wellData.wellCapacity) ? 1: ((a.wellData.wellCapacity > b.wellData.wellCapacity) ? -1 : 0);})
+		
+	},
+	
 	
 	// Go through the layer list and delete empty layers
 	cullEmptyLayers : function(){
