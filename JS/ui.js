@@ -484,23 +484,23 @@ $("#inputNameField").each(function ()
 				returnedData.push(jsondata[sheetList[sheet]]);
 			}
 		}
+		
 					
 		addPointsToMap(returnedData);
-		//returnedData is your map points
-		x=0
+		//returnedData is your map points boo
 		//from here, add map points to map
 	}
 	
 	function addPointsToMap(points)
 	{
-		
-		for (pointList in points) {
-			for (point in pointList) {
-						the_controller.Gmap.addMarker({
-							lat: point.lat,
-							lng: point.lng,
-							title: point.well_name
-						});
+		for(var j = 0; j < points.length; j++){
+			for (var i = 0; i < points[j].length; i++)
+			{
+				the_controller.Gmap.addMarker({
+							lat: points[j][i].lat,
+							lng: points[j][i].lng,
+							title: points[j][i].well_name
+				});
 			}
 		}
 	}
@@ -831,14 +831,9 @@ $("#inputNameField").each(function ()
 	
 	generate_handler_selectLayer = function(j){
 		return function(event){
-			if(the_controller.the_map.layers[j].selected == false){
-				the_controller.the_map.layers[j].selected = true;
-				$("#clickable_layer"+j).css("background-color","blue");
-			}
-			else if(the_controller.the_map.layers[j].selected == true){
-				the_controller.the_map.layers[j].selected = false;
-				$("#clickable_layer"+j).css("background-color","transparent");
-			}
+			the_controller.the_map.layers[j].selected = true;
+			console.log("Layer " + j + " selected");
+			$("#clickable_layer"+j).css("background-color","blue")
 		}
 	};
 
@@ -889,19 +884,19 @@ refreshLayerList = function(the_controller){
 			
 		document.getElementById("LayerList").appendChild(checkElem);
 		
-		selectNameElem = document.createElement("p");
+		titleElem = document.createElement("div");
+		titleElem.className = "title";
+		titleElem.innerHTML = "<i class=\"dropdown icon\" style =\"float: left;\"> </i>";
+			
+		document.getElementById("LayerList").appendChild(titleElem);
+		
+		selectNameElem = document.createElement("div");
 		
 		layerNameElem = document.createTextNode(the_controller.the_map.layers[i].name);
 		selectNameElem.appendChild(layerNameElem);
 		selectNameElem.id = "clickable_layer" + i;
-		selectNameElem.style.cssFloat = 'left';		// For non-IE
-		selectNameElem.style.styleFloat = 'left';		// For IE
-		document.getElementById("LayerList").appendChild(selectNameElem);
 		
-		titleElem = document.createElement("div");
-		titleElem.className = "title";
-		titleElem.innerHTML = "<i class=\"dropdown icon\"></i>";
-		document.getElementById("LayerList").appendChild(titleElem);
+		document.getElementById("LayerList").appendChild(selectNameElem);
 		
 		contentElem = document.createElement("div");
 		contentElem.className = "content";
@@ -910,6 +905,8 @@ refreshLayerList = function(the_controller){
 		contentElem.appendChild(ulElem);
 			
 		document.getElementById("LayerList").appendChild(contentElem);
+		
+		$("#LayerList").append("</div>");
 		
 		// For each layer, insert all of it's points into the list.
 		// TODO: Code to handle the other layer types
@@ -925,8 +922,6 @@ refreshLayerList = function(the_controller){
 			case "poly":
 			default:
 		}
-		
-		$("#LayerList").append("</div></br>");
 		
 		if(the_controller.the_map.layers[i].visible == true){
 			$("#layerVis-" + i).checkbox('check');
