@@ -260,19 +260,19 @@ controller.prototype = {
 	},
 	
 	// Compares Capacity of wells
-	compareCap : function(){
-		for(var i = 0; i < this.the_map.layers.length; i++){
-			for(var j = 0; j < this.the_map.layers[i].points.length; j++){
-				if (this.the_map.layers[i].points[j].wellData.wellCapacity > this.the_map.layers[i].points[j+1].wellData.wellCapacity){	
-				var temp = this.the_map.layers[i].points[j].wellData.wellCapacity;
-				this.the_map.layers[i].points[j].wellData.wellCapacity = this.the_map.layers[i].points[j+1].wellData.wellCapacity;
-				this.the_map.layers[i].points[j+1].wellData.wellCapacity = temp;
-				}
-			
-			}	
-		}
-		
-	},
+	//compareCap : function(){
+	//	for(var i = 0; i < this.the_map.layers.length; i++){
+	//		for(var j = 0; j < this.the_map.layers[i].points.length; j++){
+	//			if (this.the_map.layers[i].points[j].wellData.wellCapacity > this.the_map.layers[i].points[j+1].wellData.wellCapacity){	
+	//			var temp = this.the_map.layers[i].points[j].wellData.wellCapacity;
+	//			this.the_map.layers[i].points[j].wellData.wellCapacity = this.the_map.layers[i].points[j+1].wellData.wellCapacity;
+	//			this.the_map.layers[i].points[j+1].wellData.wellCapacity = temp;
+	//			}
+	//		
+	//		}	
+	//	}
+	//	
+	//},
 	
 	// Exports Data on the map as a spread sheet
 	// TODO: Write the whole function
