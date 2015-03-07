@@ -442,6 +442,7 @@ $("#inputNameField").each(function ()
 				var data = e.target.result;
 				console.log(data);
 				var wb;
+				console.log("wb var created");
 				var arr = fixdata(data);
 				wb = X.read(btoa(arr), {type: 'base64'});
 				console.log(wb+"x.read works");
@@ -453,6 +454,7 @@ $("#inputNameField").each(function ()
 	}
 	
 	function fixdata(data) {
+		console.log("fixdata function activated");
 		var o = "", l = 0, w = 10240;
 		for(; l<data.byteLength/w; ++l) o+=String.fromCharCode.apply(null,new Uint8Array(data.slice(l*w,l*w+w)));
 		o+=String.fromCharCode.apply(null, new Uint8Array(data.slice(l*w)));
