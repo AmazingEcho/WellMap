@@ -409,7 +409,9 @@ $("#inputNameField").each(function ()
 		$('#graphsModal').modal('show');
 	});
 
-
+	var xlf = document.getElementById('loadExcelFile');
+	if(xlf.addEventListener) xlf.addEventListener('change', handleFile, false);
+	
 	//Import data from excel sheet 
 	$("#dropdown-importexcelButton").click(function(){
 		$("#dropdown-importexcelModal")
@@ -419,45 +421,33 @@ $("#inputNameField").each(function ()
 					// !!!!!!!!!!!!!!!!!!!!!!!!
 					// Load function 
 					// !!!!!!!!!!!!!!!!!!!!!!!!
-					console.log("Preparing to load file");
-					var fileInput = document.getElementById("loadExcelFile");
-					console.log(fileInput)
-					/* set up XMLHttpRequest */
-					var url = "test_files/formula_stress_test_ajax.xls";
-					console.log(url);
-					var oReq = new XMLHttpRequest();
-					console.log(oReq);
-					oReq.open("GET", url, true);
-					oReq.responseType = "arraybuffer";
-
-					oReq.onload = function(e) {
-  					var arraybuffer = oReq.response;
-
-  					/* convert data to binary string */
-  					var data = new Uint8Array(arraybuffer);
-  					var arr = new Array();
-  					for(var i = 0; i != data.length; ++i) arr[i] = String.fromCharCode(data[i]);
-  					var bstr = arr.join("");
-
-  					/* Call XLS */
-  					var workbook = XLS.read(bstr, {type:"binary"});
-
-  					/* DO SOMETHING WITH workbook HERE */
-					}
-					
-					//Error here
-					oReq.send();
-					//
-					console.log("File loaded");
-					var sheet_name_list = workbook.SheetNames;
-					console.log(sheet_name_list);
-					var dataobj = XLS.utils.sheet_to_json(sheet_name_list);
-					console.log(dataobj);
-
 				}
 			})
 		.modal('show');
 	});
+	
+	function handleFile(e) {
+		alert("omgwtfbbq");
+	rABS = false;
+	use_worker = false;
+	var files = e.target.files;
+	var f = files[0];
+	{
+		var reader = new FileReader();
+		var name = f.name;
+		reader.onload = function(e) {
+			if(typeof console !== 'undefined') 
+				console.log("onload", new Date(), rABS, use_worker);
+				
+			var data = e.target.result;
+			var wb;
+			var arr = fixdata(data);
+			wb = X.read(btoa(arr), {type: 'base64'});
+			process_wb(wb);
+		};
+		reader.readAsArrayBuffer(f);
+	}
+}
 	
 	//Export data to an excel sheet
 	$("#dropdown-exportexcelButton").click(function(){
