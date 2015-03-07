@@ -118,11 +118,11 @@ map.prototype = {
 		this.layers.sort(function(a,b) {return (b.name > a.name) ? 1: ((a.name > b.name) ? -1 : 0);})
 	},
 	
-	sortCapacity : function(){
+	//sortCapacity : function(){
 		//reuse sort function for name but swap out name with capacity when able
 		//this.layers.sort(function(a,b) {return (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0);} );
 		
-	}
+	//}
 	
 	// Go through the layer list and delete empty layers
 	cullEmptyLayers : function(){
