@@ -44,9 +44,9 @@ controller.prototype = {
 		this.Gmap.loadFromKML({
 			url: "http://team-avengineers.github.io/WellMap/NTS/doc.kml"
 		});
-		this.Gmap.loadfromKML({
+		/*this.Gmap.loadfromKML({
 			url: "http://clss.nrcan.gc.ca/data-donnees/kml/Canada%20Lands.kmz"
-		});
+		*/});
 		console.log("loaded KML");
 	},
 
