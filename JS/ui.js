@@ -460,6 +460,7 @@ $("#inputNameField").each(function ()
 	}
 	
 	function process_wb(wb) {
+		console.log("process_wb activated");
 		var output = "";
 		var jsondata = to_json(wb);
 		if(typeof console !== 'undefined') 
