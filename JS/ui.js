@@ -361,10 +361,10 @@ $("#inputNameField").each(function ()
 	});
 	
 	//compare Capacity of wells
-	$('#button-compareCapacity').click(function(){
-		the_controller.the_map.compareCap();
-		fullRefresh(the_controller);
-	});
+	//$('#button-compareCapacity').click(function(){
+	//	the_controller.the_map.compareCap();
+	//	fullRefresh(the_controller);
+	//});
 	
 	$("#button-zoomIn").click(function(){
 		var currentZoom = the_controller.Gmap.getZoom();
