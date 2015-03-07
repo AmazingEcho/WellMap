@@ -410,7 +410,6 @@ $("#inputNameField").each(function ()
 	});
 
 	var xlf = document.getElementById('loadExcelFile');
-	if(xlf.addEventListener) xlf.addEventListener('change', handleFile, false);
 	
 	//Import data from excel sheet 
 	$("#dropdown-importexcelButton").click(function(){
@@ -421,6 +420,7 @@ $("#inputNameField").each(function ()
 					// !!!!!!!!!!!!!!!!!!!!!!!!
 					// Load function 
 					// !!!!!!!!!!!!!!!!!!!!!!!!
+						if(xlf.addEventListener) xlf.addEventListener('change', handleFile, false);
 				}
 			})
 		.modal('show');
