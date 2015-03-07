@@ -500,9 +500,9 @@ $("#inputNameField").each(function ()
 							lat: points[j][i].lat,
 							lng: points[j][i].lng,
 							title: points[j][i].well_name,
-							//icon: "markers/icon1.png"
-							icon: "markers/icon1" + (points[j][i].selected == true ? "s" : "") + ".png",
-							click: generate_handler_selectPoint(i, j, this)
+							icon: "markers/icon1.png"
+							//icon: "markers/icon1" + (points[j][i].selected == true ? "s" : "") + ".png",
+							//click: generate_handler_selectPoint(i, j, this)
 				});
 			}
 		}
