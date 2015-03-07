@@ -410,17 +410,18 @@ $("#inputNameField").each(function ()
 	});
 
 	var xlf = document.getElementById('loadExcelFile');
-	
+	if(xlf.addEventListener) xlf.addEventListener('change', handleFile, false);
+
 	//Import data from excel sheet 
 	$("#dropdown-importexcelButton").click(function(){
 		$("#dropdown-importexcelModal")
 		.modal({
 				closable: false,
 				onApprove: function(){
+					xlf.fireEvent("onchange");
 					// !!!!!!!!!!!!!!!!!!!!!!!!
 					// Load function 
 					// !!!!!!!!!!!!!!!!!!!!!!!!
-						if(xlf.addEventListener) xlf.addEventListener('change', handleFile, false);
 				}
 			})
 		.modal('show');
