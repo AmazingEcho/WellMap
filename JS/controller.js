@@ -452,6 +452,7 @@ controller.prototype = {
 						wellOutput   : $(this).attr("wellOutput")
 					};
 					//console.log("Added well with " + conPTR.the_map.layers[layerIndex].points[pointIndex].wellData.wellCapacity);
+					pointIndex++;
 				});
 			},
 		
