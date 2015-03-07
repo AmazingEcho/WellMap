@@ -468,10 +468,7 @@ $("#inputNameField").each(function ()
 		for (sheet in sheetList) {
 			if (jsondata[sheetList[sheet]]	 !== undefined)
 			{
-				for (row in jsondata[sheetList[sheet]])
-				{
-					returnedData.push(row);
-				}
+				returnedData.push(jsondata[sheetList[sheet]);
 			}
 		}
 		
