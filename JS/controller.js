@@ -260,19 +260,19 @@ controller.prototype = {
 	},
 	
 	// Compares Capacity of wells
-	compareCap : function(){
-		for(var i = 0; i < this.the_map.layers.length; i++){
-			for(var j = 0; j < this.the_map.layers[i].points.length; j++){
-				if (this.the_map.layers[i].points[j] > this.the_map.layers[i].points[j+1]){	
-				var temp[] = this.the_map.layers[i].points[j];
-				this.the_map.layers[i].points[j] = this.the_map.layers[i].points[j+1];
-				this.the_map.layers[i].points[j+1] = temp [];
-				}
-			
-			}	
-		}
-		
-	},
+	//compareCap : function(){
+	//	for(var i = 0; i < this.the_map.layers.length; i++){
+	//		for(var j = 0; j < this.the_map.layers[i].points.length; j++){
+	//			if (this.the_map.layers[i].points[j] > this.the_map.layers[i].points[j+1]){	
+	//			var temp[] = this.the_map.layers[i].points[j];
+	//			this.the_map.layers[i].points[j] = this.the_map.layers[i].points[j+1];
+	//			this.the_map.layers[i].points[j+1] = temp [];
+	//			}
+	//		
+	//		}	
+	//	}
+	//	
+	//},
 	
 	// Exports Data on the map as a spread sheet
 	// TODO: Write the whole function
