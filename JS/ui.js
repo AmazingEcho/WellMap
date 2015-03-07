@@ -409,6 +409,7 @@ $("#inputNameField").each(function ()
 		$('#graphsModal').modal('show');
 	});
 
+	var X = XLS;
 	var xlf = document.getElementById('loadExcelFile');
 	//Import data from excel sheet 
 	$("#dropdown-importexcelButton").click(function(){
