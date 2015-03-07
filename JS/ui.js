@@ -430,22 +430,50 @@ $("#inputNameField").each(function ()
 	rABS = false;
 	use_worker = false;
 	var files = xlf.files;
-	var f = files[0];
-	{
-		var reader = new FileReader();
-		var name = f.name;
-		reader.onload = function(e) {
-			if(typeof console !== 'undefined') 
-				console.log("onload", new Date(), rABS, use_worker);
-				
-			var data = e.target.result;
-			var wb;
-			var arr = fixdata(data);
-			wb = X.read(btoa(arr), {type: 'base64'});
-			process_wb(wb);
-		};
-		reader.readAsArrayBuffer(f);
+		var f = files[0];
+		{
+			var reader = new FileReader();
+			var name = f.name;
+			reader.onload = function(e) {
+				if(typeof console !== 'undefined') 
+					console.log("onload", new Date(), rABS, use_worker);
+					
+				var data = e.target.result;
+				var wb;
+				var arr = fixdata(data);
+				wb = X.read(btoa(arr), {type: 'base64'});
+				process_wb(wb);
+			};
+			reader.readAsArrayBuffer(f);
+		}
 	}
+	
+	function fixdata(data) {
+		var o = "", l = 0, w = 10240;
+		for(; l<data.byteLength/w; ++l) o+=String.fromCharCode.apply(null,new Uint8Array(data.slice(l*w,l*w+w)));
+		o+=String.fromCharCode.apply(null, new Uint8Array(data.slice(l*w)));
+		return o;
+	}
+	
+	function process_wb(wb) {
+		var output = "";
+		var mapPoints = to_json(wb);
+		if(typeof console !== 'undefined') 
+		{
+			console.log("output", new Date());
+		}
+		alert(mapPoints[0]);
+	}
+	
+	function to_json(workbook) {
+	var result = {};
+	workbook.SheetNames.forEach(function(sheetName) {
+		var roa = X.utils.sheet_to_row_object_array(workbook.Sheets[sheetName]);
+		if(roa.length > 0){
+			result[sheetName] = roa;
+		}
+	});
+	return result;
 }
 	
 	//Export data to an excel sheet
