@@ -836,11 +836,13 @@ $("#inputNameField").each(function ()
 		return function(event){
 			if(the_controller.the_map.layers[j].selected == false){
 				the_controller.the_map.layers[j].selected = true;
-				$("#clickable_layer"+j).css("background-color","blue");
+				$("#clickable_layer"+j).css('font-weight', 'bold');
+				$("#clickable_layer"+j).css('color', 'red');
 			}
 			else if(the_controller.the_map.layers[j].selected == true){
 				the_controller.the_map.layers[j].selected = false;
-				$("#clickable_layer"+j).css("background-color","transparent");
+				$("#clickable_layer"+j).css('font-weight', 'normal');
+				$("#clickable_layer"+j).css('color', 'black');
 			}
 		}
 	};
@@ -865,8 +867,6 @@ refreshLayerList = function(the_controller){
 	
 	// Go through the list of layers and create 'nodes' containing the appropriate tags.
 	for(var i = 0; i < the_controller.the_map.layers.length; i++){
-		
-		//$("#LayerList").append("<div>");
 		
 		var actionElem = document.createElement("input");
 		actionElem.type = "checkbox";
@@ -896,8 +896,6 @@ refreshLayerList = function(the_controller){
 		subItemListNode.id = "sublist"+i;
 		subItemListNode.className = "sublist";
 		document.getElementById("LayerList").appendChild(subItemListNode);
-		
-		//$("#LayerList").append("</div>");
 		
 		// For each layer, insert all of it's points into the list.
 		// TODO: Code to handle the other layer types
@@ -930,96 +928,4 @@ refreshLayerList = function(the_controller){
 	}
 	
 	$(".sublist").hide();
-}
-
-OLD_refreshLayerList = function(the_controller){
-
-	// First, clear the layer list
-	document.getElementById("LayerList").innerHTML = "";
-	
-	// Go through the list of layers and create 'nodes' containing the appropriate tags.
-	for(var i = 0; i < the_controller.the_map.layers.length; i++){
-
-		var selectNameElem;
-		var checkElem;
-		var actionElem;
-		var titleElem;
-		var layerNameElem;
-		var iconElem;
-		var layerNameText;
-		var ulNode;
-	
-		var contentNode;
-		var ulElem;
-	
-		var liNode;
-		var textnode;
-		
-		$("#LayerList").append("<div>");
-		
-		actionElem = document.createElement("input");
-		actionElem.type = "checkbox";
-		
-		checkElem = document.createElement("div");
-		checkElem.className = "ui checkbox";
-		checkElem.id = "layerVis-" + i;
-		checkElem.style.cssFloat = 'left';		// For non-IE
-		checkElem.style.styleFloat = 'left';		// For IE
-		
-		checkElem.appendChild(actionElem);
-			
-		document.getElementById("LayerList").appendChild(checkElem);
-		
-		titleElem = document.createElement("div");
-		titleElem.className = "title";
-		titleElem.innerHTML = "<i class=\"dropdown icon\" style =\"float: left;\"> </i>";
-			
-		document.getElementById("LayerList").appendChild(titleElem);
-		
-		selectNameElem = document.createElement("div");
-		
-		layerNameElem = document.createTextNode(the_controller.the_map.layers[i].name);
-		selectNameElem.appendChild(layerNameElem);
-		selectNameElem.id = "clickable_layer" + i;
-		
-		document.getElementById("LayerList").appendChild(selectNameElem);
-		
-		contentElem = document.createElement("div");
-		contentElem.className = "content";
-		ulElem = document.createElement("ul");
-		ulElem.id = "layer"+i;
-		contentElem.appendChild(ulElem);
-			
-		document.getElementById("LayerList").appendChild(contentElem);
-		
-		$("#LayerList").append("</div>");
-		
-		// For each layer, insert all of it's points into the list.
-		// TODO: Code to handle the other layer types
-		switch(the_controller.the_map.layers[i].layerType){
-			case "point":
-				for(var j = 0; j < the_controller.the_map.layers[i].points.length; j++){
-					liNode = document.createElement("li");
-					textnode = document.createTextNode(the_controller.the_map.layers[i].points[j].name);
-					liNode.appendChild(textnode);
-					document.getElementById("layer"+i).appendChild(liNode);
-				}
-			case "path":
-			case "poly":
-			default:
-		}
-		
-		if(the_controller.the_map.layers[i].visible == true){
-			$("#layerVis-" + i).checkbox('check');
-		}
-		
-		$("#layerVis-" + i).checkbox(
-			{
-				onChecked : generate_handler_visON(i),
-				onUnchecked : generate_handler_visOFF(i),
-			}
-		);
-		
-		$("#clickable_layer" + i).click(generate_handler_selectLayer(i));
-	}
 }
