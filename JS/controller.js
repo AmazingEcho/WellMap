@@ -3,7 +3,7 @@ WellMap
 controller.js
 Written by: Thomas Condon
 
-*/kml
+*/
 
 /*
 controller
