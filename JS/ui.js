@@ -488,9 +488,9 @@ $("#inputNameField").each(function ()
 		//the_controller
 					for(var j = 0; j < points.length; j++){
 						the_controller.Gmap.addMarker({
-							lat: points[i].lat,
-							lng: points[i].lng,
-							title: points[i].well_name,
+							lat: points[j].lat,
+							lng: points[j].lng,
+							title: points[j].well_name,
 							icon: "markers/icon1s.png"
 						});
 					}
