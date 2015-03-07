@@ -479,12 +479,7 @@ $("#inputNameField").each(function ()
 			}
 		}
 		
-		the_controller.Gmap.addMarker({
-			lat: -12.043333,
-			lng: -77.028333,
-			title: 'Lima'
-		});
-						
+					
 		//addPointsToMap(returnedData);
 		//returnedData is your map points boo
 		//from here, add map points to map
@@ -497,8 +492,7 @@ $("#inputNameField").each(function ()
 						the_controller.Gmap.addMarker({
 							lat: points[j].lat,
 							lng: points[j].lng,
-							title: points[j].well_name,
-							icon: "markers/icon1s.png"
+							title: points[j].well_name
 						});
 					}
 		
