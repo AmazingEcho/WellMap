@@ -46,7 +46,7 @@ controller.prototype = {
 		});
 		this.Gmap.loadfromKML({
 			url: "http://clss.nrcan.gc.ca/data-donnees/kml/Canada%20Lands.kmz"
-		})
+		});
 		console.log("loaded KML");
 	},
 
