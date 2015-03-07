@@ -487,15 +487,16 @@ $("#inputNameField").each(function ()
 	
 	function addPointsToMap(points)
 	{
-		//the_controller
-					for(var j = 0; j < points.length; j++){
-						the_controller.Gmap.addMarker({
-							lat: points[j].lat,
-							lng: points[j].lng,
-							title: points[j].well_name
-						});
-					}
 		
+		for (pointList in points) {
+			for (point in pointList) {
+						the_controller.Gmap.addMarker({
+							lat: point.lat,
+							lng: point.lng,
+							title: point.well_name
+						});
+			}
+		}
 	}
 	
 	function to_json(workbook) {
