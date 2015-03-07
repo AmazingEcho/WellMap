@@ -465,6 +465,7 @@ $("#inputNameField").each(function ()
 		console.log("process_wb activated");
 		var output = "";
 		var jsondata = to_json(wb);
+		console.log("jsondata" + jsondata);
 		if(typeof console !== 'undefined') 
 		{
 			console.log("output", new Date());
