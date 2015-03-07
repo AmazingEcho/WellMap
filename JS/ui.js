@@ -478,7 +478,14 @@ $("#inputNameField").each(function ()
 				returnedData.push(jsondata[sheetList[sheet]]);
 			}
 		}
-		addPointsToMap(returnedData);
+		
+		the_controller.Gmap.addMarker({
+			lat: -12.043333,
+			lng: -77.028333,
+			title: 'Lima'
+		});
+						
+		//addPointsToMap(returnedData);
 		//returnedData is your map points boo
 		//from here, add map points to map
 	}
