@@ -410,15 +410,13 @@ $("#inputNameField").each(function ()
 	});
 
 	var xlf = document.getElementById('loadExcelFile');
-	if(xlf.addEventListener) xlf.addEventListener('change', handleFile, false);
-
 	//Import data from excel sheet 
 	$("#dropdown-importexcelButton").click(function(){
 		$("#dropdown-importexcelModal")
 		.modal({
 				closable: false,
 				onApprove: function(){
-					xlf.fireEvent("onchange");
+					handleFile();
 					// !!!!!!!!!!!!!!!!!!!!!!!!
 					// Load function 
 					// !!!!!!!!!!!!!!!!!!!!!!!!
@@ -427,11 +425,11 @@ $("#inputNameField").each(function ()
 		.modal('show');
 	});
 	
-	function handleFile(e) {
+	function handleFile() {
 		alert("omgwtfbbq");
 	rABS = false;
 	use_worker = false;
-	var files = e.target.files;
+	var files = xlf.files;
 	var f = files[0];
 	{
 		var reader = new FileReader();
