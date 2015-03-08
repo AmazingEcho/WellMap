@@ -220,7 +220,7 @@ controller.prototype = {
 		console.log("newLayerIndex is " + newLayerIndex);
 		
 		for(var i = 0; i < newLayerIndex; i++){
-			for(var j = 0; j < this.the_map.layers[i].points.length; j++){
+			for(var j = 0; j < this.the_map.layers[i].points.length;){
 				if(this.the_map.layers[i].points[j].selected){
 					console.log("COPYING!");
 					//splice the point from the first layer, and put it in the new layer
