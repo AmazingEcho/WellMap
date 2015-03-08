@@ -47,6 +47,34 @@ controller.prototype = {
 		this.Gmap.loadFromKML({
 			url: "http://team-avengineers.github.io/WellMap/NTS/1.kml"
 		});
+		this.Gmap.loadFromKML({
+			url: "http://team-avengineers.github.io/WellMap/NTS/2.kml"
+		});
+		this.Gmap.loadFromKML({
+			url: "http://team-avengineers.github.io/WellMap/NTS/3.kml"
+		});
+		this.Gmap.loadFromKML({
+			url: "http://team-avengineers.github.io/WellMap/NTS/4.kml"
+		});
+		this.Gmap.loadFromKML({
+			url: "http://team-avengineers.github.io/WellMap/NTS/5.kml"
+		});
+		this.Gmap.loadFromKML({
+			url: "http://team-avengineers.github.io/WellMap/NTS/6.kml"
+		});
+		this.Gmap.loadFromKML({
+			url: "http://team-avengineers.github.io/WellMap/NTS/7.kml"
+		});
+		this.Gmap.loadFromKML({
+			url: "http://team-avengineers.github.io/WellMap/NTS/8.kml"
+		});
+		this.Gmap.loadFromKML({
+			url: "http://team-avengineers.github.io/WellMap/NTS/9.kml"
+		});
+		this.Gmap.loadFromKML({
+			url: "http://team-avengineers.github.io/WellMap/NTS/10.kml"
+		});
+		
 
 		console.log("loaded KML");
 	},
