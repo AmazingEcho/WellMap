@@ -249,58 +249,24 @@ $('document').ready(function(){
 			})
 			.modal('show');
 	});
-//////////////////////////////
-// add a new list button
-//////////////////////////////
-		$('#button-addNewList').click(function(){
 
-
-		$('#listModal')
-			.modal({
-				closable: false,
-				onApprove: function(){
-					    
-
-// should take the name inputed from the keyboard and and display to the screen
-var title = document.getElementById("inputNameField")
-			the_controller.addList(title.value);
-			fullRefresh(the_controller);
-
-
-
-
-
+	//////////////////////////////
+	// add a new list button
+	//////////////////////////////
+	$('#button-addNewList').click(function(){
+		$('#listModal').modal({
+			closable: false,
+			onApprove: function(){
+				// should take the name inputed from the keyboard and and display to the screen
+				var title = document.getElementById("inputNameField")
+				the_controller.createNewPointLayerFromSelectionAllLayers(title.value);
+				fullRefresh(the_controller);
 				},
-			})
-			.modal('show');
-$("#inputNameField").each(function ()
-{
-    // store default value
-    var default_val = this.value;
-
-    $(this).blur(function ()
-    {
-        // clear value to default
-        if (this.value.length == 0) this.value = default_val;
-    }).focus(function ()
-    {
-        // when input has previous values, it should be clear when  user clicks the button 
-        this.value = "";
-    }); 
-});
+			}
+		)
+		.modal('show');
 	});
 
-		// press button to show name of the list on the sidebar
-			$('#listModalOk').click(function () {
-					fullRefresh(the_controller);
-// i want to display this to the sidebar how do i do that
-					// select the generated wells with a mouse 
-					// click the add new list button to 
-					// a window asking to create new list name
-					// pull the selected wells from one list and import to new list
-					// the new list with imported wells should be displayed to the sidebar 
-					});
-	
 	$('#modal-button-copywelldata').click(function(){
 		the_controller.the_map.copywellLayers();
 	});
