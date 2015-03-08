@@ -165,6 +165,17 @@ controller.prototype = {
 		this.the_map.deleteLayer(index);
 	},
 	
+	deleteSelectedLayers : function(){
+		for(var i = 0; i < this.the_map.layers.length;){
+			if(this.the_map.layers[i].selected == true){
+				this.deleteLayer(i);
+			}
+			else{
+				i++;
+			}
+		}
+	},
+	
 	createNewPointLayerFromSelection : function(layerIndex){
 		
 		if(this.the_map.layers[layerIndex].layerType != "point"){
@@ -206,20 +217,16 @@ controller.prototype = {
 		}
 	},
 	
-	createNewPointLayerFromSelectionAllLayers : function(){
-		
-		if(this.the_map.layers[layerIndex].layerType != "point"){
-			console.log("Layer " + layerIndex + " is not a point layer.");
-			return;
-		}
+	createNewPointLayerFromSelectionAllLayers : function(newLayerName){
 		
 		// Verify that layer has selected points in the first place
 		var selectedPresent = false;
-		for(var i = 0; i <  this.the_map.layers[layerIndex].points.length; i++){
-			if(this.the_map.layers[layerIndex].points[i].selected){
-				selectedPresent = true;
-				console.log("Selected Point Found");
-				break;
+		for(var i = 0; i < this.the_map.layers.length && !selectedPresent; i++){
+			for(var j = 0; j < this.the_map.layers[i].points.length && !selectedPresent; j++){
+				if(this.the_map.layers[i].points[j].selected){
+					console.log("SELECTED FOUND!");
+					selectedPresent = true;
+				}
 			}
 		}
 		
@@ -228,21 +235,23 @@ controller.prototype = {
 			return false;
 		}
 		
-		this.the_map.newPointLayer("Selection from " + this.the_map.layers[layerIndex].name);
+		this.the_map.newPointLayer(newLayerName);
 		
 		var newLayerIndex = (this.the_map.layers.length) - 1;
 		console.log("newLayerIndex is " + newLayerIndex);
 		
-		for(var j = 0; j < this.the_map.layers[layerIndex].points.length;){
-			if(this.the_map.layers[layerIndex].points[j].selected){
-				
-				//splice the point from the first layer, and put it in the new layer
-				var temp = this.the_map.layers[layerIndex].points[j];
-				this.the_map.layers[layerIndex].points.splice(j,1);
-				this.the_map.layers[newLayerIndex].points.push(temp);
-			}
-			else{
-				j++;
+		for(var i = 0; i < newLayerIndex; i++){
+			for(var j = 0; j < this.the_map.layers[i].points.length; j++){
+				if(this.the_map.layers[i].points[j].selected){
+					console.log("COPYING!");
+					//splice the point from the first layer, and put it in the new layer
+					var temp = this.the_map.layers[i].points[j];
+					this.the_map.layers[i].points.splice(j,1);
+					this.the_map.layers[newLayerIndex].points.push(temp);
+				}
+				else{
+					j++;
+				}
 			}
 		}
 	},

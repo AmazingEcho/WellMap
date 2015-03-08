@@ -249,58 +249,24 @@ $('document').ready(function(){
 			})
 			.modal('show');
 	});
-//////////////////////////////
-// add a new list button
-//////////////////////////////
-		$('#button-addNewList').click(function(){
 
-
-		$('#listModal')
-			.modal({
-				closable: false,
-				onApprove: function(){
-					    
-
-// should take the name inputed from the keyboard and and display to the screen
-var title = document.getElementById("inputNameField")
-			the_controller.addList(title.value);
-			fullRefresh(the_controller);
-
-
-
-
-
+	//////////////////////////////
+	// add a new list button
+	//////////////////////////////
+	$('#button-addNewList').click(function(){
+		$('#listModal').modal({
+			closable: false,
+			onApprove: function(){
+				// should take the name inputed from the keyboard and and display to the screen
+				var title = document.getElementById("inputNameField")
+				the_controller.createNewPointLayerFromSelectionAllLayers(title.value);
+				fullRefresh(the_controller);
 				},
-			})
-			.modal('show');
-$("#inputNameField").each(function ()
-{
-    // store default value
-    var default_val = this.value;
-
-    $(this).blur(function ()
-    {
-        // clear value to default
-        if (this.value.length == 0) this.value = default_val;
-    }).focus(function ()
-    {
-        // when input has previous values, it should be clear when  user clicks the button 
-        this.value = "";
-    }); 
-});
+			}
+		)
+		.modal('show');
 	});
 
-		// press button to show name of the list on the sidebar
-			$('#listModalOk').click(function () {
-					fullRefresh(the_controller);
-// i want to display this to the sidebar how do i do that
-					// select the generated wells with a mouse 
-					// click the add new list button to 
-					// a window asking to create new list name
-					// pull the selected wells from one list and import to new list
-					// the new list with imported wells should be displayed to the sidebar 
-					});
-	
 	$('#modal-button-copywelldata').click(function(){
 		the_controller.the_map.copywellLayers();
 	});
@@ -374,6 +340,11 @@ $("#inputNameField").each(function ()
 	$("#button-zoomOut").click(function(){
 		var currentZoom = the_controller.Gmap.getZoom();
 		the_controller.Gmap.setZoom(currentZoom - 1);
+	});
+	
+	$("#button-deleteGroups").click(function(){
+		the_controller.deleteSelectedLayers();
+		fullRefresh(the_controller);
 	});
 	
 	$('#button-refreshMap').click(function(){
@@ -834,9 +805,22 @@ $("#inputNameField").each(function ()
 	
 	generate_handler_selectLayer = function(j){
 		return function(event){
-			the_controller.the_map.layers[j].selected = true;
-			console.log("Layer " + j + " selected");
-			$("#clickable_layer"+j).css("background-color","blue")
+			if(the_controller.the_map.layers[j].selected == false){
+				the_controller.the_map.layers[j].selected = true;
+				$("#clickable_layer"+j).css('font-weight', 'bold');
+				$("#clickable_layer"+j).css('color', 'red');
+			}
+			else if(the_controller.the_map.layers[j].selected == true){
+				the_controller.the_map.layers[j].selected = false;
+				$("#clickable_layer"+j).css('font-weight', 'normal');
+				$("#clickable_layer"+j).css('color', 'black');
+			}
+		}
+	};
+	
+	generate_handler_dropper = function(j){
+		return function(event){
+			$("#sublist"+j).toggle();
 		}
 	};
 
@@ -850,66 +834,39 @@ fullRefresh = function(conPTR){
 };
 
 refreshLayerList = function(the_controller){
-
-	// First, clear the layer list
 	document.getElementById("LayerList").innerHTML = "";
 	
 	// Go through the list of layers and create 'nodes' containing the appropriate tags.
 	for(var i = 0; i < the_controller.the_map.layers.length; i++){
-
-		var selectNameElem;
-		var checkElem;
-		var actionElem;
-		var titleElem;
-		var layerNameElem;
-		var iconElem;
-		var layerNameText;
-		var ulNode;
-	
-		var contentNode;
-		var ulElem;
-	
-		var liNode;
-		var textnode;
 		
-		$("#LayerList").append("<div>");
-		
-		actionElem = document.createElement("input");
+		var actionElem = document.createElement("input");
 		actionElem.type = "checkbox";
 		
-		checkElem = document.createElement("div");
+		var checkElem = document.createElement("div");
 		checkElem.className = "ui checkbox";
 		checkElem.id = "layerVis-" + i;
 		checkElem.style.cssFloat = 'left';		// For non-IE
 		checkElem.style.styleFloat = 'left';		// For IE
-		
 		checkElem.appendChild(actionElem);
 			
 		document.getElementById("LayerList").appendChild(checkElem);
 		
-		titleElem = document.createElement("div");
-		titleElem.className = "title";
-		titleElem.innerHTML = "<i class=\"dropdown icon\" style =\"float: left;\"> </i>";
-			
-		document.getElementById("LayerList").appendChild(titleElem);
+		var dropperNode = document.createElement("div");
+		dropperNode.id = "dropper"+i;
+		dropperNode.style.cssFloat = 'left';		// For non-IE
+		dropperNode.style.styleFloat = 'left';		// For IE
+		dropperNode.innerHTML = "[+] ";
+		document.getElementById("LayerList").appendChild(dropperNode);
 		
-		selectNameElem = document.createElement("div");
+		var listItemNode = document.createElement("div");
+		listItemNode.id = "clickable_layer" + i;
+		listItemNode.innerHTML += the_controller.the_map.layers[i].name;
+		document.getElementById("LayerList").appendChild(listItemNode)
 		
-		layerNameElem = document.createTextNode(the_controller.the_map.layers[i].name);
-		selectNameElem.appendChild(layerNameElem);
-		selectNameElem.id = "clickable_layer" + i;
-		
-		document.getElementById("LayerList").appendChild(selectNameElem);
-		
-		contentElem = document.createElement("div");
-		contentElem.className = "content";
-		ulElem = document.createElement("ul");
-		ulElem.id = "layer"+i;
-		contentElem.appendChild(ulElem);
-			
-		document.getElementById("LayerList").appendChild(contentElem);
-		
-		$("#LayerList").append("</div>");
+		var subItemListNode = document.createElement("ul");
+		subItemListNode.id = "sublist"+i;
+		subItemListNode.className = "sublist";
+		document.getElementById("LayerList").appendChild(subItemListNode);
 		
 		// For each layer, insert all of it's points into the list.
 		// TODO: Code to handle the other layer types
@@ -919,7 +876,7 @@ refreshLayerList = function(the_controller){
 					liNode = document.createElement("li");
 					textnode = document.createTextNode(the_controller.the_map.layers[i].points[j].name);
 					liNode.appendChild(textnode);
-					document.getElementById("layer"+i).appendChild(liNode);
+					document.getElementById("sublist"+i).appendChild(liNode);
 				}
 			case "path":
 			case "poly":
@@ -937,6 +894,9 @@ refreshLayerList = function(the_controller){
 			}
 		);
 		
+		$("#dropper" + i).click(generate_handler_dropper(i));
 		$("#clickable_layer" + i).click(generate_handler_selectLayer(i));
 	}
+	
+	$(".sublist").hide();
 }
