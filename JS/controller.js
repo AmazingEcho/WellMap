@@ -43,11 +43,7 @@ controller.prototype = {
 		console.log("loading KML");
 		this.Gmap.loadFromKML({
 			url: "http://team-avengineers.github.io/WellMap/NTS/a.kml"
-		});		
-		/*
-		this.Gmap.loadFromKML({
-			url: "http://team-avengineers.github.io/WellMap/NTS/1.kml"
-		});
+		});/*
 		this.Gmap.loadFromKML({
 			url: "http://team-avengineers.github.io/WellMap/NTS/2.kml"
 		});
