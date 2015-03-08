@@ -342,6 +342,11 @@ $('document').ready(function(){
 		the_controller.Gmap.setZoom(currentZoom - 1);
 	});
 	
+	$("#button-deleteGroups").click(function(){
+		the_controller.deleteSelectedLayers();
+		fullRefresh(the_controller);
+	});
+	
 	$('#button-refreshMap').click(function(){
 		// Note: Temporary
 		// In the final version, the map and layer list should update on just about every user action.

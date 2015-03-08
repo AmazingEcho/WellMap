@@ -165,6 +165,17 @@ controller.prototype = {
 		this.the_map.deleteLayer(index);
 	},
 	
+	deleteSelectedLayers : function(){
+		for(var i = 0; i < this.the_map.layers.length;){
+			if(this.the_map.layers[i].selected == true){
+				this.deleteLayer(i);
+			}
+			else{
+				i++;
+			}
+		}
+	},
+	
 	createNewPointLayerFromSelection : function(layerIndex){
 		
 		if(this.the_map.layers[layerIndex].layerType != "point"){
