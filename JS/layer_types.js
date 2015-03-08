@@ -62,6 +62,7 @@ function pointLayer(name){
 	Layer.call(this, name);
 	
 	this.layerType = "point";
+	this.iconType = "";
 	
 	this.points = [];
 };

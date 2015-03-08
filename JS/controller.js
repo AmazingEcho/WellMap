@@ -81,32 +81,14 @@ controller.prototype = {
 	},
 	
 	refreshMap : function(){
-		// TODO:
-		// Write a function to read through the layers, and feed data from each layer
-		// into the gmap.js functions to draw objects onto the map.
-		// console.log("Refreshing Map! " + this.the_map.layers.length + " layers to draw!");
+		//FUnction uses Dynamic Icons from Google...
+		//https://developers.google.com/chart/image/docs/gallery/dynamic_icons
 		
 		// Clear the map
 		this.Gmap.removeMarkers();
 		this.Gmap.removePolylines();
 		this.Gmap.removePolygons();
 		
-		function generate_handler_selectPoint(layerIndex, pointIndex, the_controller){
-			return function(event){
-
-				if(the_controller.the_map.layers[layerIndex].points[pointIndex].selected == false){
-					the_controller.the_map.layers[layerIndex].points[pointIndex].selected = true;
-					// console.log("Layer " + layerIndex + " Point " + pointIndex + " selected");
-				}
-				else if(the_controller.the_map.layers[layerIndex].points[pointIndex].selected == true){
-					the_controller.the_map.layers[layerIndex].points[pointIndex].selected = false;
-					// console.log("Layer " + layerIndex + " Point " + pointIndex + " unselected");
-				}
-				
-				the_controller.refreshMap();
-			};
-		}
-
 		for(var i = 0; i < this.the_map.layers.length; i++){
 			// Skip over non-visible objects
 			if(this.the_map.layers[i].visible == true){
@@ -119,14 +101,11 @@ controller.prototype = {
 							lat: this.the_map.layers[i].points[j].getLat(),
 							lng: this.the_map.layers[i].points[j].getLong(),
 							title: this.the_map.layers[i].points[j].name,
-							icon: "markers/icon1" + (this.the_map.layers[i].points[j].selected == true ? "s" : "") + ".png",
-							/*
-							infoWindow: {
-								content: "<p>Name: " + this.the_map.layers[i].points[j].name + "<br>" +
-									"Lat: " + this.the_map.layers[i].points[j].getLat() + "<br>" +
-									"Long: " + this.the_map.layers[i].points[j].getLong() + "</p>"
-								},
-							*/
+							// icon: "markers/icon1" + (this.the_map.layers[i].points[j].selected == true ? "s" : "") + ".png",
+							icon: (this.the_map.layers[i].points[j].selected == false ?
+								"https://chart.googleapis.com/chart?chst=d_map_pin_letter&chld=A|FF0000|FF0000" :
+								"https://chart.googleapis.com/chart?chst=d_map_xpin_letter&chld=pin_star|A|FF0000|FF0000|FFD700"
+							),
 							click: generate_handler_selectPoint(i, j, this)
 						});
 					}
@@ -525,6 +504,22 @@ MISC Functions
 function hexCheck(sNum){
 	return /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i.test(sNum);
 }
+
+function generate_handler_selectPoint(layerIndex, pointIndex, the_controller){
+	return function(event){
+
+		if(the_controller.the_map.layers[layerIndex].points[pointIndex].selected == false){
+			the_controller.the_map.layers[layerIndex].points[pointIndex].selected = true;
+			// console.log("Layer " + layerIndex + " Point " + pointIndex + " selected");
+		}
+		else if(the_controller.the_map.layers[layerIndex].points[pointIndex].selected == true){
+			the_controller.the_map.layers[layerIndex].points[pointIndex].selected = false;
+			// console.log("Layer " + layerIndex + " Point " + pointIndex + " unselected");
+		}
+
+		the_controller.refreshMap();
+	};
+};
 
 // JSON Functions
 // Thanks to this thread:
