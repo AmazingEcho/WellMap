@@ -423,7 +423,7 @@ $('document').ready(function(){
 				var arr = fixdata(data);
 				wb = X.read(btoa(arr), {type: 'base64'});
 				console.log(wb+"x.read works");
-				process_wb(wb);
+				process_wb(name,wb);
 			};
 			reader.readAsArrayBuffer(f);
 			console.log("Read f in array buffer" + f);
@@ -438,7 +438,7 @@ $('document').ready(function(){
 		return o;
 	}
 	
-	function process_wb(wb) {
+	function process_wb(name, wb) {
 		console.log("process_wb activated");
 		var output = "";
 		var jsondata = to_json(wb);
@@ -457,12 +457,12 @@ $('document').ready(function(){
 		}
 		
 					
-		addPointsToMap(returnedData);
+		addPointsToMap(name,returnedData);
 		//returnedData is your map points boo
 		//from here, add map points to map
 	}
 	
-	function addPointsToMap(points)
+	function addPointsToMap(name,points)
 	{
 		for(var j = 0; j < points.length; j++){
 			for (var i = 0; i < points[j].length; i++)
@@ -475,6 +475,13 @@ $('document').ready(function(){
 							//icon: "markers/icon1" + (points[j][i].selected == true ? "s" : "") + ".png",
 							//click: generate_handler_selectPoint(i, j, this)
 				});
+				
+				//newPointLayer
+				the_controller.newPointLayer(name);
+				var layerIndex = the_controller.the_map.layers.length - 1;
+
+				the_controller.the_map.layers[layerIndex].addPointLatLong(points[j][i].well_name, points[j][i].type, points[j][i].lat, points[j][i].lng);
+
 			}
 		}
 	}
@@ -497,14 +504,35 @@ $('document').ready(function(){
 		//var dataToWrite = document.getElementById('inputTextToSave').value;
 		//var blob = new Blob([dataToWrite], {type: "text/plain"});
 		//var excelnewdoc = document.getElementById('excelnewdoc').value;
-		//saveAs(blob, excelnewdoc + ".txt");
 		$("#dropdown-exportexcelModalGenerate").click(function(){
-		var data = $('#txt').val();
-        if(data == '')
-            return;
-        JSONToCSVConvertor(data, excelnewdoc, true);
+		//var data = $('#txt').val();
+        //if(data == '')
+            //return;
+		//the_controller.the_map.layers[j].selected
+		var filtered = filterSelected(the_controller.the_map.layers);
+		JSONToCSVConvertor(filtered, document.getElementById('excelnewdoc').value, true);
 		});
 	});
+	
+	function filterSelected(mapLayers)
+	{
+		var filteredPoints = new Array();
+		
+		for (layers in mapLayers) {
+		
+			for (point in mapLayers[layers].points)
+			{
+				console.log(mapLayers[layers].points[point].name);
+				
+				if (mapLayers[layers].points[point].selected)
+					filteredPoints.push(mapLayers[layers].points[point]);
+			}
+			
+		}
+		
+		return filteredPoints;
+	}
+	
 	//Function for export data to excel
 	function JSONToCSVConvertor(JSONData, ReportTitle, ShowLabel) {
     //If JSONData is not an object then JSON.parse will parse the JSON string in an Object
@@ -512,38 +540,33 @@ $('document').ready(function(){
     
     var CSV = '';    
     //Set Report title in first row or line
-    
-    CSV += ReportTitle + '\r\n\n';
-
-    //This condition will generate the Label/Header
-    if (ShowLabel) {
-        var row = "";
-        
-        //This loop will extract the label from 1st index of on array
-        for (var index in arrData[0]) {
-            
-            //Now convert each value to string and comma-seprated
-            row += index + ',';
-        }
-
-        row = row.slice(0, -1);
+   	if (ShowLabel) {
+        var row = "number, well_name, type, lat, lng";
+		row = row.slice(0, -1);
         
         //append Label row with line break
         CSV += row + '\r\n';
-    }
-    
+	}
+	
+    //This condition will generate the Label/Header
     //1st loop is to extract each row
     for (var i = 0; i < arrData.length; i++) {
         var row = "";
         
-        //2nd loop will extract each column and convert it in string comma-seprated
-        for (var index in arrData[i]) {
-            row += '"' + arrData[i][index] + '",';
-        }
+		row += '"' + i + '",';
+		row += '"' + arrData[i].name + '",';
+		row += '"' + arrData[i].type + '",';
+		row += '"' + arrData[i].GMpoint.lat + '",';
+		row += '"' + arrData[i].GMpoint.long + '",';
+		
+		//IN FUTURE
+		//row += '"' + arrData[i].capacity + '",';
+		//row += '"' + arrData[i].output + '",';
+		//row += '"' + arrData[i].group + '",';
 
         row.slice(0, row.length - 1);
         
-        //add a line break after each row
+		
         CSV += row + '\r\n';
     }
 
