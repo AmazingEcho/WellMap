@@ -42,9 +42,6 @@ controller.prototype = {
 		// TODO: Actually get some KML data, and set it up on a different tab somewhere...
 		console.log("loading KML");
 		this.Gmap.loadFromKML({
-			url: "http://team-avengineers.github.io/WellMap/NTS/doc.kml"
-		});
-		this.Gmap.loadFromKML({
 			url: "http://team-avengineers.github.io/WellMap/NTS/1.kml"
 		});
 		this.Gmap.loadFromKML({
@@ -194,9 +191,6 @@ controller.prototype = {
 		this.Gmap.loadFromKML({
 			url: "http://team-avengineers.github.io/WellMap/NTS/50.kml"
 		});
-
-
-
 		console.log("loaded KML");
 	},
 
