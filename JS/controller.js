@@ -85,7 +85,7 @@ controller.prototype = {
 		});
 		this.Gmap.loadFromKML({
 			url: "http://team-avengineers.github.io/WellMap/NTS/15.kml"
-		});
+		});/*
 		this.Gmap.loadFromKML({
 			url: "http://team-avengineers.github.io/WellMap/NTS/16.kml"
 		});
@@ -100,7 +100,7 @@ controller.prototype = {
 		});
 		this.Gmap.loadFromKML({
 			url: "http://team-avengineers.github.io/WellMap/NTS/20.kml"
-		});/*
+		});
 		this.Gmap.loadFromKML({
 			url: "http://team-avengineers.github.io/WellMap/NTS/21.kml"
 		});
