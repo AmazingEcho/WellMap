@@ -522,17 +522,16 @@ $("#inputNameField").each(function ()
 	//Export data to an excel sheet
 	$("#dropdown-exportexcelButton").click(function(){
 		$("#dropdown-exportexcelModal").modal('show');
-		
 		//Input data needs to be linked to selected wells!!
 		//var dataToWrite = document.getElementById('inputTextToSave').value;
 		//var blob = new Blob([dataToWrite], {type: "text/plain"});
 		//var excelnewdoc = document.getElementById('excelnewdoc').value;
 		//saveAs(blob, excelnewdoc + ".txt");
 		$("#dropdown-exportexcelModalGenerate").click(function(){
-			var data = $('#txt').val();
-			if(data == '')
-				return;
-			JSONToCSVConvertor(data, excelnewdoc, true);
+		var data = $('#txt').val();
+        if(data == '')
+            return;
+        JSONToCSVConvertor(data, excelnewdoc, true);
 		});
 	});
 	//Function for export data to excel
@@ -917,11 +916,10 @@ refreshLayerList = function(the_controller){
 		switch(the_controller.the_map.layers[i].layerType){
 			case "point":
 				for(var j = 0; j < the_controller.the_map.layers[i].points.length; j++){
-					//liNode = document.createElement("li");
-					//textnode = document.createTextNode(the_controller.the_map.layers[i].points[j].name);
-					//liNode.appendChild(textnode);
-					//document.getElementById("layer"+i).appendChild(liNode);
-					//document.getElementById("LayerList").appendChild(liNode);
+					liNode = document.createElement("li");
+					textnode = document.createTextNode(the_controller.the_map.layers[i].points[j].name);
+					liNode.appendChild(textnode);
+					document.getElementById("layer"+i).appendChild(liNode);
 				}
 			case "path":
 			case "poly":
