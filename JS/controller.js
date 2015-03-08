@@ -74,7 +74,128 @@ controller.prototype = {
 		this.Gmap.loadFromKML({
 			url: "http://team-avengineers.github.io/WellMap/NTS/10.kml"
 		});
-		
+		this.Gmap.loadFromKML({
+			url: "http://team-avengineers.github.io/WellMap/NTS/11.kml"
+		});
+		this.Gmap.loadFromKML({
+			url: "http://team-avengineers.github.io/WellMap/NTS/12.kml"
+		});
+		this.Gmap.loadFromKML({
+			url: "http://team-avengineers.github.io/WellMap/NTS/13.kml"
+		});
+		this.Gmap.loadFromKML({
+			url: "http://team-avengineers.github.io/WellMap/NTS/14.kml"
+		});
+		this.Gmap.loadFromKML({
+			url: "http://team-avengineers.github.io/WellMap/NTS/15.kml"
+		});
+		this.Gmap.loadFromKML({
+			url: "http://team-avengineers.github.io/WellMap/NTS/16.kml"
+		});
+		this.Gmap.loadFromKML({
+			url: "http://team-avengineers.github.io/WellMap/NTS/17.kml"
+		});
+		this.Gmap.loadFromKML({
+			url: "http://team-avengineers.github.io/WellMap/NTS/18.kml"
+		});
+		this.Gmap.loadFromKML({
+			url: "http://team-avengineers.github.io/WellMap/NTS/19.kml"
+		});
+		this.Gmap.loadFromKML({
+			url: "http://team-avengineers.github.io/WellMap/NTS/20.kml"
+		});
+		this.Gmap.loadFromKML({
+			url: "http://team-avengineers.github.io/WellMap/NTS/21.kml"
+		});
+		this.Gmap.loadFromKML({
+			url: "http://team-avengineers.github.io/WellMap/NTS/22.kml"
+		});
+		this.Gmap.loadFromKML({
+			url: "http://team-avengineers.github.io/WellMap/NTS/23.kml"
+		});
+		this.Gmap.loadFromKML({
+			url: "http://team-avengineers.github.io/WellMap/NTS/24.kml"
+		});
+		this.Gmap.loadFromKML({
+			url: "http://team-avengineers.github.io/WellMap/NTS/25.kml"
+		});
+		this.Gmap.loadFromKML({
+			url: "http://team-avengineers.github.io/WellMap/NTS/26.kml"
+		});
+		this.Gmap.loadFromKML({
+			url: "http://team-avengineers.github.io/WellMap/NTS/27.kml"
+		});
+		this.Gmap.loadFromKML({
+			url: "http://team-avengineers.github.io/WellMap/NTS/28.kml"
+		});
+		this.Gmap.loadFromKML({
+			url: "http://team-avengineers.github.io/WellMap/NTS/29.kml"
+		});
+		this.Gmap.loadFromKML({
+			url: "http://team-avengineers.github.io/WellMap/NTS/30.kml"
+		});
+		this.Gmap.loadFromKML({
+			url: "http://team-avengineers.github.io/WellMap/NTS/31.kml"
+		});
+		this.Gmap.loadFromKML({
+			url: "http://team-avengineers.github.io/WellMap/NTS/32.kml"
+		});
+		this.Gmap.loadFromKML({
+			url: "http://team-avengineers.github.io/WellMap/NTS/33.kml"
+		});
+		this.Gmap.loadFromKML({
+			url: "http://team-avengineers.github.io/WellMap/NTS/34.kml"
+		});
+		this.Gmap.loadFromKML({
+			url: "http://team-avengineers.github.io/WellMap/NTS/35.kml"
+		});
+		this.Gmap.loadFromKML({
+			url: "http://team-avengineers.github.io/WellMap/NTS/36.kml"
+		});
+		this.Gmap.loadFromKML({
+			url: "http://team-avengineers.github.io/WellMap/NTS/37.kml"
+		});
+		this.Gmap.loadFromKML({
+			url: "http://team-avengineers.github.io/WellMap/NTS/38.kml"
+		});
+		this.Gmap.loadFromKML({
+			url: "http://team-avengineers.github.io/WellMap/NTS/39.kml"
+		});
+		this.Gmap.loadFromKML({
+			url: "http://team-avengineers.github.io/WellMap/NTS/40.kml"
+		});
+		this.Gmap.loadFromKML({
+			url: "http://team-avengineers.github.io/WellMap/NTS/41.kml"
+		});
+		this.Gmap.loadFromKML({
+			url: "http://team-avengineers.github.io/WellMap/NTS/42.kml"
+		});
+		this.Gmap.loadFromKML({
+			url: "http://team-avengineers.github.io/WellMap/NTS/43.kml"
+		});
+		this.Gmap.loadFromKML({
+			url: "http://team-avengineers.github.io/WellMap/NTS/44.kml"
+		});
+		this.Gmap.loadFromKML({
+			url: "http://team-avengineers.github.io/WellMap/NTS/45.kml"
+		});
+		this.Gmap.loadFromKML({
+			url: "http://team-avengineers.github.io/WellMap/NTS/46.kml"
+		});
+		this.Gmap.loadFromKML({
+			url: "http://team-avengineers.github.io/WellMap/NTS/47.kml"
+		});
+		this.Gmap.loadFromKML({
+			url: "http://team-avengineers.github.io/WellMap/NTS/48.kml"
+		});
+		this.Gmap.loadFromKML({
+			url: "http://team-avengineers.github.io/WellMap/NTS/49.kml"
+		});
+		this.Gmap.loadFromKML({
+			url: "http://team-avengineers.github.io/WellMap/NTS/50.kml"
+		});
+
+
 
 		console.log("loaded KML");
 	},
