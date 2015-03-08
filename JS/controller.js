@@ -48,8 +48,6 @@ controller.prototype = {
 			url: "http://team-avengineers.github.io/WellMap/NTS/1.kml"
 			url: "http://team-avengineers.github.io/WellMap/NTS/2.kml"
 			url: "http://team-avengineers.github.io/WellMap/NTS/3.kml"
-			url: "http://team-avengineers.github.io/WellMap/NTS/50.kml"
-
 		});
 
 		/*this.Gmap.loadfromKML({
