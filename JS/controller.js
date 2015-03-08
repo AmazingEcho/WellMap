@@ -265,6 +265,18 @@ controller.prototype = {
 	//	
 	//},
 	
+	selectAllLayers : function(){
+		for(var i = 0; i < this.the_map.layers.length; i++){
+			this.the_map.layers[i].selected = true;
+		}
+	},
+	
+	unselectAllLayers : function(){
+		for(var i = 0; i < this.the_map.layers.length; i++){
+			this.the_map.layers[i].selected = false;
+		}
+	},
+	
 	// Exports Data on the map as a spread sheet
 	// TODO: Write the whole function
 	exportXLS : function(){

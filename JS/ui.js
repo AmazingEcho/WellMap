@@ -253,7 +253,7 @@ $('document').ready(function(){
 	//////////////////////////////
 	// add a new list button
 	//////////////////////////////
-	$('#button-addNewList').click(function(){
+	$('#button-addNewList, #dropdown-createNewGroupsFromSelection').click(function(){
 		$('#listModal').modal({
 			closable: false,
 			onApprove: function(){
@@ -598,11 +598,11 @@ $('document').ready(function(){
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-}
+	}
 	
 	//new map button
 	$('#modal-button-newMap').click(function(){
-	window.open("http://team-avengineers.github.io/WellMap/well_map.html");
+		window.open("http://team-avengineers.github.io/WellMap/well_map.html");
 	});
 	
 	// function to implement the world (sproule) icon
@@ -651,6 +651,20 @@ $('document').ready(function(){
 	
 	$("#changeMapTypeHYB").click(function(){
 		the_controller.changeMapType(4);
+	});
+	
+	///////////////////////////////////////////////////////
+	//		Selection Menu Buttons
+	///////////////////////////////////////////////////////
+	
+	$("#dropdown-selectAllGroups").click(function(){
+		the_controller.selectAllLayers();
+		fullRefresh(the_controller);
+	});
+	
+	$("#dropdown-deselectAllGroups").click(function(){
+		the_controller.unselectAllLayers();
+		fullRefresh(the_controller);
 	});
 	
 	///////////////////////////////////////////////////////
@@ -830,14 +844,11 @@ $('document').ready(function(){
 		return function(event){
 			if(the_controller.the_map.layers[j].selected == false){
 				the_controller.the_map.layers[j].selected = true;
-				$("#clickable_layer"+j).css('font-weight', 'bold');
-				$("#clickable_layer"+j).css('color', 'red');
 			}
 			else if(the_controller.the_map.layers[j].selected == true){
 				the_controller.the_map.layers[j].selected = false;
-				$("#clickable_layer"+j).css('font-weight', 'normal');
-				$("#clickable_layer"+j).css('color', 'black');
 			}
+			refreshLayerList(the_controller);
 		}
 	};
 	
@@ -908,6 +919,15 @@ refreshLayerList = function(the_controller){
 		
 		if(the_controller.the_map.layers[i].visible == true){
 			$("#layerVis-" + i).checkbox('check');
+		}
+		
+		if(the_controller.the_map.layers[i].selected == true){
+			$("#clickable_layer"+i).css('font-weight', 'bold');
+			$("#clickable_layer"+i).css('color', 'red');
+		}
+		else if(the_controller.the_map.layers[i].selected == false){
+			$("#clickable_layer"+i).css('font-weight', 'normal');
+			$("#clickable_layer"+i).css('color', 'black');
 		}
 		
 		$("#layerVis-" + i).checkbox(
