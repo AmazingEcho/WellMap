@@ -43,6 +43,7 @@ controller.prototype = {
 		console.log("loading KML");
 		this.Gmap.loadFromKML({
 			url: "http://team-avengineers.github.io/WellMap/NTS/doc.kml"
+		//	url: "http//team-avengineers.github.io/WellMap/NTS/CALGIS.ATS_SECTIONS.kmz"
 		});
 		/*this.Gmap.loadfromKML({
 			url: "http://clss.nrcan.gc.ca/data-donnees/kml/Canada%20Lands.kmz"
