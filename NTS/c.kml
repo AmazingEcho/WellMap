@@ -3,11 +3,11 @@
   <Document>
     <Style id="trb2">
       <LineStyle>
-        <color>FF22F7CA</color>
+        <color>FF000000</color>
         <width>1</width>
       </LineStyle>
       <PolyStyle>
-        <color>FF5285AB</color>
+        <color>FFF7AE85</color>
         <fill>0</fill>
       </PolyStyle>
       <BalloonStyle>
