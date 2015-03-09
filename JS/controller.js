@@ -70,10 +70,10 @@ controller.prototype = {
 		});
 		this.Gmap.loadFromKML({
 			url: "http://team-avengineers.github.io/WellMap/NTS/j.kml"
-		});/*
-		this.Gmap.loadFromKML({
-			url: "http://team-avengineers.github.io/WellMap/NTS/11.kml"
 		});
+		this.Gmap.loadFromKML({
+			url: "http://team-avengineers.github.io/WellMap/NTS/24.kml"
+		});/*
 		this.Gmap.loadFromKML({
 			url: "http://team-avengineers.github.io/WellMap/NTS/12.kml"
 		});
