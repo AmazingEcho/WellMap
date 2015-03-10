@@ -857,7 +857,6 @@ $('document').ready(function(){
 			$("#sublist"+j).toggle();
 		}
 	};
-
 });// End of $('document').ready(function());
 
 // Refreshes the map AND the layer list

@@ -22,12 +22,14 @@ function controller(){
 	
 	this.databases = [];
 	this.wellGroupList = [];
-	this.clickState = 0;
+	this.clickState = 1;
+
 }
 
 controller.prototype = {
 
 	initGMaps : function(){
+		var conptr = this;
 		this.Gmap = new GMaps({
 			div: '#googleMap',
 			lat: 55.00,
@@ -35,10 +37,12 @@ controller.prototype = {
 			zoom: 5,
 			mapTypeId:google.maps.MapTypeId.TERRAIN,
 			disableDefaultUI:true
+			// Listeners:
 		});
 		
 		this.Gmap.enableKeyDragZoom({key: 'ctrl'});
-		
+
+
 		// TODO: Actually get some KML data, and set it up on a different tab somewhere...
 		console.log("loading KML");
 		this.Gmap.loadFromKML({
