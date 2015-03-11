@@ -315,6 +315,51 @@ $('document').ready(function(){
 		$("input#mapInfoDescField").val(the_controller.the_map.metadata.desc);
 	});
 	
+	$("#dropdown-editLayerProps").click(function(){
+		// 3 possible states:
+		// - No layers Selected
+		// Modal doesn't appear
+		// - One Selected
+		// Modal appears
+		// - 2 or more selected
+		// Modal appears, but you can't change names
+		
+		var selectedLayers = the_controller.selectedLayersCount();
+		
+		if(selectedLayers.length == 0){
+			console.log("No Layers Selected");
+			return;
+		}
+		
+		if(selectedLayers.length == 1){
+			var selectedLayer = selectedLayers[0];
+			$("#layerPropertiesModal")
+				.modal({
+					closable: false,
+					onApprove: function(){
+						// !!!!!!!!!!!!!!!!!!!!!!!!
+						// Check that layer name field isn't empty 
+						// !!!!!!!!!!!!!!!!!!!!!!!!
+					
+						if(($("input#layerNameField").val())){
+							the_controller.the_map.layers[selectedLayer].name = ($("input#layerNameField").val());
+							
+							fullRefresh(the_controller);
+						}
+						else{
+							// $("#NO_NAME_WARNING_LAYER_PROP").html("Ayy LMAO");
+							// Returning false prevents this modal from closing
+							return false;
+						}
+					}
+				})
+			.modal('show');
+			$("#layerPropsEdittingName").text("Now Editting " + the_controller.the_map.layers[selectedLayer].name);
+			$("input#layerNameField").val(the_controller.the_map.layers[selectedLayer].name);
+			$("#layerPropColour").val(the_controller.the_map.layers[selectedLayer].pointStyle.pointColour);
+		}
+	});
+	
 	//sort the names on the well list(s) by ascending order
 	$('#button-sortascending').click(function(){
 		the_controller.the_map.sortLayersByNameAscending();

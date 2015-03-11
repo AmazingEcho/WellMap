@@ -18,6 +18,7 @@
 <script src="JS/layer_types.js"></script>
 <script src="JS/map_objects.js"></script>
 <script src="JS/network.js"></script>
+<script type="text/javascript" src="JS/jscolor/jscolor.js"></script>
 <script src="JS/ui.js"></script>
 <script src="Excel/xls.js"></script>
 <script src="Excel/xlsx.js"></script>
@@ -43,8 +44,7 @@
 						<a class="ui dropdown item">Edit<i class="dropdown icon"></i>
 							<div class="menu">
 								<div class="item" id="dropdown-editmapinfoButton"><i class="book icon"></i>Map Info</div>
-
-
+								<div class="item" id="dropdown-editLayerProps"><i class="book icon"></i>Edit Layer Properties</div>
 							</div>
 						</a>
 						
@@ -510,7 +510,17 @@
 <div class="ui modal" id="layerPropertiesModal">
 	<div class="header">Layer Properties</div>
 	<div class="content">
-		Editting: ???
+		<p id= "layerPropsEdittingName"></p>
+		<div class="ui form">
+			<div class="field">
+				<label>Layer Name</label>
+				<input type="text" id="layerNameField">
+			</div>
+			<div class="field">
+				<label>Point Color</label>
+				<input class="color" value="66ff00" id="layerPropColour">
+			</div>
+		</div>
 	</div>
 	<div class="actions">
 		<div class="ui buttons">

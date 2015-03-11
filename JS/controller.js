@@ -210,6 +210,16 @@ controller.prototype = {
 		}
 	},
 	
+	selectedLayersCount : function(){
+		var selectedLayers = [];
+		for(var i = 0; i < this.the_map.layers.length;i++){
+			if(this.the_map.layers[i].selected == true){
+				selectedLayers.push(i);
+			}
+		}
+		return selectedLayers;
+	},
+	
 	createNewPointLayerFromSelection : function(layerIndex){
 		
 		if(this.the_map.layers[layerIndex].layerType != "point"){
