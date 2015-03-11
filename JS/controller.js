@@ -152,8 +152,14 @@ controller.prototype = {
 							title: this.the_map.layers[i].points[j].name,
 							// icon: "markers/icon1" + (this.the_map.layers[i].points[j].selected == true ? "s" : "") + ".png",
 							icon: (this.the_map.layers[i].points[j].selected == false ?
-								"https://chart.googleapis.com/chart?chst=d_map_pin_letter&chld=A|FF0000|FF0000" :
-								"https://chart.googleapis.com/chart?chst=d_map_xpin_letter&chld=pin_star|A|FF0000|FF0000|FFD700"
+								"https://chart.googleapis.com/chart?chst=d_map_pin_letter&chld=A|"
+									+ this.the_map.layers[i].pointStyle.pointColour + "|"
+									+ this.the_map.layers[i].pointStyle.textColour
+								:
+								"https://chart.googleapis.com/chart?chst=d_map_xpin_letter&chld=pin_star|A|"
+									+ this.the_map.layers[i].pointStyle.pointColour + "|"
+									+ this.the_map.layers[i].pointStyle.textColour
+									+ "|FFD700"
 							),
 							click: generate_handler_selectPoint(i, j, this)
 						});
@@ -564,6 +570,18 @@ MISC Functions
 // Uses a regex to make sure a text string is a proper hex color.
 function hexCheck(sNum){
 	return /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i.test(sNum);
+}
+
+// Generates a random colour
+// http://stackoverflow.com/questions/1484506/random-color-generator-in-javascript
+function getRandomColour(){
+	var letters = '0123456789ABCDEF'.split('');
+	// var colour = '#';
+	var colour = '';
+	for (var i = 0; i < 6; i++ ) {
+		colour += letters[Math.floor(Math.random() * 16)];
+	}
+	return colour;
 }
 
 function generate_handler_selectPoint(layerIndex, pointIndex, the_controller){

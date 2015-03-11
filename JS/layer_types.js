@@ -64,6 +64,11 @@ function pointLayer(name){
 	this.layerType = "point";
 	this.iconType = "";
 	
+	this.pointStyle = {
+		pointColour: getRandomColour(),
+		textColour: getRandomColour(),
+		pointLetter: "A"};
+	
 	this.points = [];
 };
 	
