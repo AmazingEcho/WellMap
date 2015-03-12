@@ -1,8 +1,9 @@
 // Though this could work...
 // http://stackoverflow.com/questions/17673580/google-maps-drag-rectangle-to-select-markers
 	this.mouseDownPos = 0
-	this.gribBoundingBox = null,
+	this.gridBoundingBox = null,
 	this.mouseIsDown = 0;
+	this.bounds = null;
 
 			mousemove: function(e){
 				if(conptr.mouseIsDown && (conptr.clickState == 2 || conptr.gribBoundingBox != null)){
