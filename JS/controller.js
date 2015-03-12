@@ -151,11 +151,13 @@ controller.prototype = {
 							title: this.the_map.layers[i].points[j].name,
 							// icon: "markers/icon1" + (this.the_map.layers[i].points[j].selected == true ? "s" : "") + ".png",
 							icon: (this.the_map.layers[i].points[j].selected == false ?
-								"https://chart.googleapis.com/chart?chst=d_map_pin_letter&chld=A|"
+								"https://chart.googleapis.com/chart?chst=d_map_pin_letter&chld="
+									+ this.the_map.layers[i].pointStyle.pointLetter + "|"
 									+ this.the_map.layers[i].pointStyle.pointColour + "|"
 									+ this.the_map.layers[i].pointStyle.textColour
 								:
-								"https://chart.googleapis.com/chart?chst=d_map_xpin_letter&chld=pin_star|A|"
+								"https://chart.googleapis.com/chart?chst=d_map_xpin_letter&chld=pin_star|"
+									+ this.the_map.layers[i].pointStyle.pointLetter + "|"
 									+ this.the_map.layers[i].pointStyle.pointColour + "|"
 									+ this.the_map.layers[i].pointStyle.textColour
 									+ "|FFD700"
@@ -328,6 +330,26 @@ controller.prototype = {
 	//	}
 	//	
 	//},
+	
+	selectAllPoints : function(){
+		for(var i = 0; i < this.the_map.layers.length; i++){
+			if(this.the_map.layers[i].layerType == "point"){
+				for(var j = 0; j < this.the_map.layers[i].points.length; j++){
+					this.the_map.layers[i].points[j].selected = true;
+				}
+			}
+		}
+	},
+	
+	unselectAllPoints : function(){
+		for(var i = 0; i < this.the_map.layers.length; i++){
+			if(this.the_map.layers[i].layerType == "point"){
+				for(var j = 0; j < this.the_map.layers[i].points.length; j++){
+					this.the_map.layers[i].points[j].selected = false;
+				}
+			}
+		}
+	},
 	
 	selectAllLayers : function(){
 		for(var i = 0; i < this.the_map.layers.length; i++){

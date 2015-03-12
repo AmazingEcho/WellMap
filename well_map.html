@@ -513,12 +513,20 @@
 		<p id= "layerPropsEdittingName"></p>
 		<div class="ui form">
 			<div class="field">
-				<label>Layer Name</label>
+				<label style="float: left;">Group Name</label><p class="warningText" id="NO_NAME_WARNING_LAYER_PROP">&nbsp;- Group Name cannot be blank.</p>
 				<input type="text" id="layerNameField">
+			</div>
+			<div class="field">
+				<label>Marker Letter</label>
+				<input size="1" maxlength="1" value="" id="layerPropLetter">
 			</div>
 			<div class="field">
 				<label>Point Color</label>
 				<input class="color" value="66ff00" id="layerPropColour">
+			</div>
+			<div class="field">
+				<label>Text Color</label>
+				<input class="color" value="66ff00" id="layerPropTextColour">
 			</div>
 		</div>
 	</div>

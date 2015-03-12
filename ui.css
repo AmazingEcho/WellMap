@@ -122,6 +122,10 @@ body{
 	}
 */
 
+.warningText{
+	color: #ff0000;
+}
+
 nav{
 	border: 1px solid #ccc;
 	padding: 0px;

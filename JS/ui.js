@@ -343,20 +343,25 @@ $('document').ready(function(){
 					
 						if(($("input#layerNameField").val())){
 							the_controller.the_map.layers[selectedLayer].name = ($("input#layerNameField").val());
-							
+							the_controller.the_map.layers[selectedLayer].pointStyle.pointLetter = ($("input#layerPropLetter").val());
+							the_controller.the_map.layers[selectedLayer].pointStyle.pointColour = ($("input#layerPropColour").val());
+							the_controller.the_map.layers[selectedLayer].pointStyle.textColour = ($("input#layerPropTextColour").val());
 							fullRefresh(the_controller);
 						}
 						else{
-							// $("#NO_NAME_WARNING_LAYER_PROP").html("Ayy LMAO");
+							$("#NO_NAME_WARNING_LAYER_PROP").show();
 							// Returning false prevents this modal from closing
 							return false;
 						}
 					}
 				})
 			.modal('show');
+			$("#NO_NAME_WARNING_LAYER_PROP").hide();
 			$("#layerPropsEdittingName").text("Now Editting " + the_controller.the_map.layers[selectedLayer].name);
 			$("input#layerNameField").val(the_controller.the_map.layers[selectedLayer].name);
-			$("#layerPropColour").val(the_controller.the_map.layers[selectedLayer].pointStyle.pointColour);
+			$("input#layerPropLetter").val(the_controller.the_map.layers[selectedLayer].pointStyle.pointLetter);
+			document.getElementById("layerPropColour").color.fromString(the_controller.the_map.layers[selectedLayer].pointStyle.pointColour);
+			document.getElementById("layerPropTextColour").color.fromString(the_controller.the_map.layers[selectedLayer].pointStyle.textColour);
 		}
 	});
 	
@@ -701,6 +706,16 @@ $('document').ready(function(){
 	///////////////////////////////////////////////////////
 	//		Selection Menu Buttons
 	///////////////////////////////////////////////////////
+	
+	$("#dropdown-selectAllPoints").click(function(){
+		the_controller.selectAllPoints();
+		fullRefresh(the_controller);
+	});
+	
+	$("#dropdown-deselectAllPoints").click(function(){
+		the_controller.unselectAllPoints();
+		fullRefresh(the_controller);
+	});
 	
 	$("#dropdown-selectAllGroups").click(function(){
 		the_controller.selectAllLayers();
