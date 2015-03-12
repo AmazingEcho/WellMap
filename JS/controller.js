@@ -42,7 +42,6 @@ controller.prototype = {
 		
 		this.Gmap.enableKeyDragZoom({key: 'ctrl'});
 
-
 		// TODO: Actually get some KML data, and set it up on a different tab somewhere...
 		console.log("loading KML");
 		this.Gmap.loadFromKML({
