@@ -43,7 +43,7 @@ controller.prototype = {
 			click: function(e){
 				if(conptr.clickState == 2){
 					conptr.clickState = 3;
-					console.log("Start at " + e.latLng.lat() + " and " + e.latLng.lng());
+					//console.log("Start at " + e.latLng.lat() + " and " + e.latLng.lng());
 					conptr.boxStartLat = e.latLng.lat();
 					conptr.boxStartLng = e.latLng.lng();
 				}

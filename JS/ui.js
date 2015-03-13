@@ -944,6 +944,11 @@ refreshLayerList = function(the_controller){
 			
 		document.getElementById("LayerList").appendChild(checkElem);
 		
+		var layerColourNode = document.createElement("div");
+		layerColourNode.className = "layerColour";
+		layerColourNode.style.backgroundColor = "#" + the_controller.the_map.layers[i].pointStyle.pointColour;
+		document.getElementById("LayerList").appendChild(layerColourNode);
+		
 		var dropperNode = document.createElement("div");
 		dropperNode.id = "dropper"+i;
 		dropperNode.style.cssFloat = 'left';		// For non-IE
