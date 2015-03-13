@@ -23,6 +23,7 @@ function controller(){
 	this.databases = [];
 	this.wellGroupList = [];
 	this.clickState = 1;
+	this.selectBoxPath = [];
 
 }
 
@@ -36,8 +37,47 @@ controller.prototype = {
 			lng: -115.00,
 			zoom: 5,
 			mapTypeId:google.maps.MapTypeId.TERRAIN,
-			disableDefaultUI:true
+			disableDefaultUI:true,
 			// Listeners:
+			
+			click: function(e){
+				if(conptr.clickState == 2){
+					conptr.clickState = 3;
+					console.log("Start at " + e.latLng.lat() + " and " + e.latLng.lng());
+					conptr.boxStartLat = e.latLng.lat();
+					conptr.boxStartLng = e.latLng.lng();
+				}
+			},
+			
+			mousemove: function(e){
+				if(conptr.clickState == 3){
+					conptr.Gmap.removePolylines();
+					//console.log("Now at " + e.latLng.lat() + " and " + e.latLng.lng());
+					conptr.boxEndLat = e.latLng.lat();
+					conptr.boxEndLng = e.latLng.lng()
+					conptr.selectBoxPath = [
+						[conptr.boxStartLat,	conptr.boxStartLng],
+						[conptr.boxStartLat,	conptr.boxEndLng],
+						[conptr.boxEndLat,	conptr.boxEndLng],
+						[conptr.boxEndLat,	conptr.boxStartLng],
+						[conptr.boxStartLat,	conptr.boxStartLng]
+					];
+					conptr.Gmap.drawPolyline({
+						path: conptr.selectBoxPath,
+						strokeColor: "#131570",
+						strokeOpacity: 0.8,
+						strokeWeight: 2,
+						click: function(){
+							conptr.clickState = 2;
+							conptr.Gmap.removePolylines();
+							//console.log("End at " + e.latLng.lat() + " and " + e.latLng.lng());
+							conptr.selectPointsByArea(conptr.boxStartLat, conptr.boxStartLng, conptr.boxEndLat, conptr.boxEndLng);
+							fullRefresh(conptr);
+						}
+					});
+				}
+			}
+			
 		});
 		
 		this.Gmap.enableKeyDragZoom({key: 'ctrl'});
@@ -126,6 +166,12 @@ controller.prototype = {
 	
 	changeClickState : function(newState){
 		this.clickState = newState;
+		if(this.clickState == 2){
+			this.Gmap.setOptions({draggable:false});
+		}
+		if(this.clickState == 1){
+			this.Gmap.setOptions({draggable:true});
+		}
 	},
 	
 	refreshMap : function(){
@@ -219,6 +265,14 @@ controller.prototype = {
 			}
 		}
 		return selectedLayers;
+	},
+	
+	selectPointsByArea : function(lat1, long1, lat2, long2){
+		for(var i = 0; i < this.the_map.layers.length; i++){
+			if(this.the_map.layers[i].layerType == "point" && this.the_map.layers[i].visible){
+				this.the_map.layers[i].selectPointsByArea(lat1, long1, lat2, long2);
+			}
+		}
 	},
 	
 	createNewPointLayerFromSelection : function(layerIndex){
