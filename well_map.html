@@ -579,20 +579,20 @@
 		</div>
 	</div>
 </div>
-<!--	-->
-<!-- Chart/Graph Modal	-->
-<!-- For displaying charts and graphs-->
-<!--	*maybe make it 'fullscreen' instead of 'large'...? -->
-<!--	-->
-<div class="ui modal large" id="graphsModal" style="background-color:#CCC; color:#000">
-	<div class="header">Graph Viewer</div>
+<!-- Delete Group Modal -->
+<div class="ui small modal" id="deleteGroupConfirmModal">
+	<div class="header">Confirm</div>
 	<div class="content">
-
-		<canvas id="modalChart" width="800" height="400"></canvas>
-		
+		<div class="description">
+		<p>Are you sure you want to delete the selected groups?</p>
+		</div>
 	</div>
 	<div class="actions">
-		<div class="ui button">Exit</div>
+		<div class="ui buttons">
+			<div class="ui button negative" id="loadMapModalCancel">Cancel</div>
+			<div class="or"></div>
+			<div class="ui button positive" id="loadMapModalLoad">Delete</div>
+		</div>
 	</div>
 </div>
 

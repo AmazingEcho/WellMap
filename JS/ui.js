@@ -393,8 +393,16 @@ $('document').ready(function(){
 	});
 	
 	$("#button-deleteGroups").click(function(){
-		the_controller.deleteSelectedLayers();
-		fullRefresh(the_controller);
+		if(the_controller.selectedLayersCount().length > 0){
+			$("#deleteGroupConfirmModal").modal({
+				closable: false,
+				onApprove: function(){
+					the_controller.deleteSelectedLayers();
+					fullRefresh(the_controller);
+				}
+			})
+			.modal("show");
+		}
 	});
 	
 	$('#button-refreshMap').click(function(){
