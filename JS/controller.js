@@ -267,6 +267,19 @@ controller.prototype = {
 		return selectedLayers;
 	},
 	
+	selectedWells : function(){
+		for(var i = 0; i < this.the_map.layers.length; i++){
+			if(this.the_map.layers[i].layerType == "point"){
+				for(var j = 0; j < this.the_map.layers[i].points.length; j++){
+					if(this.the_map.layers[i].points[j].selected == true){
+						return true;
+					}
+				}
+			}
+		}
+		return false;
+	},
+	
 	selectPointsByArea : function(lat1, long1, lat2, long2){
 		for(var i = 0; i < this.the_map.layers.length; i++){
 			if(this.the_map.layers[i].layerType == "point" && this.the_map.layers[i].visible){
@@ -414,6 +427,21 @@ controller.prototype = {
 	unselectAllLayers : function(){
 		for(var i = 0; i < this.the_map.layers.length; i++){
 			this.the_map.layers[i].selected = false;
+		}
+	},
+	
+	deleteSelectedWells : function(){
+		for(var i = 0; i < this.the_map.layers.length; i++){
+			if(this.the_map.layers[i].layerType == "point"){
+				for(var j = 0; j < this.the_map.layers[i].points.length;){
+					if(this.the_map.layers[i].points[j].selected == true){
+						this.the_map.layers[i].points.splice(j,1);
+					}
+					else{
+						j++;
+					}
+				}
+			}
 		}
 	},
 	

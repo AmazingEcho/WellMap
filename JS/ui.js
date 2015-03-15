@@ -405,6 +405,19 @@ $('document').ready(function(){
 		}
 	});
 	
+	$("#button-deleteWells").click(function(){
+		if(the_controller.selectedWells()){
+			$("#deleteWellsConfirmModal").modal({
+				closable: false,
+				onApprove: function(){
+					the_controller.deleteSelectedWells();
+					fullRefresh(the_controller);
+				}
+			})
+			.modal("show");
+		}
+	});
+	
 	$('#button-refreshMap').click(function(){
 		// Note: Temporary
 		// In the final version, the map and layer list should update on just about every user action.
