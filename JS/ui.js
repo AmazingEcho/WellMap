@@ -254,17 +254,25 @@ $('document').ready(function(){
 	// add a new list button
 	//////////////////////////////
 	$('#button-addNewList, #dropdown-createNewGroupsFromSelection').click(function(){
-		$('#listModal').modal({
-			closable: false,
-			onApprove: function(){
-				// should take the name inputed from the keyboard and and display to the screen
-				var title = document.getElementById("inputNameField")
-				the_controller.createNewPointLayerFromSelectionAllLayers(title.value);
-				fullRefresh(the_controller);
-				},
-			}
-		)
-		.modal('show');
+		// Check that there are wells currently selected
+		if(the_controller.selectedWells()){
+			$('#listModal').modal({
+				closable: false,
+				onApprove: function(){
+					// should take the name inputed from the keyboard and and display to the screen
+					var title = document.getElementById("inputNameField")
+					the_controller.createNewPointLayerFromSelectionAllLayers(title.value);
+					fullRefresh(the_controller);
+					},
+				}
+			)
+			.modal('show');
+		}
+		// If there are no selected wells, 
+		else{
+			console.log("Popup GO!");
+			$("#modal-noWellsSelected").modal("show");
+		}
 	});
 
 	$('#modal-button-copywelldata').click(function(){
