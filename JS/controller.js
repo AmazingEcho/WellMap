@@ -84,7 +84,6 @@ controller.prototype = {
 
 		// TODO: Actually get some KML data, and set it up on a different tab somewhere...
 		console.log("loading KML");
-<<<<<<< HEAD
 		
 		/*
 		var KML = [];
@@ -97,8 +96,7 @@ controller.prototype = {
 		};
 
 		*/
-=======
->>>>>>> parent of a870d2e... Working on KML Layer ON/OFF
+
 		this.Gmap.loadFromKML({
 			url: "http://team-avengineers.github.io/WellMap/NTS/a.kml"
 		});
@@ -150,10 +148,6 @@ controller.prototype = {
 		this.Gmap.loadFromKML({
 			url: "http://team-avengineers.github.io/WellMap/NTS/q.kml"
 		});
-<<<<<<< HEAD
-		
-=======
->>>>>>> parent of a870d2e... Working on KML Layer ON/OFF
 		console.log("loaded KML");
 	},
 
