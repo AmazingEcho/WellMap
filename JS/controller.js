@@ -84,15 +84,18 @@ controller.prototype = {
 
 		// TODO: Actually get some KML data, and set it up on a different tab somewhere...
 		console.log("loading KML");
-		var KML = [];
 		
-		for(var k = 1; k < 19; k++){
-			KML[k-1] = this.Gmap.loadFromKML({
-				url: "http://team-avengineers.github.io/WellMap/NTS/" + k + ".kml"
+		/*
+		var KML = [];
+		var the_url;
+		for(var k = 0; k < 19; k++){
+			the_url = "http://team-avengineers.github.io/WellMap/NTS/" + (k+1) + ".kml";
+			this.Gmap.loadFromKML({
+				url: the_url
 			})
 		};
 
-		/*
+		*/
 		this.Gmap.loadFromKML({
 			url: "http://team-avengineers.github.io/WellMap/NTS/a.kml"
 		});
@@ -144,7 +147,7 @@ controller.prototype = {
 		this.Gmap.loadFromKML({
 			url: "http://team-avengineers.github.io/WellMap/NTS/q.kml"
 		});
-		*/
+		
 		console.log("loaded KML");
 	},
 
