@@ -445,9 +445,15 @@ $('document').ready(function(){
 	});
 	
 	$("#button-selectByArea").click(function(){
-		the_controller.changeClickState(2);
-		$("#button-selectByArea").toggleClass("blue", true);
-		$("#button-selectByClick").toggleClass("blue", false);
+		if(the_controller.clickState == 1){
+			the_controller.changeClickState(2);
+			$("#button-selectByArea").toggleClass("blue", true);
+		}
+		
+		else{
+			the_controller.changeClickState(1);
+			$("#button-selectByArea").toggleClass("blue", false);
+		}
 	});
 
 	$("#importWellsFromDatabaseButton").click(function(){
@@ -711,6 +717,10 @@ $('document').ready(function(){
 	///////////////////////////////////////////////////////
 	//		Toolbar Buttons
 	///////////////////////////////////////////////////////
+	
+	$("#dropdown-wellDataTable").click(function(){
+		$("#modal-wellList").modal("show");
+	});
 	
 	///////////////////////////////////////////////////////
 	//		Change Map Display Type Buttons

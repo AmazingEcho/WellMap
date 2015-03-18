@@ -60,9 +60,7 @@
 						
 						<a class="ui dropdown item">View<i class="dropdown icon"></i>
 							<div class="menu">
-								<div class="item"><i class="table icon"></i>View Data</div>
-							
-								<!--<div class="item" id="dropdown-graphsViewer"><i class="bar chart icon"></i>Graphs</div>-->
+								<div class="item" id="dropdown-wellDataTable"><i class="table icon"></i>View Data</div>
 								<div class="item">Display Type<i class="angle right icon"></i>
 									<div class="menu">
 										<div class="item" id="changeMapTypeSAT"><i class="world icon"></i>Satelite</div>
@@ -141,7 +139,6 @@
 				<div class=" icon ui buttons">
 					<!-- button created to add new list  -->
 					<div class="ui button" data-content= "Add New List" data-position = "bottom left" id = "button-addNewList"> <i class = "add circle icon"> </i></div>
-					<div class="ui button activated" data-content="Select" data-position="bottom left" id="button-selectByClick"><i class="selected radio icon"></i></div>
 					<div class="ui button" data-content="Select By Area" data-position="bottom left" id="button-selectByArea"><i class="crop icon"></i></div>
 				</div>
 				<div class=" icon ui buttons">
@@ -614,6 +611,42 @@
 			<div class="or"></div>
 			<div class="ui button positive" id="loadMapModalLoad">Delete</div>
 		</div>
+	</div>
+</div>
+
+<div class="ui fullscreen modal" id="modal-wellList">
+	<div class="header">
+		Well Data
+	</div>
+	<div class="content">
+	<p>Do something with this later</p>
+		<table class="ui table">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Owner</th>
+					<th>Group</th>
+					<th>Lat</th>
+					<th>Long</th>
+					<th>Output</th>
+					<th>Capacity</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Well</td>
+					<td>Suncor</td>
+					<td>Long Lake</td>
+					<td>123.12</td>
+					<td>56.13</td>
+					<td>6545</td>
+					<td>65324</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="actions">
+		<div class="ui button">Close</div>
 	</div>
 </div>
 
