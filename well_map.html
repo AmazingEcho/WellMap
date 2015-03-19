@@ -19,9 +19,10 @@
 <script src="JS/map_objects.js"></script>
 <script src="JS/network.js"></script>
 <script type="text/javascript" src="JS/jscolor/jscolor.js"></script>
-<script src="JS/ui.js"></script>
 <script src="Excel/xls.js"></script>
 <script src="Excel/xlsx.js"></script>
+<script src="JS/lists.js"></script>
+<script src="JS/ui.js"></script>
 
 </head>
 <body>
@@ -619,8 +620,7 @@
 		Well Data
 	</div>
 	<div class="content">
-	<p>Do something with this later</p>
-		<table class="ui table">
+		<table class="ui table scroll">
 			<thead>
 				<tr>
 					<th>Name</th>
@@ -632,16 +632,7 @@
 					<th>Capacity</th>
 				</tr>
 			</thead>
-			<tbody>
-				<tr>
-					<td>Well</td>
-					<td>Suncor</td>
-					<td>Long Lake</td>
-					<td>123.12</td>
-					<td>56.13</td>
-					<td>6545</td>
-					<td>65324</td>
-				</tr>
+			<tbody id="wellList">
 			</tbody>
 		</table>
 	</div>

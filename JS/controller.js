@@ -522,10 +522,14 @@ controller.prototype = {
 			var randLat = (Math.random() * 11.0) + 49.0; //  call math.random functon to generate random latitudes
 			var randLong = -((Math.random() * 10.0) + 110.0); // call math.random functon to  generate random longitudes
 			var randCap= (Math.random() *100) + (Math.random() * 50); // call math.random function to generate random capacity
+			var randOut= (Math.random() *100) + (Math.random() * 50);
 			// show points in the map 
 			this.the_map.layers[layerIndex].addPointLatLong("Lat: " + (randLat).toFixed(1) + "\n" + "Long: " + (randLong).toFixed(1), "Random Point", randLat, randLong);
+			
+			this.the_map.layers[layerIndex].points[this.the_map.layers[layerIndex].points.length - 1].wellData = {wellCapacity: randCap, wellOutput: randOut};
 		}
 		console.log("Random Points Generated - Total: " + numPoints); // I DON'T EXACTLY KNOW WHAT THIS DOES YET FIGURE OUT LATER
+		// It prints a message to the console
 	},
 	
 	// add a list name
@@ -533,6 +537,7 @@ controller.prototype = {
 	{
 		this.newPointLayer(names); // create a title for the list
 	},
+	
 	addDatabaseConnectionPHP : function(dbObjParams){
 		// NOTE: When implementing this function into the application, make sure dbObjParams is an object that contains:
 		// a name
