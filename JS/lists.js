@@ -1,11 +1,13 @@
 // Refreshes the map AND the layer list
 fullRefresh = function(conPTR){
-	console.log("Refreshing");
+	//console.log("Refreshing");
 	conPTR.refreshMap();
 	refreshLayerList(conPTR);
 };
 
 refreshLayerList = function(the_controller){
+	
+	// Clear the layer list
 	document.getElementById("LayerList").innerHTML = "";
 	
 	// Go through the list of layers and create 'nodes' containing the appropriate tags.
@@ -130,4 +132,5 @@ tableWellList = function(conptr){
 					
 		}
 	}
+	$("#wellTableWHOLE").trigger("update");
 }
