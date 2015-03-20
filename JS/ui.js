@@ -720,7 +720,9 @@ $('document').ready(function(){
 	
 	$("#dropdown-wellDataTable").click(function(){
 		tableWellList(the_controller);
+		$("#wellTableWHOLE").tablesorter();
 		$("#modal-wellList").modal("show");
+		
 	});
 	
 	///////////////////////////////////////////////////////
