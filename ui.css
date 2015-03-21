@@ -147,7 +147,7 @@ nav{
     text-align: center;
     float:left;
 }
-
+/*
 table.tablesorter {
 	font-family:arial;
 	background-color: #CDCDCD;
@@ -158,7 +158,7 @@ table.tablesorter {
 }
 table.tablesorter thead tr th, table.tablesorter tfoot tr th {
 	background-color: #e6EEEE;
-	border: 1px solid #FFF;
+	border: 1px solid #000;
 	font-size: 8pt;
 	padding: 4px;
 }
@@ -169,7 +169,8 @@ table.tablesorter thead tr .header {
 	cursor: pointer;
 }
 table.tablesorter tbody td {
-	color: #3D3D3D;
+	color: #000000;
+	border: 1px solid #000;
 	padding: 4px;
 	background-color: #FFF;
 	vertical-align: top;
@@ -184,5 +185,34 @@ table.tablesorter thead tr .headerSortDown {
 	background-image: url(images/desc.gif);
 }
 table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
-background-color: #8dbdd8;
+	background-color: #8dbdd8;
+}
+*/
+/* !!!!!!!!!!!!!!!! */
+
+/* http://jsfiddle.net/TweNm/ */
+
+#table-wrapper {
+  position:relative;
+}
+#table-scroll {
+  height:400px;
+  overflow:auto;  
+  margin-top:20px;
+}
+#table-wrapper table {
+  width:80%;
+    
+}
+#table-wrapper table * {
+  background: #ffffff;
+  color:black;
+}
+#table-wrapper table thead th .text {
+  position:absolute;   
+  top:-20px;
+  z-index:2;
+  height:20px;
+  width:35%;
+  border:1px solid #000000;
 }

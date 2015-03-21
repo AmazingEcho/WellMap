@@ -105,7 +105,7 @@ tableWellList = function(conptr){
 		rowNode.appendChild(nameNode);
 		
 		var ownNode = document.createElement("td");
-		ownNode.innerHTML = "";
+		ownNode.innerHTML = "???";
 		rowNode.appendChild(ownNode);
 		
 		var groupNode = document.createElement("td");
