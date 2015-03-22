@@ -677,8 +677,29 @@ controller.prototype = {
 		// NOTE: Read up on some of this later
 		// http://www.w3schools.com/aspnet/webpages_examples.asp
 		
-	}
+	},
 	
+	prepareTableList : function(mode){
+		var tableData = [];
+		
+		for(var i = 0; i < this.the_map.layers.length; i++){
+			if(this.the_map.layers[i].layerType == "point"){
+				for(var j = 0; j < this.the_map.layers[i].points.length; j++){
+					tableData.push(
+						[	this.the_map.layers[i].points[j].name,
+							"EMPTY",
+							this.the_map.layers[i].name,
+							this.the_map.layers[i].points[j].getLat(),
+							this.the_map.layers[i].points[j].getLong(),
+							this.the_map.layers[i].points[j].wellData.wellCapacity,
+							this.the_map.layers[i].points[j].wellData.wellOutput
+						]
+					);
+				}
+			}
+		}
+		return tableData;
+	}
 };
 
 /*

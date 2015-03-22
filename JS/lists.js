@@ -134,3 +134,4 @@ tableWellList = function(conptr){
 	}
 	$("#wellTableWHOLE").trigger("update");
 }
+

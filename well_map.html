@@ -4,6 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <!-- <link href="jquery-ui.min.css" rel="stylesheet" /> -->
 <link rel="stylesheet" type="text/css" href="semantic/semantic.min.css" />
+<link rel="stylesheet" type="text/css" href="CSS/dataTables.css" />
 <link type="text/css" rel="stylesheet" href="ui.css" />
 <title>Well Map</title>
 <script src="external/jquery/jquery.js"></script>
@@ -22,6 +23,7 @@
 <script src="Excel/xls.js"></script>
 <script src="Excel/xlsx.js"></script>
 <script src="JS/lists.js"></script>
+<script src="JS/dataTables.js"></script>
 <script src="JS/tablesorter.js"></script>
 <script src="JS/ui.js"></script>
 
@@ -621,25 +623,21 @@
 		Well Data
 	</div>
 	<div class="content">
-		<div id="table-wrapper">
-			<div id="table-scroll">
-				<table class="tablesorter" id="wellTableWHOLE">
-					<thead>
-						<tr>
-							<th><span class="text">Name</span></th>
-							<th><span class="text">Owner</span></th>
-							<th><span class="text">Group</span></th>
-							<th><span class="text">Lat</span></th>
-							<th><span class="text">Long</span></th>
-							<th><span class="text">Output</span></th>
-							<th><span class="text">Capacity</span></th>
-						</tr>
-					</thead>
-					<tbody id="wellList">
-					</tbody>
-				</table>
-			</div>
-		</div>
+		<table  id="wellTableWHOLE" class="cell-border">
+			<thead>
+				<tr>
+					<th><span class="text">Name</span></th>
+					<th><span class="text">Owner</span></th>
+					<th><span class="text">Group</span></th>
+					<th><span class="text">Lat</span></th>
+					<th><span class="text">Long</span></th>
+					<th><span class="text">Output</span></th>
+					<th><span class="text">Capacity</span></th>
+				</tr>
+			</thead>
+			<tbody id="wellList">
+			</tbody>
+		</table>
 	</div>
 	<div class="actions">
 		<div class="ui button">Close</div>

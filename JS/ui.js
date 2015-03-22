@@ -40,6 +40,13 @@ $('document').ready(function(){
 		
 	the_controller.addDatabaseConnectionPHP(tossDB);
 	
+	var dataTable = $("#wellTableWHOLE").DataTable({
+		scrollY: "300px",
+		dom: "frtiS",
+		deferRender: true,
+		paging: false
+	});
+	
 	////////////////////////////////////////////////////////////
 	// Special Semantic Object Class Initializers
 	////////////////////////////////////////////////////////////
@@ -719,10 +726,17 @@ $('document').ready(function(){
 	///////////////////////////////////////////////////////
 	
 	$("#dropdown-wellDataTable").click(function(){
-		tableWellList(the_controller);
+		//tableWellList(the_controller);
+		var tableData = the_controller.prepareTableList(0);
+
+		//data: tableData,
+		
+		dataTable.clear();
+		dataTable.rows.add(tableData).draw();
+		
 		$("#modal-wellList").modal("show");
 	});
-	$("#wellTableWHOLE").tablesorter();
+	//$("#wellTableWHOLE").tablesorter();
 	
 	///////////////////////////////////////////////////////
 	//		Change Map Display Type Buttons
