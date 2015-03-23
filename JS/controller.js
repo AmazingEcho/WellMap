@@ -526,7 +526,7 @@ controller.prototype = {
 			// show points in the map 
 			this.the_map.layers[layerIndex].addPointLatLong("Lat: " + (randLat).toFixed(1) + "\n" + "Long: " + (randLong).toFixed(1), "Random Point", randLat, randLong);
 			
-			this.the_map.layers[layerIndex].points[this.the_map.layers[layerIndex].points.length - 1].wellData = {wellCapacity: randCap, wellOutput: randOut};
+			this.the_map.layers[layerIndex].points[this.the_map.layers[layerIndex].points.length - 1].wellData = {wellCapacity: randCap, wellOutput: randOut, owner: "Random"};
 		}
 		console.log("Random Points Generated - Total: " + numPoints); // I DON'T EXACTLY KNOW WHAT THIS DOES YET FIGURE OUT LATER
 		// It prints a message to the console
@@ -640,8 +640,9 @@ controller.prototype = {
 						$(this).attr("lng")
 					);
 					conPTR.the_map.layers[layerIndex].points[pointIndex].wellData = {
-						wellCapacity : $(this).attr("wellCapacity"),
-						wellOutput   : $(this).attr("wellOutput")
+						wellCapacity	: $(this).attr("wellCapacity"),
+						wellOutput		: $(this).attr("wellOutput"),
+						owner				: "Fix this later"
 					};
 					//console.log("Added well with " + conPTR.the_map.layers[layerIndex].points[pointIndex].wellData.wellCapacity);
 					pointIndex++;
@@ -679,6 +680,7 @@ controller.prototype = {
 		
 	},
 	
+	// Prepares a list of wells for the DataTable in the chart model
 	prepareTableList : function(mode){
 		var tableData = [];
 		

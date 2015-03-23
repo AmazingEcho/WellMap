@@ -718,7 +718,15 @@ $('document').ready(function(){
 	
 	// print button
 	$('#dropdown-printButton').click(function(){
-		window.print();
+		// window.print();
+		// Thanks StackEx
+		// http://stackoverflow.com/questions/6500962/how-to-print-only-a-selected-html-element
+		
+		var content = window.document.getElementById("googleMap"); // get you map details
+		var newWindow = window.open(); // open a new window
+		newWindow.document.write(content.innerHTML); // write the map into the new window
+		newWindow.print(); // print the new window
+		newWindow.close();
 	});
 	
 	///////////////////////////////////////////////////////
@@ -735,6 +743,7 @@ $('document').ready(function(){
 		dataTable.rows.add(tableData).draw();
 		
 		$("#modal-wellList").modal("show");
+		dataTable.rows.add(tableData).draw();
 	});
 	//$("#wellTableWHOLE").tablesorter();
 	
