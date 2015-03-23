@@ -733,19 +733,23 @@ $('document').ready(function(){
 	//		Toolbar Buttons
 	///////////////////////////////////////////////////////
 	
+	///////////////////////////////////////////////////////
+	//		Table Modal Buttons
+	///////////////////////////////////////////////////////
+	
 	$("#dropdown-wellDataTable").click(function(){
-		//tableWellList(the_controller);
 		var tableData = the_controller.prepareTableList(0);
 
-		//data: tableData,
-		
 		dataTable.clear();
-		dataTable.rows.add(tableData).draw();
-		
 		$("#modal-wellList").modal("show");
 		dataTable.rows.add(tableData).draw();
+		
+		$("#tableValuesType").dropdown({
+			action: function(text, value){
+				console.log("Dropdown change: " + value);
+			}
+		});
 	});
-	//$("#wellTableWHOLE").tablesorter();
 	
 	///////////////////////////////////////////////////////
 	//		Change Map Display Type Buttons
