@@ -532,12 +532,6 @@ controller.prototype = {
 		// It prints a message to the console
 	},
 	
-	// add a list name
-	addList: function(names)
-	{
-		this.newPointLayer(names); // create a title for the list
-	},
-	
 	addDatabaseConnectionPHP : function(dbObjParams){
 		// NOTE: When implementing this function into the application, make sure dbObjParams is an object that contains:
 		// a name
