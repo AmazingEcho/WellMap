@@ -463,6 +463,16 @@ controller.prototype = {
 		});
 		
 	},
+	
+	importXLS2: function(){
+		
+		var xls_as_JSON;
+		// Create a new 
+		
+		for(var i = 0; i < 2; i++){
+			//
+		}
+	}
 
 	processData : function(alltext){
 		var allTextLines = allText.split(/\r\n|\n/);
