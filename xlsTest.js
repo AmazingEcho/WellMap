@@ -32,6 +32,9 @@ $('document').ready(function(){
 			// Ew, no!  Don't want this...
 			//console.log(output);
 			
+			var JSON_string = to_json(workbook);
+			console.log(JSON.stringify(JSON_string, 2, 2));
+			/*
 			var sheet_name_list = workbook.SheetNames;
 			sheet_name_list.forEach(function(y) {
 				var worksheet = workbook.Sheets[y];
@@ -40,10 +43,21 @@ $('document').ready(function(){
 					console.log(y + "!" + z + "=" + JSON.stringify(worksheet[z].v));
 				}
 			});
+			*/
 		};
 		
 		reader.readAsBinaryString(file);
 		
 	}
 	
+	function to_json(workbook) {
+		var result = {};
+		workbook.SheetNames.forEach(function(sheetName) {
+			var roa = XLS.utils.sheet_to_row_object_array(workbook.Sheets[sheetName]);
+			if(roa.length > 0){
+				result[sheetName] = roa;
+			}
+		});
+	return result;
+	}
 });
