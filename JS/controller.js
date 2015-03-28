@@ -472,7 +472,7 @@ controller.prototype = {
 		for(var i = 0; i < 2; i++){
 			//
 		}
-	}
+	},
 
 	processData : function(alltext){
 		var allTextLines = allText.split(/\r\n|\n/);
