@@ -23,12 +23,23 @@ $('document').ready(function(){
 
 			/* if binary string, read with type 'binary' */
 			var workbook = XLS.read(data, {type: 'binary'});
+			//var workbook = XLS.utils.sheet_to_json(data, {raw:true});
 			//console.log(workbook);
 			
 			/* DO SOMETHING WITH workbook HERE */
 			output = JSON.stringify(workbook);
 		
-			console.log(output);
+			// Ew, no!  Don't want this...
+			//console.log(output);
+			
+			var sheet_name_list = workbook.SheetNames;
+			sheet_name_list.forEach(function(y) {
+				var worksheet = workbook.Sheets[y];
+				for (z in worksheet) {
+					if(z[0] === '!') continue;
+					console.log(y + "!" + z + "=" + JSON.stringify(worksheet[z].v));
+				}
+			});
 		};
 		
 		reader.readAsBinaryString(file);
