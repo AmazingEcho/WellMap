@@ -490,7 +490,7 @@ controller.prototype = {
 			
 			conptr.newPointLayer("XLS Layer");
 			var indexXLS = conptr.the_map.layers.length - 1;
-			console.log("XLS contains " + JSON_string.length + "Items");
+			console.log("XLS contains " + JSON_string.length + " Items");
 			for(var i = 0; i < JSON_string.length; i++){
 				
 				currentPoint = JSON_string[i];
@@ -501,6 +501,11 @@ controller.prototype = {
 					currentPoint.Latitude,
 					currentPoint.Longitude
 				);
+				conptr.the_map.layers[indexXLS].points[i].wellData = {
+					wellCapacity: currentPoint.Capacity,
+					wellOutput: currentPoint.Output,
+					owner: currentPoint.Owner
+				};
 			}
 			
 			fullRefresh(conptr);
@@ -730,7 +735,7 @@ controller.prototype = {
 				for(var j = 0; j < this.the_map.layers[i].points.length; j++){
 					tableData.push(
 						[	this.the_map.layers[i].points[j].name,
-							"EMPTY",
+							this.the_map.layers[i].points[j].wellData.owner,
 							this.the_map.layers[i].name,
 							this.the_map.layers[i].points[j].getLat(),
 							this.the_map.layers[i].points[j].getLong(),
