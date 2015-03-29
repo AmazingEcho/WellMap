@@ -8,6 +8,15 @@
 	</head>
 	
 	<body>
+		<script type="text/javascript">
+			$('document').ready(function(){
+				convertXLS = function(){
+					var JSON_string = convertXLS_2_JSON("loadXLSField");
+					
+					console.log("Main returns: \n" + JSON.stringify(JSON_string, 2, 2));
+				}
+			});
+		</script>
 		<h1>XLS Test</h1>
 		
 		<input type="file" id="loadXLSField" name="files[]" multiple /><br />

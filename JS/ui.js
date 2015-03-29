@@ -486,10 +486,13 @@ $('document').ready(function(){
 		.modal({
 				closable: false,
 				onApprove: function(){
-					handleFile();
 					// !!!!!!!!!!!!!!!!!!!!!!!!
 					// Load function 
 					// !!!!!!!!!!!!!!!!!!!!!!!!
+					
+					// handleFile();
+					
+					the_controller.convertXLS_2_JSON("loadExcelFile",the_controller);
 				}
 			})
 		.modal('show');

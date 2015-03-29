@@ -464,15 +464,52 @@ controller.prototype = {
 		
 	},
 	
-	importXLS2: function(){
+	convertXLS_2_JSON : function(fileFieldID, conptr){
 		
-		var xls_as_JSON;
-		// Create a new 
+		var fileInput = document.getElementById(fileFieldID);		
+		var file = fileInput.files[0];
 		
-		for(var i = 0; i < 2; i++){
-			//
-		}
+		var reader = new FileReader();
+		var name = file.name;
+					
+		var output = "";
+		var JSON_string;
+		
+		reader.onload = function(e) {
+			var data = e.target.result;
+
+			/* if binary string, read with type 'binary' */
+			var workbook = XLS.read(data, {type: 'binary'});
+			
+			JSON_string = to_json(workbook);
+			JSON_string = JSON_string.Sheet1;
+			//console.log("onload returns: \n" + JSON.stringify(JSON_string, 2, 2));
+			
+			// Create a new group and populate it with JSON_string
+			var currentPoint;
+			
+			conptr.newPointLayer("XLS Layer");
+			var indexXLS = conptr.the_map.layers.length - 1;
+			console.log("XLS contains " + JSON_string.length + "Items");
+			for(var i = 0; i < JSON_string.length; i++){
+				
+				currentPoint = JSON_string[i];
+
+				conptr.the_map.layers[indexXLS].addPointLatLong(
+					currentPoint.Name,
+					currentPoint.Type,
+					currentPoint.Latitude,
+					currentPoint.Longitude
+				);
+			}
+			
+			fullRefresh(conptr);
+		};
+		
+		reader.readAsBinaryString(file);
+		
 	},
+	
 
 	processData : function(alltext){
 		var allTextLines = allText.split(/\r\n|\n/);
@@ -727,6 +764,18 @@ function getRandomColour(){
 		colour += letters[Math.floor(Math.random() * 16)];
 	}
 	return colour;
+}
+
+// Helper functon for controller.convertXLS_2_JSON
+function to_json(workbook){
+	var result = {};
+	workbook.SheetNames.forEach(function(sheetName) {
+		var roa = XLS.utils.sheet_to_row_object_array(workbook.Sheets[sheetName]);
+		if(roa.length > 0){
+			result[sheetName] = roa;
+		}
+	});
+	return result;
 }
 
 function generate_handler_selectPoint(layerIndex, pointIndex, the_controller){

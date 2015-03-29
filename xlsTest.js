@@ -6,17 +6,16 @@ $('document').ready(function(){
 		alert('The File APIs are not fully supported in this browser.  Saving and Loading will not function...');
 	}
 
-	convertXLS = function(){
-
-		console.log("Check");
+	convertXLS_2_JSON = function(fileFieldID, conptr){
 		
-		var fileInput = document.getElementById("loadXLSField");		
+		var fileInput = document.getElementById(fileFieldID);		
 		var file = fileInput.files[0];
 		
 		var reader = new FileReader();
 		var name = file.name;
 					
 		var output = "";
+		var JSON_string;
 		
 		reader.onload = function(e) {
 			var data = e.target.result;
@@ -32,8 +31,9 @@ $('document').ready(function(){
 			// Ew, no!  Don't want this...
 			//console.log(output);
 			
-			var JSON_string = to_json(workbook);
-			console.log(JSON.stringify(JSON_string, 2, 2));
+			JSON_string = to_json(workbook);
+			console.log("onload returns: \n" + JSON.stringify(JSON_string, 2, 2));
+			
 			/*
 			var sheet_name_list = workbook.SheetNames;
 			sheet_name_list.forEach(function(y) {
@@ -47,6 +47,7 @@ $('document').ready(function(){
 		};
 		
 		reader.readAsBinaryString(file);
+		return JSON_string;
 		
 	}
 	
