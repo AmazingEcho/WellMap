@@ -5,6 +5,7 @@
 <!-- <link href="jquery-ui.min.css" rel="stylesheet" /> -->
 <link rel="stylesheet" type="text/css" href="semantic/semantic.min.css" />
 <link rel="stylesheet" type="text/css" href="CSS/dataTables.css" />
+<link rel="stylesheet" type="text/css" href="CSS/dataTables.tableTools.css" />
 <link type="text/css" rel="stylesheet" href="ui.css" />
 <title>Well Map</title>
 <script src="external/jquery/jquery.js"></script>
@@ -24,7 +25,11 @@
 <script src="Excel/xlsx.js"></script>
 <script src="JS/lists.js"></script>
 <script src="JS/dataTables.js"></script>
+<script src="JS/jquery.dataTables.js"></script>
 <script src="JS/tablesorter.js"></script>
+<script src="JS/tableTools.js"></script>
+<script src="JS/table2excel.js"></script>
+<script type="text/javascript" src="JS/tableExport.js"></script>
 <script src="JS/ui.js"></script>
 
 </head>
@@ -161,7 +166,7 @@
 		<div class="workArea">
 			<div id="sidebar">
 				<div class="ui top attached tabular menu">
-					<a class="active item" data-tab="first">Layers</a>
+					<a class="active item" data-tab="first">Groups</a>
 					<!-- <a class="item" data-tab="second">Well List</a> -->
 				</div>
 				<div class="ui bottom attached active tab segment" data-tab="first">
@@ -465,7 +470,6 @@
 <!-- Export to Excel Modal	-->
 <!-- 							-->
 <div class="ui modal" id="dropdown-exportexcelModal" style="background-color:#CCC; color:#000">
-	<i class="close icon"></i>
 	<div class="header">Export to Excel</div>
 	<div class="content">
 		<div class="ui form">
@@ -481,7 +485,6 @@
 			<div class="or"></div>
 			<div class="ui button positive" id="dropdown-exportexcelModalGenerate">Generate</div>
 		</div>
-		<div class="ui button" id="dropdown-exportexcelModalClose">Close</div>
 	</div>
 </div>
 
@@ -631,6 +634,7 @@
 			<thead>
 				<tr>
 					<th><span class="text">Name</span></th>
+					<th><span class="text">Type</span></th>
 					<th><span class="text">Owner</span></th>
 					<th><span class="text">Group</span></th>
 					<th><span class="text">Lat</span></th>

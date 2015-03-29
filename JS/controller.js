@@ -735,6 +735,7 @@ controller.prototype = {
 				for(var j = 0; j < this.the_map.layers[i].points.length; j++){
 					tableData.push(
 						[	this.the_map.layers[i].points[j].name,
+							this.the_map.layers[i].points[j].type,
 							this.the_map.layers[i].points[j].wellData.owner,
 							this.the_map.layers[i].name,
 							this.the_map.layers[i].points[j].getLat(),

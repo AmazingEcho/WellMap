@@ -40,11 +40,24 @@ $('document').ready(function(){
 		
 	the_controller.addDatabaseConnectionPHP(tossDB);
 	
-	var dataTable = $("#wellTableWHOLE").DataTable({
+	var wellDataTable = $("#wellTableWHOLE").DataTable({
 		scrollY: "300px",
 		dom: "frtiS",
-		deferRender: true,
+		//dom: 'T<"clear">lfrtip',
+		//deferRender: true,
 		paging: false
+		/*
+		"tableTools": {
+			"sSwfPath": "JS/csv_xls.swf",
+			"aButtons": [
+			"aButtons": [
+				{
+					"sExtends": "xls",
+					"sButtonText": "Export as Excel (.xls)"
+				}
+			]
+		}
+		*/
 	});
 	
 	////////////////////////////////////////////////////////////
@@ -478,8 +491,6 @@ $('document').ready(function(){
 		$('#graphsModal').modal('show');
 	});
 
-	var X = XLS;
-	var xlf = document.getElementById('loadExcelFile');
 	//Import data from excel sheet 
 	$("#dropdown-importexcelButton").click(function(){
 		$("#dropdown-importexcelModal")
@@ -497,101 +508,7 @@ $('document').ready(function(){
 			})
 		.modal('show');
 	});
-	
-	function handleFile() {
-	console.log("handleFile function activated");
-	rABS = false;
-	use_worker = false;
-	var files = xlf.files;
-		var f = files[0];
-		{
-			var reader = new FileReader();
-			var name = f.name;
-			reader.onload = function(e) {
-				if(typeof console !== 'undefined') 
-					console.log("onload", new Date(), rABS, use_worker);
-					
-				var data = e.target.result;
-				console.log(data);
-				var wb;
-				console.log("wb var created");
-				var arr = fixdata(data);
-				wb = X.read(btoa(arr), {type: 'base64'});
-				console.log(wb+"x.read works");
-				process_wb(name,wb);
-			};
-			reader.readAsArrayBuffer(f);
-			console.log("Read f in array buffer" + f);
-		}
-	}
-	
-	function fixdata(data) {
-		console.log("fixdata function activated");
-		var o = "", l = 0, w = 10240;
-		for(; l<data.byteLength/w; ++l) o+=String.fromCharCode.apply(null,new Uint8Array(data.slice(l*w,l*w+w)));
-		o+=String.fromCharCode.apply(null, new Uint8Array(data.slice(l*w)));
-		return o;
-	}
-	
-	function process_wb(name, wb) {
-		console.log("process_wb activated");
-		var output = "";
-		var jsondata = to_json(wb);
-		console.log("jsondata" + jsondata);
-		if(typeof console !== 'undefined') 
-		{
-			console.log("output", new Date());
-		}
-		var sheetList = wb.SheetNames;
-		var returnedData = new Array();
-		for (sheet in sheetList) {
-			if (jsondata[sheetList[sheet]]	 !== undefined)
-			{
-				returnedData.push(jsondata[sheetList[sheet]]);
-			}
-		}
-		
-					
-		addPointsToMap(name,returnedData);
-		//returnedData is your map points boo
-		//from here, add map points to map
-	}
-	
-	function addPointsToMap(name,points)
-	{
-		for(var j = 0; j < points.length; j++){
-			for (var i = 0; i < points[j].length; i++)
-			{
-				the_controller.Gmap.addMarker({
-							lat: points[j][i].lat,
-							lng: points[j][i].lng,
-							title: points[j][i].well_name,
-							//icon: "markers/icon1.png"
-							//icon: "markers/icon1" + (points[j][i].selected == true ? "s" : "") + ".png",
-							//click: generate_handler_selectPoint(i, j, this)
-				});
-				
-				//newPointLayer
-				the_controller.newPointLayer(name);
-				var layerIndex = the_controller.the_map.layers.length - 1;
 
-				the_controller.the_map.layers[layerIndex].addPointLatLong(points[j][i].well_name, points[j][i].type, points[j][i].lat, points[j][i].lng);
-
-			}
-		}
-	}
-	
-	function to_json(workbook) {
-	var result = {};
-	workbook.SheetNames.forEach(function(sheetName) {
-		var roa = X.utils.sheet_to_row_object_array(workbook.Sheets[sheetName]);
-		if(roa.length > 0){
-			result[sheetName] = roa;
-		}
-	});
-	return result;
-}
-	
 	//Export data to an excel sheet
 	$("#dropdown-exportexcelButton").click(function(){
 		$("#dropdown-exportexcelModal").modal('show');
@@ -599,33 +516,36 @@ $('document').ready(function(){
 		//var dataToWrite = document.getElementById('inputTextToSave').value;
 		//var blob = new Blob([dataToWrite], {type: "text/plain"});
 		//var excelnewdoc = document.getElementById('excelnewdoc').value;
-		$("#dropdown-exportexcelModalGenerate").click(function(){
-		//var data = $('#txt').val();
-        //if(data == '')
-            //return;
-		//the_controller.the_map.layers[j].selected
-		var filtered = filterSelected(the_controller.the_map.layers);
-		JSONToCSVConvertor(filtered, document.getElementById('excelnewdoc').value, true);
+	});
+	
+	// Maybe move this to an onApprove in the modal code
+	$("#dropdown-exportexcelModalGenerate").click(function(){
+		
+		var tableData = the_controller.prepareTableList(0);
+		wellDataTable.clear();
+		wellDataTable.rows.add(tableData).draw();
+		
+		$("#wellTableWHOLE").table2excel({
+			exclude: ".noExl",
+			name: "Excel Document Name"
 		});
 	});
 	
-	function filterSelected(mapLayers)
-	{
+	/*
+	function filterSelected(mapLayers){
 		var filteredPoints = new Array();
 		
 		for (layers in mapLayers) {
 		
-			for (point in mapLayers[layers].points)
-			{
+			for (point in mapLayers[layers].points){
 				console.log(mapLayers[layers].points[point].name);
 				
-				if (mapLayers[layers].points[point].selected)
+				if(mapLayers[layers].points[point].selected){
 					filteredPoints.push(mapLayers[layers].points[point]);
+				}
 			}
-			
+			return filteredPoints;
 		}
-		
-		return filteredPoints;
 	}
 	
 	//Function for export data to excel
@@ -694,6 +614,7 @@ $('document').ready(function(){
     link.click();
     document.body.removeChild(link);
 	}
+	*/
 	
 	//new map button
 	$('#modal-button-newMap').click(function(){
@@ -743,15 +664,16 @@ $('document').ready(function(){
 	$("#dropdown-wellDataTable").click(function(){
 		var tableData = the_controller.prepareTableList(0);
 
-		dataTable.clear();
+		wellDataTable.clear();
 		$("#modal-wellList").modal("show");
-		dataTable.rows.add(tableData).draw();
-		
+		wellDataTable.rows.add(tableData).draw();
+		/*
 		$("#tableValuesType").dropdown({
 			action: function(text, value){
 				console.log("Dropdown change: " + value);
 			}
 		});
+		*/
 	});
 	
 	///////////////////////////////////////////////////////
