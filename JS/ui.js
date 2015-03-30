@@ -525,10 +525,14 @@ $('document').ready(function(){
 		wellDataTable.clear();
 		wellDataTable.rows.add(tableData).draw();
 		
+		// This doesn't work in IE 11
+		// URI limitations
+
 		$("#wellTableWHOLE").table2excel({
 			exclude: ".noExl",
 			name: "Excel Document Name"
 		});
+
 	});
 	
 	/*

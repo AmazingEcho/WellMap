@@ -784,6 +784,7 @@ function to_json(workbook){
 	return result;
 }
 
+
 function generate_handler_selectPoint(layerIndex, pointIndex, the_controller){
 	return function(event){
 
