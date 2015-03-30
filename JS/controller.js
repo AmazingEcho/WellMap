@@ -1,5 +1,14 @@
 /*
+
 WellMap
+Version 1.0 - Remilia
+
+Team-Avengineers
+https://github.com/Team-Avengineers/WellMap
+
+*/
+
+/*
 controller.js
 Written by: Thomas Condon
 
@@ -24,7 +33,8 @@ function controller(){
 	this.wellGroupList = [];
 	this.clickState = 1;
 	this.selectBoxPath = [];
-
+	this.KML_layers = [];
+	this.KML_active = true;
 }
 
 controller.prototype = {
@@ -84,57 +94,58 @@ controller.prototype = {
 
 		// TODO: Actually get some KML data, and set it up on a different tab somewhere...
 		console.log("loading KML");
-		this.Gmap.loadFromKML({
+		this.KML_layers[0] = this.Gmap.loadFromKML({
 			url: "http://team-avengineers.github.io/WellMap/NTS/a.kml"
 		});
-		this.Gmap.loadFromKML({
+		this.KML_layers[1] = this.Gmap.loadFromKML({
 			url: "http://team-avengineers.github.io/WellMap/NTS/b.kml"
 		});
-		this.Gmap.loadFromKML({
+		this.KML_layers[2] = this.Gmap.loadFromKML({
 			url: "http://team-avengineers.github.io/WellMap/NTS/c.kml"
 		});
-		this.Gmap.loadFromKML({
+		this.KML_layers[3] = this.Gmap.loadFromKML({
 			url: "http://team-avengineers.github.io/WellMap/NTS/d.kml"
 		});
-		this.Gmap.loadFromKML({
+		this.KML_layers[4] = this.Gmap.loadFromKML({
 			url: "http://team-avengineers.github.io/WellMap/NTS/e.kml"
 		});
-		this.Gmap.loadFromKML({
+		this.KML_layers[5] = this.Gmap.loadFromKML({
 			url: "http://team-avengineers.github.io/WellMap/NTS/f.kml"
 		});
-		this.Gmap.loadFromKML({
+		this.KML_layers[6] = this.Gmap.loadFromKML({
 			url: "http://team-avengineers.github.io/WellMap/NTS/g.kml"
 		});
-		this.Gmap.loadFromKML({
+		this.KML_layers[7] = this.Gmap.loadFromKML({
 			url: "http://team-avengineers.github.io/WellMap/NTS/h.kml"
 		});
-		this.Gmap.loadFromKML({
+		this.KML_layers[8] = this.Gmap.loadFromKML({
 			url: "http://team-avengineers.github.io/WellMap/NTS/i.kml"
 		});
-		this.Gmap.loadFromKML({
+		this.KML_layers[9] = this.Gmap.loadFromKML({
 			url: "http://team-avengineers.github.io/WellMap/NTS/j.kml"
 		});
-		this.Gmap.loadFromKML({
+		this.KML_layers[10] = this.Gmap.loadFromKML({
 			url: "http://team-avengineers.github.io/WellMap/NTS/k.kml"
 		});
-		this.Gmap.loadFromKML({
+		this.KML_layers[11] = this.Gmap.loadFromKML({
 			url: "http://team-avengineers.github.io/WellMap/NTS/l.kml"
 		});
-		this.Gmap.loadFromKML({
+		this.KML_layers[12] = this.Gmap.loadFromKML({
 			url: "http://team-avengineers.github.io/WellMap/NTS/m.kml"
 		});
-		this.Gmap.loadFromKML({
+		this.KML_layers[13] = this.Gmap.loadFromKML({
 			url: "http://team-avengineers.github.io/WellMap/NTS/n.kml"
 		});
-		this.Gmap.loadFromKML({
+		this.KML_layers[14] = this.Gmap.loadFromKML({
 			url: "http://team-avengineers.github.io/WellMap/NTS/o.kml"
 		});
-		this.Gmap.loadFromKML({
+		this.KML_layers[15] = this.Gmap.loadFromKML({
 			url: "http://team-avengineers.github.io/WellMap/NTS/p.kml"
 		});
-		this.Gmap.loadFromKML({
+		this.KML_layers[16] = this.Gmap.loadFromKML({
 			url: "http://team-avengineers.github.io/WellMap/NTS/q.kml"
 		});
+		
 		console.log("loaded KML");
 	},
 
@@ -442,6 +453,72 @@ controller.prototype = {
 					}
 				}
 			}
+		}
+	},
+	
+	toggleKML : function(){
+		// Turn it off
+		if(this.KML_active == true){
+			for (var i = 0; i < 17; i++) {
+				this.KML_layers[i].setMap(null);
+				this.KML_active = false;
+			}
+		}
+		// Turn it on
+		else if(this.KML_active == false){
+			this.KML_layers[0] = this.Gmap.loadFromKML({
+				url: "http://team-avengineers.github.io/WellMap/NTS/a.kml"
+			});
+			this.KML_layers[1] = this.Gmap.loadFromKML({
+				url: "http://team-avengineers.github.io/WellMap/NTS/b.kml"
+			});
+			this.KML_layers[2] = this.Gmap.loadFromKML({
+				url: "http://team-avengineers.github.io/WellMap/NTS/c.kml"
+			});
+			this.KML_layers[3] = this.Gmap.loadFromKML({
+				url: "http://team-avengineers.github.io/WellMap/NTS/d.kml"
+			});
+			this.KML_layers[4] = this.Gmap.loadFromKML({
+				url: "http://team-avengineers.github.io/WellMap/NTS/e.kml"
+			});
+			this.KML_layers[5] = this.Gmap.loadFromKML({
+				url: "http://team-avengineers.github.io/WellMap/NTS/f.kml"
+			});
+			this.KML_layers[6] = this.Gmap.loadFromKML({
+				url: "http://team-avengineers.github.io/WellMap/NTS/g.kml"
+			});
+			this.KML_layers[7] = this.Gmap.loadFromKML({
+				url: "http://team-avengineers.github.io/WellMap/NTS/h.kml"
+			});
+			this.KML_layers[8] = this.Gmap.loadFromKML({
+				url: "http://team-avengineers.github.io/WellMap/NTS/i.kml"
+			});
+			this.KML_layers[9] = this.Gmap.loadFromKML({
+				url: "http://team-avengineers.github.io/WellMap/NTS/j.kml"
+			});
+			this.KML_layers[10] = this.Gmap.loadFromKML({
+				url: "http://team-avengineers.github.io/WellMap/NTS/k.kml"
+			});
+			this.KML_layers[11] = this.Gmap.loadFromKML({
+				url: "http://team-avengineers.github.io/WellMap/NTS/l.kml"
+			});
+			this.KML_layers[12] = this.Gmap.loadFromKML({
+				url: "http://team-avengineers.github.io/WellMap/NTS/m.kml"
+			});
+			this.KML_layers[13] = this.Gmap.loadFromKML({
+				url: "http://team-avengineers.github.io/WellMap/NTS/n.kml"
+			});
+			this.KML_layers[14] = this.Gmap.loadFromKML({
+				url: "http://team-avengineers.github.io/WellMap/NTS/o.kml"
+			});
+			this.KML_layers[15] = this.Gmap.loadFromKML({
+				url: "http://team-avengineers.github.io/WellMap/NTS/p.kml"
+			});
+			this.KML_layers[16] = this.Gmap.loadFromKML({
+				url: "http://team-avengineers.github.io/WellMap/NTS/q.kml"
+			});
+			this.KML_active = true;
+
 		}
 	},
 	

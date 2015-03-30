@@ -700,6 +700,10 @@ $('document').ready(function(){
 		the_controller.changeMapType(4);
 	});
 	
+	$("#dropdown-displayUWIGrid").click(function(){
+		the_controller.toggleKML();
+	});
+	
 	///////////////////////////////////////////////////////
 	//		Selection Menu Buttons
 	///////////////////////////////////////////////////////
