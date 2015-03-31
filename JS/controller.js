@@ -556,7 +556,7 @@ controller.prototype = {
 
 			/* if binary string, read with type 'binary' */
 			var workbook = XLS.read(data, {type: 'binary'});
-					var JSON_string;
+			var JSON_string = new Object();
 
 			JSON_string = to_json(workbook);
 			JSON_string = JSON_string.Sheet1;
