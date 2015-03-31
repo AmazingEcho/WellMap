@@ -559,7 +559,9 @@ controller.prototype = {
 			var JSON_string = new Object();
 
 			JSON_string = to_json(workbook);
-			JSON_string = JSON_string.Sheet1;
+			
+			//This name was changed from Sheet1 to wells
+			JSON_string = JSON_string.wells;
 			//console.log("onload returns: \n" + JSON.stringify(JSON_string, 2, 2));
 			
 			// Create a new group and populate it with JSON_string
