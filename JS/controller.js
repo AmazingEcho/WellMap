@@ -550,14 +550,14 @@ controller.prototype = {
 		var name = file.name;
 					
 		var output = "";
-		var JSON_string;
 		
 		reader.onload = function(e) {
 			var data = e.target.result;
 
 			/* if binary string, read with type 'binary' */
 			var workbook = XLS.read(data, {type: 'binary'});
-			
+					var JSON_string;
+
 			JSON_string = to_json(workbook);
 			JSON_string = JSON_string.Sheet1;
 			//console.log("onload returns: \n" + JSON.stringify(JSON_string, 2, 2));
