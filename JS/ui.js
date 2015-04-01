@@ -28,7 +28,7 @@ $('document').ready(function(){
 		100);
 		
 	the_controller.newMap();
-	document.title = "WellMap - " + the_controller.the_map.metadata.mapName;
+	document.title = "WellmAPPS - " + the_controller.the_map.metadata.mapName;
 	console.log("Controller status: On");
 	
 	var tossDB = {
