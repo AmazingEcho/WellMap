@@ -534,6 +534,7 @@ $('document').ready(function(){
 		});
 	*/
 	
+		// http://www.kubilayerdogan.net/javascript-export-html-table-to-excel-with-custom-file-name/
 		//getting values of current time for generating the file name
 		var dt = new Date();
 		var day = dt.getDate();
@@ -664,7 +665,8 @@ $('document').ready(function(){
 	// Help button
 	// Google help page currently a placeholder it will be linked to User Manual in April
 	$('#dropdown-helpButton').click(function(){
-		window.open("https://support.google.com/maps/?hl=en");
+		//window.open("https://support.google.com/maps/?hl=en");
+		window.open("man/UserManual.pdf");
 	});
 	
 	// print button
