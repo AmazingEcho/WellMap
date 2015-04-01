@@ -519,7 +519,7 @@ $('document').ready(function(){
 	});
 	
 	// Maybe move this to an onApprove in the modal code
-	$("#dropdown-exportexcelModalGenerate").click(function(){
+	$("#dropdown-exportexcelModalGenerate").click(function(e){
 		
 		var tableData = the_controller.prepareTableList(0);
 		wellDataTable.clear();
@@ -527,11 +527,34 @@ $('document').ready(function(){
 		
 		// This doesn't work in IE 11
 		// URI limitations
-
+/*
 		$("#wellTableWHOLE").table2excel({
 			exclude: ".noExl",
 			name: "Excel Document Name"
 		});
+	*/
+	
+		//getting values of current time for generating the file name
+		var dt = new Date();
+		var day = dt.getDate();
+		var month = dt.getMonth() + 1;
+		var year = dt.getFullYear();
+		var hour = dt.getHours();
+		var mins = dt.getMinutes();
+		var postfix = day + "." + month + "." + year + "_" + hour + "." + mins;
+		//creating a temporary HTML link element (they support setting file names)
+		var a = document.createElement('a');
+		//getting data from our div that contains the HTML table
+		var data_type = 'data:application/vnd.ms-excel';
+		var table_div = document.getElementById('wellTableWHOLE');
+		var table_html = table_div.outerHTML.replace(/ /g, '%20');
+		a.href = data_type + ', ' + table_html;
+		//setting the file name
+		a.download = $("input#excelnewdoc").val() + ".xls";
+		//triggering the function
+		a.click();
+		//just in case, prevent default behaviour
+		e.preventDefault();
 
 	});
 	
@@ -868,7 +891,7 @@ $('document').ready(function(){
 		console.log("Selected Well Group Name: " + the_controller.wellGroupList[dataVal].groupName);
 		
 		//NOTE: replace the 0 in this function with a value from the database selector
-		the_controller.fetchWellsFromDatabasePHP(0, the_controller.wellGroupList[dataVal].groupName, dataVal);
+		the_controller.fetchWellsFromDatabasePHP(0, the_controller.wellGroupList[dataVal].groupName, dataVal, the_controller.wellGroupList[dataVal].groupOwner);
 		
 		//NOTE: since well pulls are ajax powers, it might take a few ms to actually get the wells
 	});

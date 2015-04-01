@@ -523,7 +523,6 @@ controller.prototype = {
 	},
 	
 	// Exports Data on the map as a spread sheet
-	// TODO: Write the whole function
 	exportXLS : function(){
 		console.log("exportXLS() not yet written");
 	},
@@ -561,7 +560,8 @@ controller.prototype = {
 			JSON_string = to_json(workbook);
 			
 			//This name was changed from Sheet1 to wells
-			JSON_string = JSON_string.wells;
+			//JSON_string = JSON_string.wells;
+			JSON_string = JSON_string[Object.keys(JSON_string)[0]];
 			//console.log("onload returns: \n" + JSON.stringify(JSON_string, 2, 2));
 			
 			// Create a new group and populate it with JSON_string
@@ -737,7 +737,7 @@ controller.prototype = {
 		});
 	},
 	
-	fetchWellsFromDatabasePHP : function(dbIndex, groupName, groupIndex){
+	fetchWellsFromDatabasePHP : function(dbIndex, groupName, groupIndex, groupOwner){
 		if(this.databases.length == 0){
 			console.log("No Database information present.  Please set Databse Options.");
 			return;
@@ -767,7 +767,7 @@ controller.prototype = {
 					conPTR.the_map.layers[layerIndex].points[pointIndex].wellData = {
 						wellCapacity	: $(this).attr("wellCapacity"),
 						wellOutput		: $(this).attr("wellOutput"),
-						owner				: "Fix this later"
+						owner				: groupOwner
 					};
 					//console.log("Added well with " + conPTR.the_map.layers[layerIndex].points[pointIndex].wellData.wellCapacity);
 					pointIndex++;
